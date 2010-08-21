@@ -79,10 +79,6 @@
     <string name="pref_title_hide_statusbar">ステータスバーを隠す</string>
     <string name="pref_summary_hide_statusbar">ステータスバーを隠す</string>
 
-    <string name="pref_title_desktop_screens">デスクトップスクリーン</string>
-    <string name="pref_summary_desktop_screens">使用するデスクトップスクリーンの数を選択する</string>
-    <string name="pref_dialog_desktop_screen">使用するデスクトップスクリーンの数を選択</string>
-
     <string name="pref_title_default_screen">デフォルトスクリーン</string>
     <string name="pref_summary_default_screen">デフォルトとして設定するスクリーンを選択する</string>
     <string name="pref_dialog_default_screen">デフォルトとして設定するスクリーンを選択</string>
@@ -300,14 +296,54 @@
     <string name="pref_title_system_persistent">システムに常駐</string>
     <string name="pref_summary_system_persistent">危険: システムからランチャーが終了されるのを防ぐ</string>
     <!-- Theme preferences -->
-	<string name="pref_title_theme_settings">テーマ設定</string>
-	<string name="pref_summary_theme_settings">ADW.Launcherのテーマを選択</string>
-	<string name="pref_title_theme_package">使用するテーマ</string>
-	<string name="pref_summary_theme_package">使用するADW.Launcherのテーマを選択</string>
-	<string name="pref_title_theme_preview">プレビュー</string>
-	<string name="pref_summary_theme_preview">選択したテーマのプレビュー</string>
-	<string name="pref_title_theme_icons">アイコンにテーマを使用する</string>
-	<string name="pref_summary_theme_icons">標準のアイコンを使用するにはオフにする</string>
-	<string name="pref_themes_apply_theme">テーマを適用!</string>
-	<string name="pref_themes_get_themes">テーマを入手!</string>
+    <string name="pref_title_theme_settings">テーマ設定</string>
+    <string name="pref_summary_theme_settings">ADW.Launcherのテーマを選択</string>
+    <string name="pref_title_theme_package">使用するテーマ</string>
+    <string name="pref_summary_theme_package">使用するADW.Launcherのテーマを選択</string>
+    <string name="pref_title_theme_preview">プレビュー</string>
+    <string name="pref_summary_theme_preview">選択したテーマのプレビュー</string>
+    <string name="pref_title_theme_icons">アイコンにテーマを使用する</string>
+    <string name="pref_summary_theme_icons">標準のアイコンを使用するにはオフにする</string>
+    <string name="pref_themes_apply_theme">テーマを適用!</string>
+    <string name="pref_themes_get_themes">テーマを入手!</string>
+
+    <string name="pref_title_wallpaper_scrolling">壁紙スクロール</string>
+    <string name="pref_summary_wallpaper_scrolling">スクリーンを移動するときに壁紙をスクロールさせる</string>
+    <string name="message_delete_desktop_screen">このスクリーンと内容をすべて削除しますか?</string>
+    <string name="message_cannot_delete_desktop_screen">最後のスクリーンは削除できません</string>
+    <string name="message_cannot_add_desktop_screen">これ以上スクリーンの追加はできません</string>
+    <string name="message_cannot_swap_desktop_screen">スクリーンの入れ替えはできません</string>
+    
+    <string name="menu_edit">編集</string>
+
+	<string name="pref_label_shirtcuts">カスタムショートカット</string>
+	<string name="pref_label_activities">アクティビティ</string>
+	<string name="pref_label_activities_loading">アクティビティリストをロード中...</string>
+	<string name="shirtcut_header">起動したいアプリケーションのアクティビティを選択してください。\nアイコンをカスタム設定することもできます。</string>
+	<string name="shirtcut_pick_activity">アクティビティを選択</string>
+	<string name="shirtcut_label">ラベル</string>
+	<string name="shirtcuts_select_picture">画像を選択</string>
+	<string name="shirtcuts_crop_picture">画像の選択と切り抜き</string>
+	<string name="shirtcuts_icon_packs">ADWテーマアイコンパック</string>
+	<string name="shirtcuts_select_icon_type">アイコンタイプを選択</string>
+	<string name="shirtcuts_select_icon_pack">アイコンパックを選択</string>
+
+	<string name="selectAll">すべて選択</string>
+	<string name="AppGroupAll">"すべて"</string>
+	<string name="AppGroupAdd">"新規カタログ"</string>
+	<string name="AppGroupDel">"カタログを削除"</string>
+    <string name="AppGroupDelLong">"現在のカタログを\n本当に削除しますか?"</string>
+	<string name="AppGroupChoose">"グループを選択"</string>
+	<string name="AppGroupConfig">"グループを設定"</string>
+	<string name="AppGroupRename">"新しいカタログ"</string>
+	<string name="AppGroupConfigError">"このグループは設定できません"</string>
+	<string name="AppGroupAddError">"これ以上グループを追加できません"</string>
+	<string name="rename_group_title">新しいカタログ</string>
+	<string name="rename_group_label">カタログ名</string>
+	
+	<string name="pref_title_adw_restart">ADWの再起動</string>
+	<string name="pref_summary_adw_restart">ADW.Launcherを終了し、再起動します。</string>
+	<string name="pref_title_adw_reset">ADWをリセット</string>
+	<string name="pref_summary_adw_reset">ADW.Launcherの設定を削除し、再起動します。</string>
+	
 </resources>
