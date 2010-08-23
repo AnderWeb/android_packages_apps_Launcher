@@ -63,10 +63,10 @@
     <string name="gadget_error_text" msgid="8359351016167075858">"Errore durante il caricamento del widget"</string>
 
     <!-- ADW Settings -->
-    <string name="pref_label_settings">Impostazioni AlmostNexus</string>
+    <string name="pref_label_settings">Impostazioni ADW</string>
     <!-- Screen preferences -->
     <string name="pref_title_screen_preferences">Preferenze Schermate</string>
-    <string name="pref_summary_screen_preferences">Numero schermate, schermata principale...</string>
+    <string name="pref_summary_screen_preferences">Schermata principale, layout...</string>
 
     <string name="pref_title_wallpaper_hack">Hack Sfondo</string>
     <string name="pref_summary_wallpaper_hack">Disabilita se hai dei FC usando sfondi PESANTI. Lasciandolo abilitato la velocità di scrolling è migliore.</string>
@@ -76,10 +76,6 @@
 
     <string name="pref_title_hide_statusbar">Nascondi Barra di Stato</string>
     <string name="pref_summary_hide_statusbar">Nasconde la barra di stato</string>
-
-    <string name="pref_title_desktop_screens">Schermate</string>
-    <string name="pref_summary_desktop_screens">Seleziona il numero di schermate da usare</string>
-    <string name="pref_dialog_desktop_screen">Seleziona il numero di schermate da usare</string>
 
     <string name="pref_title_default_screen">Schermata di Default</string>
     <string name="pref_summary_default_screen">Seleziona la schermata di default</string>
@@ -97,7 +93,7 @@
     <string name="pref_title_drawer_settings">Impostazioni del Drawer</string>
     <string name="pref_summary_drawer_settings">Preferenze della griglia delle applicazioni</string>
 
-    <string name="pref_title_zoom_effect_speed">Velocità dell\'Effetto Zoom</string>
+    <string name="pref_title_zoom_effect_speed">Velocità Effetto Zoom</string>
     <string name="pref_summary_zoom_effect_speed">Imposta il tempo in millisecondi per l\'effetto zoom</string>
     <string name="pref_dialog_zoom_effect_speed">Imposta il tempo in millisecondi per l\'effetto zoom</string>
 
@@ -111,19 +107,19 @@
     <string name="pref_title_animated_drawer">Drawer Animato</string>
     <string name="pref_summary_animated_drawer">Abilita la visualizzazione delle animazioni dell\'App Drawer</string>
 
-    <string name="pref_title_drawer_columns_portrait">Colonne del Drawer in modalità Verticale (Portrait)</string>
+    <string name="pref_title_drawer_columns_portrait">Colonne Drawer (Portrait)</string>
     <string name="pref_summary_drawer_columns_portrait">Seleziona il numero di colonne da usare in modalità Portrait</string>
     <string name="pref_dialog_drawer_columns_portrait">Seleziona il numero di colonne da usare in modalità Portrait</string>
 
-    <string name="pref_title_drawer_rows_portrait">Righe del Drawer in modalità Verticale (Portrait)</string>
+    <string name="pref_title_drawer_rows_portrait">Righe Drawer (Portrait)</string>
     <string name="pref_summary_drawer_rows_portrait">Seleziona il numero di righe da usare in modalità Portrait</string>
     <string name="pref_dialog_drawer_rows_portrait">Seleziona il numero di righe da usare in modalità Portrait</string>
 
-    <string name="pref_title_drawer_columns_landscape">Colonne del Drawer in modalità Orizzontale (Landscape)</string>
+    <string name="pref_title_drawer_columns_landscape">Colonne Drawer (Landscape)</string>
     <string name="pref_summary_drawer_columns_landscape">Seleziona il numero di colonne da usare in modalità Landscape</string>
     <string name="pref_dialog_drawer_columns_landscape">Seleziona il numero di colonne da usare in modalità Landscape</string>
 
-    <string name="pref_title_drawer_rows_landscape">Righe del Drawer in modalità Orizzontale (Landscape)</string>
+    <string name="pref_title_drawer_rows_landscape">Righe Drawer (Landscape)</string>
     <string name="pref_summary_drawer_rows_landscape">Seleziona il numero di righe da usare in modalità Landscape</string>
     <string name="pref_dialog_drawer_rows_landscape">Seleziona il numero di righe da usare in modalità Landscape</string>
 
@@ -143,6 +139,12 @@
 
     <string name="pref_title_home_button_binding">Pressione Tasto Home</string>
     <string name="pref_summary_home_button_binding">Seleziona l\'azione alla pressione del tasto Home</string>
+ 
+    <string name="pref_title_swipedown_actions">Azione Swipe-Down</string>
+    <string name="pref_summary_swipedown_actions">Seleziona l\'azione da associare alla gesture Swipe-Down</string>
+
+    <string name="pref_title_swipeup_actions">Azione Swipe-Down</string>
+    <string name="pref_summary_swipeup_actions">Seleziona l\'azione da associare alla gesture Swipe-Up</string>
 
     <string name="pref_title_desktop_dots">Punti sul desktop</string>
     <string name="pref_summary_desktop_dots">Visualizza/Nasconde i punti indicanti le schermate in stile nexus</string>
@@ -152,6 +154,9 @@
 
     <string name="pref_title_closing_dockbar">Chiusura Dockbar</string>
     <string name="pref_summary_closing_dockbar">Chiudi automaticamente la dockbar dopo il lancio di un\'applicazione</string>
+
+    <string name="pref_title_closing_folder">Chiusura cartella</string>
+    <string name="pref_summary_closing_folder">Chiudi automaticamente la cartella dopo il lancio di un\'applicazione</string>
 
     <string name="pref_title_lab">LAB</string>
     <string name="pref_summary_lab">Abilita/Disabilita il Bottone Sinistro (LAB) personalizzabile</string>
@@ -185,7 +190,7 @@
     <string name="pref_summary_icon_highlights">Imposta il colore di sfondo durante la selezione delle icone</string>
     <string name="pref_title_icon_highlights_focus">Colore della selezione</string>
     <string name="pref_summary_icon_highlights_focus">Imposta il colore per l\'icona selezionata</string>
-    <string name="pref_title_new_selectors">Usa i nuovi selettori per le icone</string>
+    <string name="pref_title_new_selectors">Nuovi selettori icone</string>
     <string name="pref_summary_new_selectors">Disabilitare per usare i vecchi selettori.</string>
     <string name="pref_title_drawer_color">Colore di sfondo</string>
     <string name="pref_summary_drawer_color">Imposta il colore di sfondo del drawer</string>
@@ -254,23 +259,23 @@
     <string name="pref_title_scrollable_widgets">Supporto per widget sfogliabili</string>
     <string name="pref_summary_scrollable_widgets">Disabilita se non vuoi usare i widget sfogliabili</string>
 
-    <string name="pref_title_drawer_labels">Visualizza etichette applicazioni</string>
+    <string name="pref_title_drawer_labels">Visualizza etichette app</string>
     <string name="pref_summary_drawer_labels">Visualizza le etichette applicazione nel drawer</string>
     <string name="pref_title_fade_drawer_labels">Effetto scomparsa per etichette applicazioni</string>
-    <string name="pref_summary_fade_drawer_labels">Etichette a scomparsa invece di comparsa improvvisa. Usa piu\' ram/cpu</string>
+    <string name="pref_summary_fade_drawer_labels">Etichette a scomparsa invece di comparsa improvvisa. Usa più ram/cpu</string>
 
         <string name="widget_config_dialog_title">Configurazione larghezza Widget</string>
         <string name="widget_config_dialog_summary">Quante righe/colonne per il Widget?</string>
         <string name="widget_columns">Colonne</string>
         <string name="widget_rows">Rghe</string>
 
-    <string name="pref_title_screen_cache">Usa cache dello schermo</string>
-    <string name="pref_summary_screen_cache">Scroll piu\' leggero. Disabilitare se si hanno molti widget.</string>
+    <string name="pref_title_screen_cache">Cache per Scrolling</string>
+    <string name="pref_summary_screen_cache">Una qualità più alta userà più memoria.</string>
 
-    <string name="pref_title_desktop_indicator">Visualizza indicatori desktop</string>
+    <string name="pref_title_desktop_indicator">Mostra indicatori desktop</string>
     <string name="pref_summary_desktop_indicator">Visualizza suggerimento visuale mentre si passa tra i desktop</string>
-    <string name="pref_title_desktop_indicator_autohide">Nascondi automaticamente gli indicatori del desktop</string>
-    <string name="pref_summary_desktop_indicator_autohide">Nascondi gli indicatori dopo poco tempo</string>
+    <string name="pref_title_desktop_indicator_autohide">Nascondi indicatori desktop</string>
+    <string name="pref_summary_desktop_indicator_autohide">Nascondi automaticamente gli indicatori dopo poco tempo</string>
     <string name="pref_title_desktop_indicator_type">Tipo di indicatore</string>
     <string name="pref_summary_desktop_indicator_type">Scegli tra differenti stili di indicatore</string>
 
@@ -287,4 +292,56 @@
 
     <string name="pref_title_system_persistent">Persistente nel sistema</string>
     <string name="pref_summary_system_persistent">Abilitare per evitare che il sistema termini il launcher</string>
+
+    <!-- Theme preferences -->
+	<string name="pref_title_theme_settings">Impostazioni Temi</string>
+	<string name="pref_summary_theme_settings">Seleziona temi per ADW Launcher</string>
+	<string name="pref_title_theme_package">Seleziona tema</string>
+	<string name="pref_summary_theme_package">Seleziona tema per ADW Launcher</string>
+	<string name="pref_title_theme_preview">Anteprima Tema</string>
+	<string name="pref_summary_theme_preview">Anteprima del tema selezionato</string>
+	<string name="pref_title_theme_icons">Usa Icone Tema</string>
+	<string name="pref_summary_theme_icons">Deseleziona per utilizzare le icone standard di sistema</string>
+	<string name="pref_themes_apply_theme">Applica tema!</string>
+	<string name="pref_themes_get_themes">Scarica temi!</string>
+	
+    <string name="pref_title_wallpaper_scrolling">Scrolling Sfondo</string>
+    <string name="pref_summary_wallpaper_scrolling">Permetti allo sfondo di muoversi passando da una schermata all\'altra</string>
+    <string name="message_delete_desktop_screen">Rimuovi questa schermata e tutto il suo contenuto?</string>
+    <string name="message_cannot_delete_desktop_screen">Non puoi eliminare l\'ultima schermata</string>
+    <string name="message_cannot_add_desktop_screen">Non puoi aggiungere altre schermate</string>
+    <string name="message_cannot_swap_desktop_screen">Non puoi scambiare le schermate</string>
+    
+    <string name="menu_edit">Modifica</string>
+
+	<string name="pref_label_shirtcuts">Altri Collegamenti</string>
+	<string name="pref_label_activities">Attività</string>
+	<string name="pref_label_activities_loading">Caricamento lista attività...</string>
+	<string name="shirtcut_header">Seleziona l\'applicazione che desideri avviare.\nPuoi anche scegliere un\'icona.</string>
+	<string name="shirtcut_pick_activity">Scegli attività</string>
+	<string name="shirtcut_label">Etichetta</string>
+	<string name="shirtcuts_select_picture">Seleziona immagine</string>
+	<string name="shirtcuts_crop_picture">Seleziona e ritaglia immagine</string>
+	<string name="shirtcuts_icon_packs">IconPack TemaADW</string>
+	<string name="shirtcuts_select_icon_type">Seleziona tipo icona</string>
+	<string name="shirtcuts_select_icon_pack">Seleziona icon pack</string>
+
+	<string name="selectAll">Seleziona tutte</string>
+	<string name="AppGroupAll">"TUTTE"</string>
+	<string name="AppGroupAdd">"Nuovo Catalogo"</string>
+	<string name="AppGroupDel">"Rimuovi Catalogo"</string>
+    <string name="AppGroupDelLong">"Rimuovere realmente\nCatalogo attuale?"</string>
+	<string name="AppGroupChoose">"Scegli Gruppo"</string>
+	<string name="AppGroupConfig">"Imp. Gruppo"</string>
+	<string name="AppGroupRename">"Nuovo Catalogo"</string>
+	<string name="AppGroupConfigError">"Non puoi configurare questo gruppo"</string>
+	<string name="AppGroupAddError">"Non puoi avere altri gruppi"</string>
+	<string name="rename_group_title">Nuovo Catalogo</string>
+	<string name="rename_group_label">Nome Catalogo</string>
+	
+	<string name="pref_title_adw_restart">Riavvia ADW</string>
+	<string name="pref_summary_adw_restart">Termina e riavvia ADW Launcher</string>
+	<string name="pref_title_adw_reset">Resetta ADW</string>
+	<string name="pref_summary_adw_reset">Resetta le impostazioni di ADW Launcher e riavvia</string>
+	
 </resources>

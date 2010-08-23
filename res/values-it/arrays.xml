@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
        <string-array name="menu_binding_entries">
-       			<item>NONE</item>
+       			<item>NIENTE</item>
                 <item>Muovi al Desktop predefinito</item>
                 <item>Muovi al Desktop predefinito/visualizza anteprima</item>
                 <item>Visualizza anteprima</item>
                 <item>Chiudi/Apri Applicazione Drawer</item>
                 <item>Visualizza/Nascondi barra di stato</item>
-                <item>Open/close notifications</item>
-                <item>Move to default desktop/Open notifications</item>
-                <item>Open/close DockBar</item>
-                <item>Open App...</item>
+                <item>Apri/chiudi notifiche</item>
+                <item>Sposta a schermata di default/Apri notifiche</item>
+                <item>Apri/chiudi DockBar</item>
+                <item>Avvia App...</item>
        </string-array>
        <string-array name="desktop_indicator_entries">
-                <item>Dot paginator top</item>
-                <item>Sliding paginator top</item>
-                <item>Sliding paginator bottom</item>
+                <item>Punti (in alto)</item>
+                <item>Slider (in alto)</item>
+                <item>Slider (in basso)</item>
+       </string-array>
+       <string-array name="home_orientation_entries">
+                <item>Auto/sensore</item>
+                <item>Portrait</item>
+                <item>Landscape</item>
+       </string-array>
+       <string-array name="screen_cache_entries">
+                <item>Bassa qualità</item>
+                <item>Auto</item>
+                <item>Non attiva</item>
        </string-array>
 </resources>
 
