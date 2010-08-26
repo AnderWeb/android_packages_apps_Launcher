@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
        <string-array name="menu_binding_entries">
-       			<item>NIENTE</item>
-                <item>Muovi al Desktop predefinito</item>
-                <item>Muovi al Desktop predefinito/visualizza anteprima</item>
+                <item>NIENTE</item>
+                <item>Vai a schermata di default</item>
+                <item>Vai a schermata di default/vis. anteprima</item>
                 <item>Visualizza anteprima</item>
                 <item>Chiudi/Apri Applicazione Drawer</item>
                 <item>Visualizza/Nascondi barra di stato</item>
                 <item>Apri/chiudi notifiche</item>
-                <item>Sposta a schermata di default/Apri notifiche</item>
+                <item>Vai a schermata di default/Apri notifiche</item>
                 <item>Apri/chiudi DockBar</item>
                 <item>Avvia App...</item>
        </string-array>

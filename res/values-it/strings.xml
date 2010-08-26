@@ -202,42 +202,42 @@
     <string name="pref_message_restart_normal">La modifica di questa impostazione riavviera\' il Launcher</string>
     <string name="pref_message_restart_froyo">La modifica di questa impostazione riavviera\' il Launcher</string>
     <string name="drop_to_uninstall">Lascia per Disinstallare</string>
-    
+
     <string name="pref_title_import_export">Backup e Ripristino</string>
     <string name="pref_title_xml">Impostazioni ADW</string>
     <string name="pref_title_xml_import">Ripristino impostazioni ADW</string>
     <string name="pref_summary_xml_import">Ripristino da /sdcard/adw_settings.xml</string>
     <string name="pref_title_xml_export">Backup impostazioni ADW</string>
     <string name="pref_summary_xml_export">Backup in /sdcard/adw_settings.xml</string>
-    
+
     <string name="pref_title_db">Configurazione del Desktop</string>
     <string name="pref_title_db_import">Ripristino della configurazione desktop</string>
     <string name="pref_summary_db_import">Ripristino da /sdcard/adw_launcher.db</string>
     <string name="pref_title_db_export">Backup della configurazione desktop</string>
     <string name="pref_summary_db_export">Backup in /sdcard/adw_launcher.db</string>
-    
+
     <string name="title_dialog_xml">Impostazioni ADW Launcher</string>
     <string name="import_export_sdcard_unmounted">Scheda SD non montata!</string>
-    
+
     <!-- XML Import/Export strings -->
     <string name="message_dialog_export">Fare il backup delle impostazioni ADW? Ogni file esistente sarà sovrascritto.</string>
     <string name="xml_export_dialog">Backup impostazioni ADW...</string>
     <string name="xml_export_success">Backup impostazioni ADW completato con successo!</string>
-    <string name="xml_export_error">Errore durante il backup delle impostazioni ADW!</string>    
-    
+    <string name="xml_export_error">Errore durante il backup delle impostazioni ADW!</string>
+
     <string name="message_dialog_import">Rispristinare impostazioni ADW? ADW launcher sarà riavviato.</string>
     <string name="xml_import_dialog">Rispristino impostazioni ADW...</string>  
     <string name="xml_file_not_found">File di backup delle impostazioni non trovato!</string>
     <string name="xml_not_readable">Impossibile leggere il file di backup delle impostazioni!</string>
     <string name="xml_import_success">Impostazioni ADW ripristinate con successo!</string>
     <string name="xml_import_error">Errore nel ripristino delle impostazioni ADW!</string>
-    
+
     <!-- Config Import/Export strings -->
     <string name="message_dialog_export_config">Fare il backup della configurazione del desktop? Ogni file esistente sarà sovrascritto.</string>
     <string name="dbfile_export_dialog">Backup configurazione del desktop...</string>
     <string name="dbfile_export_success">Backup della configurazione completato con successo!</string>
     <string name="dbfile_export_error">Errore durante il backup della configurazione!</string>
-    
+
     <string name="message_dialog_import_config">Ripristinare la configurazione del desktop? ADW launcher sarà riavviato.</string>
     <string name="dbfile_import_dialog">Ripristino configurazione del desktop...</string>
     <string name="dbfile_not_found">File di configurazione non trovato!</string>
@@ -294,54 +294,54 @@
     <string name="pref_summary_system_persistent">Abilitare per evitare che il sistema termini il launcher</string>
 
     <!-- Theme preferences -->
-	<string name="pref_title_theme_settings">Impostazioni Temi</string>
-	<string name="pref_summary_theme_settings">Seleziona temi per ADW Launcher</string>
-	<string name="pref_title_theme_package">Seleziona tema</string>
-	<string name="pref_summary_theme_package">Seleziona tema per ADW Launcher</string>
-	<string name="pref_title_theme_preview">Anteprima Tema</string>
-	<string name="pref_summary_theme_preview">Anteprima del tema selezionato</string>
-	<string name="pref_title_theme_icons">Usa Icone Tema</string>
-	<string name="pref_summary_theme_icons">Deseleziona per utilizzare le icone standard di sistema</string>
-	<string name="pref_themes_apply_theme">Applica tema!</string>
-	<string name="pref_themes_get_themes">Scarica temi!</string>
-	
+        <string name="pref_title_theme_settings">Impostazioni Temi</string>
+        <string name="pref_summary_theme_settings">Seleziona temi per ADW Launcher</string>
+        <string name="pref_title_theme_package">Seleziona tema</string>
+        <string name="pref_summary_theme_package">Seleziona tema per ADW Launcher</string>
+        <string name="pref_title_theme_preview">Anteprima Tema</string>
+        <string name="pref_summary_theme_preview">Anteprima del tema selezionato</string>
+        <string name="pref_title_theme_icons">Usa Icone Tema</string>
+        <string name="pref_summary_theme_icons">Deseleziona per utilizzare le icone standard di sistema</string>
+        <string name="pref_themes_apply_theme">Applica tema!</string>
+        <string name="pref_themes_get_themes">Scarica temi!</string>
+
     <string name="pref_title_wallpaper_scrolling">Scrolling Sfondo</string>
     <string name="pref_summary_wallpaper_scrolling">Permetti allo sfondo di muoversi passando da una schermata all\'altra</string>
     <string name="message_delete_desktop_screen">Rimuovi questa schermata e tutto il suo contenuto?</string>
     <string name="message_cannot_delete_desktop_screen">Non puoi eliminare l\'ultima schermata</string>
     <string name="message_cannot_add_desktop_screen">Non puoi aggiungere altre schermate</string>
     <string name="message_cannot_swap_desktop_screen">Non puoi scambiare le schermate</string>
-    
+
     <string name="menu_edit">Modifica</string>
 
-	<string name="pref_label_shirtcuts">Altri Collegamenti</string>
-	<string name="pref_label_activities">Attività</string>
-	<string name="pref_label_activities_loading">Caricamento lista attività...</string>
-	<string name="shirtcut_header">Seleziona l\'applicazione che desideri avviare.\nPuoi anche scegliere un\'icona.</string>
-	<string name="shirtcut_pick_activity">Scegli attività</string>
-	<string name="shirtcut_label">Etichetta</string>
-	<string name="shirtcuts_select_picture">Seleziona immagine</string>
-	<string name="shirtcuts_crop_picture">Seleziona e ritaglia immagine</string>
-	<string name="shirtcuts_icon_packs">IconPack TemaADW</string>
-	<string name="shirtcuts_select_icon_type">Seleziona tipo icona</string>
-	<string name="shirtcuts_select_icon_pack">Seleziona icon pack</string>
+        <string name="pref_label_shirtcuts">Altri Collegamenti</string>
+        <string name="pref_label_activities">Attività</string>
+        <string name="pref_label_activities_loading">Caricamento lista attività...</string>
+        <string name="shirtcut_header">Seleziona l\'applicazione che desideri avviare.\nPuoi anche scegliere un\'icona.</string>
+        <string name="shirtcut_pick_activity">Scegli attività</string>
+        <string name="shirtcut_label">Etichetta</string>
+        <string name="shirtcuts_select_picture">Seleziona immagine</string>
+        <string name="shirtcuts_crop_picture">Seleziona e ritaglia immagine</string>
+        <string name="shirtcuts_icon_packs">IconPack TemaADW</string>
+        <string name="shirtcuts_select_icon_type">Seleziona tipo icona</string>
+        <string name="shirtcuts_select_icon_pack">Seleziona icon pack</string>
 
-	<string name="selectAll">Seleziona tutte</string>
-	<string name="AppGroupAll">"TUTTE"</string>
-	<string name="AppGroupAdd">"Nuovo Catalogo"</string>
-	<string name="AppGroupDel">"Rimuovi Catalogo"</string>
+        <string name="selectAll">Seleziona tutte</string>
+        <string name="AppGroupAll">"TUTTE"</string>
+        <string name="AppGroupAdd">"Nuovo Catalogo"</string>
+        <string name="AppGroupDel">"Rimuovi Catalogo"</string>
     <string name="AppGroupDelLong">"Rimuovere realmente\nCatalogo attuale?"</string>
-	<string name="AppGroupChoose">"Scegli Gruppo"</string>
-	<string name="AppGroupConfig">"Imp. Gruppo"</string>
-	<string name="AppGroupRename">"Nuovo Catalogo"</string>
-	<string name="AppGroupConfigError">"Non puoi configurare questo gruppo"</string>
-	<string name="AppGroupAddError">"Non puoi avere altri gruppi"</string>
-	<string name="rename_group_title">Nuovo Catalogo</string>
-	<string name="rename_group_label">Nome Catalogo</string>
-	
-	<string name="pref_title_adw_restart">Riavvia ADW</string>
-	<string name="pref_summary_adw_restart">Termina e riavvia ADW Launcher</string>
-	<string name="pref_title_adw_reset">Resetta ADW</string>
-	<string name="pref_summary_adw_reset">Resetta le impostazioni di ADW Launcher e riavvia</string>
-	
+        <string name="AppGroupChoose">"Scegli Gruppo"</string>
+        <string name="AppGroupConfig">"Imp. Gruppo"</string>
+        <string name="AppGroupRename">"Nuovo Catalogo"</string>
+        <string name="AppGroupConfigError">"Non puoi configurare questo gruppo"</string>
+        <string name="AppGroupAddError">"Non puoi avere altri gruppi"</string>
+        <string name="rename_group_title">Nuovo Catalogo</string>
+        <string name="rename_group_label">Nome Catalogo</string>
+
+        <string name="pref_title_adw_restart">Riavvia ADW</string>
+        <string name="pref_summary_adw_restart">Termina e riavvia ADW Launcher</string>
+        <string name="pref_title_adw_reset">Resetta ADW</string>
+        <string name="pref_summary_adw_reset">Resetta le impostazioni di ADW Launcher e riavvia</string>
+
 </resources>
