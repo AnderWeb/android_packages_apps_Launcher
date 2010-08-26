@@ -2085,6 +2085,16 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         }
 
         mDesktopLocked = false;
+        //ADW: Show the changelog screen if needed
+        if(AlmostNexusSettingsHelper.shouldShowChangelog(this)){
+	        try {
+	        	AlertDialog builder = AlmostNexusSettingsHelper.ChangelogDialogBuilder.create(this);
+	        	builder.show();
+	        } catch (Exception e) {
+	        	e.printStackTrace();
+	        }
+        }
+        
     }
 
     private void bindDrawer(Launcher.DesktopBinder binder,
@@ -4000,6 +4010,18 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 						screens.swapScreens(currentScreen,currentScreen+1);
 					}else{
 						Toast t=Toast.makeText(Launcher.this, R.string.message_cannot_swap_desktop_screen, Toast.LENGTH_LONG);
+						t.show();
+					}
+				}
+			});
+	        final View setDefaultButton=mScreensEditor.findViewById(R.id.set_default);
+	        setDefaultButton.setOnClickListener(new android.view.View.OnClickListener() {
+				public void onClick(View v) {
+					int currentScreen=gal.getSelectedItemPosition();
+					if(currentScreen<mWorkspace.getChildCount()){
+						mWorkspace.setDefaultScreen(currentScreen);
+						AlmostNexusSettingsHelper.setDefaultScreen(Launcher.this, currentScreen);
+						Toast t=Toast.makeText(Launcher.this, R.string.pref_title_default_screen, Toast.LENGTH_LONG);
 						t.show();
 					}
 				}

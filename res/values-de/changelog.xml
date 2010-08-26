@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="adw_changelog">
+-&lt;b>HINWEIS:&lt;/b> Zum Ändern der Bildschirme drücke MENU/Bearbeiten.&lt;br>&lt;br>
+-&lt;b>HINWEIS:&lt;/b> Zum Einschalten der autom. Ausrichtung, schalte Persistenz aus.&lt;br>&lt;br>
+-&lt;b>DENKE DARAN:&lt;/b> Apps können im Drawer durch Nutzung eigener Kataloge versteckt werden (MENU-Taste im geöffneten Drawer).&lt;br>&lt;br>
+
+&lt;b>Version 1.1.4:&lt;/b>&lt;br>
+&lt;b>--------------&lt;/b>&lt;br>
+-FCs beseitigt beim Bearbeiten der Bildschirme.&lt;br>
+-Neuordnung der Dockzeile korrigiert (wieder).&lt;br>
+-Diese Changelog-Fenster hinzugefügt.&lt;br>
+-Hinzugefügt: Bestätigungsdialog für "Einstellungen zurücksetzen".&lt;br>
+-Hinzugefügt: Taste für "Standardbildschirm auswählen" in der Bildschirmkonfiguration.&lt;br>
+</string>
+</resources>

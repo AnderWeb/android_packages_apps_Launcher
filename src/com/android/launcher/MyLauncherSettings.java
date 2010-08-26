@@ -125,12 +125,39 @@ public class MyLauncherSettings extends PreferenceActivity implements OnPreferen
 		});
         reset.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick(Preference preference) {
-				SharedPreferences sp = getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
-				Editor ed=sp.edit();
-				ed.clear();
-				ed.commit();
-				shouldRestart=true;
-				finish();
+                AlertDialog alertDialog = new AlertDialog.Builder(mContext).create();
+                alertDialog.setTitle(getResources().getString(R.string.title_dialog_xml));
+                alertDialog.setMessage(getResources().getString(R.string.pref_summary_adw_reset));
+                alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, getResources().getString(android.R.string.ok), 
+                    new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+        				SharedPreferences sp = getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
+        				Editor ed=sp.edit();
+        				ed.clear();
+        				ed.commit();
+        				shouldRestart=true;
+        				finish();
+                    }
+                });
+                alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getResources().getString(android.R.string.cancel), 
+                        new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                alertDialog.show();
+				return false;
+			}
+		});
+        //Changelog screen
+        Preference adw_version=findPreference("adw_version");
+        adw_version.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			public boolean onPreferenceClick(Preference preference) {
+		        try {
+		        	AlertDialog builder = AlmostNexusSettingsHelper.ChangelogDialogBuilder.create(mContext);
+		        	builder.show();
+		        } catch (Exception e) {
+		        	e.printStackTrace();
+		        }
 				return false;
 			}
 		});

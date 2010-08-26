@@ -328,10 +328,10 @@
 	<string name="shirtcuts_select_icon_pack">选择图标包</string>
 
 	<string name="selectAll">全选</string>
-	<string name="AppGroupAll">"全选"</string>
+	<string name="AppGroupAll">"所有程序"</string>
 	<string name="AppGroupAdd">"新目录"</string>
 	<string name="AppGroupDel">"移除目录"</string>
-    <string name="AppGroupDelLong">"确定要移除\n当前目录？"</string>
+    <string name="AppGroupDelLong">"确定要移除当前目录？"</string>
 	<string name="AppGroupChoose">"选择群组"</string>
 	<string name="AppGroupConfig">"设置群组"</string>
 	<string name="AppGroupRename">"新目录"</string>

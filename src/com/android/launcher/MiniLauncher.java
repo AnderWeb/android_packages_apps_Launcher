@@ -87,22 +87,26 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
     }
     
     private int FindItemDropPos(int x, int y) {
+    	final boolean horizontal = (mOrientation==HORIZONTAL); 
     	final int count=getChildCount();
-    	final int marginLeft = ((getMeasuredWidth())/2)-(((count*mCellWidth)/2));
-    	final int marginTop  = ((getMeasuredHeight())/2)-(((count*mCellHeight)/2));
+    	int margin = horizontal ? ((getMeasuredWidth())/2)-(((count*mCellWidth)/2)) :
+    	                          ((getMeasuredHeight())/2)-(((count*mCellHeight)/2));
+    	if (margin < 0)
+    		margin = 0;
     	// check for drop on an item
-    	int dropPos = (mOrientation==HORIZONTAL) ? x : y;
+    	int dropPos = horizontal ? (x + getScrollX()) : (y +  getScrollY());
+    	
 	    for (int i = 0; i < count; i++) {
 	        View child = getChildAt(i);
 	        ItemInfo item=(ItemInfo) child.getTag();
 	        if (child.getVisibility() != GONE) {
                 
-	        	int bound1 = (mOrientation==HORIZONTAL)?marginLeft+(item.cellX*mCellWidth):marginTop+(item.cellX*mCellHeight);
-                int bound2 = (mOrientation==HORIZONTAL)?bound1+mCellWidth:bound1+mCellHeight;
+	        	int bound1 = margin + (item.cellX * (horizontal ? mCellWidth : mCellHeight));
+                int bound2 = bound1 + (horizontal ? mCellWidth : mCellHeight);
                 
 	            if (dropPos < bound1 && item.cellX == 0) // before the first item
 	            	return 0;
-	            if (dropPos > bound2 && item.cellX == (count - 1))
+	            if (dropPos >= bound2 && item.cellX == (count - 1))
 	            	return count;
 	            
 	            if (dropPos >= bound1 && dropPos < bound2) {
@@ -113,7 +117,7 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
 	            			pos++;
 	            	}
 	            	
-	            	int middle = bound1 + ((mOrientation==HORIZONTAL) ? mCellWidth : mCellHeight);
+	            	int middle = bound1 + (((mOrientation==HORIZONTAL) ? mCellWidth : mCellHeight) / 2);
 	            	if (dropPos >= middle)
 	            		return pos + 1;
 	            	return pos;

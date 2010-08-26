@@ -160,7 +160,7 @@ public class AppInfoMList extends ListActivity implements
 					.flattenToString();
 			tempAppListInfo.icon = tempAppInfo.icon;
 
-			tempAppListInfo.title = (String) tempAppInfo.title;
+			tempAppListInfo.title = tempAppInfo.title.toString();
 			if (curAppGrp != null)
 				tempAppListInfo.checked = curAppGrp.getBoolean(
 						tempAppListInfo.className, true);

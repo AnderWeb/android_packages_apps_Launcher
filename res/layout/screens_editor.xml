@@ -20,4 +20,7 @@
 	<ImageView android:id="@+id/swap_left" android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:src="@drawable/btn_swap_item"
 		android:layout_below="@id/gallery_screens" android:layout_alignLeft="@id/gallery_screens" />
+	<ImageView android:id="@+id/set_default" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:src="@drawable/btn_pin_item"
+		android:layout_above="@id/gallery_screens" android:layout_centerHorizontal="true" />
 </RelativeLayout>

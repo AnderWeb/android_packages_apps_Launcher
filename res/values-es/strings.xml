@@ -325,7 +325,7 @@
 	<string name="AppGroupChoose">"Seleccionar grupo"</string>
 	<string name="AppGroupConfig">"Configurar grupo"</string>
 	<string name="AppGroupRename">"Nuevo grupo"</string>
-	<string name="AppGroupConfigError">"No puede smodificar este grupo"</string>
+	<string name="AppGroupConfigError">"No puedes modificar este grupo"</string>
 	<string name="AppGroupAddError">"No puedes tener más grupos"</string>
 	<string name="rename_group_title">Nuevo grupo</string>
 	<string name="rename_group_label">Nombre</string>

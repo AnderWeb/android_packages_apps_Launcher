@@ -130,7 +130,7 @@
     <!-- Text to show user in place of a gadget when we can't display it properly -->
     <string name="gadget_error_text">Problem loading widget</string>
     <!-- ADW Version Information -->
-    <string name="adw_version">Version 1.1.2 System</string>
+    <string name="adw_version">Version 1.1.4 System</string>
     <!-- ADW Settings -->
     <string name="pref_label_settings">ADW Settings</string>
     <!-- Screen preferences -->
@@ -350,9 +350,9 @@
 	<!-- Category titles -->
 	<string name="pref_title_system_preferences">System Preferences</string>
 	<string name="pref_summary_system_preferences">General system preferences for ADW.Launcher</string>
-	<string name="pref_title_screens_preferencecategory">Dekstop screens</string>
-	<string name="pref_title_screens_layout_preferencecategory">Dekstop layout</string>
-	<string name="pref_title_screens_behaviour_preferencecategory">Dekstop behaviour</string>
+	<string name="pref_title_screens_preferencecategory">Desktop screens</string>
+	<string name="pref_title_screens_layout_preferencecategory">Desktop layout</string>
+	<string name="pref_title_screens_behaviour_preferencecategory">Desktop behavior</string>
 	<string name="pref_title_drawer_preferencecategory">Applications drawer</string>
 	<string name="pref_title_drawer_visuals_preferencecategory">Application drawer visuals</string>
 	<string name="pref_title_highlights_preferencecategory">Icon highlights</string>

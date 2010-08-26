@@ -327,10 +327,10 @@
 	<string name="shirtcuts_select_icon_pack">選擇圖示包</string>
 
 	<string name="selectAll">全選</string>
-	<string name="AppGroupAll">"全選"</string>
+	<string name="AppGroupAll">"所有程式"</string>
 	<string name="AppGroupAdd">"新目錄"</string>
 	<string name="AppGroupDel">"移除目錄"</string>
-    <string name="AppGroupDelLong">"確定要移除\n目前的目錄？"</string>
+    <string name="AppGroupDelLong">"確定要移除目前的目錄？"</string>
 	<string name="AppGroupChoose">"選擇群組"</string>
 	<string name="AppGroupConfig">"設置群組"</string>
 	<string name="AppGroupRename">"新目錄"</string>

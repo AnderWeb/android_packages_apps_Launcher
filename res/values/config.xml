@@ -74,4 +74,5 @@
     <string name="config_orientation_default">1</string>
     <!-- 1=low quality,2=auto, 3=disabled -->
     <string name="config_screenCache">1</string>
+    <bool name="config_nagScreen">true</bool>
 </resources>

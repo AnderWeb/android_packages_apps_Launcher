@@ -67,7 +67,7 @@
     <!-- Screen preferences -->
     <string name="pref_label_settings">ADW.Launcher-Einstellungen</string>
     <string name="pref_title_screen_preferences">Anzeige-Einstellungen</string>
-    <string name="pref_summary_screen_preferences">Einstellungen für Bildschirmanzahl, Standardbildschirm, Effekte, ...</string>
+    <string name="pref_summary_screen_preferences">Einstellungen für Standardbildschirm, Effekte, ...</string>
 
     <string name="pref_title_wallpaper_hack">Wallpaper-Hack</string>
     <string name="pref_summary_wallpaper_hack">Für schnelleres Scrollen. Bei Fehlermeldungen nicht benutzen.</string>
@@ -77,10 +77,6 @@
 
     <string name="pref_title_hide_statusbar">Statuszeile ausblenden</string>
     <string name="pref_summary_hide_statusbar">Obere Statuszeile ausblenden</string>
-
-    <string name="pref_title_desktop_screens">Anzahl Bildschirme</string>
-    <string name="pref_summary_desktop_screens">Anzahl zu verwendender Bildschirme auswählen</string>
-    <string name="pref_dialog_desktop_screen">Anzahl zu verwendender Bildschirme</string>
 
     <string name="pref_title_default_screen">Standardbildschirm</string>
     <string name="pref_summary_default_screen">Den Standardbildschirm auswählen</string>
@@ -157,11 +153,11 @@
     <string name="pref_title_dockbar">Dockzeile</string>
     <string name="pref_summary_dockbar">Ein-/Ausschalten der neuen Dockzeile für Schnellzugriffe</string>
 
-    <string name="pref_title_closing_dockbar">Automatisch schliessen</string>
-    <string name="pref_summary_closing_dockbar">Dockzeile nach Anwendungsstart automatisch schliessen</string>
+    <string name="pref_title_closing_dockbar">Automatisch schließen</string>
+    <string name="pref_summary_closing_dockbar">Dockzeile nach Anwendungsstart automatisch schließen</string>
 
-    <string name="pref_title_closing_folder">Ordner schliessen</string>
-    <string name="pref_summary_closing_folder">Ordner nach Programmstart automatisch schliessen</string>
+    <string name="pref_title_closing_folder">Ordner schließen</string>
+    <string name="pref_summary_closing_folder">Ordner nach Programmstart automatisch schließen</string>
 
     <string name="pref_title_lab">LAB</string>
     <string name="pref_summary_lab">Konfigurierbare linke Aktionstaste (LAB) zeigen</string>
@@ -275,7 +271,7 @@
     <string name="widget_rows">Reihen</string>
 
     <string name="pref_title_screen_cache">Bildschirm-Cache</string>
-    <string name="pref_summary_screen_cache">Für sanfteres Scrolling. Ausschalten bei Verwendung vieler Widgets.</string>
+    <string name="pref_summary_screen_cache">Für sanfteres Scrolling. Höhere Qualtität benötigt mehr Speicher.</string>
 
     <string name="pref_title_desktop_indicator">Zeige Bildschirm-Indikator</string>
     <string name="pref_summary_desktop_indicator">Visuellen Hinweis beim Scrollen des Bildschirms zeigen</string>
@@ -296,7 +292,7 @@
     <string name="pref_title_indicators_preferencecategory">Bildschirm-Indikator</string>
 
     <string name="pref_title_system_persistent">System persistent</string>
-    <string name="pref_summary_system_persistent">Einschalten, um Beendigung des Launchers durch das System zu verhindern (gefährlich)</string>
+    <string name="pref_summary_system_persistent">Gefährlich. Einschalten, um Beendigung des Launchers durch das System zu verhindern (gefährlich)</string>
 
     <!-- Theme preferences -->
     <string name="pref_title_theme_settings">Themes</string>
@@ -309,4 +305,43 @@
     <string name="pref_summary_theme_icons">Abwählen um die Standard-Icons zu nutzen</string>
     <string name="pref_themes_apply_theme">Theme anwenden!</string>
     <string name="pref_themes_get_themes">Themes beziehen!</string>
+
+    <string name="pref_title_wallpaper_scrolling">Wallpaper-Scrolling</string>
+    <string name="pref_summary_wallpaper_scrolling">Hintergrundbild beim Wechseln des Bildschirms bewegen</string>
+    <string name="message_delete_desktop_screen">Diesen Bildschirm mit seinen Elementen entfernen?</string>
+    <string name="message_cannot_delete_desktop_screen">Der letzte Screen kann nicht gelöscht werden</string>
+    <string name="message_cannot_add_desktop_screen">Mehr Bildschirme können nicht hinzugefügt werden</string>
+    <string name="message_cannot_swap_desktop_screen">Bildschirme können nicht getauscht werden</string>
+
+    <string name="menu_edit">Bearbeiten</string>
+
+    <string name="pref_label_shirtcuts">Anderer Kurzbefehl</string>
+    <string name="pref_label_activities">Aktivitäten</string>
+    <string name="pref_label_activities_loading">Lade Aktivitätenliste...</string>
+    <string name="shirtcut_header">Gewünschte Anwendungsaktivität zum Starten auswählen.\nEin anderes Icon kann auch ausgewählt werden.</string>
+    <string name="shirtcut_pick_activity">Aktivität wählen</string>
+    <string name="shirtcut_label">Bezeichnung</string>
+    <string name="shirtcuts_select_picture">Bild auswählen</string>
+    <string name="shirtcuts_crop_picture">Bild auswählen und beschneiden</string>
+    <string name="shirtcuts_icon_packs">ADWTheme Icon-Packs</string>
+    <string name="shirtcuts_select_icon_type">Icon-Typ auswählen</string>
+    <string name="shirtcuts_select_icon_pack">Icon-Pack auswählen</string>
+
+    <string name="selectAll">Alle auswählen</string>
+    <string name="AppGroupAll">"ALLE"</string>
+    <string name="AppGroupAdd">"Neuer Katalog"</string>
+    <string name="AppGroupDel">"Katalog löschen"</string>
+    <string name="AppGroupDelLong">"Soll der aktuelle Katalog\nwirklich gelöscht werden?"</string>
+    <string name="AppGroupChoose">"Katalog auswählen"</string>
+    <string name="AppGroupConfig">"Katalog anlegen"</string>
+    <string name="AppGroupRename">"Neuer Katalog"</string>
+    <string name="AppGroupConfigError">"Dieser Katalog kann nicht angelegt werden"</string>
+    <string name="AppGroupAddError">"Es konnte kein weiterer Katalog angelegt werden"</string>
+    <string name="rename_group_title">Neuer Katalog</string>
+    <string name="rename_group_label">Katalog-Name</string>
+
+    <string name="pref_title_adw_restart">ADW neu starten</string>
+    <string name="pref_summary_adw_restart">Den ADW.Launcher schließen und neu starten</string>
+    <string name="pref_title_adw_reset">ADW zurücksetzten</string>
+    <string name="pref_summary_adw_reset">Einstellunegen des ADW.Launcher zurücksetzen und neu starten</string>
 </resources>
