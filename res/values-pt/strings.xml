@@ -81,7 +81,7 @@
     <string name="pref_summary_default_screen">Selecione a tela para definir como padrão</string>
     <string name="pref_dialog_default_screen">Selecione a tela para definir como padrão</string>
 
-    <string name="pref_title_desktop_scrolling_speed">Velocidade de rolagem do Desktop</string>
+    <string name="pref_title_desktop_scrolling_speed">Velocidade de rolagem do desktop</string>
     <string name="pref_summary_desktop_scrolling_speed">Defina a velocidade usada para iniciar as telas do desktop</string>
     <string name="pref_dialog_desktop_scrolling_speed">Quanto menor o valor, mais rápido o desktop será iniciado</string>
 
@@ -107,7 +107,7 @@
     <string name="pref_title_animated_drawer">Grade animadada</string>
     <string name="pref_summary_animated_drawer">Exibe as animações na grade</string>
 
-    <string name="pref_title_drawer_columns_portrait">Colunas da grade em retrato</string>
+    <string name="pref_title_drawer_columns_portrait">Colunas da grade do retrato</string>
     <string name="pref_summary_drawer_columns_portrait">Selecione o número de colunas para usar no layout retrato</string>
     <string name="pref_dialog_drawer_columns_portrait">Selecione o número de colunas para usar no layout retrato</string>
 
@@ -183,135 +183,132 @@
     <string name="pref_title_hide_icon_labels">Ocultar título ícones</string>
     <string name="pref_summary_hide_icon_labels">Ocultar título dos ícones do desktop</string>
 
- <!-- Continuar tradução -->
-
-
     <string name="pref_title_build_info">Build Information</string>
     <string name="pref_title_adw_version">ADW Version</string>
 
-    <string name="pref_title_icon_highlights">Highlights press color</string>
-    <string name="pref_summary_icon_highlights">Set the color for icon press</string>
-    <string name="pref_title_icon_highlights_focus">Highlights focus color</string>
-    <string name="pref_summary_icon_highlights_focus">Set the color for icon focus</string>
-    <string name="pref_title_new_selectors">Use new icon selectors</string>
-    <string name="pref_summary_new_selectors">Disable this to use the old drawables.</string>
-    <string name="pref_title_drawer_color">Background color</string>
-    <string name="pref_summary_drawer_color">Set the color for the drawer background</string>
+    <string name="pref_title_icon_highlights">Cor de destaque</string>
+    <string name="pref_summary_icon_highlights">Selecione a cor do ícone</string>
+    <string name="pref_title_icon_highlights_focus">Cor destaque selecionado</string>
+    <string name="pref_summary_icon_highlights_focus">Selecione cor ícone quando é selecionado</string>
+    <string name="pref_title_new_selectors">Usar novos seletores de ícones</string>
+    <string name="pref_summary_new_selectors">Desativar esta opção para usar o velho seletor.</string>
+    <string name="pref_title_drawer_color">Cor de fundo</string>
+    <string name="pref_summary_drawer_color">Selecione a cor de fundo da grade</string>
 
-    <string name="pref_dialog_title_color_picker">Pick a color.</string>
-    <string name="pref_dialog_message_color_picker">Tap on center color to confirm.\nPress back to cancel.</string>
+    <string name="pref_dialog_title_color_picker">Escolha uma cor.</string>
+    <string name="pref_dialog_message_color_picker">Toque na cor do centro para confirmar.\nPressionar voltar para cancelar.</string>
     <string name="pref_dialog_color_picker_alpha">alpha</string>
-    <string name="pref_message_restart_normal">Changing this setting will make the Launcher restart itself</string>
-    <string name="pref_message_restart_froyo">Changing this setting will make the Launcher restart itself</string>
-    <string name="drop_to_uninstall">Drop to Uninstall</string>
+    <string name="pref_message_restart_normal">Alterar essa configuração fará com que o Launcher seja reiniciado</string>
+    <string name="pref_message_restart_froyo">Alterar essa configuração fará com que o Launcher seja reiniciado</string>
+    <string name="drop_to_uninstall">Solte para Desinstalar</string>
 
-    <string name="pref_title_import_export">Backup and restore</string>
+    <string name="pref_title_import_export">Backup e restauração</string>
     <string name="pref_title_xml">ADW settings</string>
-    <string name="pref_title_xml_import">Restore ADW settings</string>
-    <string name="pref_summary_xml_import">Restore from /sdcard/adw_settings.xml</string>
-    <string name="pref_title_xml_export">Backup ADW settings</string>
-    <string name="pref_summary_xml_export">Backup to /sdcard/adw_settings.xml</string>
+    <string name="pref_title_xml_import">Restaurar configurações ADW</string>
+    <string name="pref_summary_xml_import">Restaurar de /sdcard/adw_settings.xml</string>
+    <string name="pref_title_xml_export">Backup configurações ADW</string>
+    <string name="pref_summary_xml_export">Backup para /sdcard/adw_settings.xml</string>
 
-    <string name="pref_title_db">Desktop configuration</string>
-    <string name="pref_title_db_import">Restore desktop configuration</string>
-    <string name="pref_summary_db_import">Restore from /sdcard/adw_launcher.db</string>
-    <string name="pref_title_db_export">Backup desktop configuration</string>
-    <string name="pref_summary_db_export">Backup to /sdcard/adw_launcher.db</string>
+    <string name="pref_title_db">Configurações do Desktop</string>
+    <string name="pref_title_db_import">Restaurar configurações desktop</string>
+    <string name="pref_summary_db_import">Restaurar de /sdcard/adw_launcher.db</string>
+    <string name="pref_title_db_export">Backup configurações do desktop</string>
+    <string name="pref_summary_db_export">Backup para /sdcard/adw_launcher.db</string>
 
-    <string name="title_dialog_xml">ADW Launcher Settings</string>
-    <string name="import_export_sdcard_unmounted">SD card not mounted!</string>
+    <string name="title_dialog_xml">ADW Launcher Configurações</string>
+    <string name="import_export_sdcard_unmounted">SD card não montado!</string>
 
     <!-- XML Import/Export strings -->
-    <string name="message_dialog_export">Backup ADW settings? Any existing file will be overwritten.</string>
-    <string name="xml_export_dialog">Backing up ADW settings...</string>
-    <string name="xml_export_success">ADW settings backed up successfully!</string>
-    <string name="xml_export_error">Error backing up ADW settings!</string>
+    <string name="message_dialog_export">Backup configurações ADW? Qualquer arquivo existente será sobrescrito.</string>
+    <string name="xml_export_dialog">Salvando configurações ADW...</string>
+    <string name="xml_export_success">Configurações ADW foram salvas com sucesso!</string>
+    <string name="xml_export_error">Erro ao salvar configurações ADW!</string>
 
-    <string name="message_dialog_import">Restore ADW settings? ADW.Launcher will be restarted.</string>
-    <string name="xml_import_dialog">Restoring ADW settings...</string>
-    <string name="xml_file_not_found">Settings backup file not found!</string>
-    <string name="xml_not_readable">Settings backup file exists, but is not readable!</string>
-    <string name="xml_import_success">ADW settings restored successfully!</string>
-    <string name="xml_import_error">Error restoring ADW settings!</string>
+    <string name="message_dialog_import">Restaurar configurações ADW? ADW.Launcher será reinciado.</string>
+    <string name="xml_import_dialog">Restaurando configurações ADW...</string>
+    <string name="xml_file_not_found">Arquivo de backup de configurações não encontrado!</string>
+    <string name="xml_not_readable">Arquivo de backup de configurações existe, mas não está legível!</string>
+    <string name="xml_import_success">Configurações ADW foram restauradas com sucesso!</string>
+    <string name="xml_import_error">Erro ao restaurar as configurações ADW!</string>
 
     <!-- Config Import/Export strings -->
-    <string name="message_dialog_export_config">Backup desktop configuration? Any existing file will be overwritten.</string>
-    <string name="dbfile_export_dialog">Backing up desktop configuration...</string>
-    <string name="dbfile_export_success">Configuration backed up successfully!</string>
-    <string name="dbfile_export_error">Error backing up configuration!</string>
+    <string name="message_dialog_export_config">Backup configurações do desktop? Qualquer arquivo existente será sobrescrito.</string>
+    <string name="dbfile_export_dialog">Salvando configurações do desktop...</string>
+    <string name="dbfile_export_success">Configurações do desktop foram salvas com sucesso!</string>
+    <string name="dbfile_export_error">Erro ao salvar configurações do desktop!</string>
 
-    <string name="message_dialog_import_config">Restore desktop configuration? ADW.Launcher will be restarted.</string>
-    <string name="dbfile_import_dialog">Restoring desktop configuration...</string>
-    <string name="dbfile_not_found">Configuration file not found!</string>
-    <string name="dbfile_not_readable">Configuration file exists, but is not readable!</string>
-    <string name="dbfile_import_success">Configuration restored successfully!</string>
-    <string name="dbfile_import_error">Error restoring configuration!</string>
+    <string name="message_dialog_import_config">Restaurar configurações do desktop? ADW.Launcher será reiniciado.</string>
+    <string name="dbfile_import_dialog">Restaurando configurações do desktop...</string>
+    <string name="dbfile_not_found">Arquivo de backup de configurações não encontrado!</string>
+    <string name="dbfile_not_readable">Arquivo de backup de configurações existe, mas não está legível!</string>
+    <string name="dbfile_import_success">Configurações ADW foram restauradas com sucesso!</string>
+    <string name="dbfile_import_error">Erro ao restaurar as configurações ADW!</string>
     <!--  Desktop columns/Rows -->
-    <string name="pref_title_desktop_columns">Desktop Columns</string>
-    <string name="pref_summary_desktop_columns">Select the number of columns to use on desktop</string>
-    <string name="pref_dialog_desktop_columns">Select the number of columns to use on desktop</string>
+    <string name="pref_title_desktop_columns">Colunas do Desktop</string>
+    <string name="pref_summary_desktop_columns">Selecionar número colunas no desktop</string>
+    <string name="pref_dialog_desktop_columns">Selecione o número de colunas para usar no desktop</string>
 
-    <string name="pref_title_desktop_rows">Desktop Rows</string>
-    <string name="pref_summary_desktop_rows">Select the number of rows to use on desktop</string>
-    <string name="pref_dialog_desktop_rows">Select the number of rows to use on desktop</string>
+    <string name="pref_title_desktop_rows">Linhas do Desktop</string>
+    <string name="pref_summary_desktop_rows">Selecionar número linhas no desktop</string>
+    <string name="pref_dialog_desktop_rows">Selecione o número de linhas para usar no desktop</string>
 
-    <string name="pref_title_autosize_icons">Auto Stretch</string>
-    <string name="pref_summary_autosize_icons">Try to stretch icons/widgets so they don\'t overlap</string>
+    <string name="pref_title_autosize_icons">Auto Dimensão</string>
+    <string name="pref_summary_autosize_icons">Tente para dimensionar os ícones/widgets para que eles não se sobreponham</string>
 
-    <string name="pref_title_scrollable_widgets">Scrollable widget support</string>
-    <string name="pref_summary_scrollable_widgets">Disable this if you don\'t use scrollable widgets</string>
+    <string name="pref_title_scrollable_widgets">Suporte a rolagem do widget</string>
+    <string name="pref_summary_scrollable_widgets">Desative isto se você usar a rolagem de widgets</string>
 
-    <string name="pref_title_drawer_labels">Show app labels</string>
-    <string name="pref_summary_drawer_labels">Show the labels on app drawer</string>
-    <string name="pref_title_fade_drawer_labels">Fade app labels</string>
+    <string name="pref_title_drawer_labels">Mostrar título do app</string>
+    <string name="pref_summary_drawer_labels">Mostrar os título dos app nas grade</string>
+    <string name="pref_title_fade_drawer_labels">Graduar títulos do app</string>
     <string name="pref_summary_fade_drawer_labels">Labels fade instead of just appear. Uses more ram/cpu</string>
 
-	<string name="widget_config_dialog_title">Widget span config</string>
-	<string name="widget_config_dialog_summary">Home many rows/columns will the widget take?</string>
-	<string name="widget_columns">Columns</string>
-	<string name="widget_rows">Rows</string>
+	<string name="widget_config_dialog_title">Config tamanho widget</string>
+	<string name="widget_config_dialog_summary">Quantas linhas/colunas o widget terá?</string>
+	<string name="widget_columns">Colunas</string>
+	<string name="widget_rows">Linhas</string>
     
-    <string name="pref_title_screen_cache">Scrolling cache</string>
-    <string name="pref_summary_screen_cache">Higher quality will use more memory.</string>
+    <string name="pref_title_screen_cache">Cache de rolagem</string>
+    <string name="pref_summary_screen_cache">Alta qualidade usará mais memória.</string>
 
-    <string name="pref_title_desktop_indicator">Show desktop indicator</string>
-    <string name="pref_summary_desktop_indicator">Show a visual hint on scrolling desktop</string>
-    <string name="pref_title_desktop_indicator_autohide">Autohide desktop indicator</string>
-    <string name="pref_summary_desktop_indicator_autohide">Hide the indicator after a small period</string>
-    <string name="pref_title_desktop_indicator_type">Indicator type</string>
-    <string name="pref_summary_desktop_indicator_type">Select between different indicator styles</string>
+    <string name="pref_title_desktop_indicator">Mostrar indicador do desktop</string>
+    <string name="pref_summary_desktop_indicator">Mostrar uma dica visual sobre a rolagem desktop</string>
+    <string name="pref_title_desktop_indicator_autohide">Auto ocultar o indicador do desktop</string>
+    <string name="pref_summary_desktop_indicator_autohide">Ocultar o indicador após um pequeno período</string>
+    <string name="pref_title_desktop_indicator_type">Tipo de indicador</string>
+    <string name="pref_summary_desktop_indicator_type">Escolha entre os diferentes estilos de indicador</string>
 
 	<!-- Category titles -->
-	<string name="pref_title_system_preferences">System Preferences</string>
-	<string name="pref_summary_system_preferences">General system preferences for ADW.Launcher</string>
-	<string name="pref_title_screens_preferencecategory">Dekstop screens</string>
-	<string name="pref_title_screens_layout_preferencecategory">Dekstop layout</string>
-	<string name="pref_title_screens_behaviour_preferencecategory">Dekstop behaviour</string>
-	<string name="pref_title_drawer_preferencecategory">Applications drawer</string>
-	<string name="pref_title_drawer_visuals_preferencecategory">Application drawer visuals</string>
-	<string name="pref_title_highlights_preferencecategory">Icon highlights</string>
-	<string name="pref_title_indicators_preferencecategory">Screen indicator</string>
+	<string name="pref_title_system_preferences">Preferências do Sistema</string>
+	<string name="pref_summary_system_preferences">Preferências gerais do sistema para ADW.Launcher</string>
+	<string name="pref_title_screens_preferencecategory">Telas do desktop</string>
+	<string name="pref_title_screens_layout_preferencecategory">Layout do Desktop</string>
+	<string name="pref_title_screens_behaviour_preferencecategory">Comportamento do Desktop</string>
+	<string name="pref_title_drawer_preferencecategory">Grade de aplicações</string>
+	<string name="pref_title_drawer_visuals_preferencecategory">Visual grade aplicações</string>
+	<string name="pref_title_highlights_preferencecategory">Cor destaque dos ícones</string>
+	<string name="pref_title_indicators_preferencecategory">Indicador da tela</string>
 
-    <string name="pref_title_system_persistent">System persistent</string>
-    <string name="pref_summary_system_persistent">Dangerous. Enable this to avoid system killing the launcher</string>
+    <string name="pref_title_system_persistent">Persistência do sistema</string>
+    <string name="pref_summary_system_persistent">Perigo. Habitar isto para evitar o travamento do launcher</string>
     <!-- Theme preferences -->
-	<string name="pref_title_theme_settings">Themes Preferences</string>
-	<string name="pref_summary_theme_settings">Select themes for ADW.Launcher</string>
-	<string name="pref_title_theme_package">Select your theme</string>
-	<string name="pref_summary_theme_package">Choose your theme for ADW.Launcher</string>
-	<string name="pref_title_theme_preview">Theme Preview</string>
-	<string name="pref_summary_theme_preview">Preview of the selected theme</string>
-	<string name="pref_title_theme_icons">Use Theme Icons</string>
-	<string name="pref_summary_theme_icons">Deselect this to use standard OS icons</string>
-	<string name="pref_themes_apply_theme">Apply theme!</string>
-	<string name="pref_themes_get_themes">Get themes!</string>
+	<string name="pref_title_theme_settings">Preferências de tema</string>
+	<string name="pref_summary_theme_settings">Selecionar tema para ADW.Launcher</string>
+	<string name="pref_title_theme_package">Selecione seu tema</string>
+	<string name="pref_summary_theme_package">Escolha sue tema para ADW.Launcher</string>
+	<string name="pref_title_theme_preview">Visualização do tema</string>
+	<string name="pref_summary_theme_preview">Visualização do tema selecionado</string>
+	<string name="pref_title_theme_icons">Usar tema de ícones</string>
+	<string name="pref_summary_theme_icons">Não selecione isot para usar os ícones padrões do sistema</string>
+	<string name="pref_themes_apply_theme">Aplicar tema!</string>
+	<string name="pref_themes_get_themes">Pegar temas!</string>
 
-    <string name="pref_title_wallpaper_scrolling">Wallpaper Scrolling</string>
-    <string name="pref_summary_wallpaper_scrolling">Allow wallpaper to move while scrolling screens</string>
-    <string name="message_delete_desktop_screen">Remove this screen and all the content?</string>
-    <string name="message_cannot_delete_desktop_screen">You can\'t delete the last screen</string>
-    <string name="message_cannot_add_desktop_screen">You can\'t add more screens</string>
-    <string name="message_cannot_swap_desktop_screen">You can\'t swap screens</string>
+    <string name="pref_title_wallpaper_scrolling">Rolagem papel parede</string>
+    <string name="pref_summary_wallpaper_scrolling">Permiter papel parede mover-se enquanto rolagem de telas</string>
+    <string name="message_delete_desktop_screen">Remover esta tela e todo conteúdo?</string>
+    <string name="message_cannot_delete_desktop_screen">Você não pode deletar a última tela</string>
+    <string name="message_cannot_add_desktop_screen">Você não pode adicionar mais telas</string>
+    <string name="message_cannot_swap_desktop_screen">Você não pode trocar telas</string>
     
     <string name="menu_edit">Editar</string>
 
@@ -324,26 +321,26 @@
 	<string name="shirtcuts_select_picture">Selecionar imagem</string>
 	<string name="shirtcuts_crop_picture">Selecionar e cortar imagem</string>
 	<string name="shirtcuts_icon_packs">ADWTheme IconPacks</string>
-	<string name="shirtcuts_select_icon_type">Select the icon type</string>
-	<string name="shirtcuts_select_icon_pack">Select icon pack</string>
+	<string name="shirtcuts_select_icon_type">Selecione tipo do ícone</string>
+	<string name="shirtcuts_select_icon_pack">Selecionar pacote de íconek</string>
 
-	<string name="selectAll">Select all</string>
-	<string name="AppGroupAll">"ALL"</string>
-	<string name="AppGroupAdd">"New Catalog"</string>
-	<string name="AppGroupDel">"Remove Catalog"</string>
-    <string name="AppGroupDelLong">"Really Remove\nCurrent Catalog?"</string>
-	<string name="AppGroupChoose">"Choose Group"</string>
-	<string name="AppGroupConfig">"Setup Group"</string>
-	<string name="AppGroupRename">"New Catalog"</string>
-	<string name="AppGroupConfigError">"You can not setup this group"</string>
-	<string name="AppGroupAddError">"You Cannot have More Groups"</string>
-	<string name="rename_group_title">New Catalog</string>
-	<string name="rename_group_label">Catalog Name</string>
+	<string name="selectAll">Selecionar todos</string>
+	<string name="AppGroupAll">"Todos"</string>
+	<string name="AppGroupAdd">"Novo catálogo"</string>
+	<string name="AppGroupDel">"Remover catálogo"</string>
+    <string name="AppGroupDelLong">"Remover realmente \no catálogo corrente?"</string>
+	<string name="AppGroupChoose">"Selecione o grupo"</string>
+	<string name="AppGroupConfig">"Ajustar grupo"</string>
+	<string name="AppGroupRename">"Novo catálogo"</string>
+	<string name="AppGroupConfigError">"Você não pode ajustar este grupo"</string>
+	<string name="AppGroupAddError">"Você não pode ter mais grupos"</string>
+	<string name="rename_group_title">Novo catálogo</string>
+	<string name="rename_group_label">Nome do catálogo</string>
 
-	<string name="pref_title_adw_restart">Restart ADW</string>
-	<string name="pref_summary_adw_restart">Close and restart ADW.Launcher</string>
-	<string name="pref_title_adw_reset">Reset ADW</string>
-	<string name="pref_summary_adw_reset">Clear ADW.Launcher settings and restart</string>
+	<string name="pref_title_adw_restart">Reiniciar ADW</string>
+	<string name="pref_summary_adw_restart">Fechar e reiniciar ADW.Launcher</string>
+	<string name="pref_title_adw_reset">Resetar ADW</string>
+	<string name="pref_summary_adw_reset">Limpar configurações ADW.Launcher e reiniciar</string>
 
 
 </resources>
