@@ -136,7 +136,7 @@
     <string name="pref_summary_home_button_binding">Selecciona una acción para el botón HOME</string>
 
     <string name="pref_title_desktop_dots">Paginador</string>
-    <string name="pref_summary_desktop_dots">Muestra/oculta los puntitos estilo nexus</string>
+    <string name="pref_summary_desktop_dots">Muestra/oculta los puntitos estilo Nexus</string>
 
     <string name="pref_title_dockbar">Dockbar</string>
     <string name="pref_summary_dockbar">Activa/desactiva el dockbar</string>
@@ -156,7 +156,7 @@
     <string name="pref_title_ab_scale_factor">Tamaño AB</string>
     <string name="pref_summary_ab_scale_factor">Selecciona la escala de los iconos de los ActionButton</string>
     <string name="pref_dialog_ab_scale_factor">Selecciona la escala de los iconos de los ActionButton</string>
-    
+
     <string name="pref_title_closing_folder">Auto cerrar carpetas</string>
     <string name="pref_summary_closing_folder">Cierra las carpetas tras abrir una app</string>
 
@@ -174,11 +174,11 @@
 
     <string name="pref_title_ab2">ActionButtons secundarios</string>
     <string name="pref_summary_ab2">Activa/desactiva los Action Buttons secundarios (desactivar Paginador)</string>
-    
+
     <string name="pref_title_page_horizontal_margin">Margen horizontal</string>
     <string name="pref_summary_page_horizontal_margin">Margen horizontal entre las páginas de aplicaciones</string>
     <string name="pref_dialog_page_horizontal_margin">Margen horizontal entre las páginas de aplicaciones</string>
-    
+
     <string name="pref_title_icon_highlights">Color presionado</string>
     <string name="pref_summary_icon_highlights">Elige color al presionar iconos</string>
     <string name="pref_title_icon_highlights_focus">Colro selección</string>
@@ -189,62 +189,63 @@
     <string name="pref_summary_drawer_color">Elige el color de fondo de la lista de apps</string>
 
     <string name="pref_dialog_title_color_picker">Elige un color</string>
-    <string name="pref_dialog_message_color_picker">Pulsa el centro para aceptar.\nPulsa atras para cancelar</string>
+    <string name="pref_dialog_message_color_picker">Pulsa el centro para aceptar.\nPulsa atrás para cancelar</string>
     <string name="pref_dialog_color_picker_alpha">transparencia</string>
     <string name="pref_message_restart_normal">Cambiar esto hará que el launcher se reinicie</string>
     <string name="pref_message_restart_froyo">Cambiar esto hará que el launcher se reinicie</string>
     <string name="drop_to_uninstall">Soltar para desinstalar</string>
-    
+
     <string name="pref_title_import_export">Copia de Seguridad</string>
     <string name="pref_title_xml">ADW settings</string>
     <string name="pref_title_xml_import">Restaurar ADW settings</string>
     <string name="pref_summary_xml_import">Restaurar desde /sdcard/adw_settings.xml</string>
     <string name="pref_title_xml_export">Exportar ADW settings</string>
     <string name="pref_summary_xml_export">Guardar en /sdcard/adw_settings.xml</string>
-    
+
     <string name="pref_title_db">Configuración del escritorio</string>
     <string name="pref_title_db_import">Restaurar escritorio</string>
     <string name="pref_summary_db_import">Restaurar desde /sdcard/adw_launcher.db</string>
     <string name="pref_title_db_export">Exportar escritorio</string>
     <string name="pref_summary_db_export">Guardar en /sdcard/adw_launcher.db</string>
-    
+
     <string name="title_dialog_xml">ADW Launcher Settings</string>
-    <string name="import_export_sdcard_unmounted">No tienes tarjeta SD!</string>
-    
+    <string name="import_export_sdcard_unmounted">¡No tienes tarjeta SD!</string>
+
     <!-- XML Import/Export strings -->
-    <string name="message_dialog_export">Exportar ADW settings? La copia anterior se eliminará.</string>
+    <string name="message_dialog_export">¿Exportar ADW settings? La copia anterior se eliminará.</string>
     <string name="xml_export_dialog">Exportando ADW settings...</string>
-    <string name="xml_export_success">ADW settings exportado con éxito!</string>
-    <string name="xml_export_error">Error exportando ADW settings!</string>    
-    
-    <string name="message_dialog_import">Restaurar ADW settings? ADW.Launcher se reiniciará.</string>
-    <string name="xml_import_dialog">Restaurando ADW settings...</string>  
-    <string name="xml_file_not_found">No existe ninguna copia de seguridad!</string>
-    <string name="xml_not_readable">La copia de seguridad no pudo leerse!</string>
-    <string name="xml_import_success">ADW settings restaurado con éxito!</string>
-    <string name="xml_import_error">Error restaurando ADW settings!</string>
-    
+    <string name="xml_export_success">¡ADW settings exportado con éxito!</string>
+    <string name="xml_export_error">¡Error exportando ADW settings!</string>
+
+    <string name="message_dialog_import">¿Restaurar ADW settings? ADW.Launcher se reiniciará.</string>
+    <string name="xml_import_dialog">Restaurando ADW settings...</string>
+    <string name="xml_file_not_found">¡No existe ninguna copia de seguridad!</string>
+    <string name="xml_not_readable">¡La copia de seguridad no pudo leerse!</string>
+    <string name="xml_import_success">¡ADW settings restaurado con éxito!</string>
+    <string name="xml_import_error">¡Error restaurando ADW settings!</string>
+
     <!-- Config Import/Export strings -->
-    <string name="message_dialog_export_config">Exportar escritorio? La copia anterior se eliminará.</string>
+    <string name="message_dialog_export_config">¿Exportar escritorio? La copia anterior se eliminará.</string>
     <string name="dbfile_export_dialog">Exportando escritorio...</string>
-    <string name="dbfile_export_success">Escritorio exportado con éxito!</string>
-    <string name="dbfile_export_error">Error exportando escritorio!</string>
-    
-    <string name="message_dialog_import_config">Restaurar escritorio? ADW.Launcher se reiniciará.</string>
+    <string name="dbfile_export_success">¡Escritorio exportado con éxito!</string>
+    <string name="dbfile_export_error">¡Error exportando escritorio!</string>
+
+    <string name="message_dialog_import_config">¿Restaurar escritorio? ADW.Launcher se reiniciará.</string>
     <string name="dbfile_import_dialog">Restaurando escritorio...</string>
-    <string name="dbfile_not_found">No existe ninguna copia de seguridad!</string>
-    <string name="dbfile_not_readable">La copia de seguridad no pudo leerse!</string>
-    <string name="dbfile_import_success">Escritorio restaurado con éxito!</string>
-    <string name="dbfile_import_error">Error restaurando escritorio!</string>
-	<!--  Desktop columns/Rows -->
+    <string name="dbfile_not_found">¡No existe ninguna copia de seguridad!</string>
+    <string name="dbfile_not_readable">¡La copia de seguridad no pudo leerse!</string>
+    <string name="dbfile_import_success">¡Escritorio restaurado con éxito!</string>
+    <string name="dbfile_import_error">¡Error restaurando escritorio!</string>
+
+    <!--  Desktop columns/Rows -->
     <string name="pref_title_desktop_columns">Columnas escritorio</string>
-    <string name="pref_summary_desktop_columns">Selecciona el numero de columnas del escritorio</string>
-    <string name="pref_dialog_desktop_columns">Selecciona el numero de columnas del escritorio</string>
+    <string name="pref_summary_desktop_columns">Selecciona el número de columnas del escritorio</string>
+    <string name="pref_dialog_desktop_columns">Selecciona el número de columnas del escritorio</string>
 
     <string name="pref_title_desktop_rows">Filas escritorio</string>
-    <string name="pref_summary_desktop_rows">Selecciona el numero de filas del escritorio</string>
-    <string name="pref_dialog_desktop_rows">Selecciona el numero de filas del escritorio</string>
-    
+    <string name="pref_summary_desktop_rows">Selecciona el número de filas del escritorio</string>
+    <string name="pref_dialog_desktop_rows">Selecciona el número de filas del escritorio</string>
+
     <string name="pref_title_autosize_icons">Auto Ajuste</string>
     <string name="pref_summary_autosize_icons">Intenta evitar solapamiento de iconos/widgets</string>
 
@@ -255,12 +256,12 @@
     <string name="pref_summary_drawer_labels">Muestra las etiquetas en la lista de apps</string>
     <string name="pref_title_fade_drawer_labels">Desvanecer etiquetas</string>
     <string name="pref_summary_fade_drawer_labels">Las etiquetas se desvaneceen en la animación. Usa más ram/cpu</string>
-	
-	<string name="widget_config_dialog_title">Configurar tamaño de widget</string>
-	<string name="widget_config_dialog_summary">Cuántas filas/columnas quieres ocupar?</string>
-	<string name="widget_columns">Columnas</string>
-	<string name="widget_rows">Filas</string>
-    
+
+    <string name="widget_config_dialog_title">Configurar tamaño de widget</string>
+    <string name="widget_config_dialog_summary">¿Cuántas filas/columnas quieres ocupar?</string>
+    <string name="widget_columns">Columnas</string>
+    <string name="widget_rows">Filas</string>
+
     <string name="pref_title_screen_cache">Cache de dibujo</string>
     <string name="pref_summary_screen_cache">Mejora el scroll a costa de usar memoria</string>
 
@@ -269,69 +270,69 @@
     <string name="pref_title_desktop_indicator_autohide">Autoocultar indicador</string>
     <string name="pref_summary_desktop_indicator_autohide">Oculta el indicador automáticamente</string>
     <string name="pref_title_desktop_indicator_type">Tipo de indicador</string>
-    <string name="pref_summary_desktop_indicator_type">Elige entre diferentes estilos de indicator</string>
+    <string name="pref_summary_desktop_indicator_type">Elige entre diferentes estilos de indicador</string>
 
-	<!-- Category titles -->
-	<string name="pref_title_system_preferences">Preferencias de Sistema</string>
-	<string name="pref_summary_system_preferences">Preferencias generales de sistema de ADW.Launcher</string>
-	<string name="pref_title_screens_preferencecategory">Pantallas</string>
-	<string name="pref_title_screens_layout_preferencecategory">Distribución</string>
-	<string name="pref_title_screens_behaviour_preferencecategory">Comportamiento</string>
-	<string name="pref_title_drawer_preferencecategory">Lista de aplicaciones</string>
-	<string name="pref_title_drawer_visuals_preferencecategory">Efectos visuales</string>
-	<string name="pref_title_highlights_preferencecategory">Resaltado de iconos</string>
-	<string name="pref_title_indicators_preferencecategory">Indicador de pantalla</string>
+    <!-- Category titles -->
+    <string name="pref_title_system_preferences">Preferencias de Sistema</string>
+    <string name="pref_summary_system_preferences">Preferencias generales de sistema de ADW.Launcher</string>
+    <string name="pref_title_screens_preferencecategory">Pantallas</string>
+    <string name="pref_title_screens_layout_preferencecategory">Distribución</string>
+    <string name="pref_title_screens_behaviour_preferencecategory">Comportamiento</string>
+    <string name="pref_title_drawer_preferencecategory">Lista de aplicaciones</string>
+    <string name="pref_title_drawer_visuals_preferencecategory">Efectos visuales</string>
+    <string name="pref_title_highlights_preferencecategory">Resaltado de iconos</string>
+    <string name="pref_title_indicators_preferencecategory">Indicador de pantalla</string>
 
     <string name="pref_title_system_persistent">Persistencia</string>
     <string name="pref_summary_system_persistent">PELIGRO. Evita que se cierre el launcher</string>
     <!-- Theme preferences -->
-	<string name="pref_title_theme_settings">Preferencias de Temas</string>
-	<string name="pref_summary_theme_settings">Elige temas para ADW.Launcher</string>
-	<string name="pref_title_theme_package">Elige un tema</string>
-	<string name="pref_summary_theme_package">Elige el tema a usar en ADW.Launcher</string>
-	<string name="pref_title_theme_preview">Vista previa</string>
-	<string name="pref_summary_theme_preview">Vista previa del tema escogido</string>
-	<string name="pref_title_theme_icons">Usar iconos del tema</string>
-	<string name="pref_summary_theme_icons">Desactivar para usar los iconos por defecto</string>
-	<string name="pref_themes_apply_theme">Aplicar tema!</string>
-	<string name="pref_themes_get_themes">Obtener temas!</string>
+    <string name="pref_title_theme_settings">Preferencias de Temas</string>
+    <string name="pref_summary_theme_settings">Elige temas para ADW.Launcher</string>
+    <string name="pref_title_theme_package">Elige un tema</string>
+    <string name="pref_summary_theme_package">Elige el tema a usar en ADW.Launcher</string>
+    <string name="pref_title_theme_preview">Vista previa</string>
+    <string name="pref_summary_theme_preview">Vista previa del tema escogido</string>
+    <string name="pref_title_theme_icons">Usar iconos del tema</string>
+    <string name="pref_summary_theme_icons">Desactivar para usar los iconos por defecto</string>
+    <string name="pref_themes_apply_theme">¡Aplicar tema!</string>
+    <string name="pref_themes_get_themes">¡Obtener temas!</string>
 
     <string name="pref_title_wallpaper_scrolling">Desplazar wallpaper</string>
     <string name="pref_summary_wallpaper_scrolling">Mover el wallpaper junto con el escritorio</string>
-	<string name="message_delete_desktop_screen">Remove this screen and all the content?</string>
-	<string name="message_cannot_delete_desktop_screen">No puedes eliminar la última pantalla</string>
-	<string name="message_cannot_add_desktop_screen">No puedes añadir más pantallas</string>
-	<string name="message_cannot_swap_desktop_screen">No puedes intercambiar las pantallas</string>
-	
-	<string name="menu_edit">Editar</string>
-	
-	<string name="pref_label_shirtcuts">Icono personalizado</string>
-	<string name="pref_label_activities">Actividades</string>
-	<string name="pref_label_activities_loading">Cargando lista...</string>
-	<string name="shirtcut_header">Selecciona la actividad deseada.\nPuedes seleccionar un icono personalizado.</string>
-	<string name="shirtcut_pick_activity">Seleccionar actividad</string>
-	<string name="shirtcut_label">Etiqueta</string>
-	<string name="shirtcuts_select_picture">Seleccionar imagen</string>
-	<string name="shirtcuts_crop_picture">Recortar imagen</string>
-	<string name="shirtcuts_icon_packs">ADWTheme IconPacks</string>
-	<string name="shirtcuts_select_icon_type">Elige el tipo de icono</string>
-	<string name="shirtcuts_select_icon_pack">Elige un pack</string>
-	
-	<string name="selectAll">Seleccionar todos</string>
-	<string name="AppGroupAll">"TODAS"</string>
-	<string name="AppGroupAdd">"Nuevo grupo"</string>
-	<string name="AppGroupDel">"Borrar grupo"</string>
-    <string name="AppGroupDelLong">"Eliminar el\ngrupo actual?"</string>
-	<string name="AppGroupChoose">"Seleccionar grupo"</string>
-	<string name="AppGroupConfig">"Configurar grupo"</string>
-	<string name="AppGroupRename">"Nuevo grupo"</string>
-	<string name="AppGroupConfigError">"No puedes modificar este grupo"</string>
-	<string name="AppGroupAddError">"No puedes tener más grupos"</string>
-	<string name="rename_group_title">Nuevo grupo</string>
-	<string name="rename_group_label">Nombre</string>
+    <string name="message_delete_desktop_screen">¿Eliminar esta pantalla y todo su contenido?</string>
+    <string name="message_cannot_delete_desktop_screen">No puedes eliminar la última pantalla</string>
+    <string name="message_cannot_add_desktop_screen">No puedes añadir más pantallas</string>
+    <string name="message_cannot_swap_desktop_screen">No puedes intercambiar las pantallas</string>
 
-	<string name="pref_title_adw_restart">Reiniciar ADW</string>
-	<string name="pref_summary_adw_restart">Cierra y reinicia ADW.Launcher</string>
-	<string name="pref_title_adw_reset">Restablecer ADW</string>
-	<string name="pref_summary_adw_reset">Borra la configuración de ADW.Launcher y reinicia</string>	
+    <string name="menu_edit">Editar</string>
+
+    <string name="pref_label_shirtcuts">Icono personalizado</string>
+    <string name="pref_label_activities">Actividades</string>
+    <string name="pref_label_activities_loading">Cargando lista...</string>
+    <string name="shirtcut_header">Selecciona la actividad deseada.\nPuedes seleccionar un icono personalizado.</string>
+    <string name="shirtcut_pick_activity">Seleccionar actividad</string>
+    <string name="shirtcut_label">Etiqueta</string>
+    <string name="shirtcuts_select_picture">Seleccionar imagen</string>
+    <string name="shirtcuts_crop_picture">Recortar imagen</string>
+    <string name="shirtcuts_icon_packs">ADWTheme IconPacks</string>
+    <string name="shirtcuts_select_icon_type">Elige el tipo de icono</string>
+    <string name="shirtcuts_select_icon_pack">Elige un pack</string>
+
+    <string name="selectAll">Seleccionar todos</string>
+    <string name="AppGroupAll">"TODAS"</string>
+    <string name="AppGroupAdd">"Nuevo grupo"</string>
+    <string name="AppGroupDel">"Borrar grupo"</string>
+    <string name="AppGroupDelLong">"¿Eliminar el\ngrupo actual?"</string>
+    <string name="AppGroupChoose">"Seleccionar grupo"</string>
+    <string name="AppGroupConfig">"Configurar grupo"</string>
+    <string name="AppGroupRename">"Nuevo grupo"</string>
+    <string name="AppGroupConfigError">"No puedes modificar este grupo"</string>
+    <string name="AppGroupAddError">"No puedes tener más grupos"</string>
+    <string name="rename_group_title">Nuevo grupo</string>
+    <string name="rename_group_label">Nombre</string>
+
+    <string name="pref_title_adw_restart">Reiniciar ADW</string>
+    <string name="pref_summary_adw_restart">Cierra y reinicia ADW.Launcher</string>
+    <string name="pref_title_adw_reset">Restablecer ADW</string>
+    <string name="pref_summary_adw_reset">Borra la configuración de ADW.Launcher y reinicia</string>
 </resources>
