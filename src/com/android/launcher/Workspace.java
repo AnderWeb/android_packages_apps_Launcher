@@ -154,8 +154,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
 	private int mStatus=SENSE_CLOSED;
 	private int mAnimationDuration=400;
 	private int[][] distro={{1},{2},{1,2},{2,2},{2,1,2},{2,2,2},{2,3,2},{3,2,3},{3,3,3}};
-	private int maxPreviewWidth;
-	private int maxPreviewHeight;
+	private float previewScale=1;
 	//Wysie: Multitouch controller
 	private MultiTouchController<Object> multiTouchController;
 	// Wysie: Values taken from CyanogenMod (Donut era) Browser
@@ -657,11 +656,11 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
             if(lwpSupport)updateWallpaperOffset(width * (getChildCount() - 1));
             mFirstLayout = false;
         }
-    	int max = 3;
+    	/*int max = 3;
         int aW = getMeasuredWidth();
         float w = aW / max;
         maxPreviewWidth=(int) w;
-        maxPreviewHeight=(int) (getMeasuredHeight()*(w/getMeasuredWidth()));
+        maxPreviewHeight=(int) (getMeasuredHeight()*(w/getMeasuredWidth()));*/
     }
 
     @Override
@@ -1645,6 +1644,24 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
 	public void openSense(boolean open){
 		mScroller.abortAnimation();
 		enableChildrenCache();
+        //TODO:ADW We nedd to find the "longer row" and get the best children width
+        int maxItemsPerRow=0;
+        int distro_set=getChildCount()-1;
+        int numRows=distro[distro_set].length;
+        for(int rows=0;rows<distro[distro_set].length;rows++){
+        		if(distro[distro_set][rows]>maxItemsPerRow){
+        			maxItemsPerRow=distro[distro_set][rows];
+        		}
+        }
+        int maxPreviewHeight=(int) (getMeasuredHeight()/numRows);
+        float w = getMeasuredWidth() / maxItemsPerRow;
+        int maxPreviewWidth=(int) w;
+        //Decide who wins:
+        float scaleW=((float)maxPreviewWidth/(float)getWidth());
+        float scaleH=((float)maxPreviewHeight/(float)getHeight());
+        previewScale=(scaleW>scaleH)?scaleH:scaleW;
+        if(previewScale>=1)previewScale=.8f;
+		
 		if(open){
 			mSensemode=true;
 			isAnimating=true;
@@ -1736,17 +1753,10 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
         
         int distro_set=count-1;
         int childPos=0;
-        //TODO:ADW We nedd to find the "longer row" and get the best children width
-        int maxItemsPerRow=0;
-        for(int rows=0;rows<distro[distro_set].length;rows++){
-        		if(distro[distro_set][rows]>maxItemsPerRow){
-        			maxItemsPerRow=distro[distro_set][rows];
-        		}
-        }
-        int childWidth=(width/maxItemsPerRow);//-getPaddingLeft()-getPaddingRight();//-(horizontal_spacing*(maxItemsPerRow-1));
-        if(childWidth>maxPreviewWidth)childWidth=maxPreviewWidth;
-        final float scale = ((float)childWidth/(float)maxPreviewWidth);
-        int childHeight = Math.round(maxPreviewHeight*scale);
+        
+        int childWidth=(int) (width*previewScale);
+        int childHeight=(int) (height*previewScale);
+        
         final int topMargin=(height/2)-((childHeight*distro[distro_set].length)/2);
         for(int rows=0;rows<distro[distro_set].length;rows++){
         	final int leftMargin=(width/2)-((childWidth*distro[distro_set][rows])/2);

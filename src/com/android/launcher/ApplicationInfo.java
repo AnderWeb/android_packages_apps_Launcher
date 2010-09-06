@@ -127,7 +127,7 @@ public class ApplicationInfo extends ItemInfo {
 		return title.toString();
 	}
 
-	@Override
+	/*@Override
 	public boolean equals(Object aThat) {
 		// check for self-comparison
 		if (this == aThat)
@@ -159,5 +159,5 @@ public class ApplicationInfo extends ItemInfo {
 			hashCode = this.intent.getComponent().flattenToString().hashCode();
 		}
 		return hashCode;
-	}
+	}*/
 }

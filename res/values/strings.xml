@@ -130,7 +130,7 @@
     <!-- Text to show user in place of a gadget when we can't display it properly -->
     <string name="gadget_error_text">Problem loading widget</string>
     <!-- ADW Version Information -->
-    <string name="adw_version">Version 1.1.4 System</string>
+    <string name="adw_version">Version 1.1.5 System</string>
     <!-- ADW Settings -->
     <string name="pref_label_settings">ADW Settings</string>
     <!-- Screen preferences -->
@@ -333,7 +333,7 @@
     <string name="pref_summary_fade_drawer_labels">Labels fade instead of just appear. Uses more ram/cpu</string>
 
 	<string name="widget_config_dialog_title">Widget span config</string>
-	<string name="widget_config_dialog_summary">Home many rows/columns will the widget take?</string>
+	<string name="widget_config_dialog_summary">How many rows/columns will the widget take?</string>
 	<string name="widget_columns">Columns</string>
 	<string name="widget_rows">Rows</string>
     

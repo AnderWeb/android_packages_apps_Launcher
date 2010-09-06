@@ -75,6 +75,8 @@ public class LauncherIntent extends Intent {
         		+ "ACTION_SCROLL_WIDGET_SELECT_ITEM";
         public static final String ACTION_SCROLL_WIDGET_CLOSE = PNAME
         		+ "ACTION_SCROLL_WIDGET_CLOSE";
+        public static final String ACTION_SCROLL_WIDGET_CLEAR_IMAGE_CACHE = PNAME
+        		+ "ACTION_SCROLL_WIDGET_CLEAR_IMAGE_CACHE";
     }
 
     /**

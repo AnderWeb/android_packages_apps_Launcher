@@ -377,7 +377,7 @@ public abstract class WidgetSpace extends ViewGroup {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            Log.i("ScrollViewProvider - onReceive: ", "" + intent);
+            Log.i("WidgetSpace - onReceive: ", "" + intent);
 
             // Try to get the widget view
             int widgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1);
@@ -409,6 +409,8 @@ public abstract class WidgetSpace extends ViewGroup {
                 error = setSelection(context, intent, widgetView);
             } else if (TextUtils.equals(action, LauncherIntent.Action.ACTION_SCROLL_WIDGET_CLOSE)) {
                 error = releaseScrollable(context, intent, widgetView);
+            } else if (TextUtils.equals(action, LauncherIntent.Action.ACTION_SCROLL_WIDGET_CLEAR_IMAGE_CACHE)) {
+            	error = ListViewImageManager.getInstance().clearCacheForWidget(context, widgetId);
             }
             if (error == null) {
                 // send finish signal
@@ -695,6 +697,7 @@ public abstract class WidgetSpace extends ViewGroup {
         IntentFilter scrollFilter = new IntentFilter();
         scrollFilter.addAction(LauncherIntent.Action.ACTION_SCROLL_WIDGET_START);
         scrollFilter.addAction(LauncherIntent.Action.ACTION_SCROLL_WIDGET_CLOSE);
+        scrollFilter.addAction(LauncherIntent.Action.ACTION_SCROLL_WIDGET_CLEAR_IMAGE_CACHE);
         scrollFilter.addAction(LauncherIntent.Action.ACTION_SCROLL_WIDGET_SELECT_ITEM);
         context.registerReceiver(mScrollViewProvider, scrollFilter);
     }

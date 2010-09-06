@@ -120,10 +120,28 @@ public class ApplicationsAdapter extends ArrayAdapter<ApplicationInfo> {
 		//check allItems before added. It is a fix for all of the multi-icon issue, but will 
 		//lose performance. Anyway, we do not expected to have many applications.
 		synchronized (allItems) {
-			if (!allItems.contains(info)) {
+			/*if (!allItems.contains(info)) {
 				changed = true;
 				allItems.add(info);
 				Collections.sort(allItems,new ApplicationInfoComparator());
+			}*/
+			int count=allItems.size();
+			boolean found=false;
+			X:
+			for(int i=0;i<count;i++){
+				ApplicationInfo athis=allItems.get(i);
+				if(info.intent.getComponent()!=null){
+					if(athis.intent.getComponent().flattenToString().equals(
+							info.intent.getComponent().flattenToString())){
+						found=true;
+						break X;
+					}
+				}
+			}
+			if(!found){
+				allItems.add(info);
+				Collections.sort(allItems,new ApplicationInfoComparator());
+				changed=true;
 			}
 		}
 		if (changed) updateDataSet();
@@ -142,10 +160,30 @@ public class ApplicationsAdapter extends ArrayAdapter<ApplicationInfo> {
 	
 	@Override
 	public void remove(ApplicationInfo info) {
+		boolean changed=false;
 		synchronized (allItems) {
-			allItems.remove(info);
+			//allItems.remove(info);
+			int count=allItems.size();
+			int found=-1;
+			X:
+			for(int i=0;i<count;i++){
+				ApplicationInfo athis=allItems.get(i);
+				if(info.intent.getComponent()!=null){
+					if(athis.intent.getComponent().flattenToString().equals(
+							info.intent.getComponent().flattenToString())){
+						found=i;
+						break X;
+					}
+				}
+			}
+			if(found!=-1){
+				allItems.remove(found);
+				Collections.sort(allItems,new ApplicationInfoComparator());
+				changed=true;
+			}			
 		}
-		updateDataSet();
+		if(changed)
+			updateDataSet();
 	}
 
 	private boolean appInGroup(String s) {

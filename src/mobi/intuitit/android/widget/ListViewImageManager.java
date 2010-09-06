@@ -1,6 +1,7 @@
 package mobi.intuitit.android.widget;
 
 import java.lang.ref.SoftReference;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
@@ -25,10 +26,12 @@ public class ListViewImageManager {
 	}
 
 	private final HashMap<String, SoftReference<Drawable>> mCacheForImageByUri = new HashMap<String, SoftReference<Drawable>>();
+	private final HashMap<Integer, ArrayList<String>> mWidgetCacheUsageByUri = new HashMap<Integer, ArrayList<String>>();
 
 	private final HashMap<Integer, SoftReference<Drawable>> mCacheForImageById = new HashMap<Integer, SoftReference<Drawable>>();
+	private final HashMap<Integer, ArrayList<Integer>> mWidgetCacheUsageById = new HashMap<Integer, ArrayList<Integer>>();
 
-	public Drawable getImageFromUri(Context mContext, String imgUri) {
+	public Drawable getImageFromUri(Context mContext, int widgetId, String imgUri) {
 		Drawable d = null;
 		if (mCacheForImageByUri.containsKey(imgUri) && mCacheForImageByUri.get(imgUri) != null) {
 			SoftReference<Drawable> ref = mCacheForImageByUri.get(imgUri);
@@ -70,11 +73,19 @@ public class ListViewImageManager {
 				Log.d(TAG, "image URI decoded (width = " + d.getMinimumWidth() + " / weight = " + d.getMinimumHeight()
 						+ ")");
 			mCacheForImageByUri.put(imgUri, new SoftReference<Drawable>(d));
+
+			// store image key usage
+			ArrayList<String> list = mWidgetCacheUsageByUri.get(widgetId);
+			if (list == null)
+				list = new ArrayList<String>();
+			list.add(imgUri);
+			mWidgetCacheUsageByUri.put(widgetId, list);
+
 		}
 		return d;
 	}
 
-	public Drawable getImageFromId(Context ctx, int imgId) {
+	public Drawable getImageFromId(Context ctx, int widgetId, int imgId) {
 		Drawable drawable = null;
 		if (mCacheForImageById.containsKey(imgId) && mCacheForImageById.get(imgId) != null) {
 			SoftReference<Drawable> ref = mCacheForImageById.get(imgId);
@@ -98,6 +109,14 @@ public class ListViewImageManager {
 					imgId), ctx.getResources().getResourceName(imgId));
 
 			mCacheForImageById.put(imgId, new SoftReference<Drawable>(drawable));
+
+			// store image key usage
+			ArrayList<Integer> list = mWidgetCacheUsageById.get(widgetId);
+			if (list == null)
+				list = new ArrayList<Integer>();
+			list.add(imgId);
+			mWidgetCacheUsageById.put(widgetId, list);
+
 		}
 		return drawable;
 	}
@@ -120,6 +139,45 @@ public class ListViewImageManager {
 	public void clearCache() {
 		mCacheForImageById.clear();
 		mCacheForImageByUri.clear();
+	}
+
+	public String clearCacheForWidget(Context ctx, int widgetId) {
+		Drawable drawable = null;
+		ArrayList<String> listByUri = mWidgetCacheUsageByUri.get(widgetId);
+		if (listByUri != null) {
+			for (String imgUri : listByUri) {
+				if (mCacheForImageByUri.containsKey(imgUri) && mCacheForImageByUri.get(imgUri) != null) {
+					SoftReference<Drawable> ref = mCacheForImageByUri.get(imgUri);
+					if (ref != null) {
+						drawable = ref.get();
+						if (drawable != null)
+							drawable.setCallback(null);
+					}
+					mCacheForImageByUri.remove(imgUri);
+					Log.d(TAG, "image URI removed from cache : " + imgUri);
+				}
+			}
+		}
+		mWidgetCacheUsageByUri.remove(widgetId);
+
+		ArrayList<Integer> listById = mWidgetCacheUsageById.get(widgetId);
+		if (listById != null) {
+			for (Integer imgId : listById) {
+				if (mCacheForImageById.containsKey(imgId) && mCacheForImageById.get(imgId) != null) {
+					SoftReference<Drawable> ref = mCacheForImageById.get(imgId);
+					if (ref != null) {
+						drawable = ref.get();
+						if (drawable != null)
+							drawable.setCallback(null);
+					}
+					mCacheForImageById.remove(imgId);
+					Log.d(TAG, "image ID removed from cache : " + imgId);
+				}
+			}
+		}
+		mWidgetCacheUsageById.remove(widgetId);
+
+		return null;
 	}
 
 }

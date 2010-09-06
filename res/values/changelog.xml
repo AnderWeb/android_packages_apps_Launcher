@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string name="adw_changelog">
--&lt;b>NOTICE:&lt;/b> To change screens press MENU/Edit&lt;br>&lt;br>
+-&lt;b>NOTICE:&lt;/b> To add/remove screens press MENU/Edit&lt;br>&lt;br>
 -&lt;b>NOTICE:&lt;/b> To enable ORIENTATION, disable PERSISTENCE.&lt;br>&lt;br>
 -&lt;b>REMEMBER:&lt;/b> You can hide apps from the drawer by using the custom catalogs (press menu key while the drawer is open) &lt;br>&lt;br>
 
-&lt;b>Version 1.1.4:&lt;/b>&lt;br>
+&lt;b>Version 1.1.5:&lt;/b>&lt;br>
 &lt;b>--------------&lt;/b>&lt;br>
--Fixed some FCs when editing screens.&lt;br>
--Fixed dockbar reordering (again).&lt;br>
--Added this changelog window.&lt;br>
--Added confirmation popup to "reset settings" preference.&lt;br>
--Added "set default screen" button into the screens editor.&lt;br>
+-Small layout change, ask your theme developers to update their themes!!!.&lt;br>
+-Fixed some weird effects when removing apps from desktop.&lt;br>
+-Desktop previews now fill the available space.&lt;br>
+-Fix the "Crop" option for custom shortcuts.&lt;br>
+-Update scrollable widgets API to r45.&lt;br>
+-Translations&lt;br>
+-Minor fixes&lt;br>
 </string>
 </resources>

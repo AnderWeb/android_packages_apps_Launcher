@@ -349,6 +349,17 @@ public class MyLauncherSettings extends PreferenceActivity implements OnPreferen
     				String config_desktop_indicator_type=themeResources.getString(config_desktop_indicator_typeId);
     				editor.putString("uiDesktopIndicatorType", config_desktop_indicator_type);
     			}
+    			int config_ab_scale_factorId=themeResources.getIdentifier("config_ab_scale_factor", "integer", packageName.toString());
+    			if(config_ab_scale_factorId!=0){
+    				int config_ab_scale_factor=themeResources.getInteger(config_ab_scale_factorId);
+    				editor.putInt("uiScaleAB", config_ab_scale_factor);
+    			}
+    			int secondary_abId=themeResources.getIdentifier("secondary_ab", "bool", packageName.toString());
+    			if(secondary_abId!=0){
+    				boolean secondary_ab=themeResources.getBoolean(secondary_abId);
+    				editor.putBoolean("uiAB2", secondary_ab);
+    				if(secondary_ab)editor.putBoolean("uiDots", false);
+    			}
     			//TODO:ADW We set the theme wallpaper. We should add this as optional...
     			int wallpaperId=themeResources.getIdentifier("theme_wallpaper", "drawable", packageName.toString());
     			if(wallpaperId!=0){

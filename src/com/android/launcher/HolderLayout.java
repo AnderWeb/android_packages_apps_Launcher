@@ -262,7 +262,7 @@ public class HolderLayout extends ViewGroup {
 	public void open(boolean animate, int speed){
 		if(mStatus!=OPENING){
 			mAnimationDuration=speed;
-			if(animate && getChildCount()>0){
+			if(animate){
 				if(mFadeDrawLabels&&mDrawLabels){
 					for(int i=0;i<getChildCount();i++){
 						getChildAt(i).setDrawingCacheEnabled(true);
@@ -282,7 +282,7 @@ public class HolderLayout extends ViewGroup {
 	public void close(boolean animate, int speed){
 		if(mStatus!=CLOSING){
 			mAnimationDuration=speed;
-			if(animate && getChildCount()>0){
+			if(animate){
 				mStatus=CLOSING;
 				isAnimating=true;
 			}else{
