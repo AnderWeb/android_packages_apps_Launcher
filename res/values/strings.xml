@@ -270,8 +270,10 @@
     <string name="pref_message_restart_normal">Changing this setting will make the Launcher restart itself</string>
     <string name="pref_message_restart_froyo">Changing this setting will make the Launcher restart itself</string>
     <string name="drop_to_uninstall">Drop to Uninstall</string>
+
     <string name="toast_widgets_not_supported">Widgets not supported... sorry :-)</string>
     <string name="toast_unknown_item">Unknown item. We can\'t add unknown item types :-)</string>
+    <string name="toast_no_application_def">No application defined yet, drop something here! :)</string>
 
     <string name="pref_title_import_export">Backup and restore</string>
     <string name="pref_title_xml">ADW settings</string>

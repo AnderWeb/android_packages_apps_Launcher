@@ -202,8 +202,10 @@
     <string name="pref_message_restart_normal">La modifica di questa impostazione riavviera\' il Launcher</string>
     <string name="pref_message_restart_froyo">La modifica di questa impostazione riavviera\' il Launcher</string>
     <string name="drop_to_uninstall">Lascia per Disinstallare</string>
+
     <string name="toast_widgets_not_supported">Scusa... widget non supportati :-)</string>
     <string name="toast_unknown_item">Oggeto sconosciuto. Non si possono aggiungere oggetti di tipo sconosciuto :-)</string>
+    <string name="toast_no_application_def">Nessuna applicazione ancora definita, trascina qualcosa qui! :)</string>
 
     <string name="pref_title_import_export">Backup e Ripristino</string>
     <string name="pref_title_xml">Impostazioni ADW</string>

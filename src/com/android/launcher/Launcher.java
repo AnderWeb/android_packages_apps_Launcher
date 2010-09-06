@@ -2159,7 +2159,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         Object tag = v.getTag();
         //TODO:ADW Check whether to display a toast if clicked mLAB or mRAB withount binding
         if(tag instanceof ItemInfo && tag==null && v instanceof ActionButton){
-    		Toast t=Toast.makeText(this, "No application defined yet, drop something here! :)", Toast.LENGTH_SHORT);
+    		Toast t=Toast.makeText(this, R.string.toast_no_application_def, Toast.LENGTH_SHORT);
     		t.show();
     		return;
     	}
