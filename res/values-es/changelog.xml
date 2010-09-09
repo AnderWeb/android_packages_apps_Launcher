@@ -5,12 +5,14 @@
 -&lt;b>AVISO:&lt;/b> para activar la ROTACIÓN, desactiva la PERSISTENCIA.&lt;br>&lt;br>
 -&lt;b>RECUERDA:&lt;/b> Puedes ocultar iconos de la lista de aplicaciones usando los catálogos personalizados (pulsa la tecla menú con la lista de aplicaciones abierta) &lt;br>&lt;br>
 
-&lt;b>Versión 1.1.4:&lt;/b>&lt;br>
+&lt;b>Versión 1.1.5:&lt;/b>&lt;br>
 &lt;b>--------------&lt;/b>&lt;br>
--Arreglados algunos FCs al poner/quitar/mover escritorios.&lt;br>
--Arreglado el arrastrar y soltar elementos al dockbar (de nuevo).&lt;br>
--Añadida esta ventana de información :-) &lt;br>
--Añadida confirmación al pulsar "restablecer configuración".&lt;br>
--Añadido botón para establecer pantalla por defecto en el editor de pantallas.&lt;br>
+-Pequeño cambio de diseño, pide a los desarrolladores de temas que los actualicen!!!.&lt;br>
+-Arreglados algunos problemas al eliminar iconos del escritorio.&lt;br>
+-La previsualización del escritorio usa toda la pantalla.&lt;br>
+-Arreglada la opción "Recortar"para los iconos personalizados.&lt;br>
+-Actualizada la API de widgets con scroll a r47.&lt;br>
+-Traducciones&lt;br>
+-Pequeños arreglos&lt;br>
 </string>
 </resources>

@@ -415,4 +415,6 @@
 	<string name="pref_title_adw_reset">Reset ADW</string>
 	<string name="pref_summary_adw_reset">Clear ADW.Launcher settings and restart</string>
 	
+	<string name="need_scrollable">The widget you want to add needs \'scrollable widgets support\' which is currently disabled.\nDo you want to enable it now?</string>
+	<string name="scrollable_api_required">This widget needs an updated version of ADW.Launcher.\nPlease update or contact widget developer</string>
 </resources>

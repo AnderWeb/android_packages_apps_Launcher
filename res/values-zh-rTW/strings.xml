@@ -343,4 +343,7 @@
 	<string name="pref_summary_adw_restart">選擇重新啟動ADW主介面</string>
 	<string name="pref_title_adw_reset">重置ADW</string>
 	<string name="pref_summary_adw_reset">清除ADW主介面設置並重新啟動</string>
+
+	<string name="need_scrollable">您想添加的“可滾動的”小工具目前已禁用。\n現在開啟？</string>
+	<string name="scrollable_api_required">此小工具需要更新您的ADW.Launcher。\n請及時更新或者聯繫小工具開發者</string>
 </resources>

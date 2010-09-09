@@ -26,6 +26,8 @@ import mobi.intuitit.android.content.LauncherIntent;
 import com.android.launcher.catalogue.AppGroupAdapter;
 import com.android.launcher.catalogue.AppGrpUtils;
 import com.android.launcher.catalogue.AppInfoMList;
+import mobi.intuitit.android.content.LauncherMetadata;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Application;
@@ -1555,7 +1557,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         }
     }
 
-    void addAppWidget(Intent data) {
+    void addAppWidget(final Intent data) {
         // TODO: catch bad widget exception when sent
         int appWidgetId = data.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1);
 
@@ -1568,18 +1570,76 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         } else {*/
             AppWidgetProviderInfo appWidget = mAppWidgetManager.getAppWidgetInfo(appWidgetId);
 
-            if (appWidget.configure != null) {
-                // Launch over to configure widget, if needed
-                Intent intent = new Intent(AppWidgetManager.ACTION_APPWIDGET_CONFIGURE);
-                intent.setComponent(appWidget.configure);
-                intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-
-                startActivityForResult(intent, REQUEST_CREATE_APPWIDGET);
-            } else {
-                // Otherwise just add it
-                onActivityResult(REQUEST_CREATE_APPWIDGET, Activity.RESULT_OK, data);
+            try
+            {
+            	Bundle metadata = getPackageManager().getReceiverInfo(appWidget.provider, 
+            			PackageManager.GET_META_DATA).metaData;
+            	if (metadata.containsKey(LauncherMetadata.Requirements.APIVersion))
+            	{
+            			int requiredApiVersion = metadata.getInt(LauncherMetadata.Requirements.APIVersion);
+            			if (requiredApiVersion > LauncherMetadata.CurrentAPIVersion)
+            			{
+            				onActivityResult(REQUEST_CREATE_APPWIDGET, Activity.RESULT_CANCELED, data);
+            				// Show a nice toast here to tell the user why the widget is rejected.            				
+            				new AlertDialog.Builder(this)
+            					.setTitle(R.string.adw_version)
+            					.setCancelable(true)
+            					.setIcon(R.drawable.ic_launcher_home)
+            					.setPositiveButton(getString(android.R.string.ok), null)
+            					.setMessage(getString(R.string.scrollable_api_required))
+            					.create().show();
+            				return;
+            			}
+            	}
+    			// If there are Settings for scrollable or animations test them here too!
+            	if (metadata.containsKey(LauncherMetadata.Requirements.Scrollable)) 
+            	{
+            		boolean requiresScrolling = metadata.getBoolean(LauncherMetadata.Requirements.Scrollable);
+            		if (!isScrollableAllowed() && requiresScrolling) {
+            			// ask the user what to do
+            			AlertDialog.Builder dlg = new AlertDialog.Builder(this);
+            			dlg.setPositiveButton(getString(android.R.string.yes), new DialogInterface.OnClickListener() {
+							
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								AlmostNexusSettingsHelper.setUIScrollableWidgets(Launcher.this, true);
+								configureOrAddAppWidget(data);
+							}
+						});
+            			dlg.setNegativeButton(getString(android.R.string.no), new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								onActivityResult(REQUEST_CREATE_APPWIDGET, Activity.RESULT_CANCELED, data);
+							}
+						});
+            			dlg.setMessage(getString(R.string.need_scrollable));
+            			dlg.create().show();
+            			return;
+            		}
+            	}
             }
+            catch(PackageManager.NameNotFoundException expt)
+            {
+            	// No Metadata available... then it is all OK...
+            }
+            configureOrAddAppWidget(data);
         //}
+    }
+    
+    private void configureOrAddAppWidget(Intent data) {    	
+    	int appWidgetId = data.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1);
+    	AppWidgetProviderInfo appWidget = mAppWidgetManager.getAppWidgetInfo(appWidgetId);
+        if (appWidget.configure != null) {
+            // Launch over to configure widget, if needed
+            Intent intent = new Intent(AppWidgetManager.ACTION_APPWIDGET_CONFIGURE);
+            intent.setComponent(appWidget.configure);
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+
+            startActivityForResult(intent, REQUEST_CREATE_APPWIDGET);
+        } else {
+            // Otherwise just add it
+            onActivityResult(REQUEST_CREATE_APPWIDGET, Activity.RESULT_OK, data);
+        }    	
     }
 
     /*void addSearch() {
@@ -3616,6 +3676,15 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 					setPersistent(false);
 	        		changeOrientation(AlmostNexusSettingsHelper.getDesktopOrientation(this),false);
 				}
+			}else if(key.equals("uiScrollableWidgets")){
+				boolean scroll=AlmostNexusSettingsHelper.getUIScrollableWidgets(this);
+				scrollableSupport=scroll;
+				if(scroll){
+					mWorkspace.registerProvider();
+				}else{
+					mWorkspace.unregisterProvider();
+				}
+				sModel.loadUserItems(false, Launcher.this, false, false);
 			}
 				
 		}
@@ -3624,7 +3693,9 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 		if(isScrollableAllowed()){
 			Intent ready = new Intent(LauncherIntent.Action.ACTION_READY).putExtra(
 					LauncherIntent.Extra.EXTRA_APPWIDGET_ID, appWidgetId).putExtra(
-					AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId).setComponent(cname);
+					AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId).putExtra(
+					LauncherIntent.Extra.EXTRA_API_VERSION, LauncherMetadata.CurrentAPIVersion).
+					setComponent(cname);
 			sendBroadcast(ready);
 		}
 	}

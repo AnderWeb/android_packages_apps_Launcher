@@ -335,4 +335,7 @@
     <string name="pref_summary_adw_restart">Cierra y reinicia ADW.Launcher</string>
     <string name="pref_title_adw_reset">Restablecer ADW</string>
     <string name="pref_summary_adw_reset">Borra la configuración de ADW.Launcher y reinicia</string>
+    
+    <string name="need_scrollable">Este widget necesita \'Soporte widget con scroll\' pero lo tienes desactivado.\n¿Deseas activarlo ahora?</string>
+    <string name="scrollable_api_required">Este widget necesita una versión más reciente de ADW.Launcher.\nPor favor actualiza o contacta con el desarrollador del widget.</string>
 </resources>
