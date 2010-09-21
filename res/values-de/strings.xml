@@ -309,7 +309,7 @@
     <string name="pref_title_wallpaper_scrolling">Wallpaper-Scrolling</string>
     <string name="pref_summary_wallpaper_scrolling">Hintergrundbild beim Wechseln des Bildschirms bewegen</string>
     <string name="message_delete_desktop_screen">Diesen Bildschirm mit seinen Elementen entfernen?</string>
-    <string name="message_cannot_delete_desktop_screen">Der letzte Screen kann nicht gelöscht werden</string>
+    <string name="message_cannot_delete_desktop_screen">Der letzte Bildschirm kann nicht gelöscht werden</string>
     <string name="message_cannot_add_desktop_screen">Mehr Bildschirme können nicht hinzugefügt werden</string>
     <string name="message_cannot_swap_desktop_screen">Bildschirme können nicht getauscht werden</string>
 
@@ -333,15 +333,15 @@
     <string name="AppGroupDel">"Katalog löschen"</string>
     <string name="AppGroupDelLong">"Soll der aktuelle Katalog\nwirklich gelöscht werden?"</string>
     <string name="AppGroupChoose">"Katalog auswählen"</string>
-    <string name="AppGroupConfig">"Katalog anlegen"</string>
+    <string name="AppGroupConfig">"Katalog bearbeiten"</string>
     <string name="AppGroupRename">"Neuer Katalog"</string>
-    <string name="AppGroupConfigError">"Dieser Katalog kann nicht angelegt werden"</string>
+    <string name="AppGroupConfigError">"Dieser Katalog kann nicht bearbeitet werden"</string>
     <string name="AppGroupAddError">"Es konnte kein weiterer Katalog angelegt werden"</string>
     <string name="rename_group_title">Neuer Katalog</string>
     <string name="rename_group_label">Katalog-Name</string>
 
     <string name="pref_title_adw_restart">ADW neu starten</string>
-    <string name="pref_summary_adw_restart">Den ADW.Launcher schließen und neu starten</string>
+    <string name="pref_summary_adw_restart">ADW.Launcher schließen und neu starten</string>
     <string name="pref_title_adw_reset">ADW zurücksetzten</string>
-    <string name="pref_summary_adw_reset">Einstellunegen des ADW.Launcher zurücksetzen und neu starten</string>
+    <string name="pref_summary_adw_reset">Einstellungen von ADW.Launcher zurücksetzen und neu starten</string>
 </resources>
