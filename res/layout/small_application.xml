@@ -14,5 +14,5 @@
      limitations under the License.
 -->
 
-<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.android.launcher.CounterImageView xmlns:android="http://schemas.android.com/apk/res/android"
  	style="@style/DockBarIcon" />

@@ -73,5 +73,8 @@
     <!-- 1=sensor, 2=portrait, 3=landscape -->
     <string name="config_orientation_default">1</string>
     <!-- 1=low quality,2=auto, 3=disabled -->
-    <string name="config_screenCache">1</string>
+    <string name="config_screenCache">2</string>
+    <bool name="config_nagScreen">true</bool>
+    <bool name="config_drawer_navigate_catalogs">true</bool>
+    <bool name="config_notif_receiver">true</bool>
 </resources>

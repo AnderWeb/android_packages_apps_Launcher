@@ -17,4 +17,14 @@
                 <item>Indicateur haut ligne</item>
                 <item>Indicateur bas ligne</item>
        </string-array>
+       <string-array name="home_orientation_entries">
+                <item>Automatique</item>
+                <item>Portrait</item>
+                <item>Paysage</item>
+       </string-array>
+       <string-array name="screen_cache_entries">
+                <item>Basse qualité</item>
+                <item>Auto</item>
+                <item>Désactivé</item>
+       </string-array>     
 </resources>

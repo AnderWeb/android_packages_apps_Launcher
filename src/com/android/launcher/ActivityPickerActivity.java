@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 import android.app.ExpandableListActivity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -56,7 +57,7 @@ public class ActivityPickerActivity extends ExpandableListActivity {
         setContentView(R.layout.activity_list);
         getExpandableListView().setTextFilterEnabled(true);
         mPackageManager = getPackageManager();
-        // Start async loading the data 
+        // Start async loading the data
         new LoadingTask().execute();
     }
 	@Override
@@ -73,7 +74,7 @@ public class ActivityPickerActivity extends ExpandableListActivity {
 
         // Set the name of the activity
         mReturnData.putExtra(Intent.EXTRA_SHORTCUT_NAME, info.loadLabel(mPackageManager));
-		
+
         ShortcutIconResource iconResource = new ShortcutIconResource();
         iconResource.packageName = info.packageName;
         try {
@@ -93,15 +94,15 @@ public class ActivityPickerActivity extends ExpandableListActivity {
 	 *
 	 */
     public class MyExpandableListAdapter extends BaseExpandableListAdapter {
-    	private List<PackageInfo> groups;
-    	private AbsListView.LayoutParams lpGroup;
-    	private AbsListView.LayoutParams lpChild;
-    	private int leftPadding;
+    	private final List<PackageInfo> groups;
+    	private final AbsListView.LayoutParams lpGroup;
+    	private final AbsListView.LayoutParams lpChild;
+    	private final int leftPadding;
         public MyExpandableListAdapter(List<PackageInfo> g) {
 			super();
 			groups=g;
             leftPadding=getResources().getDimensionPixelSize(android.R.dimen.app_icon_size);
-            
+
             lpGroup = new AbsListView.LayoutParams(
                     ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             lpChild = new AbsListView.LayoutParams(
@@ -119,7 +120,7 @@ public class ActivityPickerActivity extends ExpandableListActivity {
 			} catch (NameNotFoundException e) {
 				return null;
 			}
-        	
+
         }
         public long getChildId(int groupPosition, int childPosition) {
             return childPosition;
@@ -184,5 +185,5 @@ public class ActivityPickerActivity extends ExpandableListActivity {
     	public int compare(PackageInfo o1, PackageInfo o2) {
     		return o1.applicationInfo.loadLabel(mPackageManager).toString().compareToIgnoreCase(o2.applicationInfo.loadLabel(mPackageManager).toString());
     	}
-    }    
+    }
 }

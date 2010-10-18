@@ -12,15 +12,22 @@
     <item>Öffne/Schliesse Dockzeile</item>
     <item>Anwendung starten...</item>
   </string-array>
+
   <string-array name="desktop_indicator_entries">
     <item>Desktop-Punkte oben</item>
     <item>Wechselanzeige oben</item>
     <item>Wechselanzeige unten</item>
-
   </string-array>
+
   <string-array name="home_orientation_entries">
     <item>Autom./Sensor</item>
     <item>Hochformat</item>
     <item>Querformat</item>
   </string-array>
+
+  <string-array name="screen_cache_entries">
+    <item>Geringe Qualität</item>
+    <item>Automatisch</item>
+    <item>Deaktiviert</item>
+  </string-array> 
 </resources>

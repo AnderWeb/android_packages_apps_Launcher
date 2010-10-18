@@ -16,23 +16,22 @@
 
 package com.android.launcher;
 
-import android.app.AlertDialog;
+import static android.util.Log.d;
+import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Scroller;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -89,6 +88,50 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
     public Rect estimateDropLocation(DragSource source, int x, int y, int xOffset, int yOffset, Object dragInfo, Rect recycle) {
         return null;
     }
+    
+    private int FindItemDropPos(int x, int y) {
+    	final boolean horizontal = (mOrientation==HORIZONTAL); 
+    	final int count=getChildCount();
+    	int margin = horizontal ? ((getMeasuredWidth())/2)-(((count*mCellWidth)/2)) :
+    	                          ((getMeasuredHeight())/2)-(((count*mCellHeight)/2));
+    	if (margin < 0)
+    		margin = 0;
+    	// check for drop on an item
+    	int dropPos = horizontal ? (x + getScrollX()) : (y +  getScrollY());
+    	
+	    for (int i = 0; i < count; i++) {
+	        View child = getChildAt(i);
+	        ItemInfo item=(ItemInfo) child.getTag();
+	        if (child.getVisibility() != GONE) {
+                
+	        	int bound1 = margin + (item.cellX * (horizontal ? mCellWidth : mCellHeight));
+                int bound2 = bound1 + (horizontal ? mCellWidth : mCellHeight);
+                
+	            if (dropPos < bound1 && item.cellX == 0) // before the first item
+	            	return 0;
+	            if (dropPos >= bound2 && item.cellX == (count - 1))
+	            	return count;
+	            
+	            if (dropPos >= bound1 && dropPos < bound2) {
+	            	int pos = item.cellX;
+	            	for (int j = 0; j < item.cellX; j++) {
+	            		View chld = getChildAt(j);
+	            		if (chld.getVisibility() == GONE)
+	            			pos++;
+	            	}
+	            	
+	            	int middle = bound1 + (((mOrientation==HORIZONTAL) ? mCellWidth : mCellHeight) / 2);
+	            	if (dropPos >= middle)
+	            		return pos + 1;
+	            	return pos;
+	            }
+	            	
+	        }
+	    }
+	    //something went wrong...
+	    return getChildCount();
+    }
+    
     /**
      * Adds the specified child in the specified screen. The position and dimension of
      * the child are defined by x, y, spanX and spanY.
@@ -114,17 +157,17 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
         	//we do accept those
         	break;
         case LauncherSettings.Favorites.ITEM_TYPE_APPWIDGET:
-        	Toast t=Toast.makeText(getContext(), "Widgets not supported... sorry :-)", Toast.LENGTH_SHORT);
+        	Toast t=Toast.makeText(getContext(), R.string.toast_widgets_not_supported, Toast.LENGTH_SHORT);
         	t.show();
         	accept=false;
         	return;
         default:
-        	Toast t2=Toast.makeText(getContext(), "Unknown item. We can't add unknown item types :-)", Toast.LENGTH_SHORT);
+        	Toast t2=Toast.makeText(getContext(), R.string.toast_unknown_item, Toast.LENGTH_SHORT);
         	t2.show();
         	accept=false;
         	return;
         }
-        info.cellX=getChildCount();
+        info.cellX=FindItemDropPos(x, y);        
         //add it to launcher database
         if (info instanceof LauncherAppWidgetInfo) {
             model.removeDesktopAppWidget((LauncherAppWidgetInfo) info);
@@ -137,8 +180,19 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
         if(accept){
 	        model.addDesktopItem(info);
 	        LauncherModel.addOrMoveItemInDatabase(mLauncher, info,
-	                LauncherSettings.Favorites.CONTAINER_DOCKBAR, -1, getChildCount(), -1);        
+	                LauncherSettings.Favorites.CONTAINER_DOCKBAR, -1, info.cellX, -1);	        
 	        addItemInDockBar(info);
+	        // Reorder the other items:
+	        for(int i = 0; i < getChildCount(); i++) {
+	        	View child = getChildAt(i);
+	        	ItemInfo childInfo = (ItemInfo)child.getTag();
+	        	if (childInfo != info && childInfo.cellX >= info.cellX) {
+	        		childInfo.cellX += 1;
+	                LauncherModel.moveItemInDatabase(mLauncher, childInfo,
+	                        LauncherSettings.Favorites.CONTAINER_DOCKBAR, -1, childInfo.cellX, -1);	        		
+	        	}
+	        }
+	        
         }else{
         	LauncherModel.deleteItemFromDatabase(mLauncher, info);
         }
@@ -207,25 +261,7 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
             return false;
         }
 		//ADW Delete the item and reposition the remaining ones
-		//FIRS DELETE deleteView
 		ItemInfo item=(ItemInfo) v.getTag();
-        final LauncherModel model = Launcher.getModel();
-        if (item instanceof LauncherAppWidgetInfo) {
-            model.removeDesktopAppWidget((LauncherAppWidgetInfo) item);
-        } else {
-            model.removeDesktopItem(item);
-        }
-        if (item instanceof UserFolderInfo) {
-            final UserFolderInfo userFolderInfo = (UserFolderInfo)item;
-            LauncherModel.deleteUserFolderContentsFromDatabase(mLauncher, userFolderInfo);
-            model.removeUserFolder(userFolderInfo);
-        } else if (item instanceof LauncherAppWidgetInfo) {
-            final LauncherAppWidgetInfo launcherAppWidgetInfo = (LauncherAppWidgetInfo) item;
-            final LauncherAppWidgetHost appWidgetHost = mLauncher.getAppWidgetHost();
-            if (appWidgetHost != null) {
-                appWidgetHost.deleteAppWidgetId(launcherAppWidgetInfo.appWidgetId);
-            }
-        }
 		//Now we need to update database (and position) for remainint items
 		final int count=getChildCount();
 		for(int i=0;i<count;i++){
@@ -239,7 +275,7 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
             }
         }
 		requestLayout();
-
+		Launcher.getModel().removeDesktopItem(item);
         mDragger.startDrag(v, this, item, DragController.DRAG_ACTION_COPY);
         detachViewFromParent(v);
         removeView(v);
@@ -459,5 +495,30 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
 	}
 	public void setDragger(DragController dragger) {
 		mDragger=dragger;
+	}
+	public void updateCounters(String packageName, int counter){
+        final int count=getChildCount();
+	    for(int i=0;i<count;i++){
+            final View view=getChildAt(i);
+            final Object tag = view.getTag();
+            if (tag instanceof ApplicationInfo) {
+	            ApplicationInfo info = (ApplicationInfo) tag;
+	            // We need to check for ACTION_MAIN otherwise getComponent() might
+	            // return null for some shortcuts (for instance, for shortcuts to
+	            // web pages.)
+	            final Intent intent = info.intent;
+	            final ComponentName name = intent.getComponent();
+	            if (info.itemType == LauncherSettings.Favorites.ITEM_TYPE_APPLICATION &&
+	                Intent.ACTION_MAIN.equals(intent.getAction()) && name != null &&
+	                packageName.equals(name.getPackageName())) {
+	                if(view instanceof CounterImageView)
+	                    ((CounterImageView) view).setCounter(counter);
+	                //else if
+	                view.invalidate();
+	                Launcher.getModel().updateCounterDesktopItem(info, counter);
+	            }
+	        }
+	        
+	    }
 	}
 }

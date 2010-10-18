@@ -214,7 +214,12 @@ final class Utilities {
         int width = sIconWidth;
         int height = sIconHeight;
         float ratio=sIconHeight/(sIconHeight*scale);
-    	Bitmap original = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Bitmap original;
+        try{
+            original= Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        } catch (OutOfMemoryError e) {
+            return icon;
+        }
         final Canvas cv = new Canvas();
         cv.setBitmap(original);
         icon.setBounds(0,0, width, height);
@@ -225,12 +230,21 @@ final class Utilities {
         
         //Create a Bitmap with the flip matix applied to it.
         //We only want the bottom half of the image
-        Bitmap reflectionImage = Bitmap.createBitmap(original, 0, height/2, width, height/2, matrix, false);
-        
-            
+        Bitmap reflectionImage;
+        try{
+            reflectionImage= Bitmap.createBitmap(original, 0, height/2, width, height/2, matrix, false);
+        } catch (OutOfMemoryError e) {
+            return new FastBitmapDrawable(original);
+        }
+
         //Create a new bitmap with same width but taller to fit reflection
-        Bitmap bitmapWithReflection = Bitmap.createBitmap(width 
+        Bitmap bitmapWithReflection;
+        try{
+            bitmapWithReflection= Bitmap.createBitmap(width 
           , (int) (height*scale), Config.ARGB_8888);
+        } catch (OutOfMemoryError e) {
+            return new FastBitmapDrawable(original);
+        }
       
        //Create a new Canvas with the bitmap that's big enough for
        //the image plus gap plus reflection
@@ -257,8 +271,11 @@ final class Utilities {
        canvas.drawBitmap(original, 0, 0, null);
        original.recycle();
        reflectionImage.recycle();
-       
-       return new FastBitmapDrawable(Bitmap.createScaledBitmap(bitmapWithReflection,Math.round((float)sIconWidth*ratio),sIconHeight,true));
+       try{
+           return new FastBitmapDrawable(Bitmap.createScaledBitmap(bitmapWithReflection,Math.round((float)sIconWidth*ratio),sIconHeight,true));
+       }catch(OutOfMemoryError e){
+           return icon;
+       }
     }
     /**
      *  ADW Create an icon drawable scaled
@@ -274,7 +291,12 @@ final class Utilities {
       
         int width = sIconWidth;
         int height = sIconHeight;
-    	Bitmap original = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Bitmap original;
+        try{
+             original= Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        } catch (OutOfMemoryError e) {
+            return icon;
+        }
         Canvas canvas = new Canvas(original);
         canvas.setBitmap(original);
         icon.setBounds(0,0, width, height);
@@ -288,10 +310,14 @@ final class Utilities {
 	        paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
 	        canvas.drawRect(0, 0, width, 
 	                height, paint);
-        }        
-    	Bitmap endImage=Bitmap.createScaledBitmap(original, (int)(width*scale), (int)(height*scale), true);
-    	original.recycle();
-    	return new FastBitmapDrawable(endImage);
+        }
+        try{
+        	Bitmap endImage=Bitmap.createScaledBitmap(original, (int)(width*scale), (int)(height*scale), true);
+        	original.recycle();
+        	return new FastBitmapDrawable(endImage);
+        } catch (OutOfMemoryError e) {
+            return icon;
+        }
     }
     /**
      * ADW: Use donut syule wallpaper rendering, we need this method to fit wallpaper bitmap

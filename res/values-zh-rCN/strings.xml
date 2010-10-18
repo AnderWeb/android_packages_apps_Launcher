@@ -73,14 +73,10 @@
     <string name="pref_summary_wallpaper_hack">在使用较大壁纸时出现FC时，请禁用此选项，开启此选项后可提升屏幕滚动的表现</string>
 
     <string name="pref_title_orientation_sensor">旋转方向</string>
-    <string name="pref_summary_orientation_sensor">当设备旋转时旋转桌面方向</string>
+    <string name="pref_summary_orientation_sensor">选择默认桌面旋转方向</string>
 
     <string name="pref_title_hide_statusbar">隐藏状态栏</string>
     <string name="pref_summary_hide_statusbar">隐藏屏幕上方的状态栏</string>
-
-    <string name="pref_title_desktop_screens">桌面数量</string>
-    <string name="pref_summary_desktop_screens">选择所需的桌面数量</string>
-    <string name="pref_dialog_desktop_screen">选择所需的桌面数量</string>
 
     <string name="pref_title_default_screen">默认桌面</string>
     <string name="pref_summary_default_screen">选择需要设置为默认的桌面的编号</string>
@@ -296,7 +292,7 @@
     <string name="pref_title_indicators_preferencecategory">页面指示器</string>
 
     <string name="pref_title_system_persistent">常驻内存</string>
-    <string name="pref_summary_system_persistent">禁止系统在内存不足时终止ADW</string>
+    <string name="pref_summary_system_persistent">注意！启用此选项将禁止系统在内存不足时终止程序</string>
 	
 	<!-- Theme preferences -->
 	<string name="pref_title_theme_settings">主题设置</string>
@@ -309,4 +305,51 @@
 	<string name="pref_summary_theme_icons">不选择此项使用系统标准图标</string>
 	<string name="pref_themes_apply_theme">应用主题</string>
 	<string name="pref_themes_get_themes">获取更多主题</string>
+	
+	<string name="pref_title_wallpaper_scrolling">壁纸滚动</string>
+    <string name="pref_summary_wallpaper_scrolling">允许壁纸随着屏幕移动</string>
+    <string name="message_delete_desktop_screen">移除本屏幕及其所有内容？</string>
+    <string name="message_cannot_delete_desktop_screen">无法删除最后一个屏幕</string>
+    <string name="message_cannot_add_desktop_screen">无法添加更多屏幕</string>
+    <string name="message_cannot_swap_desktop_screen">无法互换屏幕</string>
+    
+    <string name="menu_edit">编辑</string>
+
+	<string name="pref_label_shirtcuts">自定义快捷方式</string>
+	<string name="pref_label_activities">活动列表</string>
+	<string name="pref_label_activities_loading">正在载入应用程序列表...</string>
+	<string name="shirtcut_header">选择您需要启动的应用程序。\n您也可以同时选择自定义图标。</string>
+	<string name="shirtcut_pick_activity">选择您的应用程序</string>
+	<string name="shirtcut_label">标签</string>
+	<string name="shirtcuts_select_picture">选择图片</string>
+	<string name="shirtcuts_crop_picture">选择并剪裁图片</string>
+	<string name="shirtcuts_icon_packs">ADW主题图标包</string>
+	<string name="shirtcuts_select_icon_type">选择图标类型</string>
+	<string name="shirtcuts_select_icon_pack">选择图标包</string>
+
+	<string name="selectAll">全选</string>
+	<string name="AppGroupAll">"所有程序"</string>
+	<string name="AppGroupAdd">"新目录"</string>
+	<string name="AppGroupDel">"移除目录"</string>
+    <string name="AppGroupDelLong">"确定要移除当前目录？"</string>
+	<string name="AppGroupChoose">"选择群组"</string>
+	<string name="AppGroupConfig">"设置群组"</string>
+	<string name="AppGroupRename">"新目录"</string>
+	<string name="AppGroupConfigError">"无法设置此群组"</string>
+	<string name="AppGroupAddError">"无法添加更多群组"</string>
+	<string name="rename_group_title">新目录</string>
+	<string name="rename_group_label">目录名称</string>
+	
+	<string name="pref_title_adw_restart">重新启动ADW</string>
+	<string name="pref_summary_adw_restart">选择重新启动ADW主界面</string>
+	<string name="pref_title_adw_reset">重置ADW</string>
+	<string name="pref_summary_adw_reset">清除ADW主界面设置并重新启动</string>
+	
+	<string name="need_scrollable">您想添加的“可滚动的”小工具目前已禁用。\n现在开启？</string>
+	<string name="scrollable_api_required">此小工具需要更新您的ADW主界面。\n请及时更新或者联系小工具开发者</string>
+
+    <string name="pref_title_drawer_navigate_catalogs">目录导航</string>
+    <string name="pref_summary_drawer_navigate_catalogs">显示应用程序目录导航按钮</string>
+    <string name="pref_title_notif_receiver">显示通知</string>
+    <string name="pref_summary_notif_receiver">启用全局通知计数</string>
 </resources>

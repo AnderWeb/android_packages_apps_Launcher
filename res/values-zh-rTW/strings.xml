@@ -62,25 +62,20 @@
     <string name="search_hint" msgid="6974176141372467453">"Google 搜尋"</string>
     <string name="gadget_error_text" msgid="8359351016167075858">"載入小工具時發生問題"</string>
 
-
-	<!-- ADW Settings -->
-	<string name="pref_label_settings">桌面設置</string>
+    <!-- ADW Settings -->
+    <string name="pref_label_settings">桌面設置</string>
     <!-- Screen preferences -->
-	<string name="pref_title_screen_preferences">桌面設置</string>
+    <string name="pref_title_screen_preferences">桌面設置</string>
     <string name="pref_summary_screen_preferences">桌面數量，默認桌面...</string>
-    
+
     <string name="pref_title_wallpaper_hack">桌布優化</string>
     <string name="pref_summary_wallpaper_hack">在使用較大桌布時出現FC時，請禁用此選項，開啟此選項後可提升螢幕滾動的表現</string>
 
     <string name="pref_title_orientation_sensor">旋轉方向</string>
-    <string name="pref_summary_orientation_sensor">當設備旋轉時旋轉桌面方向</string>
+    <string name="pref_summary_orientation_sensor">選擇默認桌面旋轉方向</string>
 
     <string name="pref_title_hide_statusbar">隱藏狀態列</string>
     <string name="pref_summary_hide_statusbar">隱藏螢幕上方的狀態列</string>
-
-    <string name="pref_title_desktop_screens">桌面數量</string>
-    <string name="pref_summary_desktop_screens">選擇所需的桌面數量</string>
-    <string name="pref_dialog_desktop_screen">選擇所需的桌面數量</string>
 
     <string name="pref_title_default_screen">默認桌面</string>
     <string name="pref_summary_default_screen">選擇需要設置為預設的桌面的編號</string>
@@ -90,7 +85,7 @@
     <string name="pref_summary_desktop_scrolling_speed">設置滾動時切換桌面的速度</string>
     <string name="pref_dialog_desktop_scrolling_speed">數值越小，滾動速度越快</string>
 
-    <string name="pref_title_desktop_overshoot">彈性效果</string>
+    <string name="pref_title_desktop_overshoot">彈性特效</string>
     <string name="pref_summary_desktop_overshoot">開啟桌面滑動時的彈性效果</string>
     <string name="pref_dialog_desktop_overshoot">設置為0時禁用桌面彈性效果</string>
 
@@ -98,13 +93,13 @@
     <string name="pref_title_drawer_settings">託盤設置</string>
     <string name="pref_summary_drawer_settings">託盤動畫顯示設定</string>
 
-    <string name="pref_title_zoom_effect_speed">縮放效果速度</string>
+    <string name="pref_title_zoom_effect_speed">縮放特效速度</string>
     <string name="pref_summary_zoom_effect_speed">設置託盤打開時的縮放動畫速度（毫秒）</string>
     <string name="pref_dialog_zoom_effect_speed">設置託盤打開時的縮放動畫速度（毫秒）</string>
 
-	<string name="pref_title_page_horizontal_margin">橫向邊距</string>
-    <string name="pref_summary_page_horizontal_margin">設置託盤每頁間的橫向邊距</string>
-    <string name="pref_dialog_page_horizontal_margin">設置託盤每頁間的橫向邊距</string>
+    <string name="pref_title_page_horizontal_margin">橫向邊距</string>
+    <string name="pref_summary_page_horizontal_margin">設置託盤每頁之間的橫向邊距</string>
+    <string name="pref_dialog_page_horizontal_margin">設置託盤每頁之間的橫向邊距</string>
 
     <string name="pref_title_new_drawer">橫向託盤</string>
     <string name="pref_summary_new_drawer">使用類似三星Galaxy 5的橫向滾動託盤</string>
@@ -133,7 +128,7 @@
     <string name="pref_summary_previews_preferences">桌面預覽設置</string>
 
     <string name="pref_title_sense_previews">Sense風格預覽</string>
-    <string name="pref_summary_sense_previews">使用Sense風格的縮略圖預覽風格</string>
+    <string name="pref_summary_sense_previews">使用Sense介面的縮略圖預覽風格</string>
 
     <string name="pref_title_clean_screen_mode">無圖示預覽模式</string>
     <string name="pref_summary_clean_screen_mode">在預覽時隱藏桌面的圖示和小外掛程式</string>
@@ -145,6 +140,12 @@
     <string name="pref_title_home_button_binding">主頁鍵功能</string>
     <string name="pref_summary_home_button_binding">選擇主頁鍵綁定的功能</string>
 
+    <string name="pref_title_swipedown_actions">下滑手勢</string>
+    <string name="pref_summary_swipedown_actions">選擇向下滑動手勢動作</string>
+    
+    <string name="pref_title_swipeup_actions">上滑手勢</string>
+    <string name="pref_summary_swipeup_actions">選擇向上滑動手勢動作</string>
+
     <string name="pref_title_desktop_dots">桌面分頁點</string>
     <string name="pref_summary_desktop_dots">開啟/關閉Nexus風格的桌面分頁點</string>
 
@@ -153,6 +154,9 @@
 
     <string name="pref_title_closing_dockbar">自動關閉擴展欄</string>
     <string name="pref_summary_closing_dockbar">應用程式啟動後，自動關閉打開的擴展欄</string>
+
+    <string name="pref_title_closing_folder">自動關閉資料夾</string>
+    <string name="pref_summary_closing_folder">應用程式啟動後，自動關閉打開的資料夾</string>
 
     <string name="pref_title_lab">左側動作按鍵</string>
     <string name="pref_summary_lab">開啟/關閉左側動作按鍵</string>
@@ -201,13 +205,13 @@
     <string name="pref_title_import_export">備份與恢復</string>
     <string name="pref_title_xml">ADW 設置</string>
     <string name="pref_title_xml_import">恢復 ADW 設置</string>
-    <string name="pref_summary_xml_import">從資料 /sdcard/adw_settings.xml 中恢復 ADW 設置</string>
+    <string name="pref_summary_xml_import">從文件 /sdcard/adw_settings.xml 中恢復 ADW 設置</string>
     <string name="pref_title_xml_export">備份 ADW 設置</string>
     <string name="pref_summary_xml_export">將 ADW 設置備份到檔 /sdcard/adw_settings.xml</string>
 
     <string name="pref_title_db">桌面設置</string>
     <string name="pref_title_db_import">恢復桌面設置</string>
-    <string name="pref_summary_db_import">從資料 /sdcard/adw_launcher.db 中恢復桌面設置</string>
+    <string name="pref_summary_db_import">從文件 /sdcard/adw_launcher.db 中恢復桌面設置</string>
     <string name="pref_title_db_export">備份桌面設置</string>
     <string name="pref_summary_db_export">將桌面設置備份到檔 /sdcard/adw_launcher.db</string>
 
@@ -215,7 +219,7 @@
     <string name="import_export_sdcard_unmounted">未找到SD卡</string>
 
     <!-- XML Import/Export strings -->
-    <string name="message_dialog_export">原有資料將被覆蓋！確認備份 ADW 設置？</string>
+    <string name="message_dialog_export">原有文件將被覆蓋！確認備份 ADW 設置？</string>
     <string name="xml_export_dialog">正在備份 ADW 設置...</string>
     <string name="xml_export_success">ADW 設置備份成功！</string>
     <string name="xml_export_error">備份 ADW 設置時出現錯誤！</string>
@@ -228,7 +232,7 @@
     <string name="xml_import_error">恢復 ADW 設置時出現錯誤！</string>
 
     <!-- Config Import/Export strings -->
-    <string name="message_dialog_export_config">原有資料將被覆蓋！確認備份桌面設置？</string>
+    <string name="message_dialog_export_config">原有文件將被覆蓋！確認備份桌面設置？</string>
     <string name="dbfile_export_dialog">正在備份桌面設置...</string>
     <string name="dbfile_export_success">桌面設置備份成功！</string>
     <string name="dbfile_export_error">備份桌面設置時出現錯誤！</string>
@@ -266,7 +270,7 @@
     <string name="widget_rows">小工具行數</string>
 
     <string name="pref_title_screen_cache">使用桌面緩存</string>
-    <string name="pref_summary_screen_cache">平滑的滾動.禁止該選項如果你設置了很多小工具.</string>
+    <string name="pref_summary_screen_cache">更平滑的滾動，如果你設置了很多小工具則禁止該選項</string>
 	
     <string name="pref_title_desktop_indicator">顯示頁面指示器</string>
     <string name="pref_summary_desktop_indicator">滑動桌面時顯示視覺提示</string>
@@ -275,14 +279,76 @@
     <string name="pref_title_desktop_indicator_type">指示器類型</string>
     <string name="pref_summary_desktop_indicator_type">選擇不同的指示器風格</string>
 
-	<string name="pref_title_system_preferences">系統設置</string>
-	<string name="pref_summary_system_preferences">ADW系統設置</string>
-	<string name="pref_title_screens_preferencecategory">桌面螢幕</string>
-	<string name="pref_title_screens_layout_preferencecategory">桌面佈局</string>
-	<string name="pref_title_screens_behaviour_preferencecategory">桌面特性</string>
-	<string name="pref_title_drawer_preferencecategory">程式託盤</string>
-	<string name="pref_title_drawer_visuals_preferencecategory">託盤視覺效果</string>
-	<string name="pref_title_highlights_preferencecategory">圖示高亮</string>
-	<string name="pref_title_indicators_preferencecategory">頁面指示器</string>
+    <!-- Category titles -->
+    <string name="pref_title_system_preferences">系統設置</string>
+    <string name="pref_summary_system_preferences">ADW系統設置</string>
+    <string name="pref_title_screens_preferencecategory">桌面螢幕</string>
+    <string name="pref_title_screens_layout_preferencecategory">桌面佈局</string>
+    <string name="pref_title_screens_behaviour_preferencecategory">桌面特性</string>
+    <string name="pref_title_drawer_preferencecategory">程式託盤</string>
+    <string name="pref_title_drawer_visuals_preferencecategory">託盤視覺效果</string>
+    <string name="pref_title_highlights_preferencecategory">圖示高亮</string>
+    <string name="pref_title_indicators_preferencecategory">頁面指示器</string>
 
+    <string name="pref_title_system_persistent">常駐記憶體</string>
+    <string name="pref_summary_system_persistent">注意！啟用此選項將禁止系統在記憶體不足時終止程式</string>
+	
+	<!-- Theme preferences -->
+	<string name="pref_title_theme_settings">主題設置</string>
+	<string name="pref_summary_theme_settings">選擇主題</string>
+	<string name="pref_title_theme_package">選擇您的主題</string>
+	<string name="pref_summary_theme_package">選擇您的主題</string>
+	<string name="pref_title_theme_preview">主題預覽</string>
+	<string name="pref_summary_theme_preview">預覽選擇的主題</string>
+	<string name="pref_title_theme_icons">使用主題圖示</string>
+	<string name="pref_summary_theme_icons">不選擇此項使用系統標準圖示</string>
+	<string name="pref_themes_apply_theme">應用主題</string>
+	<string name="pref_themes_get_themes">獲取更多主題</string>
+	
+	<string name="pref_title_wallpaper_scrolling">桌布滾動</string>
+    <string name="pref_summary_wallpaper_scrolling">允許桌布隨著螢幕移動</string>
+    <string name="message_delete_desktop_screen">移除本螢幕及其所有內容？</string>
+    <string name="message_cannot_delete_desktop_screen">無法刪除最後一個螢幕</string>
+    <string name="message_cannot_add_desktop_screen">無法添加更多螢幕</string>
+    <string name="message_cannot_swap_desktop_screen">無法互換螢幕</string>
+    
+    <string name="menu_edit">編輯</string>
+
+	<string name="pref_label_shirtcuts">自訂捷徑</string>
+	<string name="pref_label_activities">活動清單</string>
+	<string name="pref_label_activities_loading">正在載入應用程式清單...</string>
+	<string name="shirtcut_header">選擇您需要啟動的應用程式。\n您也可以同時選擇自訂圖示。</string>
+	<string name="shirtcut_pick_activity">選擇您的應用程式</string>
+	<string name="shirtcut_label">標籤</string>
+	<string name="shirtcuts_select_picture">選擇圖片</string>
+	<string name="shirtcuts_crop_picture">選擇並剪裁圖片</string>
+	<string name="shirtcuts_icon_packs">ADW主題圖示包</string>
+	<string name="shirtcuts_select_icon_type">選擇圖示類型</string>
+	<string name="shirtcuts_select_icon_pack">選擇圖示包</string>
+
+	<string name="selectAll">全選</string>
+	<string name="AppGroupAll">"所有程式"</string>
+	<string name="AppGroupAdd">"新目錄"</string>
+	<string name="AppGroupDel">"移除目錄"</string>
+    <string name="AppGroupDelLong">"確定要移除目前的目錄？"</string>
+	<string name="AppGroupChoose">"選擇群組"</string>
+	<string name="AppGroupConfig">"設置群組"</string>
+	<string name="AppGroupRename">"新目錄"</string>
+	<string name="AppGroupConfigError">"無法設置此群組"</string>
+	<string name="AppGroupAddError">"無法添加更多群組"</string>
+	<string name="rename_group_title">新目錄</string>
+	<string name="rename_group_label">目錄名稱</string>
+	
+	<string name="pref_title_adw_restart">重新啟動ADW</string>
+	<string name="pref_summary_adw_restart">選擇重新啟動ADW主介面</string>
+	<string name="pref_title_adw_reset">重置ADW</string>
+	<string name="pref_summary_adw_reset">清除ADW主介面設置並重新啟動</string>
+
+	<string name="need_scrollable">您想添加的“可滾動的”小工具目前已禁用。\n現在開啟？</string>
+	<string name="scrollable_api_required">此小工具需要更新您的ADW.Launcher。\n請及時更新或者聯繫小工具開發者</string>
+
+    <string name="pref_title_drawer_navigate_catalogs">目錄導航</string>
+    <string name="pref_summary_drawer_navigate_catalogs">顯示應用程式目錄導航按鈕</string>
+    <string name="pref_title_notif_receiver">顯示通知</string>
+    <string name="pref_summary_notif_receiver">啟用全域通知計數</string>
 </resources>

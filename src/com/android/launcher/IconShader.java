@@ -8,6 +8,7 @@ import android.content.res.XmlResourceParser;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
 
 /**
  * Provides methods and constructs for handling themes with an icon shader.
@@ -492,6 +493,7 @@ class IconShader {
         Bitmap.Config c = (icon_bitmap.getConfig()==null) ?
                 Bitmap.Config.ARGB_8888 : icon_bitmap.getConfig();
         Bitmap output_bitmap = Bitmap.createBitmap(pixels, width, height, c);
+        output_bitmap.setDensity(DisplayMetrics.DENSITY_DEFAULT);
         BitmapDrawable output_bd = new BitmapDrawable(output_bitmap);
         return output_bd;
     }

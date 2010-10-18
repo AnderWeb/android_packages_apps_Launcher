@@ -140,15 +140,11 @@
     <string name="pref_title_hide_statusbar">Cacher la barre de statut</string>
     <string name="pref_summary_hide_statusbar">Cache la barre haute de statut</string>
 
-    <string name="pref_title_desktop_screens">Bureaux</string>
-    <string name="pref_summary_desktop_screens">Définir le nombre de bureaux à utiliser</string>
-    <string name="pref_dialog_desktop_screen">Définir le nombre de bureaux à utiliser</string>
-
     <string name="pref_title_default_screen">Bureau par défaut</string>
     <string name="pref_summary_default_screen">Choisir le bureau à afficher par défaut</string>
     <string name="pref_dialog_default_screen">Choisir le bureau à afficher par défaut</string>
 
-    <string name="pref_title_desktop_scrolling_speed">Vitesse de défilement des bureaux</string>
+	<string name="pref_title_desktop_scrolling_speed">Vitesse de défilement des bureaux</string>
     <string name="pref_summary_desktop_scrolling_speed">Définir la vitesse de défilement entre les bureaux</string>
     <string name="pref_dialog_desktop_scrolling_speed">Plus la valeur est petite, plus rapide sera le défilement</string>
 
@@ -156,40 +152,38 @@
     <string name="pref_summary_desktop_overshoot">Autoriser le rebondissement sur le premier et dernier bureau</string>
     <string name="pref_dialog_desktop_overshoot">Autoriser le rebondissement sur le premier et dernier bureau</string>
 
-    <!-- Drawer Settings -->
+	<!-- Drawer Settings -->
     <string name="pref_title_drawer_settings">Préférence du menu</string>
     <string name="pref_summary_drawer_settings">Préférence du menu des applications</string>
 
     <string name="pref_title_zoom_effect_speed">Vitesse de l\'effet zoom</string>
     <string name="pref_summary_zoom_effect_speed">Définir la durée de l\'effet zoom en millisecondes</string>
     <string name="pref_dialog_zoom_effect_speed">Définir la durée de l\'effet zoom en millisecondes</string>
-
+    
     <string name="pref_title_page_horizontal_margin">Marge horizontale des pages</string>
     <string name="pref_summary_page_horizontal_margin">Définir la marge horizontale entre chaque page du menu</string>
     <string name="pref_dialog_page_horizontal_margin">Définir la marge horizontale entre chaque page du menu</string>
-
+    
     <string name="pref_title_new_drawer">Menu à défilement horizontal</string>
     <string name="pref_summary_new_drawer">Utiliser un menu à défilement horizontal comme sur le Samsung Galaxy S</string>
-
+   
     <string name="pref_title_animated_drawer">Menu animé</string>
     <string name="pref_summary_animated_drawer">Activer l\'animation du menu</string>
 
     <string name="pref_title_drawer_columns_portrait">Colonnes du menu en mode portrait</string>
     <string name="pref_summary_drawer_columns_portrait">Définir le nombre de colonne du menu en mode portrait</string>
     <string name="pref_dialog_drawer_columns_portrait">Définir le nombre de colonne du menu en mode portrait</string>
-
     <string name="pref_title_drawer_rows_portrait">Lignes du menu en mode portrait</string>
     <string name="pref_summary_drawer_rows_portrait">Définir le nombre de ligne du menu en mode portrait</string>
     <string name="pref_dialog_drawer_rows_portrait">Définir le nombre de ligne du menu en mode portrait</string>
-
-    <string name="pref_title_drawer_columns_landscape">Colonnes du menu en mode paysage</string>
+    
+	<string name="pref_title_drawer_columns_landscape">Colonnes du menu en mode paysage</string>
     <string name="pref_summary_drawer_columns_landscape">Définir le nombre de colonne du menu en mode paysage</string>
     <string name="pref_dialog_drawer_columns_landscape">Définir le nombre de colonne du menu en mode paysage</string>
 
     <string name="pref_title_drawer_rows_landscape">Lignes du menu en mode paysage</string>
     <string name="pref_summary_drawer_rows_landscape">Définir le nombre de ligne du menu en mode paysage</string>
     <string name="pref_dialog_drawer_rows_landscape">Définir le nombre de ligne du menu en mode paysage</string>
-
     <!-- Previews preferences -->
     <string name="pref_title_previews_preferences">Préférences des vignettes</string>
     <string name="pref_summary_previews_preferences">Préférences des vignettes des bureaux</string>
@@ -203,8 +197,7 @@
     <!-- Button preferences -->
     <string name="pref_title_ui_settings">Préférence d\'interface</string>
     <string name="pref_summary_ui_settings">Activer/désactiver des éléments d\'interface</string>
-
-    <string name="pref_title_home_button_binding">Comportement du bouton maison</string>
+	<string name="pref_title_home_button_binding">Comportement du bouton maison</string>
     <string name="pref_summary_home_button_binding">Sélectionner l\'action liée au bouton maison</string>
 
     <string name="pref_title_swipedown_actions">Glissé vers le bas</string>
@@ -221,51 +214,57 @@
 
     <string name="pref_title_closing_dockbar">Fermeture de la barre de raccourcis</string>
     <string name="pref_summary_closing_dockbar">Fermeture automatique de la barre après lancement de l\'application</string>
-
-    <string name="pref_title_lab">BAG</string>
+    <string name="pref_title_closing_folder">Fermeture du dossier</string>
+    <string name="pref_summary_closing_folder">Fermeture automatique du dossier après le lancement de l\'application</string>
+	
+	<string name="pref_title_lab">BAG</string>
     <string name="pref_summary_lab">Activer/désactiver le Bouton d\'Action Gauche</string>
 
-    <string name="pref_title_rab">BAD</string>
-    <string name="pref_summary_rab">Activer/désactiver le Bouton d\'Action Droit</string>
     
-    <string name="pref_title_ab2">Boutons d\'actions secondaires</string>
+	<string name="pref_title_rab">BAD</string>
+    <string name="pref_summary_rab">Activer/désactiver le Bouton d\'Action Droit</string>
+	
+	
+	<string name="pref_title_ab2">Boutons d\'actions secondaires</string>
     <string name="pref_summary_ab2">Activer/désactiver les boutons d\'actions secondaires (désactive les points de bureau)</string>
-
-    <string name="pref_title_tint_ab">Grise les boutons d\'actions</string>
+    
+	<string name="pref_title_tint_ab">Grise les boutons d\'actions</string>
     <string name="pref_summary_tint_ab">Activer/désactiver l\'effet grisé sur les boutons d\'actions</string>
-
-    <string name="pref_title_ab_scale_factor">Agrandissement des boutons d\'actions</string>
+   
+	<string name="pref_title_ab_scale_factor">Agrandissement des boutons d\'actions</string>
     <string name="pref_summary_ab_scale_factor">Définir la taille des icônes des boutons d\'actions</string>
     <string name="pref_dialog_ab_scale_factor">Définir la taille des icônes des boutons d\'actions</string>
-
-    <string name="pref_title_hide_allapps_ab">Cacher l\'arrière plan du bouton menu</string>
+	
+	<string name="pref_title_hide_allapps_ab">Cacher l\'arrière plan du bouton menu</string>
     <string name="pref_summary_hide_allapps_ab">Cacher l\'arrière plan du bouton menu</string>
-
-    <string name="pref_title_hide_ab_bg">Cacher l\'arrière plan des boutons actions</string>
+   
+	<string name="pref_title_hide_ab_bg">Cacher l\'arrière plan des boutons actions</string>
     <string name="pref_summary_hide_ab_bg">Cacher l\'arrière plan des boutons d\'actions</string>
 
-    <string name="pref_title_hide_icon_labels">Cacher le libellé des icônes</string>
-    <string name="pref_summary_hide_icon_labels">Cacher le libellé des icônes sur les bureaux</string>
+	<string name="pref_title_hide_icon_labels">Cacher le libellé des icônes</string>
+    
+	<string name="pref_summary_hide_icon_labels">Cacher le libellé des icônes sur les bureaux</string>
 
-    <string name="pref_title_build_info">Informations de version</string>
+	<string name="pref_title_build_info">Informations de version</string>
     <string name="pref_title_adw_version">Version ADW</string>
-
-    <string name="pref_title_icon_highlights">Couleur de surbrillance pour sélection</string>
+	<string name="pref_title_icon_highlights">Couleur de surbrillance pour sélection</string>
     <string name="pref_summary_icon_highlights">Définir la couleur de surbrillance des icônes sélectionnées</string>
     <string name="pref_title_icon_highlights_focus">Couleur de surbrillance pour survol</string>
     <string name="pref_summary_icon_highlights_focus">Définir la couleur de surbrillance des icônes survolées</string>
-    <string name="pref_title_new_selectors">Utiliser les nouvelles méthodes surbrillances</string>
+    
+	
+	<string name="pref_title_new_selectors">Utiliser les nouvelles méthodes surbrillances</string>
     <string name="pref_summary_new_selectors">Désactiver pour utiliser l\'ancienne méthode.</string>
     <string name="pref_title_drawer_color">Couleur d\'arrière plan</string>
     <string name="pref_summary_drawer_color">Définir la couleur d\'arrière plan du menu</string>
 
-    <string name="pref_dialog_title_color_picker">Choisissez une colonne.</string>
+	<string name="pref_dialog_title_color_picker">Choisissez une colonne.</string>
     <string name="pref_dialog_message_color_picker">Touchez la couleur centrale pour confirmer.\n Appuyez sur retour pour annuler.</string>
     <string name="pref_dialog_color_picker_alpha">Transparence</string>
     <string name="pref_message_restart_normal">Modifier cette option provoque le redémarrage de l\'application</string>
     <string name="pref_message_restart_froyo">Modifier cette option provoque le redémarrage de l\'application</string>
     <string name="drop_to_uninstall">Glisser ici pour désinstaller</string>
-    
+
     <string name="pref_title_import_export">Sauvegarde et restauration</string>
     <string name="pref_title_xml">Préférences ADW</string>
     <string name="pref_title_xml_import">Restaurer les préférences ADW</string>
@@ -275,7 +274,8 @@
     
     <string name="pref_title_db">Configuration des bureaux</string>
     <string name="pref_title_db_import">Restaurer la configuration des bureaux</string>
-    <string name="pref_summary_db_import">Restaurer depuis /sdcard/adw_launcher.db</string>
+    	
+	<string name="pref_summary_db_import">Restaurer depuis /sdcard/adw_launcher.db</string>
     <string name="pref_title_db_export">Sauvegarder la configuration des bureaux</string>
     <string name="pref_summary_db_export">Sauvegarder vers /sdcard/adw_launcher.db</string>
     
@@ -326,7 +326,7 @@
     <string name="pref_summary_drawer_labels">Voir le libellé des applications dans le menu</string>
     <string name="pref_title_fade_drawer_labels">Faire apparaitre les libellés doucement</string>
     <string name="pref_summary_fade_drawer_labels">Les libellés apparaissent en douceur et non brusquement. Utilise plus de ressources</string>
-	
+
 	<string name="widget_config_dialog_title">Configuration de la taille des widgets</string>
 	<string name="widget_config_dialog_summary">Combien de lignes/colonnes doit utiliser le widget ?</string>
 	<string name="widget_columns">Colonne(s)</string>
@@ -339,7 +339,8 @@
     <string name="pref_summary_desktop_indicator">Voir un indicateur lors du défilement de bureau</string>
     <string name="pref_title_desktop_indicator_autohide">Cacher automatiquement l\'indicateur de bureau</string>
     <string name="pref_summary_desktop_indicator_autohide">Cacher après un court délai l\'indicateur de bureau</string>
-    <string name="pref_title_desktop_indicator_type">Type d\'indicateur</string>
+    
+	<string name="pref_title_desktop_indicator_type">Type d\'indicateur</string>
     <string name="pref_summary_desktop_indicator_type">Choisissez entre les types d\'indicateur</string>
 
 	<!-- Category titles -->
@@ -352,7 +353,60 @@
 	<string name="pref_title_drawer_visuals_preferencecategory">Aspect du menu d\'applications</string>
 	<string name="pref_title_highlights_preferencecategory">Surbrillance d\'icône</string>
 	<string name="pref_title_indicators_preferencecategory">Indicateur de bureau</string>
-
-    <string name="pref_title_system_persistent">Persistence</string>
+    
+	<string name="pref_title_system_persistent">Persistence</string>
     <string name="pref_summary_system_persistent">Cochez pour garder ADW Launcher en mémoire</string>
+	
+	<string name="pref_title_theme_settings">Préférences de thèmes</string>
+	<string name="pref_summary_theme_settings">Sélectionner des themes pour ADW.Launcher</string>
+	<string name="pref_title_theme_package">Sélectionner un theme</string>
+	<string name="pref_summary_theme_package">Choisissez un thème pour ADW.Launcher</string>
+	<string name="pref_title_theme_preview">Prévisualisation</string>
+	<string name="pref_summary_theme_preview">Prévisualisation du thème sélectionné</string>
+	<string name="pref_title_theme_icons">Utiliser les icônes du thème</string>
+	<string name="pref_summary_theme_icons">Décocher pour utiliser les icônes classiques</string>
+	<string name="pref_themes_apply_theme">Appliquer le thème!</string>
+	<string name="pref_themes_get_themes">Plus de thèmes!</string>
+    <string name="pref_title_wallpaper_scrolling">Défilement d\'arrière plan</string>
+    <string name="pref_summary_wallpaper_scrolling">Autoriser le déplacement de l\'arrière plan lors du défilement des bureaux</string>
+    <string name="message_delete_desktop_screen">Supprimer ce bureau et tout son contenu ?</string>
+    <string name="message_cannot_delete_desktop_screen">Vous ne pouvez pas supprimer le dernier bureau</string>
+    <string name="message_cannot_add_desktop_screen">Vous ne pouvez pas ajouter de nouveau bureau</string>
+    <string name="message_cannot_swap_desktop_screen">Vous ne pouvez pas échanger ces bureaux</string>
+		
+	<string name="menu_edit">Edit</string>
+
+	<string name="pref_label_shirtcuts">Raccourci Personnalisé</string>
+	<string name="pref_label_activities">Activités</string>
+	<string name="pref_label_activities_loading">Chargement de la liste des activités</string>
+	<string name="shirtcut_header">Sélectionnez l\'application à lancer.\nVous pouvez aussi sélectionner une icône personnalisée.</string>
+	<string name="shirtcut_pick_activity">Choisissez votre activité</string>
+	<string name="shirtcut_label">Titre</string>
+	<string name="shirtcuts_select_picture">Sélectionner une image</string>
+	<string name="shirtcuts_crop_picture">Sélectionner une image et la rogner</string>
+	<string name="shirtcuts_icon_packs">Pack d\'icône d\'ADWTheme</string>
+
+	<string name="shirtcuts_select_icon_type">Sélectionnez le type d\'icône</string>
+	<string name="shirtcuts_select_icon_pack">Sélectionnez un pack d\'icônes</string>
+
+	<string name="selectAll">Sélectionner tout</string>
+	<string name="AppGroupAll">"TOUT"</string>
+	<string name="AppGroupAdd">"Nouveau groupe"</string>
+
+	<string name="AppGroupDel">"Supprimer le groupe ?"</string>
+    <string name="AppGroupDelLong">"Supprimer réellement \nle groupe actuel ?"</string>
+
+	<string name="AppGroupChoose">"Choisir un groupe"</string>
+	<string name="AppGroupConfig">"Configurer le groupe"</string>
+	<string name="AppGroupRename">"Nouveau groupe"</string>
+	<string name="AppGroupConfigError">"Vous ne pouvez pas configurer ce groupe"</string>
+	<string name="AppGroupAddError">"Vous ne pouvez pas avoir plus de groupe"</string>
+
+	<string name="rename_group_title">Nouveau groupe</string>
+	<string name="rename_group_label">Nom du groupe</string>
+	
+	<string name="pref_title_adw_restart">Redémarrer ADW</string>
+	<string name="pref_summary_adw_restart">Fermer et relancer ADW.Launcher</string>
+	<string name="pref_title_adw_reset">Remettre à zéro ADW</string>
+	<string name="pref_summary_adw_reset">Vider les préférences et relancer ADW.Launcher</string>
 </resources>

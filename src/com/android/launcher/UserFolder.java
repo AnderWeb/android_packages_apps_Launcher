@@ -1,11 +1,20 @@
 package com.android.launcher;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Context;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
 import android.graphics.Rect;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 /**
  * Folder which contains applications or shortcuts chosen by the user.
@@ -69,7 +78,8 @@ public class UserFolder extends Folder implements DropTarget {
 
     void bind(FolderInfo info) {
         super.bind(info);
-        setContentAdapter(new ApplicationsAdapter(mContext, ((UserFolderInfo) info).contents));
+        //setContentAdapter(new ApplicationsAdapter(mContext, ((UserFolderInfo) info).contents));
+        setContentAdapter(new FolderAdapter(mContext, ((UserFolderInfo) info).contents));
     }
 
     // When the folder opens, we need to refresh the GridView's selection by
@@ -78,5 +88,73 @@ public class UserFolder extends Folder implements DropTarget {
     void onOpen() {
         super.onOpen();
         requestFocus();
+    }
+    private class FolderAdapter extends ArrayAdapter<ApplicationInfo> {
+    	private LayoutInflater mInflater;
+    	private Drawable mBackground;
+    	private int mTextColor = 0;
+    	private boolean useThemeTextColor = false;
+        private Typeface themeFont=null;
+    	
+		public FolderAdapter(Context context, ArrayList<ApplicationInfo> icons) {
+			super(context, 0,icons);
+			mInflater=LayoutInflater.from(context);
+			// ADW: Load textcolor and bubble color from theme
+			String themePackage = AlmostNexusSettingsHelper.getThemePackageName(
+					getContext(), Launcher.THEME_DEFAULT);
+			if (!themePackage.equals(Launcher.THEME_DEFAULT)) {
+				Resources themeResources = null;
+				try {
+					themeResources = getContext().getPackageManager()
+							.getResourcesForApplication(themePackage);
+				} catch (NameNotFoundException e) {
+					// e.printStackTrace();
+				}
+				if (themeResources != null) {
+					int textColorId = themeResources.getIdentifier(
+							"drawer_text_color", "color", themePackage);
+					if (textColorId != 0) {
+						mTextColor = themeResources.getColor(textColorId);
+						useThemeTextColor = true;
+					}
+					mBackground = IconHighlights.getDrawable(getContext(),
+							IconHighlights.TYPE_DRAWER);
+	    			try{
+	    				themeFont=Typeface.createFromAsset(themeResources.getAssets(), "themefont.ttf");
+	    			}catch (RuntimeException e) {
+						// TODO: handle exception
+					}
+				}
+			}
+		}
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			final ApplicationInfo info = getItem(position);
+
+			if (convertView == null) {
+				convertView = mInflater.inflate(R.layout.application_boxed, parent,
+						false);
+			}
+
+			if (!info.filtered) {
+				info.icon = Utilities.createIconThumbnail(info.icon, getContext());
+				info.filtered = true;
+			}
+
+			final TextView textView = (TextView) convertView;
+			textView.setCompoundDrawablesWithIntrinsicBounds(null, info.icon, null,
+					null);
+			textView.setText(info.title);
+			if (useThemeTextColor) {
+				textView.setTextColor(mTextColor);
+			}
+			//ADW: Custom font
+			if(themeFont!=null) textView.setTypeface(themeFont);
+			// so i'd better not use it, sorry themers
+			if (mBackground != null)
+				convertView.setBackgroundDrawable(mBackground);
+			return convertView;
+		}
+    	
     }
 }

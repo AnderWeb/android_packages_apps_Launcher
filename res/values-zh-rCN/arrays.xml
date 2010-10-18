@@ -16,6 +16,15 @@
                 <item>顶部点状指示器</item>
                 <item>顶部滑动指示器</item>
                 <item>底部滑动指示器</item>
+       </string-array>				
+	   <string-array name="home_orientation_entries">
+                <item>自动</item>
+                <item>竖屏</item>
+                <item>横屏</item>
+       </string-array>
+       <string-array name="screen_cache_entries">
+                <item>低质量</item>
+                <item>自动</item>
+                <item>禁用</item>	   
        </string-array>
 </resources>
-

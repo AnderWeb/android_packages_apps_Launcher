@@ -4,24 +4,23 @@ import com.android.launcher.DragController.DragListener;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-public class ActionButton extends ImageView implements DropTarget, DragListener {
+public class ActionButton extends CounterImageView implements DropTarget, DragListener {
 	private Launcher mLauncher;
 	private int mIdent=LauncherSettings.Favorites.CONTAINER_LAB;
 	private ItemInfo mCurrentInfo;
 	private Drawable bgResource;
 	private Drawable bgEmpty;
+	private Drawable mIconNormal;
+	private Drawable mIconSpecial;
+	private boolean specialMode=false;
 	private boolean hiddenBg=false;
+	private int specialAction=0;
 	public ActionButton(Context context) {
 		super(context);
 		// TODO Auto-generated constructor stub
@@ -46,7 +45,7 @@ public class ActionButton extends ImageView implements DropTarget, DragListener 
 	public boolean acceptDrop(DragSource source, int x, int y, int xOffset,
 			int yOffset, Object dragInfo) {
 		// TODO Auto-generated method stub
-		return true;
+		return !specialMode;
 	}
 
 	public Rect estimateDropLocation(DragSource source, int x, int y,
@@ -86,12 +85,12 @@ public class ActionButton extends ImageView implements DropTarget, DragListener 
         	//we do accept those
         	break;
         case LauncherSettings.Favorites.ITEM_TYPE_APPWIDGET:
-        	Toast t=Toast.makeText(getContext(), "Widgets not supported... sorry :-)", Toast.LENGTH_SHORT);
+        	Toast t=Toast.makeText(getContext(), R.string.toast_widgets_not_supported, Toast.LENGTH_SHORT);
         	t.show();
         	accept=false;
         	break;
         default:
-        	Toast t2=Toast.makeText(getContext(), "Unknown item. We can't add unknown item types :-)", Toast.LENGTH_SHORT);
+        	Toast t2=Toast.makeText(getContext(), R.string.toast_unknown_item, Toast.LENGTH_SHORT);
         	t2.show();
         	accept=false;
         	break;
@@ -131,6 +130,7 @@ public class ActionButton extends ImageView implements DropTarget, DragListener 
                 // Came from all apps -- make a copy
                 info = new ApplicationInfo((ApplicationInfo) info);
             }
+            setCounter(((ApplicationInfo)info).counter);
             myIcon = mLauncher.createSmallActionButtonIcon(info);
             break;
         case LauncherSettings.Favorites.ITEM_TYPE_LIVE_FOLDER:
@@ -147,7 +147,7 @@ public class ActionButton extends ImageView implements DropTarget, DragListener 
         	return;
             //throw new IllegalStateException("Unknown item type: " + info.itemType);
         }
-        setImageDrawable(myIcon);
+        setIcon(myIcon);
         invalidate();
 	}
 
@@ -168,7 +168,11 @@ public class ActionButton extends ImageView implements DropTarget, DragListener 
 	@Override
 	public Object getTag() {
 		// TODO Auto-generated method stub
-		return mCurrentInfo;
+		if(!specialMode){
+		    return mCurrentInfo;
+		}else{
+		    return specialAction;
+		}
 	}
 	public void updateIcon(){
     	if(mCurrentInfo!=null){
@@ -197,7 +201,7 @@ public class ActionButton extends ImageView implements DropTarget, DragListener 
 	        	return;
 	            //throw new IllegalStateException("Unknown item type: " + info.itemType);
 	        }
-	        setImageDrawable(myIcon);
+	        setIcon(myIcon);
 	        invalidate();
     	}
 	}
@@ -241,10 +245,41 @@ public class ActionButton extends ImageView implements DropTarget, DragListener 
 	            info.icon = Utilities.createIconThumbnail(icon, mLauncher);
 	            info.filtered = true;
 	            myIcon = mLauncher.createSmallActionButtonIcon(info);
-				setImageDrawable(myIcon);
+				setIcon(myIcon);
 		        invalidate();			
 	        }
 		}
-		
+	}
+	private void setIcon(Drawable d){
+	    if(mIconNormal!=null){
+	        mIconNormal.setCallback(null);
+	        mIconNormal=null;
+	    }
+	    mIconNormal=d;
+	    if(!specialMode){
+	        setImageDrawable(mIconNormal);
+	    }
+	}
+	public void setSpecialIcon(Drawable d){
+        if(mIconSpecial!=null){
+            mIconSpecial.setCallback(null);
+            mIconSpecial=null;
+        }
+        mIconSpecial=d;
+        if(specialMode){
+            setImageDrawable(mIconSpecial);
+        }
+	}
+	public void setSpecialMode(boolean special){
+	    if(special!=specialMode){
+	        specialMode=special;
+	        if(specialMode)
+	            setImageDrawable(mIconSpecial);
+	        else
+	            setImageDrawable(mIconNormal);
+	    }
+	}
+	public void setSpecialAction(int action){
+	    specialAction=action;
 	}
 }

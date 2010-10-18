@@ -145,10 +145,6 @@
     <string name="pref_title_hide_statusbar">κρυψιμο status bar</string>
     <string name="pref_summary_hide_statusbar">κρυβει το status bar</string>
 
-    <string name="pref_title_desktop_screens">επιφανειες εργασιας</string>
-    <string name="pref_summary_desktop_screens">διαλεξτε τον αριθμο επιφανειων εργασιας που θελετε</string>
-    <string name="pref_dialog_desktop_screen">διαλεξτε τον αριθμο επιφανειων εργασιας που θελετε</string>
-    
     <string name="pref_title_default_screen">κεντρικη οθονη </string>
     <string name="pref_summary_default_screen">διαλεξτε την οθονη που θα ορισετε ως κεντρικη</string>
     <string name="pref_dialog_default_screen">διαλεξτε την οθονη που θα ορισετε ως κεντρικη</string>
@@ -241,7 +237,4 @@
 
     <string name="pref_title_build_info">πληροφοριες εκδοσης εφαρμογης</string>
     <string name="pref_title_adw_version">εκδοση ADW </string>
-    
-    <string name="pref_summary_drawer_background_alpha">οριστε το επιπεδο διαφανειας του φοντου του συρταριου</string>
-    <string name="pref_dialog_drawer_background_alpha">οριστε το επιπεδο διαφανειας του φοντου του συρταριου</string>
 </resources>

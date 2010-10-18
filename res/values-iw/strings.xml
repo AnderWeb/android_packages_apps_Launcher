@@ -144,10 +144,6 @@
     <string name="pref_title_hide_statusbar">הסתר שורת מצב</string>
     <string name="pref_summary_hide_statusbar">מסתיר את שורת המצב</string>
 
-    <string name="pref_title_desktop_screens">חלונות שולחן העבודה</string>
-    <string name="pref_summary_desktop_screens">בחר את מספר שולחנות העבודה</string>
-    <string name="pref_dialog_desktop_screen">בחר את מספר שולחנות העבודה</string>
-
     <string name="pref_title_default_screen">חלון שולחן העבודה הראשי</string>
     <string name="pref_summary_default_screen">בחר את חלון שולחן העבודה הראשי</string>
     <string name="pref_dialog_default_screen">בחר את חלון שולחן העבודה הראשי</string>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+       <string-array name="menu_binding_entries">
+       			<item>禁用</item>
+                <item>顯示預設桌面</item>
+                <item>顯示預設桌面/顯示預覽</item>
+                <item>顯示預覽</item>
+                <item>打開/關閉應用程式託盤</item>
+                <item>顯示/隱藏狀態列</item>
+                <item>顯示/隱藏通知欄</item>
+                <item>顯示預設桌面/顯示通知欄</item>
+                <item>打開/關閉擴展欄</item>
+                <item>打開程式...</item>
+       </string-array>
+       <string-array name="desktop_indicator_entries">
+                <item>頂部點狀指示器</item>
+                <item>頂部滑動指示器</item>
+                <item>底部滑動指示器</item>
+       </string-array>				
+	   <string-array name="home_orientation_entries">
+                <item>自動</item>
+                <item>豎屏</item>
+                <item>橫屏</item>
+       </string-array>
+       <string-array name="screen_cache_entries">
+                <item>低品質</item>
+                <item>自動</item>
+                <item>禁用</item>	   
+       </string-array>
+</resources>

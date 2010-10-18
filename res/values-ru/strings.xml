@@ -144,10 +144,6 @@
     <string name="pref_title_hide_statusbar">Скрывать строку статуса</string>
     <string name="pref_summary_hide_statusbar">Автоматически скрывать строку статуса</string>
 
-    <string name="pref_title_desktop_screens">Рабочие столы</string>
-    <string name="pref_summary_desktop_screens">Количество на домашнем экране</string>
-    <string name="pref_dialog_desktop_screen">Выберите количество рабочих столов</string>
-
     <string name="pref_title_default_screen">Рабочий стол по умолчанию</string>
     <string name="pref_summary_default_screen">Номер рабочего стола по умолчанию</string>
     <string name="pref_dialog_default_screen">Укажите номер рабочего стола по умолчанию</string>
