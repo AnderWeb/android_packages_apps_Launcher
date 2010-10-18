@@ -28,13 +28,13 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
-//import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 
 public class AllAppsGridView extends GridView implements
 		AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener,
-		DragSource {
+		DragSource, Drawer {
 
 	private DragController mDragger;
 	private Launcher mLauncher;
@@ -58,6 +58,17 @@ public class AllAppsGridView extends GridView implements
 	private boolean mDrawLabels = true;
 	private boolean mFadeDrawLabels = false;
 	private float mLabelFactor;
+    private int distH;
+    private int distV;
+    private float x;
+    private float y;
+    private float width;
+    private float height;
+    private Rect rl1=new Rect();
+    private Rect rl2=new Rect();
+    private float scale;
+    private Rect r3=new Rect();
+    private int xx;
 
 	public AllAppsGridView(Context context) {
 		super(context);
@@ -76,6 +87,7 @@ public class AllAppsGridView extends GridView implements
 		mLabelPaint.setDither(false);
 	}
 
+	@Override
 	public boolean isOpaque() {
 		if (mBgAlpha >= 255)
 			return true;
@@ -106,7 +118,9 @@ public class AllAppsGridView extends GridView implements
 		app = new ApplicationInfo(app);
 
 		mDragger.startDrag(view, this, app, DragController.DRAG_ACTION_COPY);
-		mLauncher.closeAllApplications();
+		if (!mLauncher.isDockBarOpen()) {
+		    mLauncher.closeAllApplications();
+		}
 
 		return true;
 	}
@@ -118,7 +132,7 @@ public class AllAppsGridView extends GridView implements
 	public void onDropCompleted(View target, boolean success) {
 	}
 
-	void setLauncher(Launcher launcher) {
+	public void setLauncher(Launcher launcher) {
 		mLauncher = launcher;
 		setSelector(IconHighlights.getDrawable(mLauncher,
 				IconHighlights.TYPE_DESKTOP));
@@ -150,30 +164,32 @@ public class AllAppsGridView extends GridView implements
 	 */
 	@Override
 	public void draw(Canvas canvas) {
-		long currentTime;
-		if (startTime == 0) {
-			startTime = SystemClock.uptimeMillis();
-			currentTime = 0;
-		} else {
-			currentTime = SystemClock.uptimeMillis() - startTime;
-		}
-		if (mStatus == OPENING) {
-			mScaleFactor = easeOut(currentTime, 3.0f, 1.0f, mAnimationDuration);
-			mLabelFactor = easeOut(currentTime, -1.0f, 1.0f, mAnimationDuration);
-		} else if (mStatus == CLOSING) {
-			mScaleFactor = easeIn(currentTime, 1.0f, 3.0f, mAnimationDuration);
-			mLabelFactor = easeIn(currentTime, 1.0f, -1.0f, mAnimationDuration);
-		}
-		if (mLabelFactor < 0)
-			mLabelFactor = 0;
-		if (currentTime >= mAnimationDuration) {
-			isAnimating = false;
+		if (isAnimating) {
+			long currentTime;
+			if (startTime == 0) {
+				startTime = SystemClock.uptimeMillis();
+				currentTime = 0;
+			} else {
+				currentTime = SystemClock.uptimeMillis() - startTime;
+			}
 			if (mStatus == OPENING) {
-				mStatus = OPEN;
+				mScaleFactor = easeOut(currentTime, 3.0f, 1.0f, mAnimationDuration);
+				mLabelFactor = easeOut(currentTime, -1.0f, 1.0f, mAnimationDuration);
 			} else if (mStatus == CLOSING) {
-				mStatus = CLOSED;
-				mLauncher.getWorkspace().clearChildrenCache();
-				setVisibility(View.GONE);
+				mScaleFactor = easeIn(currentTime, 1.0f, 3.0f, mAnimationDuration);
+				mLabelFactor = easeIn(currentTime, 1.0f, -1.0f, mAnimationDuration);
+			}
+			if (mLabelFactor < 0)
+				mLabelFactor = 0;
+			if (currentTime >= mAnimationDuration) {
+				isAnimating = false;
+				if (mStatus == OPENING) {
+					mStatus = OPEN;
+				} else if (mStatus == CLOSING) {
+					mStatus = CLOSED;
+					mLauncher.getWorkspace().clearChildrenCache();
+					setVisibility(View.GONE);
+				}
 			}
 		}
 		shouldDrawLabels = mFadeDrawLabels && mDrawLabels
@@ -207,24 +223,24 @@ public class AllAppsGridView extends GridView implements
 		}
 		if (isAnimating) {
 			postInvalidate();
-			float x;
-			float y;
-			int distH = (child.getLeft() + (child.getWidth() / 2))
+			//float x;
+			//float y;
+			distH = (child.getLeft() + (child.getWidth() / 2))
 					- (getWidth() / 2);
-			int distV = (child.getTop() + (child.getHeight() / 2))
+			distV = (child.getTop() + (child.getHeight() / 2))
 					- (getHeight() / 2);
 			x = child.getLeft() + (distH * (mScaleFactor - 1)) * (mScaleFactor);
 			y = child.getTop() + (distV * (mScaleFactor - 1)) * (mScaleFactor);
-			float width = child.getWidth() * mScaleFactor;
-			float height = (child.getHeight() - (child.getHeight() - mIconSize))
+			width = child.getWidth() * mScaleFactor;
+			height = (child.getHeight() - (child.getHeight() - mIconSize))
 					* mScaleFactor;
 			if (shouldDrawLabels)
 				child.setDrawingCacheEnabled(true);
 			if (shouldDrawLabels && child.getDrawingCache() != null) {
 				// ADW: try to manually draw labels
-				Rect rl1 = new Rect(0, mIconSize, child.getDrawingCache()
+				rl1.set(0, mIconSize, child.getDrawingCache()
 						.getWidth(), child.getDrawingCache().getHeight());
-				Rect rl2 = new Rect(child.getLeft(),
+				rl2.set(child.getLeft(),
 						child.getTop() + mIconSize, child.getLeft()
 								+ child.getDrawingCache().getWidth(), child
 								.getTop()
@@ -233,9 +249,9 @@ public class AllAppsGridView extends GridView implements
 				canvas.drawBitmap(child.getDrawingCache(), rl1, rl2,
 						mLabelPaint);
 			}
-			float scale = ((width) / child.getWidth());
-			Rect r3 = tmp[1].getBounds();
-			int xx = (child.getWidth() / 2) - (r3.width() / 2);
+			scale = ((width) / child.getWidth());
+			r3 = tmp[1].getBounds();
+			xx = (child.getWidth() / 2) - (r3.width() / 2);
 			canvas.save();
 			canvas.translate(x + xx, y + child.getPaddingTop());
 			canvas.scale(scale, scale);
@@ -255,8 +271,8 @@ public class AllAppsGridView extends GridView implements
 					canvas.restore();
 				}
 			} else {
-				Rect r3 = tmp[1].getBounds();
-				int xx = (child.getWidth() / 2) - (r3.width() / 2);
+				r3 = tmp[1].getBounds();
+				xx = (child.getWidth() / 2) - (r3.width() / 2);
 				canvas.save();
 				canvas.translate(child.getLeft() + xx, child.getTop()
 						+ child.getPaddingTop());
@@ -280,12 +296,12 @@ public class AllAppsGridView extends GridView implements
         if(getAdapter()==null)
         	animate=false;
         else if(getAdapter().getCount()<=0)
-        	animate=false;	
+        	animate=false;
 		if (animate) {
 			if (mFadeDrawLabels && mDrawLabels) {
-				for (int i = 0; i < getChildCount(); i++) {
-					getChildAt(i).setDrawingCacheEnabled(true);
-				}
+                ListAdapter adapter = getAdapter();
+                if (adapter instanceof ApplicationsAdapter)
+                    ((ApplicationsAdapter)adapter).setChildDrawingCacheEnabled(true);
 			}
 			mBgAlpha = 0;
 			isAnimating = true;
@@ -326,4 +342,13 @@ public class AllAppsGridView extends GridView implements
 			((ApplicationsAdapter) getAdapter()).updateDataSet();
 		}
 	}
+
+	public void setAdapter(ApplicationsAdapter adapter) {
+		setAdapter((ListAdapter)adapter);
+	}
+
+	public void setNumRows(int numRows) {}
+
+	public void setPageHorizontalMargin(int margin) {}
+
 }

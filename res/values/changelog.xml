@@ -5,14 +5,16 @@
 -&lt;b>NOTICE:&lt;/b> To enable ORIENTATION, disable PERSISTENCE.&lt;br>&lt;br>
 -&lt;b>REMEMBER:&lt;/b> You can hide apps from the drawer by using the custom catalogs (press menu key while the drawer is open) &lt;br>&lt;br>
 
-&lt;b>Version 1.1.5:&lt;/b>&lt;br>
+&lt;b>Version 1.2.0:&lt;/b>&lt;br>
 &lt;b>--------------&lt;/b>&lt;br>
--Small layout change, ask your theme developers to update their themes!!!.&lt;br>
--Fixed some weird effects when removing apps from desktop.&lt;br>
--Desktop previews now fill the available space.&lt;br>
--Fix the "Crop" option for custom shortcuts.&lt;br>
--Update scrollable widgets API to r47.&lt;br>
--Translations&lt;br>
--Minor fixes&lt;br>
+-New option to show app drawer catalog navigation buttons when opening the app drawer &lt;br>
+-New global notification system to show \"unread counters\" on app icons. Currently other app developers must support it, like Touiteur does. &lt;br>
+-New functionality to dinamically resize already added widgets on the screen. Just longpress a widget and leave it on the original place. &lt;br>
+-Added compatibility with Motorola\'s Motoblur resizable widgets &lt;br>
+-Added custom Launcher Actions to the custom shortcuts. Now you can create shortcuts to launcher actions like opening the app drawer, showing the previews, etc &lt;br>
+-Support for unlimited custom app catalogs (previously limited to 4) &lt;br>
+-Inverted the app catalogs logic: Now new apps are not shown on all catalogs (sorry, you\'ll need to create your catalogs again) &lt;br>
+-Minor fixes and improvements here and there... &lt;br>
+
 </string>
 </resources>

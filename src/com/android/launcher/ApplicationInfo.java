@@ -27,7 +27,10 @@ import android.graphics.drawable.Drawable;
  * an intent and an icon.
  */
 public class ApplicationInfo extends ItemInfo {
-
+    /**
+     * The "unread counter" notification
+     */
+    public int counter;
     /**
      * The application name.
      */
@@ -78,6 +81,7 @@ public class ApplicationInfo extends ItemInfo {
         icon = info.icon;
         filtered = info.filtered;
         customIcon = info.customIcon;
+        counter=info.counter;
     }
 
     /**

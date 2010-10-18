@@ -3,6 +3,7 @@ package com.android.launcher;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -26,13 +27,27 @@ public class HolderLayout extends ViewGroup {
 	private int mIconSize=0;
 	private Paint mPaint;
 	private Paint mLabelPaint;
+	private int mBgAlpha=255;
 	private boolean shouldDrawLabels=false;
 	private int mAnimationDuration=800;
 	private boolean mDrawLabels=true;
 	private boolean mFadeDrawLabels=false;
 	private float mLabelFactor;
+	private long mCurrentTime;
+	private float mPorcentajeScale;
 	//ADW: listener to dispatch open/close animation events
 	private OnFadingListener mOnFadingListener;
+    private int distH;
+    private int distV;
+    private float x;
+    private float y;
+    private float width;
+    private float height;
+    private Rect rl1=new Rect();
+    private Rect rl2=new Rect();
+    private float scale;
+    private Rect r3=new Rect();
+    private int xx;
 	public HolderLayout(Context context) {
 		super(context);
 		// TODO Auto-generated constructor stub
@@ -157,46 +172,49 @@ public class HolderLayout extends ViewGroup {
 	 */
 	@Override
 	public void draw(Canvas canvas) {
-		long currentTime;
-		if(startTime==0){
-			startTime=SystemClock.uptimeMillis();
-			currentTime=0;
-		}else{
-			currentTime=SystemClock.uptimeMillis()-startTime;
-		}
-		if(mStatus==OPENING){
-			mScaleFactor=easeOut(currentTime, 3.0f, 1.0f, mAnimationDuration);
-			mLabelFactor=easeOut(currentTime, -1.0f, 1.0f, mAnimationDuration);
-		}else if (mStatus==CLOSING){
-			mScaleFactor=easeIn(currentTime, 1.0f, 3.0f, mAnimationDuration);
-			mLabelFactor=easeIn(currentTime, 1.0f, -1.0f, mAnimationDuration);
-		}
-		if(mLabelFactor<0)mLabelFactor=0;
-		int alpha=255;
-		if(isAnimating){
-			float porcentajeScale=1.0f-((mScaleFactor-1)/3.0f);
-			if(porcentajeScale>=0.9f)porcentajeScale=1f;
-			if(porcentajeScale<0)porcentajeScale=0;
-			alpha=(int)(porcentajeScale*255);
-			dispatchFadingAlphaEvent(porcentajeScale);
-		}
-		if(currentTime>=mAnimationDuration){
-			isAnimating=false;
-			if(mStatus==OPENING){
-				mStatus=OPEN;
-				dispatchFadingEvent(OnFadingListener.OPEN);
-				dispatchFadingAlphaEvent(1.0f);
-			}else if(mStatus==CLOSING){
-				mStatus=CLOSED;
-				dispatchFadingEvent(OnFadingListener.CLOSE);
-			}
-		}
-		shouldDrawLabels=mFadeDrawLabels && mDrawLabels &&(mStatus==OPENING || mStatus==CLOSING);
-		mPaint.setAlpha(alpha);
-		if(mStatus!=CLOSED){
-			super.draw(canvas);
-		}
-
+        if (isAnimating) {
+            if (startTime == 0) {
+                startTime = SystemClock.uptimeMillis();
+                mCurrentTime = 0;
+            } else {
+                mCurrentTime = SystemClock.uptimeMillis() - startTime;
+            }
+            if (mStatus == OPENING) {
+                mScaleFactor = easeOut(mCurrentTime, 3.0f, 1.0f, mAnimationDuration);
+                mLabelFactor = easeOut(mCurrentTime, -1.0f, 1.0f, mAnimationDuration);
+            } else if (mStatus == CLOSING) {
+                mScaleFactor = easeIn(mCurrentTime, 1.0f, 3.0f, mAnimationDuration);
+                mLabelFactor = easeIn(mCurrentTime, 1.0f, -1.0f, mAnimationDuration);
+            }
+            if (mLabelFactor < 0)
+                mLabelFactor = 0;
+            if (mCurrentTime >= mAnimationDuration) {
+                isAnimating = false;
+                if (mStatus == OPENING) {
+                    mStatus = OPEN;
+                    dispatchFadingEvent(OnFadingListener.OPEN);
+                } else if (mStatus == CLOSING) {
+                    mStatus = CLOSED;
+                    dispatchFadingEvent(OnFadingListener.CLOSE);
+                }
+            }
+        }
+        if(mStatus!=CLOSED){
+            shouldDrawLabels = mFadeDrawLabels && mDrawLabels
+                    && (mStatus == OPENING || mStatus == CLOSING);
+            mPorcentajeScale = 1.0f;
+            if (isAnimating) {
+                mPorcentajeScale = 1.0f - ((mScaleFactor - 1) / 3.0f);
+                if (mPorcentajeScale > 0.9f)
+                    mPorcentajeScale = 1f;
+                if (mPorcentajeScale < 0)
+                    mPorcentajeScale = 0;
+                dispatchFadingAlphaEvent(mPorcentajeScale);
+                mBgAlpha = (int) (mPorcentajeScale * 255);
+            }
+            mPaint.setAlpha(mBgAlpha);
+            super.draw(canvas);
+        }
 	}
 
 	@Override
@@ -208,25 +226,25 @@ public class HolderLayout extends ViewGroup {
 		}
 		if(isAnimating){
 			postInvalidate();
-			float x;
-			float y;
-			int distH=(child.getLeft()+(child.getWidth()/2))-(getWidth()/2);
-			int distV=(child.getTop()+(child.getHeight()/2))-(getHeight()/2);
+			//float x;
+			//float y;
+			distH=(child.getLeft()+(child.getWidth()/2))-(getWidth()/2);
+			distV=(child.getTop()+(child.getHeight()/2))-(getHeight()/2);
 			x=child.getLeft()+(distH*(mScaleFactor-1))*(mScaleFactor);
 			y=child.getTop()+(distV*(mScaleFactor-1))*(mScaleFactor);
-			float width=child.getWidth()*mScaleFactor;
-			float height=(child.getHeight()-(child.getHeight()-mIconSize))*mScaleFactor;
+			width=child.getWidth()*mScaleFactor;
+			height=(child.getHeight()-(child.getHeight()-mIconSize))*mScaleFactor;
 			if(shouldDrawLabels)child.setDrawingCacheEnabled(true);
 			if(shouldDrawLabels && child.getDrawingCache()!=null){
 				//ADW: try to manually draw labels
-				Rect rl1=new Rect(0,mIconSize,child.getDrawingCache().getWidth(),child.getDrawingCache().getHeight());
-				Rect rl2=new Rect(child.getLeft(),child.getTop()+mIconSize,child.getLeft()+child.getDrawingCache().getWidth(),child.getTop()+child.getDrawingCache().getHeight());
+				rl1.set(0,mIconSize,child.getDrawingCache().getWidth(),child.getDrawingCache().getHeight());
+				rl2.set(child.getLeft(),child.getTop()+mIconSize,child.getLeft()+child.getDrawingCache().getWidth(),child.getTop()+child.getDrawingCache().getHeight());
 				mLabelPaint.setAlpha((int) (mLabelFactor*255));
 				canvas.drawBitmap(child.getDrawingCache(), rl1, rl2, mLabelPaint);
 			}
-			float scale=((width)/child.getWidth());
-			Rect r3 = tmp[1].getBounds();
-			int xx=(child.getWidth()/2)-(r3.width()/2);
+			scale=((width)/child.getWidth());
+			r3 = tmp[1].getBounds();
+			xx=(child.getWidth()/2)-(r3.width()/2);
 			canvas.save();
 			canvas.translate(x+xx, y+child.getPaddingTop());
 			canvas.scale(scale, scale);
@@ -245,7 +263,7 @@ public class HolderLayout extends ViewGroup {
 					canvas.restore();
 				}
 			}else{
-				Rect r3 = tmp[1].getBounds();
+				r3 = tmp[1].getBounds();
 				int xx=(child.getWidth()/2)-(r3.width()/2);
 				canvas.save();
 				canvas.translate(child.getLeft()+xx, child.getTop()+child.getPaddingTop());
@@ -263,11 +281,6 @@ public class HolderLayout extends ViewGroup {
 		if(mStatus!=OPENING){
 			mAnimationDuration=speed;
 			if(animate){
-				if(mFadeDrawLabels&&mDrawLabels){
-					for(int i=0;i<getChildCount();i++){
-						getChildAt(i).setDrawingCacheEnabled(true);
-					}
-				}
 				isAnimating=true;
 				mStatus=OPENING;
 			}else{

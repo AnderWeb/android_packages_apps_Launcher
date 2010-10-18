@@ -27,9 +27,9 @@ import android.graphics.RectF;
 import android.graphics.Paint;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.PorterDuff;
-import android.os.Vibrator;
 import android.os.SystemClock;
 import android.util.AttributeSet;
+import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +43,6 @@ import android.widget.FrameLayout;
 public class DragLayer extends FrameLayout implements DragController {
     private static final int SCROLL_DELAY = 600;
     private static final int SCROLL_ZONE = 20;
-    private static final int VIBRATE_DURATION = 35;
     private static final int ANIMATION_SCALE_UP_DURATION = 110;
 
     private static final boolean PROFILE_DRAWING_DURING_DRAG = false;
@@ -92,8 +91,6 @@ public class DragLayer extends FrameLayout implements DragController {
 
     private final Rect mRect = new Rect();
     private final int[] mDropCoordinates = new int[2];
-
-    private final Vibrator mVibrator = new Vibrator();
 
     // Faruq: utilize array list instead
     private ArrayList<DragListener> mListener = new ArrayList<DragListener>();
@@ -215,8 +212,24 @@ public class DragLayer extends FrameLayout implements DragController {
 	        mAnimationDuration = ANIMATION_SCALE_UP_DURATION;
 	        mAnimationState = ANIMATION_STATE_STARTING;
 	        mAnimationType = ANIMATION_TYPE_SCALE;
-	
-	        mDragBitmap = Bitmap.createBitmap(viewBitmap, 0, 0, width, height, scale, true);
+            try {
+    	        mDragBitmap = Bitmap.createBitmap(viewBitmap, 0, 0, width, height, scale, true);
+            } catch (OutOfMemoryError e) {
+                mDrawModeBitmap=false;
+                width = v.getWidth();
+                height = v.getHeight();
+                scaleFactor = v.getWidth();
+                scaleFactor = (scaleFactor + DRAG_SCALE) /scaleFactor;
+                mDrawWidth=(int) (v.getWidth()*scaleFactor);
+                mDrawHeight=(int) (v.getHeight()*scaleFactor);
+                mAnimationTo = 1.0f;
+                mAnimationFrom = 1.0f / scaleFactor;
+                mAnimationDuration = ANIMATION_SCALE_UP_DURATION;
+                mAnimationState = ANIMATION_STATE_STARTING;
+                mAnimationType = ANIMATION_TYPE_SCALE;
+                mBitmapOffsetX = (mDrawWidth-width) / 2;
+                mBitmapOffsetY = (mDrawHeight-height) / 2;
+            }            
 	        v.destroyDrawingCache();
 	        v.setWillNotCacheDrawing(willNotCache);
 	        v.setDrawingCacheBackgroundColor(color);
@@ -251,7 +264,8 @@ public class DragLayer extends FrameLayout implements DragController {
         mDragSource = source;
         mDragInfo = dragInfo;
 
-        mVibrator.vibrate(VIBRATE_DURATION);
+        performHapticFeedback(HapticFeedbackConstants.LONG_PRESS,
+                HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
 
         mEnteredRegion = false;
 

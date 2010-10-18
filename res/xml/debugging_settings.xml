@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceScreen
+	    android:key="debuggingPreferences"
+		android:title="DEBUGGING-FOO">
+		<CheckBoxPreference android:key="dbg_show_mem"
+			android:title="show memory usage" 
+			android:defaultValue="False"/>
+	</PreferenceScreen>
+</PreferenceScreen>

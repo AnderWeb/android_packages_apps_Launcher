@@ -16,7 +16,6 @@
 
 package com.android.launcher;
 
-import android.widget.TextView;
 import android.content.Context;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
@@ -32,7 +31,7 @@ import android.text.Layout;
  * because we want to make the bubble taller than the text and TextView's clip is
  * too aggressive.
  */
-public class BubbleTextView extends TextView {
+public class BubbleTextView extends CounterTextView {
     //private static final float CORNER_RADIUS = 8.0f;
     private static final float PADDING_H = 5.0f;
     private static final float PADDING_V = 1.0f;

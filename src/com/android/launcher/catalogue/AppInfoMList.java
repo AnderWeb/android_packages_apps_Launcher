@@ -19,40 +19,56 @@ package com.android.launcher.catalogue;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.android.launcher.ApplicationInfo;
+import com.android.launcher.LauncherModel;
+import com.android.launcher.R;
+import com.android.launcher.catalogue.AppCatalogueFilters.Catalogue;
+
 import android.app.ListActivity;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.content.SharedPreferences;
-import android.view.Window;
-import android.content.pm.ActivityInfo;
-import com.android.launcher.*;
-
-import com.android.launcher.R;
 
 public class AppInfoMList extends ListActivity implements
 		View.OnCreateContextMenuListener, View.OnClickListener,
 		DialogInterface.OnCancelListener {
 	private static final String TAG = "AppInfoMList";
 	private static final boolean DBG = true;
+	public static final String EXTRA_CATALOGUE_INDEX = "EXTRA_CATALOGUE_INDEX";
 
 	// Custom Adapter used for managing items in the list
 	private ApplicationListAdapter mAppInfoAdapter;
 	// list of task info
 	private ListView mAppInfoList;
-	
+
 	private Button mOkButton;
+	private Catalogue mCatalogue;
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Intent intent = getIntent();
+		int GroupIndex = intent.getIntExtra(EXTRA_CATALOGUE_INDEX,
+				AppCatalogueFilters.getInstance().getDrawerFilter().getCurrentFilterIndex());
+		mCatalogue = AppCatalogueFilters.getInstance().getCatalogue(GroupIndex);
+		if (mCatalogue == null) {
+			setResult(RESULT_CANCELED);
+			finish();
+			return;
+		}
+
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.app_group_conf_list);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,
@@ -77,7 +93,7 @@ public class AppInfoMList extends ListActivity implements
 				updateAppList(isChecked);
 			}
 		});
-		
+
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		updateAppList();
 	}
@@ -90,13 +106,13 @@ public class AppInfoMList extends ListActivity implements
 
 	/*
 	 * Method implementing functionality of buttons clicked
-	 * 
+	 *
 	 * @see android.view.View.OnClickListener#onClick(android.view.View)
 	 */
 	public void onClick(View v) {
 		if (v == mOkButton) {
 
-			SharedPreferences curAppGrp = AppGrpUtils.getCurAppGrp();
+			SharedPreferences curAppGrp = mCatalogue.getPreferences();
 			if (curAppGrp == null)
 				return;// should not go here.
 
@@ -107,8 +123,8 @@ public class AppInfoMList extends ListActivity implements
 				AppListInfo tempAppListInfo = (AppListInfo) adapter.getItem(i);
 				boolean checked = tempAppListInfo.checked;
 				//ADW: Change to only store hidden apps
-				if (!checked)
-					editor.putBoolean(tempAppListInfo.className, false);
+				if (checked)
+					editor.putBoolean(tempAppListInfo.className, true);
 				else
 					editor.remove(tempAppListInfo.className);
 
@@ -147,14 +163,14 @@ public class AppInfoMList extends ListActivity implements
 
 		TextView t = (TextView) findViewById(R.id.left_title_text);
 
-		AppGrpUtils.setTitleView(t);
+		mCatalogue.setTitleView(t);
 
-		SharedPreferences curAppGrp = AppGrpUtils.getCurAppGrp();
+		SharedPreferences curAppGrp = mCatalogue.getPreferences();
 
 		for (int i = 0; i < appInfos.size(); i++) {
 			AppListInfo tempAppListInfo = new AppListInfo();
 			/* get App info */
-			ApplicationInfo tempAppInfo = (ApplicationInfo) appInfos.get(i);
+			ApplicationInfo tempAppInfo = appInfos.get(i);
 
 			tempAppListInfo.className = tempAppInfo.intent.getComponent()
 					.flattenToString();
@@ -163,7 +179,7 @@ public class AppInfoMList extends ListActivity implements
 			tempAppListInfo.title = tempAppInfo.title.toString();
 			if (curAppGrp != null)
 				tempAppListInfo.checked = curAppGrp.getBoolean(
-						tempAppListInfo.className, true);
+						tempAppListInfo.className, false);
 			else
 				tempAppListInfo.checked = false;
 

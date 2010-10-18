@@ -16,6 +16,12 @@
 
 package com.android.launcher.catalogue;
 
+import java.util.ArrayList;
+
+import com.android.launcher.Launcher;
+import com.android.launcher.R;
+import com.android.launcher.Workspace;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.Log;
@@ -26,54 +32,41 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-import com.android.launcher.Launcher;
-import com.android.launcher.R;
-
 /**
  * Adapter showing the types of items that can be added to a {@link Workspace}.
  */
 public class AppGroupAdapter extends BaseAdapter {
 
     private final LayoutInflater mInflater;
-    
+
     private final ArrayList<ListItem> mItems = new ArrayList<ListItem>();
-    
-    public static final int APP_GROUP_0   = 0;
-    public static final int APP_GROUP_1   = 1;
-    public static final int APP_GROUP_2   = 2;
-    public static final int APP_GROUP_3   = 3;
-    public static final int APP_GROUP_4   = 4;
-    public static final int APP_GROUP_5   = 5;
-    public static final int APP_GROUP_ALL = 6;
-    public static final int APP_GROUP_CONFIG = 7;
-    public static final int APP_GROUP_ADD = 8;
+
+    public static final int APP_GROUP_ALL = -1;
+    public static final int APP_GROUP_CONFIG = -2;
+    public static final int APP_GROUP_ADD = -3;
     /**
      * Specific item in our list.
      */
     public class ListItem {
         public final CharSequence text;
         public final int actionTag;
-        
-        public ListItem(Resources res, int textResourceId, /*int imageResourceId,*/ int actionTag) {
+
+        public ListItem(Resources res, int textResourceId, int actionTag) {
             text = res.getString(textResourceId);
             this.actionTag = actionTag;
         }
-        public ListItem(Resources res, String textResource,/* int imageResourceId,*/ int actionTag) {
+        public ListItem(Resources res, String textResource, int actionTag) {
             text = textResource;
             this.actionTag = actionTag;
         }
 
     }
 
-	private void addListItem(Resources res, int i, int appGrp/*, int iconId*/)
+	private void addListItem(Resources res, AppCatalogueFilters.Catalogue catalogue)
 	{
-
-		String grpTitle = AppGrpUtils.getGrpTextFromDB(i);
-		if (null != grpTitle) {
-			mItems.add(new ListItem(res, grpTitle,
-						/*iconId, */appGrp));
+		String grpTitle = catalogue.getTitle();
+		if (grpTitle != null) {
+			mItems.add(new ListItem(res, grpTitle, catalogue.getIndex()));
 		}
 	}
 
@@ -81,18 +74,17 @@ public class AppGroupAdapter extends BaseAdapter {
         super();
 
         mInflater = (LayoutInflater) launcher.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        
+
         // Create default actions
         Resources res = launcher.getResources();
-        
-       mItems.add(new ListItem(res, R.string.AppGroupAdd, APP_GROUP_ADD));
-	
-		mItems.add(new ListItem(res, R.string.AppGroupAll,
-					/*R.drawable.app_grp_all,*/ APP_GROUP_ALL));
-		addListItem(res,0,APP_GROUP_0/*,R.drawable.app_grp_multi_media*/);
-		addListItem(res,1,APP_GROUP_1/*,R.drawable.app_grp_others*/);
-		addListItem(res,2,APP_GROUP_2/*,R.drawable.app_grp_tools*/);
-		addListItem(res,3,APP_GROUP_3/*,R.drawable.app_grp_business_tools*/);
+
+        mItems.add(new ListItem(res, R.string.AppGroupAdd, APP_GROUP_ADD));
+		mItems.add(new ListItem(res, R.string.AppGroupAll, APP_GROUP_ALL));
+
+		for(AppCatalogueFilters.Catalogue itm : AppCatalogueFilters.getInstance().getAllGroups()) {
+			addListItem(res, itm);
+		}
+
     }
 
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -121,5 +113,5 @@ public class AppGroupAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
-    
+
 }

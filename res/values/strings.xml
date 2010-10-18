@@ -56,6 +56,8 @@
     <string name="group_applications">Applications</string>
     <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all shortcuts -->
     <string name="group_shortcuts">Shortcuts</string>
+    <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all launcher actions -->
+    <string name="launcher_actions">Launcher Actions</string>
     <!-- Options in "Add to Home" dialog box; Title of the search gadget -->
     <string name="group_search">Search</string>
     <!-- Options in "Add to Home" dialog box; Title of the folder gadget -->
@@ -130,7 +132,7 @@
     <!-- Text to show user in place of a gadget when we can't display it properly -->
     <string name="gadget_error_text">Problem loading widget</string>
     <!-- ADW Version Information -->
-    <string name="adw_version">Version 1.1.5 System</string>
+    <string name="adw_version">Version 1.2.0 System</string>
     <!-- ADW Settings -->
     <string name="pref_label_settings">ADW Settings</string>
     <!-- Screen preferences -->
@@ -409,6 +411,7 @@
 	<string name="AppGroupAddError">"You Cannot have More Groups"</string>
 	<string name="rename_group_title">New Catalog</string>
 	<string name="rename_group_label">Catalog Name</string>
+	<string name="show_catalog">Show Catalog \"%s\"</string>
 	
 	<string name="pref_title_adw_restart">Restart ADW</string>
 	<string name="pref_summary_adw_restart">Close and restart ADW.Launcher</string>
@@ -417,4 +420,9 @@
 	
 	<string name="need_scrollable">The widget you want to add needs \'scrollable widgets support\' which is currently disabled.\nDo you want to enable it now?</string>
 	<string name="scrollable_api_required">This widget needs an updated version of ADW.Launcher.\nPlease update or contact widget developer</string>
+    
+    <string name="pref_title_drawer_navigate_catalogs">Catalogs navigation</string>
+    <string name="pref_summary_drawer_navigate_catalogs">Show app catalogs navigation buttons</string>
+    <string name="pref_title_notif_receiver">Show notifications</string>
+    <string name="pref_summary_notif_receiver">Enable the global notification counters</string>
 </resources>

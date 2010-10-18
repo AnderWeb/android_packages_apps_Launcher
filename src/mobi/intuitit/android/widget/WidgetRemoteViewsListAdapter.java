@@ -1,7 +1,9 @@
 package mobi.intuitit.android.widget;
 
 import mobi.intuitit.android.content.LauncherIntent;
+import android.content.AsyncQueryHandler;
 import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,23 +11,22 @@ import android.net.Uri;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 
 /**
- * 
+ *
  * @author Florian Sundermann
- * 
+ *
  */
-public class WidgetRemoteViewsListAdapter extends BaseAdapter {
-	
-    private BoundRemoteViews mRemoteViews = null;
-    private Context mContext;
-    private Intent mIntent;
+public class WidgetRemoteViewsListAdapter extends ScrollableBaseAdapter {
 
+    private BoundRemoteViews mRemoteViews = null;
+    private final Context mContext;
+    private Intent mIntent;
+    private final MyQueryHandler mAsyncQuery;
     ComponentName mAppWidgetProvider;
-    
+
     /**
-     * 
+     *
      * @param context
      *            remote context
      * @param c
@@ -44,38 +45,41 @@ public class WidgetRemoteViewsListAdapter extends BaseAdapter {
         mIntent = intent;
 
         mRemoteViews = (BoundRemoteViews)intent.getParcelableExtra(LauncherIntent.Extra.Scroll.EXTRA_ITEM_LAYOUT_REMOTEVIEWS);
-    	Cursor cursor = mContext.getContentResolver().query(Uri.parse(mIntent
-                .getStringExtra(LauncherIntent.Extra.Scroll.EXTRA_DATA_URI)), mIntent
-                .getStringArrayExtra(LauncherIntent.Extra.Scroll.EXTRA_PROJECTION), mIntent
-                .getStringExtra(LauncherIntent.Extra.Scroll.EXTRA_SELECTION), mIntent
-                .getStringArrayExtra(LauncherIntent.Extra.Scroll.EXTRA_SELECTION_ARGUMENTS),
-                mIntent.getStringExtra(LauncherIntent.Extra.Scroll.EXTRA_SORT_ORDER));
-    	mRemoteViews.setBindingCursor(cursor, mContext);
-        cursor.close();
+        mAsyncQuery=new MyQueryHandler(mContext.getContentResolver());
+        mHandler.post(mQueryDataRunnable);
+    }
+
+    public void updateFromIntent(Intent intent) {
+    	if (intent.hasExtra(LauncherIntent.Extra.Scroll.EXTRA_ITEM_LAYOUT_REMOTEVIEWS)) {
+    		if (mRemoteViews != null) {
+    			mRemoteViews.dropCache();
+    		}
+    		mIntent = intent;
+    		mRemoteViews = (BoundRemoteViews)intent.getParcelableExtra(LauncherIntent.Extra.Scroll.EXTRA_ITEM_LAYOUT_REMOTEVIEWS);
+            mHandler.post(mQueryDataRunnable);
+    	}
     }
 
     final Handler mHandler = new Handler();
 	// Create runnable for posting
 	final Runnable mQueryDataRunnable = new Runnable() {
 		public void run() {
-	    	Cursor cursor = mContext.getContentResolver().query(Uri.parse(mIntent
-	                .getStringExtra(LauncherIntent.Extra.Scroll.EXTRA_DATA_URI)), mIntent
-	                .getStringArrayExtra(LauncherIntent.Extra.Scroll.EXTRA_PROJECTION), mIntent
-	                .getStringExtra(LauncherIntent.Extra.Scroll.EXTRA_SELECTION), mIntent
-	                .getStringArrayExtra(LauncherIntent.Extra.Scroll.EXTRA_SELECTION_ARGUMENTS),
+	        android.util.Log.d("LAUNCHER","API v2 START QUERY");
+	        mAsyncQuery.startQuery(1, "cookie",
+	                Uri.parse(mIntent.getStringExtra(LauncherIntent.Extra.Scroll.EXTRA_DATA_URI)) ,
+	                mIntent.getStringArrayExtra(LauncherIntent.Extra.Scroll.EXTRA_PROJECTION),
+	                mIntent.getStringExtra(LauncherIntent.Extra.Scroll.EXTRA_SELECTION),
+	                mIntent.getStringArrayExtra(LauncherIntent.Extra.Scroll.EXTRA_SELECTION_ARGUMENTS),
 	                mIntent.getStringExtra(LauncherIntent.Extra.Scroll.EXTRA_SORT_ORDER));
-	    	mRemoteViews.setBindingCursor(cursor, mContext);
-	    	cursor.close();
-			System.gc();
-			notifyDataSetInvalidated();
+
 		}
 	};
-    
-    
+
+    @Override
     public synchronized void notifyToRegenerate() {
     	mHandler.post(mQueryDataRunnable);
     }
-    
+
     @Override
     public int getCount() {
     	return mRemoteViews.getCursorCacheSize();
@@ -100,5 +104,38 @@ public class WidgetRemoteViewsListAdapter extends BaseAdapter {
     	else
     		mRemoteViews.reapplyBinding(convertView);
     	return convertView;
+    }
+
+	@Override
+	public void dropCache(Context context) {
+		dropCache();
+	}
+
+	public void dropCache() {
+		mRemoteViews.dropCache();
+	}
+    /**
+     * AsyncQueryHandler helper class to do async queries
+     * instead of blocking the UI thread
+     * (yeah, don't know why but the runnable was not avoiding
+     * the UI lock
+     * @author adw
+     *
+     */
+    private class MyQueryHandler extends AsyncQueryHandler
+    {
+        public MyQueryHandler(ContentResolver cr) {
+            super(cr);
+        }
+
+        @Override
+		protected void onQueryComplete(int token, Object cookie,
+                Cursor cursor) {
+            super.onQueryComplete(token, cookie, cursor);
+            android.util.Log.d("LAUNCHER","API v2 QUERY COMPLETE");
+            mRemoteViews.setBindingCursor(cursor, mContext);
+            cursor.close();
+            notifyDataSetInvalidated();
+        }
     }
 }

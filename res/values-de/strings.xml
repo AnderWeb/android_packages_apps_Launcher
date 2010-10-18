@@ -30,6 +30,7 @@
     <string name="menu_item_add_item" msgid="6233177331075781114">"Zum Startbildschirm hinzufügen"</string>
     <string name="group_applications" msgid="4118484163419674240">"Anwendungen"</string>
     <string name="group_shortcuts" msgid="9133529424900391877">"Verknüpfungen"</string>
+    <string name="launcher_actions">Launcher Aktionen</string>
     <string name="group_search" msgid="5905328940867162196">"Suchen"</string>
     <string name="group_folder" msgid="5143593791798929193">"Neuer Ordner"</string>
     <string name="group_live_folders" msgid="2664945399140647217">"Ordner"</string>
@@ -333,15 +334,19 @@
     <string name="AppGroupDel">"Katalog löschen"</string>
     <string name="AppGroupDelLong">"Soll der aktuelle Katalog\nwirklich gelöscht werden?"</string>
     <string name="AppGroupChoose">"Katalog auswählen"</string>
-    <string name="AppGroupConfig">"Katalog anlegen"</string>
+    <string name="AppGroupConfig">"Katalog bearbeiten"</string>
     <string name="AppGroupRename">"Neuer Katalog"</string>
     <string name="AppGroupConfigError">"Dieser Katalog kann nicht angelegt werden"</string>
     <string name="AppGroupAddError">"Es konnte kein weiterer Katalog angelegt werden"</string>
     <string name="rename_group_title">Neuer Katalog</string>
     <string name="rename_group_label">Katalog-Name</string>
+    <string name="show_catalog">Katalog \"%s\" anzeigen</string>
 
     <string name="pref_title_adw_restart">ADW neu starten</string>
     <string name="pref_summary_adw_restart">Den ADW.Launcher schließen und neu starten</string>
     <string name="pref_title_adw_reset">ADW zurücksetzten</string>
     <string name="pref_summary_adw_reset">Einstellunegen des ADW.Launcher zurücksetzen und neu starten</string>
+    
+    <string name="need_scrollable">Das Widget das Sie hinzufügen wollen benötigt \'Scrollable Widget Unterstützung\'. Dies ist momentan deaktiviert.\nMöchten Sie es nun aktivieren?</string>	
+    <string name="scrollable_api_required">Das Widget benötigt eine neuere ADW.Launcher Version.\nBitte updaten Sie oder kontaktieren Sie den Widget Entwickler</string>
 </resources>

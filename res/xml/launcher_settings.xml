@@ -63,6 +63,10 @@
 		android:summary="@string/pref_summary_drawer_settings">
 		<PreferenceCategory
             android:title="@string/pref_title_drawer_preferencecategory">
+            <CheckBoxPreference android:title="@string/pref_title_drawer_navigate_catalogs"
+                android:defaultValue="@bool/config_drawer_navigate_catalogs"
+                android:summary="@string/pref_summary_drawer_navigate_catalogs"
+                android:key="drawer_navigate_catalogs" />
 			<CheckBoxPreference android:title="@string/pref_title_new_drawer"
 				android:defaultValue="@bool/config_drawerNew"
 				android:summary="@string/pref_summary_new_drawer"
@@ -147,6 +151,10 @@
 		android:key="systemPreferences"
 		android:title="@string/pref_title_system_preferences"
 		android:summary="@string/pref_summary_system_preferences">
+		<CheckBoxPreference android:title="@string/pref_title_notif_receiver"
+		    android:defaultValue="@bool/config_notif_receiver"
+		    android:summary="@string/pref_summary_notif_receiver"
+		    android:key="notif_receiver" />
 		<ListPreference
 		  android:key="homeBinding"
 		  android:title="@string/pref_title_home_button_binding"

@@ -5,14 +5,15 @@
 -&lt;b>AVISO:&lt;/b> para activar la ROTACIÓN, desactiva la PERSISTENCIA.&lt;br>&lt;br>
 -&lt;b>RECUERDA:&lt;/b> Puedes ocultar iconos de la lista de aplicaciones usando los catálogos personalizados (pulsa la tecla menú con la lista de aplicaciones abierta) &lt;br>&lt;br>
 
-&lt;b>Versión 1.1.5:&lt;/b>&lt;br>
+&lt;b>Version 1.2.0:&lt;/b>&lt;br>
 &lt;b>--------------&lt;/b>&lt;br>
--Pequeño cambio de diseño, pide a los desarrolladores de temas que los actualicen!!!.&lt;br>
--Arreglados algunos problemas al eliminar iconos del escritorio.&lt;br>
--La previsualización del escritorio usa toda la pantalla.&lt;br>
--Arreglada la opción "Recortar"para los iconos personalizados.&lt;br>
--Actualizada la API de widgets con scroll a r47.&lt;br>
--Traducciones&lt;br>
--Pequeños arreglos&lt;br>
+-Nueva opción para mostrar botones de cambio rápido de "grupos de aplicaciones" &lt;br>
+-Nuevo sistema global de notificaciones en los iconos. Actualmente otros desarrolladores de apps deben soportar dicha funcionalidad, como Touiteur. &lt;br>
+-Nuevo método de cambiar el tamaño de los widgets. Haz una pulsación larga sobre un widget y suéltalo en el mismo lugar donde estaba. &lt;br>
+-Compatibilidad con los widgets Motoblur de Motorola (solo si tienes un terminal Motorola) &lt;br>
+-Nuevas "Launcher Actions" para los iconos personalizados. Ahora puedes crear iconos para acciones del launcher como aprir la lista de apps, mostrar las previews, etc &lt;br>
+-Soporte para Grupos de apps ilimitados (anteriormente el máximo eran 4) &lt;br>
+-Inversión en la lógica de los grupos de apps: ahora las apps instaladas no aparecerán en todos los grupos (lo lamento, deberás crear tus grupos de nuevo) &lt;br>
+-Arreglos de fallos y ligeras optimizaciones aquí y allá &lt;br>
 </string>
 </resources>

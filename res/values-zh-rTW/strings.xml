@@ -346,4 +346,9 @@
 
 	<string name="need_scrollable">您想添加的“可滾動的”小工具目前已禁用。\n現在開啟？</string>
 	<string name="scrollable_api_required">此小工具需要更新您的ADW.Launcher。\n請及時更新或者聯繫小工具開發者</string>
+
+    <string name="pref_title_drawer_navigate_catalogs">目錄導航</string>
+    <string name="pref_summary_drawer_navigate_catalogs">顯示應用程式目錄導航按鈕</string>
+    <string name="pref_title_notif_receiver">顯示通知</string>
+    <string name="pref_summary_notif_receiver">啟用全域通知計數</string>
 </resources>

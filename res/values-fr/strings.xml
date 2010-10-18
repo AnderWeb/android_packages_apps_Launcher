@@ -409,12 +409,4 @@
 	<string name="pref_summary_adw_restart">Fermer et relancer ADW.Launcher</string>
 	<string name="pref_title_adw_reset">Remettre à zéro ADW</string>
 	<string name="pref_summary_adw_reset">Vider les préférences et relancer ADW.Launcher</string>
-	
-		<!-- unused old values -->
-	<!-- From here ... -->
-    <string name="pref_title_desktop_screens">Bureaux</string>
-    <string name="pref_summary_desktop_screens">Définir le nombre de bureaux à utiliser</string>
-    <string name="pref_dialog_desktop_screen">Définir le nombre de bureaux à utiliser</string>
-	
-	<!-- To here -->
 </resources>

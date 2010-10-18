@@ -29,16 +29,16 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView.OnItemClickListener;
 
 /**
- * 
+ *
  * @author Bo & Koxx
- * 
+ *
  */
 public abstract class WidgetSpace extends ViewGroup {
 
@@ -46,9 +46,9 @@ public abstract class WidgetSpace extends ViewGroup {
 
     private static final boolean LOGD = true;
 
-    private static final boolean CLEAR_DATA_CACHE = false;
+    private static final boolean CLEAR_DATA_CACHE = true;
 
-    private static final boolean FORCE_FREE_MEMORY = false;
+    private static final boolean FORCE_FREE_MEMORY = true;
 
     protected boolean mAllowLongPress;
 
@@ -74,7 +74,7 @@ public abstract class WidgetSpace extends ViewGroup {
     public abstract Activity getLauncherActivity();
 
     /**
-     * 
+     *
      */
     BroadcastReceiver mAnimationProvider = new BroadcastReceiver() {
 
@@ -130,7 +130,7 @@ public abstract class WidgetSpace extends ViewGroup {
         }
 
         /**
-         * 
+         *
          * @param widgetView
          * @param imgViewId
          * @param intent
@@ -149,7 +149,7 @@ public abstract class WidgetSpace extends ViewGroup {
             // Start animation
             try {
                 ImageView imgView = (ImageView) widgetView.findViewById(imgViewId);
-                AnimationDrawable ad = (AnimationDrawable) ((ImageView) imgView).getDrawable();
+                AnimationDrawable ad = (AnimationDrawable) (imgView).getDrawable();
 
                 if (ad == null)
                     return;
@@ -181,7 +181,7 @@ public abstract class WidgetSpace extends ViewGroup {
         }
 
         /**
-         * 
+         *
          * @param widgetView
          * @param viewId
          * @param intent
@@ -238,9 +238,9 @@ public abstract class WidgetSpace extends ViewGroup {
         }
 
         /**
-         * 
+         *
          * @author bo
-         * 
+         *
          */
         class TweenAnimListener implements AnimationListener {
 
@@ -279,7 +279,7 @@ public abstract class WidgetSpace extends ViewGroup {
 
     /**
      * Look for a widget in all screens
-     * 
+     *
      * @param appWidgetId
      * @return
      */
@@ -295,7 +295,7 @@ public abstract class WidgetSpace extends ViewGroup {
 
     /**
      * Find widget in a given screen
-     * 
+     *
      * @param screen
      * @param appWidgetId
      * @return
@@ -334,7 +334,8 @@ public abstract class WidgetSpace extends ViewGroup {
         int widgetId = -1;
         ContentObserver obs;
         Handler obsHandler;
-        BaseAdapter lvAdapter;
+        ScrollableBaseAdapter lvAdapter;
+        CharSequence key;
     }
 
     static HashMap<String, ScrollViewInfos> mScrollViewCursorInfos = new HashMap<String, ScrollViewInfos>();
@@ -353,8 +354,13 @@ public abstract class WidgetSpace extends ViewGroup {
         for (ScrollViewInfos item : mScrollViewCursorInfos.values()) {
             if (item.lv != null) {
                 if (CLEAR_DATA_CACHE) {
-                    if (item.lv.getAdapter() != null)
-                        ((WidgetListAdapter) item.lv.getAdapter()).clearDataCache();
+                	ListAdapter adapter = item.lv.getAdapter();
+                    if (adapter != null) {
+                    	if (adapter instanceof WidgetListAdapter)
+                    		((WidgetListAdapter)adapter).clearDataCache();
+                    	else if (adapter instanceof WidgetRemoteViewsListAdapter)
+                    		((WidgetRemoteViewsListAdapter)adapter).dropCache();
+                    }
                 }
                 item.lv.setAdapter(null);
             }
@@ -370,6 +376,52 @@ public abstract class WidgetSpace extends ViewGroup {
             System.gc();
         }
 
+        return false;
+    }
+    public synchronized boolean unbindWidgetScrollableId(int widgetId) {
+    	Log.d(TAG, "trying to completely unallocate widget ID="+widgetId);
+        CharSequence keyToDelete=null;
+    	for (ScrollViewInfos item : mScrollViewCursorInfos.values()) {
+        	Log.d(TAG, "Comparing widget ID="+item.widgetId);
+        	if (item.widgetId == widgetId){
+        		Log.d(TAG, "trying to completely unallocate widget stuff...");
+                AppWidgetHostView widgetView = findWidget(widgetId);
+                Log.d(TAG, "Widget view to KILL:"+widgetView);
+                Context remoteContext=null;
+                if (widgetView != null) {
+                	final String packageName = widgetView.getAppWidgetInfo().provider.getPackageName();
+                    try {
+						remoteContext = getContext().createPackageContext(
+						        packageName,
+						        Context.CONTEXT_IGNORE_SECURITY);
+					} catch (NameNotFoundException e) {
+						Log.e(TAG, "couldn't find widget id:"+widgetId);
+					}
+                }
+                if(remoteContext!=null)remoteContext=getContext();
+        		if(item.lv!=null){
+        			Log.d(TAG, "Trying to KILL the ListView...");
+                	if(item.lvAdapter!=null){
+                		item.lvAdapter.dropCache(remoteContext);
+                	}
+	        		item.lv.setAdapter(null);
+	                item.lv = null;
+        		}
+                remoteContext.getContentResolver().unregisterContentObserver(item.obs);
+                item.obsHandler = null;
+                item.obs = null;
+                keyToDelete=item.key;
+                item=null;
+                ListViewImageManager.getInstance().clearCacheForWidget(getContext(), widgetId);
+            }
+        }
+        if(keyToDelete!=null)mScrollViewCursorInfos.remove(keyToDelete);
+        ListViewImageManager.getInstance().unbindDrawables();
+
+        if (FORCE_FREE_MEMORY) {
+            System.gc();
+        }
+        Log.d(TAG, "AFTER REMOVING, Our Scrollable widgets array contains:"+mScrollViewCursorInfos.size());
         return false;
     }
 
@@ -428,7 +480,6 @@ public abstract class WidgetSpace extends ViewGroup {
 
         private synchronized String makeScrollable(Context context, Intent intent,
                 AppWidgetHostView widgetView) {
-
             // get the dummy view to replace
             final int dummyViewId = intent.getIntExtra(LauncherIntent.Extra.EXTRA_VIEW_ID, -1);
             if (dummyViewId <= 0)
@@ -487,28 +538,24 @@ public abstract class WidgetSpace extends ViewGroup {
                 String cursorDataUriString = intent
                         .getStringExtra(LauncherIntent.Extra.Scroll.EXTRA_DATA_URI);
                 ScrollViewInfos listViewInfos = mScrollViewCursorInfos.get(cursorDataUriString);
-
+                final boolean newListView = listViewInfos == null;
                 // new widget, initialize observer
-                if (listViewInfos == null) {
+                if (newListView) {
 
                     listViewInfos = new ScrollViewInfos();
 
-                    final BaseAdapter lvAdapter;
+                    final ScrollableBaseAdapter lvAdapter;
                     if (intent.hasExtra(LauncherIntent.Extra.Scroll.EXTRA_ITEM_LAYOUT_REMOTEVIEWS))
-                        lvAdapter = new WidgetRemoteViewsListAdapter(remoteContext, intent, 
+                        lvAdapter = new WidgetRemoteViewsListAdapter(remoteContext, intent,
                             appWidgetProvider, appWidgetId, dummyViewId);
                     else
                         lvAdapter = new WidgetListAdapter(remoteContext,
                             intent, appWidgetProvider, appWidgetId, dummyViewId);
-
                     // create listener for content Provider data modification
                     WidgetDataChangeListener widgetDataChangeListener = new WidgetDataChangeListener() {
                         @Override
                         public void onChange() {
-                             if (lvAdapter instanceof WidgetListAdapter)
-                                 ((WidgetListAdapter)lvAdapter).notifyToRegenerate();
-                             else if (lvAdapter instanceof WidgetRemoteViewsListAdapter)
-                            	 ((WidgetRemoteViewsListAdapter)lvAdapter).notifyToRegenerate();
+                             lvAdapter.notifyToRegenerate();
                         }
                     };
 
@@ -525,8 +572,11 @@ public abstract class WidgetSpace extends ViewGroup {
 
                     if (LOGD)
                         Log.d(TAG, "makeScrollable : recreate listview adapter");
-                } else if (LOGD) {
-                    Log.d(TAG, "makeScrollable : restore listview adapter");
+                } else {
+                	if (LOGD)
+                		Log.d(TAG, "makeScrollable : restore listview adapter");
+                	if (listViewInfos.lvAdapter instanceof WidgetRemoteViewsListAdapter)
+                		((WidgetRemoteViewsListAdapter)listViewInfos.lvAdapter).updateFromIntent(intent);
                 }
 
                 lv.setAdapter(listViewInfos.lvAdapter);
@@ -542,6 +592,7 @@ public abstract class WidgetSpace extends ViewGroup {
                 // store informations in static memory
                 listViewInfos.widgetId = appWidgetId;
                 listViewInfos.lv = lv;
+                listViewInfos.key=cursorDataUriString;
                 mScrollViewCursorInfos.put(cursorDataUriString, listViewInfos);
 
                 // force listview position if asked
@@ -550,17 +601,15 @@ public abstract class WidgetSpace extends ViewGroup {
                 if (position >= 0)
                     lv.setSelection(position);
 
-                if (CLEAR_DATA_CACHE) {
-                    if (listViewInfos.lvAdapter instanceof WidgetListAdapter)
-                        ((WidgetListAdapter)listViewInfos.lvAdapter).notifyToRegenerate();
-                    else if (listViewInfos.lvAdapter instanceof WidgetRemoteViewsListAdapter)
-                    	((WidgetRemoteViewsListAdapter)listViewInfos.lvAdapter).notifyToRegenerate();
+                if (!newListView && CLEAR_DATA_CACHE &&
+                		(listViewInfos.lvAdapter instanceof WidgetListAdapter)) {
+                    listViewInfos.lvAdapter.notifyToRegenerate();
                 }
 
                 if (FORCE_FREE_MEMORY) {
                     System.gc();
                 }
-
+                Log.d(TAG, "AFTER ADDING, Our Scrollable widgets array contains:"+mScrollViewCursorInfos.size());
                 return null;
             } catch (Exception e) {
                 return e.getMessage();
@@ -600,6 +649,8 @@ public abstract class WidgetSpace extends ViewGroup {
                     context.getContentResolver().unregisterContentObserver(listViewInfos.obs);
                     listViewInfos.obsHandler = null;
                     listViewInfos.obs = null;
+                    if (listViewInfos.lvAdapter != null)
+                    	listViewInfos.lvAdapter.dropCache(context);
                     mScrollViewCursorInfos.remove(cursorDataUriString);
                 }
                 return null;
@@ -608,8 +659,8 @@ public abstract class WidgetSpace extends ViewGroup {
                 return e.getMessage();
             }
         }
-        
-    
+
+
 
         class WidgetItemListener implements OnItemClickListener {
 
@@ -659,7 +710,7 @@ public abstract class WidgetSpace extends ViewGroup {
         }
 
         /**
-         * 
+         *
          * @param widgetView
          * @param dummyViewId
          * @return whether the dummy view is replaced by listview
@@ -675,7 +726,7 @@ public abstract class WidgetSpace extends ViewGroup {
         }
 
         /**
-         * 
+         *
          * @param vg
          * @param id
          * @param replacement
@@ -739,7 +790,7 @@ public abstract class WidgetSpace extends ViewGroup {
 
     /**
      * So en exception in unregistering last receiver will not bypass the second one
-     * 
+     *
      * @param context
      * @param receiver
      */
@@ -752,13 +803,15 @@ public abstract class WidgetSpace extends ViewGroup {
     }
 
     /**
-     * 
+     *
      * @author bo
-     * 
+     *
      */
     class AnimationException extends Exception {
 
-        public String mAction;
+		private static final long serialVersionUID = 5532638962504199766L;
+
+		public String mAction;
 
         AnimationException(String action, String msg) {
             super(msg);

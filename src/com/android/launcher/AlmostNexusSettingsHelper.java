@@ -16,11 +16,11 @@ public final class AlmostNexusSettingsHelper {
 	public static final int ORIENTATION_SENSOR=1;
 	public static final int ORIENTATION_PORTRAIT=2;
 	public static final int ORIENTATION_LANDSCAPE=3;
-	
+
 	public static final int CACHE_LOW=1;
 	public static final int CACHE_AUTO=2;
 	public static final int CACHE_DISABLED=3;
-	
+
 	private static final String ALMOSTNEXUS_PREFERENCES = "launcher.preferences.almostnexus";
 	private static final String[] restart_keys={"drawerNew","uiHideLabels","highlights_color",
 		"highlights_color_focus","uiNewSelectors","desktopRows","desktopColumns","autosizeIcons","uiDesktopIndicatorType",
@@ -161,7 +161,7 @@ public final class AlmostNexusSettingsHelper {
 	public static float getuiScaleAB(Context context) {
 		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
 		int newD = sp.getInt("uiScaleAB", context.getResources().getInteger(R.integer.config_uiScaleAB))+1;
-		float scale=(float)newD/10f;
+		float scale=newD/10f;
 		return scale;
 	}
 	public static boolean getUIHideLabels(Context context) {
@@ -363,7 +363,7 @@ public final class AlmostNexusSettingsHelper {
 		editor.putInt("defaultScreen", screens);
 	    editor.commit();
 	}
-	
+
 	public static int getCurrentAppCatalog(Context context) {
 		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
 		int newD = sp.getInt("currentAppCatalog", -1);
@@ -375,7 +375,7 @@ public final class AlmostNexusSettingsHelper {
 		editor.putInt("currentAppCatalog", group);
 	    editor.commit();
 	}
-	
+
 	public static void setChangelogVersion(Context context,String version) {
 		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
 	    SharedPreferences.Editor editor = sp.edit();
@@ -408,7 +408,7 @@ public final class AlmostNexusSettingsHelper {
 
 			String aboutTitle = String.format("%s Changelog", context.getString(R.string.adw_version));
 			Spanned aboutText = Html.fromHtml(context.getString(R.string.adw_changelog, TextView.BufferType.SPANNABLE));
-			
+
 			// Set up the holder scrollview
 			ScrollView mainView=new ScrollView(context);
 			// Set up the TextView
@@ -420,10 +420,26 @@ public final class AlmostNexusSettingsHelper {
 			// Set some padding
 			message.setPadding(5, 5, 5, 5);
 			// Set up the final string
-			message.setText(aboutText);			
+			message.setText(aboutText);
 
 			return new AlertDialog.Builder(context).setTitle(aboutTitle).setCancelable(true).setIcon(R.drawable.ic_launcher_home).setPositiveButton(
 				 context.getString(android.R.string.ok), null).setView(mainView).create();
 		}
-	}	
+	}
+
+	public static boolean getDebugShowMemUsage(Context context) {
+		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
+		boolean newD = sp.getBoolean("dbg_show_mem", false);
+		return newD;
+	}
+	public static boolean getDrawerCatalogsNavigation(Context context) {
+	    SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
+	    boolean newD = sp.getBoolean("drawer_navigate_catalogs", context.getResources().getBoolean(R.bool.config_drawer_navigate_catalogs));
+	    return newD;
+	}
+	public static boolean getNotifReceiver(Context context) {
+	    SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
+	    boolean newD = sp.getBoolean("notif_receiver", context.getResources().getBoolean(R.bool.config_notif_receiver));
+	    return newD;
+	}
 }

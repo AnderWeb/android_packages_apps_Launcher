@@ -16,7 +16,10 @@
 
 package com.android.launcher;
 
+import static android.util.Log.d;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -492,5 +495,30 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
 	}
 	public void setDragger(DragController dragger) {
 		mDragger=dragger;
+	}
+	public void updateCounters(String packageName, int counter){
+        final int count=getChildCount();
+	    for(int i=0;i<count;i++){
+            final View view=getChildAt(i);
+            final Object tag = view.getTag();
+            if (tag instanceof ApplicationInfo) {
+	            ApplicationInfo info = (ApplicationInfo) tag;
+	            // We need to check for ACTION_MAIN otherwise getComponent() might
+	            // return null for some shortcuts (for instance, for shortcuts to
+	            // web pages.)
+	            final Intent intent = info.intent;
+	            final ComponentName name = intent.getComponent();
+	            if (info.itemType == LauncherSettings.Favorites.ITEM_TYPE_APPLICATION &&
+	                Intent.ACTION_MAIN.equals(intent.getAction()) && name != null &&
+	                packageName.equals(name.getPackageName())) {
+	                if(view instanceof CounterImageView)
+	                    ((CounterImageView) view).setCounter(counter);
+	                //else if
+	                view.invalidate();
+	                Launcher.getModel().updateCounterDesktopItem(info, counter);
+	            }
+	        }
+	        
+	    }
 	}
 }

@@ -338,4 +338,9 @@
     
     <string name="need_scrollable">Este widget necesita \'Soporte widget con scroll\' pero lo tienes desactivado.\n¿Deseas activarlo ahora?</string>
     <string name="scrollable_api_required">Este widget necesita una versión más reciente de ADW.Launcher.\nPor favor actualiza o contacta con el desarrollador del widget.</string>
+
+    <string name="pref_title_drawer_navigate_catalogs">Navegación de Grupos</string>
+    <string name="pref_summary_drawer_navigate_catalogs">Mostrar botones para navegar por los grupos</string>
+    <string name="pref_title_notif_receiver">Mostrar Notificaciones</string>
+    <string name="pref_summary_notif_receiver">Activa las notificaciones globales para otras aplicaciones</string>
 </resources>
