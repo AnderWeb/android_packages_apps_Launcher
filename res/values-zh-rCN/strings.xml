@@ -347,4 +347,9 @@
 	
 	<string name="need_scrollable">您想添加的“可滚动的”小工具目前已禁用。\n现在开启？</string>
 	<string name="scrollable_api_required">此小工具需要更新您的ADW主界面。\n请及时更新或者联系小工具开发者</string>
+
+    <string name="pref_title_drawer_navigate_catalogs">目录导航</string>
+    <string name="pref_summary_drawer_navigate_catalogs">显示应用程序目录导航按钮</string>
+    <string name="pref_title_notif_receiver">显示通知</string>
+    <string name="pref_summary_notif_receiver">启用全局通知计数</string>
 </resources>
