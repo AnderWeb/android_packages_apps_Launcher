@@ -30,6 +30,7 @@
     <string name="menu_item_add_item" msgid="6233177331075781114">"ホーム画面に追加"</string>
     <string name="group_applications" msgid="4118484163419674240">"アプリケーション"</string>
     <string name="group_shortcuts" msgid="9133529424900391877">"ショートカット"</string>
+    <string name="launcher_actions">"ランチャーアクション"</string>
     <string name="group_search" msgid="5905328940867162196">"検索"</string>
     <string name="group_folder" msgid="5143593791798929193">"新しいフォルダ"</string>
     <string name="group_live_folders" msgid="2664945399140647217">"フォルダ"</string>
@@ -202,6 +203,9 @@
     <string name="pref_dialog_message_color_picker">中央をタップして確定\n戻るボタンでキャンセル</string>
     <string name="pref_dialog_color_picker_alpha">不透明度</string>
     <string name="drop_to_uninstall">ドロップしてアンインストール</string>
+    <string name="toast_widgets_not_supported">ウィジェットはサポートしてません...ゴメン :-)</string>
+    <string name="toast_unknown_item">不明なアイテムです。 不明なアイテムは追加できません :-)</string>
+    <string name="toast_no_application_def">アプリケーションはなにも定義されてません。何かここにドロップしてください :)</string>
     <string name="pref_message_restart_normal">この設定を変更するとランチャーは再起動されます。</string>
     <string name="pref_message_restart_froyo">この設定を変更するとランチャーは再起動されます。</string>
 
@@ -330,20 +334,28 @@
 
 	<string name="selectAll">すべて選択</string>
 	<string name="AppGroupAll">"すべて"</string>
-	<string name="AppGroupAdd">"新規カタログ"</string>
-	<string name="AppGroupDel">"カタログを削除"</string>
-    <string name="AppGroupDelLong">"現在のカタログを\n本当に削除しますか?"</string>
+	<string name="AppGroupAdd">"新規グループ"</string>
+	<string name="AppGroupDel">"グループを削除"</string>
+    <string name="AppGroupDelLong">"現在のグループを\n本当に削除しますか?"</string>
 	<string name="AppGroupChoose">"グループを選択"</string>
 	<string name="AppGroupConfig">"グループを設定"</string>
-	<string name="AppGroupRename">"新しいカタログ"</string>
+	<string name="AppGroupRename">"新しいグループ"</string>
 	<string name="AppGroupConfigError">"このグループは設定できません"</string>
 	<string name="AppGroupAddError">"これ以上グループを追加できません"</string>
-	<string name="rename_group_title">新しいカタログ</string>
-	<string name="rename_group_label">カタログ名</string>
-	
+	<string name="rename_group_title">新しいグループ</string>
+	<string name="rename_group_label">グループ名</string>
+	<string name="show_catalog">グループを表示 \"%s\"</string>
+
 	<string name="pref_title_adw_restart">ADWの再起動</string>
 	<string name="pref_summary_adw_restart">ADW.Launcherを終了し、再起動します。</string>
-	<string name="pref_title_adw_reset">ADWをリセット</string>
-	<string name="pref_summary_adw_reset">ADW.Launcherの設定を削除し、再起動します。</string>
-	
+    <string name="pref_title_adw_reset">ADWをリセット</string>
+    <string name="pref_summary_adw_reset">ADW.Launcherの設定を削除し、再起動します。</string>
+
+    <string name="need_scrollable">追加しようとしているウィジェットは \'スクロールウィジェット\' を有効にする必要があります。\n現在これは無効になっていますが、今すぐ有効にしますか？</string>
+    <string name="scrollable_api_required">このウィジェットは更新されたADW.Launcherが必要です。\n更新するか、ウィジェットの開発者にお問い合せください。</string>
+
+    <string name="pref_title_drawer_navigate_catalogs">グループナビゲーション</string>
+    <string name="pref_summary_drawer_navigate_catalogs">アプリケーショングループをナビゲートするボタンを表示する</string>
+    <string name="pref_title_notif_receiver">通知を表示</string>
+    <string name="pref_summary_notif_receiver">グローバル通知カウンタを有効にする</string>
 </resources>
