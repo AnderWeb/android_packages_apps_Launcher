@@ -56,6 +56,8 @@
     <string name="group_applications">Приложения</string>
     <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all shortcuts -->
     <string name="group_shortcuts">Ярлыки</string>
+    <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all launcher actions -->
+    <string name="launcher_actions">Действия приложений</string>
     <!-- Options in "Add to Home" dialog box; Title of the search gadget -->
     <string name="group_search">Поиск</string>
     <!-- Options in "Add to Home" dialog box; Title of the folder gadget -->
@@ -356,12 +358,12 @@
     <string name="pref_title_system_persistent">ADW постоянно в памяти</string>
     <string name="pref_summary_system_persistent">Запретить выгружать ADW из памяти</string>
 <!-- new variables from 2010-09-22 by CfYz -->
-  <string name="adw_version">Версия 1.1.5 Системная</string>
+  <string name="adw_version">Версия 1.2.0 (системная)</string>
 
   <string name="pref_title_closing_folder">Закрывать папки</string>
   <string name="pref_summary_closing_folder">Автоматически закрывать папку после запуска приложения</string>
 
-  <string name="toast_widgets_not_supported">Виджеты не поддерживаются... извините :-)</string>
+  <string name="toast_widgets_not_supported">Виджеты не поддерживаются, извините :-)</string>
   <string name="toast_unknown_item">Неизвестный элемент. Мы не может добавить неизвестный тип элемента :-)</string>
   <string name="toast_no_application_def">Не назначено ни одного приложения, перетащите сюда что-нибудь! :)</string>
 
@@ -394,7 +396,7 @@
 	<string name="shirtcut_label">Надпись</string>
 	<string name="shirtcuts_select_picture">Выбрать изображения</string>
 	<string name="shirtcuts_crop_picture">Выбрать и уменьшить изображение</string>
-	<string name="shirtcuts_icon_packs">ADWTheme IconPacks</string>
+	<string name="shirtcuts_icon_packs">Иконки тем для ADW</string>
 	<string name="shirtcuts_select_icon_type">Выбрать тип иконки</string>
 	<string name="shirtcuts_select_icon_pack">Выбрать пак иконок</string>
 
@@ -410,6 +412,7 @@
 	<string name="AppGroupAddError">"Вы не можете создать больше папок"</string>
 	<string name="rename_group_title">Новая папка</string>
 	<string name="rename_group_label">Имя папки</string>
+	<string name="show_catalog">Показывать папку \"%s\"</string>
 	
 	<string name="pref_title_adw_restart">Перезапуск ADW</string>
 	<string name="pref_summary_adw_restart">Закрыть и перезапустить ADW Launcher</string>
@@ -419,4 +422,8 @@
 	<string name="need_scrollable">Виджет который Вы хотите добавить требует поддержки прокрутки для виджетов, которая в данный момент отключена.\nХотите включить поддержку прокрутки?</string>
 	<string name="scrollable_api_required">Этот виджет требует новую версию ADW.\nОбновите приложение, либо свяжитесь с разработчиком виджета.</string>
 
+    <string name="pref_title_drawer_navigate_catalogs">Навигация папок</string>
+    <string name="pref_summary_drawer_navigate_catalogs">Отображать кнопки навигации по папкам</string>
+    <string name="pref_title_notif_receiver">Показывать уведомления</string>
+    <string name="pref_summary_notif_receiver">Включить глобальные счетчики уведомлений</string>
 </resources>
