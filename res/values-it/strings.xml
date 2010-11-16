@@ -83,8 +83,8 @@
     <string name="pref_summary_default_screen">Seleziona la schermata di default</string>
     <string name="pref_dialog_default_screen">Seleziona la schermata di default</string>
 
-    <string name="pref_title_desktop_scrolling_speed">Velocità di Scrolling del Desktop</string>
-    <string name="pref_summary_desktop_scrolling_speed">Setta la velocità usata per cambiare schermata</string>
+    <string name="pref_title_desktop_scrolling_speed">Velocità di Scrolling</string>
+    <string name="pref_summary_desktop_scrolling_speed">Imposta la velocità usata per cambiare schermata</string>
     <string name="pref_dialog_desktop_scrolling_speed">Più basso è il valore, più sarà veloce</string>
 
     <string name="pref_title_desktop_overshoot">Overshoot del Desktop</string>
@@ -145,7 +145,7 @@
     <string name="pref_title_swipedown_actions">Azione Swipe-Down</string>
     <string name="pref_summary_swipedown_actions">Seleziona l\'azione da associare alla gesture Swipe-Down</string>
 
-    <string name="pref_title_swipeup_actions">Azione Swipe-Down</string>
+    <string name="pref_title_swipeup_actions">Azione Swipe-Up</string>
     <string name="pref_summary_swipeup_actions">Seleziona l\'azione da associare alla gesture Swipe-Up</string>
 
     <string name="pref_title_desktop_dots">Punti sul desktop</string>
