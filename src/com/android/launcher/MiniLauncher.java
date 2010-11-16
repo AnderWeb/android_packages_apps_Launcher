@@ -508,7 +508,8 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
 	            // web pages.)
 	            final Intent intent = info.intent;
 	            final ComponentName name = intent.getComponent();
-	            if (info.itemType == LauncherSettings.Favorites.ITEM_TYPE_APPLICATION &&
+	            if ((info.itemType==LauncherSettings.Favorites.ITEM_TYPE_APPLICATION||
+	                    info.itemType==LauncherSettings.Favorites.ITEM_TYPE_SHORTCUT) &&
 	                Intent.ACTION_MAIN.equals(intent.getAction()) && name != null &&
 	                packageName.equals(name.getPackageName())) {
 	                if(view instanceof CounterImageView)

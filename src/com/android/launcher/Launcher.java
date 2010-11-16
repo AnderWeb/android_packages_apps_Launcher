@@ -72,6 +72,7 @@ import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
@@ -3297,11 +3298,15 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 	    	WindowManager.LayoutParams attrs = getWindow().getAttributes();
 	    	attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
 	    	getWindow().setAttributes(attrs);
+	    	getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+	    	hideStatusBar=true;
     	}else{
 	    	// go non-full screen
 	    	WindowManager.LayoutParams attrs = getWindow().getAttributes();
 	    	attrs.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	    	getWindow().setAttributes(attrs);
+	    	getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+	    	hideStatusBar=false;
     	}
     }
     private void hideDesktop(boolean enable){
@@ -3518,7 +3523,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 	public void onWindowFocusChanged(boolean hasFocus) {
 		// TODO Auto-generated method stub
     	super.onWindowFocusChanged(hasFocus);
-		if(mShouldHideStatusbaronFocus && hideStatusBar && hasFocus){
+		if(mShouldHideStatusbaronFocus && hasFocus){
 			fullScreen(true);
 			mShouldHideStatusbaronFocus=false;
 		}
@@ -3629,12 +3634,16 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         }
     }
     public void setWindowBackground(boolean lwp){
-    	if(!lwp){
-    		getWindow().setBackgroundDrawable(new ColorDrawable(0xFF000000));
-    	}else{
-    		getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    	}
-
+        wallpaperHack=lwp;
+        if(!lwp){
+            getWindow().setBackgroundDrawable(null);
+            getWindow().setFormat(PixelFormat.OPAQUE);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SHOW_WALLPAPER);
+        }else{
+            getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            getWindow().setFormat(PixelFormat.TRANSPARENT);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WALLPAPER);
+        }
     }
     private boolean shouldRestart(){
         try {
@@ -3780,13 +3789,11 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 		case BIND_STATUSBAR:
 			WindowManager.LayoutParams attrs = getWindow().getAttributes();
 	    	if((attrs.flags & WindowManager.LayoutParams.FLAG_FULLSCREEN) == WindowManager.LayoutParams.FLAG_FULLSCREEN){
-		    	// go non-full screen
-		    	attrs.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		    	getWindow().setAttributes(attrs);
+	    	    //go non-full screen
+	    	    fullScreen(false);
 	    	}else{
-		    	// go full screen
-		    	attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
-		    	getWindow().setAttributes(attrs);
+	    	    //go full screen
+	    	    fullScreen(true);
 	    	}
 			break;
 		case BIND_NOTIFICATIONS:

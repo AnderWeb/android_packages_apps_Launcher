@@ -1639,7 +1639,8 @@ public class LauncherModel {
                 final Intent intent = info.intent;
                 final ComponentName name = intent.getComponent();
                 if (info.itemType == LauncherSettings.Favorites.ITEM_TYPE_APPLICATION &&
-                        packageName.equals(name.getPackageName())) {
+                        packageName.equals(name.getPackageName()) &&
+                        info.counter!=counter) {
                     info.counter=counter;
                     changed=true;
                 }

@@ -17,4 +17,42 @@
                 <item>полоска вверху</item>
                 <item>полоска внизу</item>
        </string-array>
+       <string-array name="home_orientation_entries">
+                <item>Авто/датчик</item>
+                <item>Книжная</item>
+                <item>Альбомная</item>
+       </string-array>
+       <string-array name="screen_cache_entries">
+                <item>Низкое качество</item>
+                <item>Автоматически</item>
+                <item>Отключить</item>
+       </string-array>
+       <!-- Do not translate. -->
+       <string-array name="menu_binding_values">
+       			<item>0</item>
+                <item>1</item>
+                <item>2</item>
+                <item>3</item>
+                <item>4</item>
+                <item>5</item>
+                <item>6</item>
+                <item>7</item>
+                <item>8</item>
+                <item>9</item>
+       </string-array>
+       <string-array name="desktop_indicator_values">
+                <item>1</item>
+                <item>2</item>
+                <item>3</item>
+       </string-array>
+       <string-array name="home_orientation_values">
+                <item>1</item>
+                <item>2</item>
+                <item>3</item>
+       </string-array>
+       <string-array name="screen_cache_values">
+                <item>1</item>
+                <item>2</item>
+                <item>3</item>
+       </string-array>
 </resources>
