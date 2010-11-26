@@ -143,6 +143,7 @@ class LauncherSettings {
         static final int CONTAINER_RAB = -400;
         static final int CONTAINER_LAB2 = -500;
         static final int CONTAINER_RAB2 = -600;
+        static final int CONTAINER_MAB = -700;
         /**
          * The screen holding the favorite (if container is CONTAINER_DESKTOP)
          * <P>Type: INTEGER</P>

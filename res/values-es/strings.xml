@@ -35,10 +35,6 @@
     <string name="group_live_folders" msgid="2664945399140647217">"Carpetas"</string>
     <string name="group_widgets" msgid="6704978494073105844">"Widgets"</string>
     <string name="group_wallpapers" msgid="1568191644272224858">"Fondos de pantalla"</string>
-    <string name="add_folder" msgid="3521088587367839879">"Carpeta"</string>
-    <string name="add_clock" msgid="2337943840175865746">"Reloj"</string>
-    <string name="add_photo_frame" msgid="3154058437359487954">"Picture frame"</string>
-    <string name="add_search" msgid="7104834713685095105">"Búsqueda de Google"</string>
     <string name="out_of_space" msgid="8365249326091984698">"No queda espacio en esta pantalla de página principal."</string>
     <string name="shortcut_installed" msgid="7071557296331322355">"Se ha creado el acceso directo \"<xliff:g id="NAME">%s</xliff:g>\"."</string>
     <string name="shortcut_uninstalled" msgid="2129499669449749995">"Se ha eliminado el acceso directo \"<xliff:g id="NAME">%s</xliff:g>\"."</string>
@@ -48,8 +44,6 @@
     <string name="menu_add" msgid="3065046628354640854">"Añadir"</string>
     <string name="menu_wallpaper" msgid="5837429080911269832">"Fondo de pantalla"</string>
     <string name="menu_search" msgid="4826514464423239041">"Buscar con Google"</string>
-    <string name="menu_notifications" msgid="6424587053194766192">"Notificaciones"</string>
-    <string name="menu_gestures" msgid="514678675575912237">"Gestos"</string>
     <string name="menu_settings" msgid="6233960148378443661">"Ajustes"</string>
     <string name="permlab_install_shortcut" msgid="1201690825493376489">"instalar accesos directos"</string>
     <string name="permdesc_install_shortcut" msgid="7429365847558984148">"Permite que una aplicación añada accesos directos sin intervención del usuario."</string>
@@ -59,7 +53,6 @@
     <string name="permdesc_read_settings" msgid="8377434937176025492">"Permite que una aplicación lea la información de configuración y accesos directos de la página principal."</string>
     <string name="permlab_write_settings" msgid="1360567537236705628">"escribir información de accesos directos y de configuración de la página principal"</string>
     <string name="permdesc_write_settings" msgid="1098648778383349818">"Permite que una aplicación modifique la configuración y los accesos directos de la página principal."</string>
-    <string name="search_hint" msgid="6974176141372467453">"Búsqueda de Google"</string>
     <string name="gadget_error_text" msgid="8359351016167075858">"Problema al cargar el widget"</string>
     <!-- ADW Settings -->
     <string name="pref_label_settings">ADW Settings</string>
@@ -77,8 +70,6 @@
     <string name="pref_summary_hide_statusbar">Oculta la barra de estado</string>
 
     <string name="pref_title_default_screen">Escritorio por defecto</string>
-    <string name="pref_summary_default_screen">Selecciona el escritorio por defecto</string>
-    <string name="pref_dialog_default_screen">Selecciona el escritorio por defecto</string>
 
     <string name="pref_title_desktop_scrolling_speed">Velocidad de desplazamiento</string>
     <string name="pref_summary_desktop_scrolling_speed">Selecciona la velocidad de desplazamiento entre escritorios</string>
@@ -95,9 +86,6 @@
     <string name="pref_title_zoom_effect_speed">Velocidad de animación</string>
     <string name="pref_summary_zoom_effect_speed">Elige el tiempo de la animación (en milisegundos)</string>
     <string name="pref_dialog_zoom_effect_speed">Elige el tiempo de la animación (en milisegundos)</string>
-
-    <string name="pref_title_new_drawer">Lista en horizontal</string>
-    <string name="pref_summary_new_drawer">Usar la implementación del Samsung Galaxy S</string>
 
     <string name="pref_title_animated_drawer">Usar animación</string>
     <string name="pref_summary_animated_drawer">Abrir la lista con una animación</string>
@@ -119,14 +107,9 @@
     <string name="pref_dialog_drawer_rows_landscape">Número de filas con el tlf en horizontal</string>
 
     <!-- Previews preferences -->
-    <string name="pref_title_previews_preferences">Previsualización</string>
-    <string name="pref_summary_previews_preferences">Configuración de la previsualización de escritorios</string>
 
     <string name="pref_title_sense_previews">Estilo Sense</string>
     <string name="pref_summary_sense_previews">Usa la previsualización tipo Sense</string>
-
-    <string name="pref_title_clean_screen_mode">Limpiar pantalla</string>
-    <string name="pref_summary_clean_screen_mode">Oculta los iconos/widgets al mostrar la previsualización</string>
 
     <!-- Button preferences -->
     <string name="pref_title_ui_settings">Interfaz</string>
@@ -144,24 +127,12 @@
     <string name="pref_title_closing_dockbar">Auto cerrar dockbar</string>
     <string name="pref_summary_closing_dockbar">Cierra el dockbar automáticamente al abrir una aplicación</string>
 
-    <string name="pref_title_lab">LAB</string>
-    <string name="pref_summary_lab">Activa/desactiva el botón "Left Action Button"</string>
-
-    <string name="pref_title_rab">RAB</string>
-    <string name="pref_summary_rab">Activa/desactiva el botón "Right Action Button"</string>
-
-    <string name="pref_title_tint_ab">Pintar Botones</string>
-    <string name="pref_summary_tint_ab">Activa/desactiva el "efecto tinte" en los Action Buttons</string>
-
     <string name="pref_title_ab_scale_factor">Tamaño AB</string>
     <string name="pref_summary_ab_scale_factor">Selecciona la escala de los iconos de los ActionButton</string>
     <string name="pref_dialog_ab_scale_factor">Selecciona la escala de los iconos de los ActionButton</string>
 
     <string name="pref_title_closing_folder">Auto cerrar carpetas</string>
     <string name="pref_summary_closing_folder">Cierra las carpetas tras abrir una app</string>
-
-    <string name="pref_title_hide_allapps_ab">Ocultar Fondo botón</string>
-    <string name="pref_summary_hide_allapps_ab">Oculta el fondo del botón que abre la lista de apps</string>
 
     <string name="pref_title_hide_ab_bg">Ocultar el fondo de AB</string>
     <string name="pref_summary_hide_ab_bg">Oculta el fondo de los Action Buttons</string>
@@ -171,9 +142,6 @@
 
     <string name="pref_title_build_info">Información de compilación</string>
     <string name="pref_title_adw_version">ADW Version</string>
-
-    <string name="pref_title_ab2">ActionButtons secundarios</string>
-    <string name="pref_summary_ab2">Activa/desactiva los Action Buttons secundarios (desactivar Paginador)</string>
 
     <string name="pref_title_page_horizontal_margin">Margen horizontal</string>
     <string name="pref_summary_page_horizontal_margin">Margen horizontal entre las páginas de aplicaciones</string>
@@ -275,7 +243,6 @@
     <!-- Category titles -->
     <string name="pref_title_system_preferences">Preferencias de Sistema</string>
     <string name="pref_summary_system_preferences">Preferencias generales de sistema de ADW.Launcher</string>
-    <string name="pref_title_screens_preferencecategory">Pantallas</string>
     <string name="pref_title_screens_layout_preferencecategory">Distribución</string>
     <string name="pref_title_screens_behaviour_preferencecategory">Comportamiento</string>
     <string name="pref_title_drawer_preferencecategory">Lista de aplicaciones</string>
@@ -308,7 +275,6 @@
 
     <string name="pref_label_shirtcuts">Icono personalizado</string>
     <string name="pref_label_activities">Actividades</string>
-    <string name="pref_label_activities_loading">Cargando lista...</string>
     <string name="shirtcut_header">Selecciona la actividad deseada.\nPuedes seleccionar un icono personalizado.</string>
     <string name="shirtcut_pick_activity">Seleccionar actividad</string>
     <string name="shirtcut_label">Etiqueta</string>
@@ -327,7 +293,6 @@
     <string name="AppGroupConfig">"Configurar grupo"</string>
     <string name="AppGroupRename">"Nuevo grupo"</string>
     <string name="AppGroupConfigError">"No puedes modificar este grupo"</string>
-    <string name="AppGroupAddError">"No puedes tener más grupos"</string>
     <string name="rename_group_title">Nuevo grupo</string>
     <string name="rename_group_label">Nombre</string>
 
@@ -343,4 +308,17 @@
     <string name="pref_summary_drawer_navigate_catalogs">Mostrar botones para navegar por los grupos</string>
     <string name="pref_title_notif_receiver">Mostrar Notificaciones</string>
     <string name="pref_summary_notif_receiver">Activa las notificaciones globales para otras aplicaciones</string>
+
+    <string name="pref_title_notif_size">Tamaño de notificación</string>
+    <string name="pref_summary_notif_size">Elige el tamaño de letra para las notificaciones</string>
+    <string name="pref_dialog_notif_size">Elige el tamaño de letra para las notificaciones</string>
+
+    <string name="pref_title_ab_preferencecategory">Barra principal</string>
+    <string name="pref_title_main_dock_style">Estilo barra principal</string>
+    <string name="pref_summary_main_dock_style">Elige el estilo para la barra de iconos principal</string>
+    <string name="pref_title_behaviour_preferences">Comportamiento general</string>
+    <string name="pref_summary_behaviour_preferences">Configuración general de comportamiento de la aplicación</string>
+    <string name="pref_title_drawer_style">Estilo</string>
+    <string name="pref_summary_drawer_style">Elige entre distintos estilos de lista de aplicaciones</string>
+
 </resources>

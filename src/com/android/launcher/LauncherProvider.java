@@ -61,7 +61,7 @@ public class LauncherProvider extends ContentProvider {
 
     private static final String DATABASE_NAME = "launcher.db";
     
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
 
     static final String AUTHORITY = "com.android.launcher.settings";
     
@@ -388,6 +388,54 @@ public class LauncherProvider extends ContentProvider {
                         ");");
                     db.setTransactionSuccessful();
                     version = 4;
+                } catch (SQLException ex) {
+                    // Old version remains, which means we wipe old data
+                    Log.e(LOG_TAG, ex.getMessage(), ex);
+                } finally {
+                    db.endTransaction();
+                }
+            }
+            if (version < 5) {
+                db.beginTransaction();
+                try {
+                    ComponentName c=new ComponentName(mContext, CustomShirtcutActivity.class);
+                    db.execSQL("INSERT INTO 'favorites'" +
+                            "("+LauncherSettings.Favorites.TITLE+","+
+                            LauncherSettings.Favorites.INTENT+","+
+                            LauncherSettings.Favorites.CONTAINER+","+
+                            LauncherSettings.Favorites.SCREEN+","+
+                            LauncherSettings.Favorites.CELLX+","+
+                            LauncherSettings.Favorites.CELLY+","+
+                            LauncherSettings.Favorites.SPANX+","+
+                            LauncherSettings.Favorites.SPANY+","+
+                            LauncherSettings.Favorites.ITEM_TYPE+","+
+                            LauncherSettings.Favorites.APPWIDGET_ID+","+
+                            LauncherSettings.Favorites.ICON_TYPE+","+
+                            LauncherSettings.Favorites.ICON_PACKAGE+","+
+                            LauncherSettings.Favorites.ICON_RESOURCE+","+
+                            LauncherSettings.Favorites.ICON+","+
+                            LauncherSettings.Favorites.URI+","+
+                            LauncherSettings.Favorites.DISPLAY_MODE+
+                            ")"+
+                            "VALUES(" +
+                            "'Apps'," +
+                            "'#Intent;action="+CustomShirtcutActivity.ACTION_LAUNCHERACTION+";component="+c.flattenToString()+";i.DefaultLauncherAction.EXTRA_BINDINGVALUE=4;end'," +
+                            LauncherSettings.Favorites.CONTAINER_MAB+"," +
+                            "-1," +
+                            "-1," +
+                            "-1," +
+                            "1," +
+                            "1," +
+                            "1," +
+                            "-1," +
+                            "0," +
+                            "'"+c.getPackageName()+"'," +
+                            "'"+c.getPackageName()+":drawable/all_apps_button'," +
+                            "NULL," +
+                            "NULL," +
+                            "NULL);");
+                    db.setTransactionSuccessful();
+                    version = 5;
                 } catch (SQLException ex) {
                     // Old version remains, which means we wipe old data
                     Log.e(LOG_TAG, ex.getMessage(), ex);

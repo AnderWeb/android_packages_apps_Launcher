@@ -692,6 +692,87 @@ public class LauncherModel {
         return label;
     }
 
+    static ApplicationInfo loadApplicationInfoById(Context context, long Id) {
+
+        final ContentResolver contentResolver = context.getContentResolver();
+        final PackageManager manager = context.getPackageManager();
+        final Cursor c = contentResolver.query(
+                LauncherSettings.Favorites.CONTENT_URI, null, null, null, null);
+        if (c == null)
+        	return null;
+        try
+        {
+	        c.moveToFirst();
+	        while(!c.isAfterLast())
+	        {
+	        	final int idIndex = c.getColumnIndexOrThrow(LauncherSettings.Favorites._ID);
+	        	final long id = c.getLong(idIndex);
+		        if (id == Id)
+		        {
+
+		            final int intentIndex = c.getColumnIndexOrThrow(LauncherSettings.Favorites.INTENT);
+		            final int titleIndex = c.getColumnIndexOrThrow(LauncherSettings.Favorites.TITLE);
+		            final int iconTypeIndex = c.getColumnIndexOrThrow(LauncherSettings.Favorites.ICON_TYPE);
+		            final int iconIndex = c.getColumnIndexOrThrow(LauncherSettings.Favorites.ICON);
+		            final int iconPackageIndex = c.getColumnIndexOrThrow(LauncherSettings.Favorites.ICON_PACKAGE);
+		            final int iconResourceIndex = c.getColumnIndexOrThrow(LauncherSettings.Favorites.ICON_RESOURCE);
+		            final int containerIndex = c.getColumnIndexOrThrow(LauncherSettings.Favorites.CONTAINER);
+		            final int itemTypeIndex = c.getColumnIndexOrThrow(LauncherSettings.Favorites.ITEM_TYPE);
+		            final int screenIndex = c.getColumnIndexOrThrow(LauncherSettings.Favorites.SCREEN);
+		            final int cellXIndex = c.getColumnIndexOrThrow(LauncherSettings.Favorites.CELLX);
+		            final int cellYIndex = c.getColumnIndexOrThrow(LauncherSettings.Favorites.CELLY);
+
+		            int container;
+		            Intent intent;
+
+		            final int itemType = c.getInt(itemTypeIndex);
+		            if (itemType == LauncherSettings.Favorites.ITEM_TYPE_APPLICATION ||
+		            	itemType == LauncherSettings.Favorites.ITEM_TYPE_SHORTCUT)
+		            {
+		            	String intentDescription = c.getString(intentIndex);
+		                try {
+		                    intent = Intent.parseUri(intentDescription, 0);
+		                } catch (java.net.URISyntaxException e) {
+		                    return null;
+		                }
+
+		                ApplicationInfo info;
+		                if (itemType == LauncherSettings.Favorites.ITEM_TYPE_APPLICATION) {
+		                    info = getApplicationInfo(manager, intent, context);
+		                } else {
+		                    info = getApplicationInfoShortcut(c, context, iconTypeIndex,
+		                            iconPackageIndex, iconResourceIndex, iconIndex);
+		                }
+
+		                if (info == null) {
+		                    info = new ApplicationInfo();
+		                    info.icon = manager.getDefaultActivityIcon();
+		                }
+
+		                if (info != null) {
+		                    info.title = c.getString(titleIndex);
+		                    info.intent = intent;
+
+		                    info.id = id;
+		                    container = c.getInt(containerIndex);
+		                    info.container = container;
+		                    info.screen = c.getInt(screenIndex);
+		                    info.cellX = c.getInt(cellXIndex);
+		                    info.cellY = c.getInt(cellYIndex);
+		                }
+		                return info;
+		            }
+		        }
+		        c.moveToNext();
+	        }
+        }
+        finally
+        {
+        	c.close();
+        }
+        return null;
+    }
+
     private class DesktopItemsLoader implements Runnable {
         private volatile boolean mStopped;
         private volatile boolean mFinished;
@@ -816,6 +897,7 @@ public class LauncherModel {
                                 case LauncherSettings.Favorites.CONTAINER_RAB:
                                 case LauncherSettings.Favorites.CONTAINER_LAB2:
                                 case LauncherSettings.Favorites.CONTAINER_RAB2:
+                                case LauncherSettings.Favorites.CONTAINER_MAB:
                                     desktopItems.add(info);
                                     break;
                                 default:
@@ -848,6 +930,7 @@ public class LauncherModel {
                                 case LauncherSettings.Favorites.CONTAINER_RAB:
                                 case LauncherSettings.Favorites.CONTAINER_LAB2:
                                 case LauncherSettings.Favorites.CONTAINER_RAB2:
+                                case LauncherSettings.Favorites.CONTAINER_MAB:
                                     desktopItems.add(folderInfo);
                                     break;
                             }
@@ -888,6 +971,7 @@ public class LauncherModel {
                                 case LauncherSettings.Favorites.CONTAINER_RAB:
                                 case LauncherSettings.Favorites.CONTAINER_LAB2:
                                 case LauncherSettings.Favorites.CONTAINER_RAB2:
+                                case LauncherSettings.Favorites.CONTAINER_MAB:
                                     desktopItems.add(liveFolderInfo);
                                     break;
                             }
@@ -1302,7 +1386,7 @@ public class LauncherModel {
     /**
      * Make an ApplicationInfo object for a shortcut
      */
-    private ApplicationInfo getApplicationInfoShortcut(Cursor c, Context context,
+    private static ApplicationInfo getApplicationInfoShortcut(Cursor c, Context context,
             int iconTypeIndex, int iconPackageIndex, int iconResourceIndex, int iconIndex) {
 
         final ApplicationInfo info = new ApplicationInfo();
@@ -1626,7 +1710,7 @@ public class LauncherModel {
         }
         return false;
     }
-    synchronized void updateCounterForPackage(Launcher launcher, String packageName, int counter) {
+    synchronized void updateCounterForPackage(Launcher launcher, String packageName, int counter, int color) {
         if (mApplicationsLoader != null && mApplicationsLoader.isRunning()) {
             startApplicationsLoaderLocked(launcher, false);
             return;
@@ -1642,16 +1726,18 @@ public class LauncherModel {
                         packageName.equals(name.getPackageName()) &&
                         info.counter!=counter) {
                     info.counter=counter;
+                    info.counterColor=color;
                     changed=true;
                 }
             }
         }
         if(changed)mApplicationsAdapter.notifyDataSetChanged();
     }
-    void updateCounterDesktopItem(ItemInfo info, int counter) {
+    void updateCounterDesktopItem(ItemInfo info, int counter, int color) {
         // TODO: write to DB; figure out if we should remove folder from folders list
         if(mDesktopItems.get(mDesktopItems.indexOf(info)) instanceof ApplicationInfo){
             ((ApplicationInfo)mDesktopItems.get(mDesktopItems.indexOf(info))).counter=counter;
+            ((ApplicationInfo)mDesktopItems.get(mDesktopItems.indexOf(info))).counterColor=color;
         }
     }
 }

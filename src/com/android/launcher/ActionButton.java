@@ -7,7 +7,11 @@ import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
+import android.view.HapticFeedbackConstants;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.GestureDetector.OnGestureListener;
 import android.widget.Toast;
 
 public class ActionButton extends CounterImageView implements DropTarget, DragListener {
@@ -17,10 +21,18 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
 	private Drawable bgResource;
 	private Drawable bgEmpty;
 	private Drawable mIconNormal;
+	private int mIconSpecial_id;
 	private Drawable mIconSpecial;
 	private boolean specialMode=false;
 	private boolean hiddenBg=false;
 	private int specialAction=0;
+    private GestureDetector mGestureDetector;
+    private ABGestureListener mGestureListener;
+    public boolean mInterceptClicks=false;
+    private static final int ORIENTATION_HORIZONTAL = 1;
+    private int mOrientation = ORIENTATION_HORIZONTAL;
+    private SwipeListener mSwipeListener;
+    
 	public ActionButton(Context context) {
 		super(context);
 		// TODO Auto-generated constructor stub
@@ -37,9 +49,13 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
 		setHapticFeedbackEnabled(true);
 		TypedArray a=context.obtainStyledAttributes(attrs,R.styleable.ActionButton,defStyle,0);
 		mIdent=a.getInt(R.styleable.ActionButton_ident, mIdent);
+        mOrientation = a.getInt(R.styleable.ActionButton_direction, ORIENTATION_HORIZONTAL);
 		//bgResource=a.getDrawable(R.styleable.ActionButton_background);
 		bgEmpty=context.getResources().getDrawable(R.drawable.lab_rab_empty_bg);
 		a.recycle();
+        mGestureListener = new ABGestureListener();
+        //mGestureDetector = new GestureDetector(mGestureListener);
+        mGestureDetector = new GestureDetector(context, mGestureListener);
 	}
 
 	public boolean acceptDrop(DragSource source, int x, int y, int xOffset,
@@ -130,7 +146,7 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
                 // Came from all apps -- make a copy
                 info = new ApplicationInfo((ApplicationInfo) info);
             }
-            setCounter(((ApplicationInfo)info).counter);
+            setCounter(((ApplicationInfo)info).counter,((ApplicationInfo)info).counterColor);
             myIcon = mLauncher.createSmallActionButtonIcon(info);
             break;
         case LauncherSettings.Favorites.ITEM_TYPE_LIVE_FOLDER:
@@ -203,6 +219,13 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
 	        }
 	        setIcon(myIcon);
 	        invalidate();
+    	}else{
+    	    Drawable myIcon = mLauncher.createSmallActionButtonIcon(null);
+            setIcon(myIcon);
+            invalidate();
+    	}
+    	if(mIconSpecial_id!=0){
+            setSpecialIcon(mIconSpecial_id);
     	}
 	}
 	/**
@@ -260,14 +283,20 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
 	        setImageDrawable(mIconNormal);
 	    }
 	}
-	public void setSpecialIcon(Drawable d){
-        if(mIconSpecial!=null){
-            mIconSpecial.setCallback(null);
-            mIconSpecial=null;
-        }
-        mIconSpecial=d;
-        if(specialMode){
-            setImageDrawable(mIconSpecial);
+	public void setSpecialIcon(int res_id){
+	    Drawable d=null;
+	    try{
+	        d=getResources().getDrawable(res_id);
+	        if(mIconSpecial!=null){
+	            mIconSpecial.setCallback(null);
+	            mIconSpecial=null;
+	        }
+	        mIconSpecial_id=res_id;
+	        mIconSpecial=mLauncher.createSmallActionButtonDrawable(d);
+	        if(specialMode){
+	            setImageDrawable(mIconSpecial);
+	        }
+	    }catch (Exception e) {
         }
 	}
 	public void setSpecialMode(boolean special){
@@ -282,4 +311,73 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
 	public void setSpecialAction(int action){
 	    specialAction=action;
 	}
+    @Override
+    public boolean onTouchEvent(MotionEvent ev) {
+        if (mGestureDetector.onTouchEvent(ev)) {
+            return true;
+        }
+        if(!mInterceptClicks){
+            return super.onTouchEvent(ev);
+        }
+        return false;
+    }
+
+    class ABGestureListener implements OnGestureListener {
+        public boolean onDown(MotionEvent e) {
+            mInterceptClicks=false;
+            return false;
+        }
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            float velocity=0;
+            if(mOrientation!= ORIENTATION_HORIZONTAL){
+                if(velocityX<0 && Math.abs(velocityY)<Math.abs(velocityX))
+                    velocity=Math.abs(velocityX);
+            }else{
+                if(velocityY<0 && Math.abs(velocityY)>Math.abs(velocityX))
+                    velocity=Math.abs(velocityY);
+            }
+            if(velocity>0){
+                dispatchSwipeEvent();
+                mInterceptClicks=true;
+                
+                return true;
+            }
+            return false;
+        }
+        public void onLongPress(MotionEvent e) {
+            //not used
+        }
+        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+            //not used
+            return false;
+        }
+        public void onShowPress(MotionEvent e) {
+            //not used
+        }
+        public boolean onSingleTapUp(MotionEvent e) {
+            //not used
+            return false;
+        }
+    }
+    public void setSwipeListener(SwipeListener listener) {
+        mSwipeListener = listener;
+    }
+
+    /**
+     * Dispatches a trigger event to listener. Ignored if a listener is not set.
+     * @param whichHandle the handle that triggered the event.
+     */
+    private void dispatchSwipeEvent() {
+        if (mSwipeListener != null) {
+            performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+            mSwipeListener.onSwipe();
+        }
+    }   
+    /**
+     * Interface definition for a callback to be invoked when a tab is triggered
+     * by moving it beyond a threshold.
+     */
+    public interface SwipeListener {
+        void onSwipe();
+    }
 }

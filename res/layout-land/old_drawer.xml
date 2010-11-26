@@ -22,7 +22,7 @@
     android:scrollbarStyle="insideInset"
     android:drawSelectorOnTop="false"
     android:listSelector="@drawable/grid_selector"
-    android:nextFocusRight="@id/all_apps"
+    android:nextFocusRight="@id/btn_mab"
     android:nextFocusDown="@id/all_apps_view"
     android:nextFocusUp="@id/all_apps_view"
     android:nextFocusLeft="@id/all_apps_view"

@@ -24,7 +24,7 @@
 	android:listSelector="@drawable/grid_selector"
 	android:nextFocusLeft="@id/all_apps_view"
 	android:nextFocusUp="@id/all_apps_view"
-	android:nextFocusDown="@id/all_apps"
+	android:nextFocusDown="@id/btn_mab"
 	android:nextFocusRight="@id/all_apps_view"
 	android:visibility="gone"
 	android:paddingBottom="50dip"

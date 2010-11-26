@@ -16,8 +16,6 @@
 
 package com.android.launcher;
 
-import static android.util.Log.d;
-
 import java.util.ArrayList;
 
 import mobi.intuitit.android.widget.WidgetSpace;
@@ -27,6 +25,8 @@ import org.metalev.multitouch.controller.MultiTouchController.MultiTouchObjectCa
 import org.metalev.multitouch.controller.MultiTouchController.PointInfo;
 import org.metalev.multitouch.controller.MultiTouchController.PositionAndScale;
 
+import com.android.launcher.FlingGesture.FlingListener;
+
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.WallpaperManager;
@@ -34,7 +34,6 @@ import android.appwidget.AppWidgetHostView;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
@@ -51,7 +50,6 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
-import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
@@ -63,13 +61,9 @@ import android.widget.TextView;
  * screen contains a number of icons, folders or widgets the user can interact with.
  * A workspace is meant to be used with a fixed width only.
  */
-public class Workspace extends WidgetSpace implements DropTarget, DragSource, DragScroller, MultiTouchObjectCanvas<Object> {
+public class Workspace extends WidgetSpace implements DropTarget, DragSource, DragScroller,
+												MultiTouchObjectCanvas<Object>, FlingListener {
     private static final int INVALID_SCREEN = -1;
-
-    /**
-     * The velocity at which a fling gesture will cause us to snap to the next screen
-     */
-    private static final int SNAP_VELOCITY = 500;
 
     private int mDefaultScreen;
 
@@ -80,7 +74,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
     //private int mCurrentScreen;
     private int mNextScreen = INVALID_SCREEN;
     private CustomScroller mScroller;
-    private VelocityTracker mVelocityTracker;
+    private final FlingGesture mFlingGesture;
 
     /**
      * CellInfo for the cell that is currently being dragged
@@ -132,7 +126,6 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
     //int mHomeScreensLoaded = 0;
     //ADW: port from donut wallpaper drawing
     private Paint mPaint;
-    //private Bitmap mWallpaper;
     private int mWallpaperWidth;
     private int mWallpaperHeight;
     private float mWallpaperOffset;
@@ -175,10 +168,9 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
     	private boolean mTouchedScrollableWidget = false;
 	private int mDesktopCacheType=AlmostNexusSettingsHelper.CACHE_LOW;
 	private boolean mWallpaperScroll=true;
-    ActivityManager activityManager;
-    int[] pids;
-    Debug.MemoryInfo[] memoryInfoArray;
-    float debugTextSize;
+    //ADW: variable to track the proper Y position to draw the wallpaer when the wallpaper hack is enabled
+    //this is to avoid the small vertical position change from the wallpapermanager one.
+    private int mWallpaperY;
     /**
      * Used to inflate the Workspace from XML.
      *
@@ -212,7 +204,8 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
         	CellLayout screen=(CellLayout)layoutInflter.inflate(R.layout.workspace_screen, this, false);
         	addView(screen);
         }
-
+        mFlingGesture = new FlingGesture();
+        mFlingGesture.setListener(this);
         initWorkspace();
     }
 
@@ -499,7 +492,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
     public void computeScroll() {
         if (mScroller.computeScrollOffset()) {
             scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
-            if(lwpSupport)updateWallpaperOffset();
+            updateWallpaperOffset();
             if(mLauncher.getDesktopIndicator()!=null)mLauncher.getDesktopIndicator().indicate((float)mScroller.getCurrX()/(float)(getChildCount()*getWidth()));
             postInvalidate();
         } else if (mNextScreen != INVALID_SCREEN) {
@@ -558,13 +551,14 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
         	//if(getChildCount()==1)x=getScrollX();
         	//ADW lets center the wallpaper when there's only one screen...
         	if(!mWallpaperScroll || getChildCount()==1)x=(getScrollX()-(mWallpaperWidth/2)+(getRight()/2));
-    		canvas.drawBitmap(mWallpaperDrawable.getBitmap(), x, (getBottom() - mWallpaperHeight) / 2, mPaint);
+        	final int y=mWallpaperY;
+    		canvas.drawBitmap(mWallpaperDrawable.getBitmap(), x, y, mPaint);
         }
         if(!mSensemode){
 	        // If the all apps drawer is open and the drawing region for the workspace
 	        // is contained within the drawer's bounds, we skip the drawing. This requires
 	        // the drawer to be fully opaque.
-	        if((mLauncher.isAllAppsVisible()) || mLauncher.isFullScreenPreviewing() ||mLauncher.isEditMode()){
+	        if((mLauncher.isAllAppsVisible()) || mLauncher.isEditMode()){
 	        	return;
 	        }
 	        // ViewGroup.dispatchDraw() supports many features we don't need:
@@ -619,21 +613,6 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
             }
         }
         float x = getScrollX();
-        if (pids.length > 0 && AlmostNexusSettingsHelper.getDebugShowMemUsage(mLauncher)) {
-	        mPaint.setTextSize(debugTextSize);
-	        mPaint.setAntiAlias(true);
-	        mPaint.setColor(0xff000000);
-	        if (pids.length > 0)
-	        	canvas.drawRect(x, 0, x+getWidth(), 70, mPaint);
-	        mPaint.setColor(0xffffffff);
-	        memoryInfoArray= activityManager.getProcessMemoryInfo(pids);
-	        for(Debug.MemoryInfo pidMemoryInfo: memoryInfoArray)
-	        {
-	        	canvas.drawText("getTotalPrivateDirty: " + pidMemoryInfo.getTotalPrivateDirty(), x, debugTextSize, mPaint);
-	        	canvas.drawText("getTotalPss: " + pidMemoryInfo.getTotalPss(), x, debugTextSize*2, mPaint);
-	        	canvas.drawText("getTotalSharedDirty: " + pidMemoryInfo.getTotalSharedDirty(), x, debugTextSize*3, mPaint);
-	        }
-        }
         if (restore) {
             canvas.restore();
         }
@@ -663,9 +642,8 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
     	if(!lwpSupport){
     		if (mWallpaperLoaded) {
     		    mWallpaperLoaded = false;
-
-    		    mWallpaperWidth = mWallpaperDrawable.getIntrinsicWidth();
     		    mWallpaperHeight = mWallpaperDrawable.getIntrinsicHeight();
+    		    mWallpaperWidth = mWallpaperDrawable.getIntrinsicWidth();
     		}
 
     		final int wallpaperWidth = mWallpaperWidth;
@@ -675,14 +653,9 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
         if (mFirstLayout) {
             scrollTo(mCurrentScreen * width, 0);
             mScroller.startScroll(0, 0, mCurrentScreen * width, 0, 0);
-            if(lwpSupport)updateWallpaperOffset(width * (getChildCount() - 1));
+            updateWallpaperOffset(width * (getChildCount() - 1));
             mFirstLayout = false;
         }
-    	/*int max = 3;
-        int aW = getMeasuredWidth();
-        float w = aW / max;
-        maxPreviewWidth=(int) w;
-        maxPreviewHeight=(int) (getMeasuredHeight()*(w/getMeasuredWidth()));*/
     }
 
     @Override
@@ -699,12 +672,10 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
             }
         }
         //ADW:updateWallpaperoffset
-        if(lwpSupport){
-        	if(mWallpaperScroll)
-        		updateWallpaperOffset();
-        	else
-        		centerWallpaperOffset();
-        }
+    	if(mWallpaperScroll)
+    		updateWallpaperOffset();
+    	else
+    		centerWallpaperOffset();
     }
 
     @Override
@@ -946,10 +917,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
             return true;
         }
 
-        if (mVelocityTracker == null) {
-            mVelocityTracker = VelocityTracker.obtain();
-        }
-        mVelocityTracker.addMovement(ev);
+        mFlingGesture.ForwardTouchEvent(ev);
 
         final int action = ev.getAction();
         final float x = ev.getX();
@@ -970,47 +938,21 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
         case MotionEvent.ACTION_MOVE:
             if (mTouchState == TOUCH_STATE_SCROLLING) {
                 // Scroll to follow the motion event
-                final int deltaX = (int) (mLastMotionX - x);
-                mLastMotionX = x;
-
-                if (deltaX < 0) {
-                    if (mScrollX > -mScrollingBounce) {
-                        scrollBy(Math.min(deltaX,mScrollingBounce), 0);
-                        if(lwpSupport)updateWallpaperOffset();
-                        if(mLauncher.getDesktopIndicator()!=null)mLauncher.getDesktopIndicator().indicate((float)getScrollX()/(float)(getChildCount()*getWidth()));
-                    }
-                } else if (deltaX > 0) {
-                    final int availableToScroll = getChildAt(getChildCount() - 1).getRight() -
-                            mScrollX - getWidth()+mScrollingBounce;
-                    if (availableToScroll > 0) {
-                        scrollBy(deltaX, 0);
-                        if(lwpSupport)updateWallpaperOffset();
-                        if(mLauncher.getDesktopIndicator()!=null)mLauncher.getDesktopIndicator().indicate((float)getScrollX()/(float)(getChildCount()*getWidth()));
-                    }
+                int deltaX = (int) (mLastMotionX - x);
+                if(mScrollingBounce==0){
+                    final int endLimit = getChildAt(getChildCount() - 1).getRight() - getWidth();
+                    final int scrollpos=getScrollX();
+                    if(scrollpos+deltaX<0)deltaX=-scrollpos;
+                    if(scrollpos+deltaX>endLimit)deltaX=endLimit-scrollpos;
                 }
+                mLastMotionX = x;
+                scrollBy(deltaX, 0);
+                updateWallpaperOffset();
+                if(mLauncher.getDesktopIndicator()!=null)mLauncher.getDesktopIndicator().indicate((float)getScrollX()/(float)(getChildCount()*getWidth()));
             }
             break;
         case MotionEvent.ACTION_UP:
-            if (mTouchState == TOUCH_STATE_SCROLLING) {
-                final VelocityTracker velocityTracker = mVelocityTracker;
-                velocityTracker.computeCurrentVelocity(1000, mMaximumVelocity);
-                int velocityX = (int) velocityTracker.getXVelocity();
-
-                if (velocityX > SNAP_VELOCITY && mCurrentScreen > 0) {
-                    // Fling hard enough to move left
-                    snapToScreen(mCurrentScreen - 1);
-                } else if (velocityX < -SNAP_VELOCITY && mCurrentScreen < getChildCount() - 1) {
-                    // Fling hard enough to move right
-                    snapToScreen(mCurrentScreen + 1);
-                } else {
-                    snapToDestination();
-                }
-
-                if (mVelocityTracker != null) {
-                    mVelocityTracker.recycle();
-                    mVelocityTracker = null;
-                }
-            } else if (mTouchState == TOUCH_SWIPE_DOWN_GESTURE )
+            if (mTouchState == TOUCH_SWIPE_DOWN_GESTURE )
             {
             	mLauncher.fireSwipeDownAction();
             } else if (mTouchState == TOUCH_SWIPE_UP_GESTURE )
@@ -1026,12 +968,21 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
         return true;
     }
 
-    private void snapToDestination() {
-        final int screenWidth = getWidth();
-        final int whichScreen = (mScrollX + (screenWidth / 2)) / screenWidth;
+	@Override
+	public void OnFling(int Direction) {
+		if (mTouchState == TOUCH_STATE_SCROLLING) {
+			if (Direction == FlingGesture.FLING_LEFT && mCurrentScreen > 0) {
+				snapToScreen(mCurrentScreen - 1);
+	        } else if (Direction == FlingGesture.FLING_RIGHT && mCurrentScreen < getChildCount() - 1) {
+	        	snapToScreen(mCurrentScreen + 1);
+	        } else {
+				final int screenWidth = getWidth();
+				final int nextScreen = (getScrollX() + (screenWidth / 2)) / screenWidth;
+	            snapToScreen(nextScreen);
+	        }
+		}
+	}
 
-        snapToScreen(whichScreen);
-    }
 
     void snapToScreen(int whichScreen) {
         //if (!mScroller.isFinished()) return;
@@ -1150,9 +1101,13 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
                     LauncherModel.moveItemInDatabase(mLauncher, info,
                             LauncherSettings.Favorites.CONTAINER_DESKTOP, index, lp.cellX, lp.cellY);
                 }else{
-                    //guess if it's a widget
                     if (info instanceof LauncherAppWidgetInfo) {
+                    	// resize widet
                         mLauncher.editWidget(cell);
+                    }
+                    else if (info instanceof ApplicationInfo) {
+                    	// edit shirtcut
+                    	mLauncher.editShirtcut((ApplicationInfo)info);
                     }
                 }
             }
@@ -1300,12 +1255,6 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
         mLauncher = launcher;
         if(mLauncher.isScrollableAllowed())registerProvider();
         if(mLauncher.getDesktopIndicator()!=null)mLauncher.getDesktopIndicator().setItems(mHomeScreens);
-        activityManager =(ActivityManager) mLauncher.getSystemService(Context.ACTIVITY_SERVICE);
-        if (AlmostNexusSettingsHelper.getDebugShowMemUsage(mLauncher))
-        	pids=new int[]{android.os.Process.myPid()};
-        else
-        	pids = new int[]{};
-        debugTextSize=DisplayMetrics.DENSITY_DEFAULT/10;
     }
 
     public void setDragger(DragController dragger) {
@@ -1523,6 +1472,31 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
             if (childCount > 0) {
                 layout.requestLayout();
                 layout.invalidate();
+            }
+        }
+    }
+
+    void updateShortcutFromApplicationInfo(ApplicationInfo info) {
+    	final int count = getChildCount();
+        for (int i = 0; i < count; i++) {
+            final CellLayout layout = (CellLayout) getChildAt(i);
+            int childCount = layout.getChildCount();
+            for (int j = 0; j < childCount; j++) {
+                final View view = layout.getChildAt(j);
+                Object tag = view.getTag();
+                if (tag instanceof ApplicationInfo) {
+                	ApplicationInfo tagInfo = (ApplicationInfo)tag;
+                    if (tagInfo.id == info.id)
+                    {
+                    	tagInfo.assignFrom(info);
+
+                    	View newview = mLauncher.createShortcut(R.layout.application, layout, tagInfo);
+                    	layout.removeView(view);
+                    	addInScreen(newview, info.screen, info.cellX, info.cellY, info.spanX,
+                    			info.spanY, false);
+                    	break;
+                    }
+                }
             }
         }
     }
@@ -2053,7 +2027,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
             }
         }
     }
-    void updateCountersForPackage(String packageName,int counter) {
+    void updateCountersForPackage(String packageName,int counter, int color) {
         final int count = getChildCount();
         for (int i = 0; i < count; i++) {
             final CellLayout layout = (CellLayout) getChildAt(i);
@@ -2072,13 +2046,20 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
                             info.itemType==LauncherSettings.Favorites.ITEM_TYPE_SHORTCUT) &&
                         Intent.ACTION_MAIN.equals(intent.getAction()) && name != null &&
                         packageName.equals(name.getPackageName())) {
-                        ((BubbleTextView) view).setCounter(counter);
+                        ((BubbleTextView) view).setCounter(counter, color);
                         view.invalidate();
-                        Launcher.getModel().updateCounterDesktopItem(info, counter);
+                        Launcher.getModel().updateCounterDesktopItem(info, counter, color);
                     }
                 }
             }
         }
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        // TODO Auto-generated method stub
+        super.onSizeChanged(w, h, oldw, oldh);
+        if(mLauncher!=null)mWallpaperY=h - mLauncher.getWindow().getDecorView().getHeight();
     }
 
 }

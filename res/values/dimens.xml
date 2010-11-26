@@ -23,6 +23,5 @@
     <dimen name="desktop_paginator_padding">10dip</dimen>
     <dimen name="color_picker_center">90dip</dimen>
     <dimen name="color_picker_radius">30dip</dimen>
-    <dimen name="counter_font_size">12sp</dimen>
     <dimen name="counter_circle_padding">3dip</dimen>    
 </resources>

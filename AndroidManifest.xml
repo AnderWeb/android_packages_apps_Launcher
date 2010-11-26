@@ -22,8 +22,8 @@
     package="com.android.launcher"
     android:sharedUserId="android.uid.shared"
     android:sharedUserLabel="@string/uid_name"
-    android:versionCode="28"
-    android:versionName="1.2.0 system">
+    android:versionCode="30"
+    android:versionName="@string/adw_version">
 
     <permission
         android:name="com.android.launcher.permission.INSTALL_SHORTCUT"
@@ -70,7 +70,7 @@
 
 		<activity android:name="Launcher" android:launchMode="singleTask"
 			android:clearTaskOnLaunch="true" android:stateNotNeeded="true"
-			android:theme="@android:style/Theme.Wallpaper.NoTitleBar"
+			android:theme="@style/Theme"
 			android:screenOrientation="nosensor" android:windowSoftInputMode="stateUnspecified|adjustPan">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />

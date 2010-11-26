@@ -37,10 +37,6 @@
     <string name="group_live_folders" msgid="2664945399140647217">"Cartelle"</string>
     <string name="group_widgets" msgid="6704978494073105844">"Widget"</string>
     <string name="group_wallpapers" msgid="1568191644272224858">"Sfondi"</string>
-    <string name="add_folder" msgid="3521088587367839879">"Cartella"</string>
-    <string name="add_clock" msgid="2337943840175865746">"Orologio"</string>
-    <string name="add_photo_frame" msgid="3154058437359487954">"Cornice immagini"</string>
-    <string name="add_search" msgid="7104834713685095105">"Ricerca"</string>
     <string name="out_of_space" msgid="8365249326091984698">"Spazio nella schermata Home esaurito."</string>
     <string name="shortcut_installed" msgid="7071557296331322355">"Collegamento \"<xliff:g id="NAME">%s</xliff:g>\" creato."</string>
     <string name="shortcut_uninstalled" msgid="2129499669449749995">"Il collegamento \"<xliff:g id="NAME">%s</xliff:g>\" è stato rimosso."</string>
@@ -50,8 +46,6 @@
     <string name="menu_add" msgid="3065046628354640854">"Aggiungi"</string>
     <string name="menu_wallpaper" msgid="5837429080911269832">"Sfondo"</string>
     <string name="menu_search" msgid="4826514464423239041">"Cerca"</string>
-    <string name="menu_notifications" msgid="6424587053194766192">"Notifiche"</string>
-    <string name="menu_gestures" msgid="514678675575912237">"Gesti"</string>
     <string name="menu_settings" msgid="6233960148378443661">"Impostazioni"</string>
     <string name="permlab_install_shortcut" msgid="1201690825493376489">"aggiungere scorciatorie"</string>
     <string name="permdesc_install_shortcut" msgid="7429365847558984148">"Consente a un\'applicazione di aggiungere scorciatoie automaticamente."</string>
@@ -61,7 +55,6 @@
     <string name="permdesc_read_settings" msgid="8377434937176025492">"Consente a un\'applicazione di leggere le impostazioni e le scorciatoie in Home."</string>
     <string name="permlab_write_settings" msgid="1360567537236705628">"creare impostazioni e scorciatoie in Home"</string>
     <string name="permdesc_write_settings" msgid="1098648778383349818">"Consente a un\'applicazione di modificare le impostazioni e le scorciatoie in Home."</string>
-    <string name="search_hint" msgid="6974176141372467453">"Ricerca Google"</string>
     <string name="gadget_error_text" msgid="8359351016167075858">"Errore durante il caricamento del widget"</string>
 
     <!-- ADW Settings -->
@@ -80,8 +73,6 @@
     <string name="pref_summary_hide_statusbar">Nasconde la barra di stato</string>
 
     <string name="pref_title_default_screen">Schermata di Default</string>
-    <string name="pref_summary_default_screen">Seleziona la schermata di default</string>
-    <string name="pref_dialog_default_screen">Seleziona la schermata di default</string>
 
     <string name="pref_title_desktop_scrolling_speed">Velocità di Scrolling</string>
     <string name="pref_summary_desktop_scrolling_speed">Imposta la velocità usata per cambiare schermata</string>
@@ -103,9 +94,6 @@
     <string name="pref_summary_page_horizontal_margin">Imposta il margine orizzontale tra ogni pagina del Drawer</string>
     <string name="pref_dialog_page_horizontal_margin">Imposta il margine orizzontale tra ogni pagina del Drawer</string>
 
-    <string name="pref_title_new_drawer">Drawer Orizzontale</string>
-    <string name="pref_summary_new_drawer">Usa l\'implementazione del Samsung Galaxy S</string>
-
     <string name="pref_title_animated_drawer">Drawer Animato</string>
     <string name="pref_summary_animated_drawer">Abilita la visualizzazione delle animazioni dell\'App Drawer</string>
 
@@ -126,14 +114,8 @@
     <string name="pref_dialog_drawer_rows_landscape">Seleziona il numero di righe da usare in modalità Landscape</string>
 
     <!-- Previews preferences -->
-    <string name="pref_title_previews_preferences">Impostazioni Anteprima</string>
-    <string name="pref_summary_previews_preferences">Impostazioni dell\'anteprima dei desktop</string>
-
     <string name="pref_title_sense_previews">Anteprima Sense</string>
     <string name="pref_summary_sense_previews">Usa la nuova implementazione Sense-like</string>
-
-    <string name="pref_title_clean_screen_mode">Modalità Schermo Pulito</string>
-    <string name="pref_summary_clean_screen_mode">Nasconde icone/widgets aprendo le anteprime</string>
 
     <!-- Button preferences -->
     <string name="pref_title_ui_settings">Impostazioni UI</string>
@@ -160,24 +142,9 @@
     <string name="pref_title_closing_folder">Chiusura cartella</string>
     <string name="pref_summary_closing_folder">Chiudi automaticamente la cartella dopo il lancio di un\'applicazione</string>
 
-    <string name="pref_title_lab">LAB</string>
-    <string name="pref_summary_lab">Abilita/Disabilita il Bottone Sinistro (LAB) personalizzabile</string>
-
-    <string name="pref_title_rab">RAB</string>
-    <string name="pref_summary_rab">Abilita/Disabilita il Bottone Destro (RAB) personalizzabile</string>
-
-    <string name="pref_title_ab2">ActionButtons Secondari</string>
-    <string name="pref_summary_ab2">Abilita/Disabilita gli Action Buttons secondari (disabilita i punti del Desktop)</string>
-
-    <string name="pref_title_tint_ab">Sfumatura AB</string>
-    <string name="pref_summary_tint_ab">Abilita/Disabilita l\'effetto sfumatura sugli Action Buttons</string>
-
     <string name="pref_title_ab_scale_factor">Fattore di scala AB</string>
     <string name="pref_summary_ab_scale_factor">Imposta il fattore di scala per le icone AB</string>
     <string name="pref_dialog_ab_scale_factor">Imposta il fattore di scala per le icone AB</string>
-
-    <string name="pref_title_hide_allapps_ab">Nascondi Sfondo AllApps</string>
-    <string name="pref_summary_hide_allapps_ab">Nasconde lo sfondo del bottone del Drawer</string>
 
     <string name="pref_title_hide_ab_bg">Nascondi sfondo AB</string>
     <string name="pref_summary_hide_ab_bg">Nascondo lo sfondo degli Action Buttons</string>
@@ -288,8 +255,6 @@
         <!-- Category titles -->
         <string name="pref_title_system_preferences">Preferenze di Sistema</string>
         <string name="pref_summary_system_preferences">Preferenze generali di sistema per ADW Launcher</string>
-        <string name="pref_title_screens_preferencecategory">Schermi Desktop</string>
-        <string name="pref_title_screens_layout_preferencecategory">Layout del Desktop</string>
         <string name="pref_title_screens_behaviour_preferencecategory">Comportamento del Dekstop</string>
         <string name="pref_title_drawer_preferencecategory">Drawer delle Applicazioni</string>
         <string name="pref_title_drawer_visuals_preferencecategory">Elementi visivi App Drawer</string>
@@ -322,7 +287,6 @@
 
         <string name="pref_label_shirtcuts">Altri Collegamenti</string>
         <string name="pref_label_activities">Attività</string>
-        <string name="pref_label_activities_loading">Caricamento lista attività...</string>
         <string name="shirtcut_header">Seleziona l\'applicazione che desideri avviare.\nPuoi anche scegliere un\'icona.</string>
         <string name="shirtcut_pick_activity">Scegli attività</string>
         <string name="shirtcut_label">Etichetta</string>
@@ -341,7 +305,6 @@
         <string name="AppGroupConfig">"Imp. Gruppo"</string>
         <string name="AppGroupRename">"Nuovo Catalogo"</string>
         <string name="AppGroupConfigError">"Non puoi configurare questo gruppo"</string>
-        <string name="AppGroupAddError">"Non puoi avere altri gruppi"</string>
         <string name="rename_group_title">Nuovo Catalogo</string>
         <string name="rename_group_label">Nome Catalogo</string>
         <string name="show_catalog">Visualizza Catalogo \"%s\"</string>

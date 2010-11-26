@@ -87,15 +87,16 @@ public class CellLayout extends WidgetCellLayout {
 
         mCellWidth = a.getDimensionPixelSize(R.styleable.CellLayout_cellWidth, 10);
         mCellHeight = a.getDimensionPixelSize(R.styleable.CellLayout_cellHeight, 10);
-        
-        mLongAxisStartPadding = 
-            a.getDimensionPixelSize(R.styleable.CellLayout_longAxisStartPadding, 10);
-        mLongAxisEndPadding = 
-            a.getDimensionPixelSize(R.styleable.CellLayout_longAxisEndPadding, 10);
-        mShortAxisStartPadding =
-            a.getDimensionPixelSize(R.styleable.CellLayout_shortAxisStartPadding, 10);
-        mShortAxisEndPadding = 
-            a.getDimensionPixelSize(R.styleable.CellLayout_shortAxisEndPadding, 10);
+        if(AlmostNexusSettingsHelper.getmainDockStyle(context)!=Launcher.DOCK_STYLE_NONE){
+            mLongAxisStartPadding = 
+                a.getDimensionPixelSize(R.styleable.CellLayout_longAxisStartPadding, 10);
+            mLongAxisEndPadding = 
+                a.getDimensionPixelSize(R.styleable.CellLayout_longAxisEndPadding, 10);
+            mShortAxisStartPadding =
+                a.getDimensionPixelSize(R.styleable.CellLayout_shortAxisStartPadding, 10);
+            mShortAxisEndPadding = 
+                a.getDimensionPixelSize(R.styleable.CellLayout_shortAxisEndPadding, 10);
+        }
         mRows=AlmostNexusSettingsHelper.getDesktopRows(context);
         mColumns=AlmostNexusSettingsHelper.getDesktopColumns(context);
         mLongAxisStartPaddingOrg=mLongAxisStartPadding;

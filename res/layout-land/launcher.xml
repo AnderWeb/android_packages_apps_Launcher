@@ -47,46 +47,54 @@
 		android:gravity="right|center_vertical"
 		android:layout_gravity="right|center_vertical">
 	    <com.android.launcher.ActionButton
-	        android:src="@drawable/rab_empty"
+	        android:src="@drawable/ab_empty"
 	        android:background="@drawable/rab_bg"
 	        android:scaleType="center"
 	        android:layout_width="wrap_content"
 	        android:id="@+id/btn_rab"
 	        launcher:ident="RAB"
 	        android:layout_height="60dip" 
+            launcher:direction="vertical" 
 	        />
 	    <com.android.launcher.ActionButton
-	        android:src="@drawable/rab_empty"
+	        android:src="@drawable/ab_empty"
 	        android:background="@drawable/rab2_bg"
 	        android:scaleType="center"
 	        android:layout_width="wrap_content"
 	        android:id="@+id/btn_rab2"
 	        launcher:ident="RAB2"
 	        android:layout_height="60dip" 
+            launcher:direction="vertical" 
 	        />
-		<ImageView
-			android:id="@+id/appsBg"
-			android:background="@drawable/handle"
-			android:layout_width="wrap_content"
-			android:layout_height="55dip"
-			/>
+        <com.android.launcher.ActionButton
+            android:src="@drawable/ab_empty"
+            android:background="@drawable/mab_bg"
+            android:scaleType="center"
+            android:layout_height="60dip"
+            android:id="@+id/btn_mab"
+            launcher:ident="MAB"
+            android:layout_width="wrap_content" 
+            launcher:direction="vertical" 
+            />
 	    <com.android.launcher.ActionButton
-	        android:src="@drawable/lab_empty"
+	        android:src="@drawable/ab_empty"
 	        android:background="@drawable/lab2_bg"
 	        android:scaleType="center"
 	        android:layout_width="wrap_content"
 	        android:id="@+id/btn_lab2"
 	        launcher:ident="LAB2"
 	        android:layout_height="60dip" 
+            launcher:direction="vertical" 
 	        />
 	    <com.android.launcher.ActionButton
-	        android:src="@drawable/lab_empty"
+	        android:src="@drawable/ab_empty"
 	        android:background="@drawable/lab_bg"
 	        android:scaleType="center"
 	        android:layout_width="wrap_content"
 	        android:id="@+id/btn_lab"
 	        launcher:ident="LAB"
 	        android:layout_height="60dip" 
+            launcher:direction="vertical" 
 	        />
     </LinearLayout>
     <ImageView
@@ -103,27 +111,14 @@
         android:layout_width="wrap_content" 
         android:layout_gravity="top|right"
         android:onClick="nextScreen"/>
-    <com.android.launcher.SliderView
-    	android:src="@drawable/handle_icon"
-        android:id="@+id/all_apps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:nextFocusLeft="@id/all_apps_view"
-        android:focusable="true"
-        android:clickable="true"
-        android:scaleType="center"
-        android:layout_gravity="right|center_vertical"
-        launcher:slideDirections="left"
-        launcher:targetDistance="45dip" />
-
     <com.android.launcher.DeleteZone
     	android:src="@drawable/ic_delete"
     	android:background="@drawable/delete_zone_selector"
         android:id="@+id/delete_zone"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:scaleType="center"
-        android:layout_gravity="right|center_vertical"
+        android:layout_gravity="left|center_vertical"
         android:visibility="invisible"
         launcher:direction="vertical" />
     <com.android.launcher.DockBar
@@ -139,7 +134,7 @@
             android:id="@+id/mini_content"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            launcher:cellWidth="65dip"
+            launcher:cellWidth="55dip"
             launcher:cellHeight="48dip"
             launcher:cells="6"
             launcher:orientation="vertical"

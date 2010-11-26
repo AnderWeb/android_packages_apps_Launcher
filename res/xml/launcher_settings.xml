@@ -16,14 +16,11 @@
 			android:summary="@string/pref_summary_wallpaper_scrolling"
 			android:key="wallpaper_scrolling" />
 		<PreferenceCategory
-            android:title="@string/pref_title_screens_preferencecategory">
-			<com.android.launcher.DialogSeekBarPreference
-				android:title="@string/pref_title_default_screen" android:summary="@string/pref_summary_default_screen"
-				android:dialogMessage="@string/pref_dialog_default_screen"
-				android:key="defaultScreen" android:defaultValue="2" android:max="4" />
-		</PreferenceCategory>
-		<PreferenceCategory
-            android:title="@string/pref_title_screens_layout_preferencecategory">
+			android:title="@string/pref_title_screens_layout_preferencecategory">
+			<CheckBoxPreference android:key="uiHideLabels"
+				android:title="@string/pref_title_hide_icon_labels"
+				android:summary="@string/pref_summary_hide_icon_labels"
+				android:defaultValue="false" />
 			<CheckBoxPreference android:title="@string/pref_title_autosize_icons"
 				android:defaultValue="false"
 				android:summary="@string/pref_summary_autosize_icons"
@@ -63,14 +60,18 @@
 		android:summary="@string/pref_summary_drawer_settings">
 		<PreferenceCategory
             android:title="@string/pref_title_drawer_preferencecategory">
+            <ListPreference
+            android:key="drawer_style"
+            android:title="@string/pref_title_drawer_style"
+            android:summary="@string/pref_summary_drawer_style"
+            android:defaultValue="@string/config_drawer_style"
+            android:entryValues="@array/app_drawer_style_values"
+            android:entries="@array/app_drawer_style_entries"
+            />
             <CheckBoxPreference android:title="@string/pref_title_drawer_navigate_catalogs"
                 android:defaultValue="@bool/config_drawer_navigate_catalogs"
                 android:summary="@string/pref_summary_drawer_navigate_catalogs"
                 android:key="drawer_navigate_catalogs" />
-			<CheckBoxPreference android:title="@string/pref_title_new_drawer"
-				android:defaultValue="@bool/config_drawerNew"
-				android:summary="@string/pref_summary_new_drawer"
-				android:key="drawerNew" />
 			<com.android.launcher.DialogSeekBarPreference
 				android:title="@string/pref_title_drawer_columns_portrait"
 				android:summary="@string/pref_summary_drawer_columns_portrait"
@@ -78,7 +79,6 @@
 				android:key="drawerColumnsPortrait" android:defaultValue="@integer/config_drawerColumnsPortrait"
 				android:max="5" />
 			<com.android.launcher.DialogSeekBarPreference
-				android:dependency="drawerNew"
 				android:title="@string/pref_title_drawer_rows_portrait"
 				android:summary="@string/pref_summary_drawer_rows_portrait"
 				android:dialogMessage="@string/pref_dialog_drawer_rows_portrait"
@@ -91,7 +91,6 @@
 				android:key="drawerColumnsLandscape" android:defaultValue="@integer/config_drawerColumnsLandscape"
 				android:max="7" />
 			<com.android.launcher.DialogSeekBarPreference
-				android:dependency="drawerNew"
 				android:title="@string/pref_title_drawer_rows_landscape"
 				android:summary="@string/pref_summary_drawer_rows_landscape"
 				android:dialogMessage="@string/pref_dialog_drawer_rows_landscape"
@@ -125,7 +124,6 @@
 				android:summary="@string/pref_summary_drawer_color"
 		        android:defaultValue="-16777216" />
 			<com.android.launcher.DialogSeekBarPreference
-				android:dependency="drawerNew"
 				android:title="@string/pref_title_page_horizontal_margin"
 				android:summary="@string/pref_summary_page_horizontal_margin"
 				android:dialogMessage="@string/pref_dialog_page_horizontal_margin"
@@ -135,50 +133,55 @@
 		</PreferenceCategory>
 	</PreferenceScreen>
 	<PreferenceScreen
-		android:key="previewsPrerefences"
-		android:summary="@string/pref_summary_previews_preferences"
-		android:title="@string/pref_title_previews_preferences">
+		android:key="behaviourPreferences"
+		android:summary="@string/pref_summary_behaviour_preferences"
+		android:title="@string/pref_title_behaviour_preferences">
 		<CheckBoxPreference android:title="@string/pref_title_sense_previews"
 			android:defaultValue="true"
 			android:summary="@string/pref_summary_sense_previews"
 			android:key="previewsNew" />
-		<CheckBoxPreference android:title="@string/pref_title_clean_screen_mode"
-			android:defaultValue="true"
-			android:summary="@string/pref_summary_clean_screen_mode"
-			android:key="previewsFullScreen" />
+		<CheckBoxPreference android:title="@string/pref_title_closing_folder"
+			android:defaultValue="false"
+			android:summary="@string/pref_summary_closing_folder"
+			android:key="uiCloseFolder" />
+		<CheckBoxPreference android:title="@string/pref_title_notif_receiver"
+			android:defaultValue="@bool/config_notif_receiver"
+			android:summary="@string/pref_summary_notif_receiver"
+			android:key="notif_receiver" />
+		<com.android.launcher.DialogSeekBarPreference
+			android:title="@string/pref_title_notif_size" android:summary="@string/pref_summary_notif_size"
+			android:dialogMessage="@string/pref_dialog_notif_size"
+			android:key="notif_size" android:defaultValue="@integer/config_notif_size"
+			android:max="14" />
+		<ListPreference
+			android:key="homeBinding"
+			android:title="@string/pref_title_home_button_binding"
+			android:summary="@string/pref_summary_home_button_binding"
+			android:defaultValue="@string/config_homeBinding"
+			android:entryValues="@array/menu_binding_values"
+			android:entries="@array/menu_binding_entries"
+		/>
+		<ListPreference
+			android:key="swipedownActions"
+			android:title="@string/pref_title_swipedown_actions"
+			android:summary="@string/pref_summary_swipedown_actions"
+			android:defaultValue="@string/config_swipedown_actions"
+			android:entryValues="@array/menu_binding_values"
+			android:entries="@array/menu_binding_entries"
+		/>
+		<ListPreference
+			android:key="swipeupActions"
+			android:title="@string/pref_title_swipeup_actions"
+			android:summary="@string/pref_summary_swipeup_actions"
+			android:defaultValue="@string/config_swipeup_actions"
+			android:entryValues="@array/menu_binding_values"
+			android:entries="@array/menu_binding_entries"
+		/>
 	</PreferenceScreen>
 	<PreferenceScreen
 		android:key="systemPreferences"
 		android:title="@string/pref_title_system_preferences"
 		android:summary="@string/pref_summary_system_preferences">
-		<CheckBoxPreference android:title="@string/pref_title_notif_receiver"
-		    android:defaultValue="@bool/config_notif_receiver"
-		    android:summary="@string/pref_summary_notif_receiver"
-		    android:key="notif_receiver" />
-		<ListPreference
-		  android:key="homeBinding"
-		  android:title="@string/pref_title_home_button_binding"
-		  android:summary="@string/pref_summary_home_button_binding"
-		  android:defaultValue="@string/config_homeBinding"
-		  android:entryValues="@array/menu_binding_values"
-		  android:entries="@array/menu_binding_entries"
-		  />
-		<ListPreference
-		  android:key="swipedownActions"
-		  android:title="@string/pref_title_swipedown_actions"
-		  android:summary="@string/pref_summary_swipedown_actions"
-		  android:defaultValue="@string/config_swipedown_actions"
-		  android:entryValues="@array/menu_binding_values"
-		  android:entries="@array/menu_binding_entries"
-		/>
-		<ListPreference
-		  android:key="swipeupActions"
-		  android:title="@string/pref_title_swipeup_actions"
-		  android:summary="@string/pref_summary_swipeup_actions"
-		  android:defaultValue="@string/config_swipeup_actions"
-		  android:entryValues="@array/menu_binding_values"
-		  android:entries="@array/menu_binding_entries"
-		/>
 		<CheckBoxPreference android:title="@string/pref_title_wallpaper_hack"
 			android:defaultValue="true"
 			android:summary="@string/pref_summary_wallpaper_hack"
@@ -212,57 +215,42 @@
 		android:key="buttonPrerefences"
 		android:summary="@string/pref_summary_ui_settings"
 		android:title="@string/pref_title_ui_settings">
-		<CheckBoxPreference android:title="@string/pref_title_desktop_dots"
-			android:defaultValue="true"
-			android:summary="@string/pref_summary_desktop_dots"
-			android:key="uiDots" />
-		<CheckBoxPreference android:title="@string/pref_title_dockbar"
-			android:defaultValue="true"
-			android:summary="@string/pref_summary_dockbar"
-			android:key="uiDockbar" />
-		<CheckBoxPreference android:title="@string/pref_title_closing_dockbar"
-			android:defaultValue="false"
-			android:dependency="uiDockbar"
-			android:summary="@string/pref_summary_closing_dockbar"
-			android:key="uiCloseDockbar" />
-		<CheckBoxPreference android:title="@string/pref_title_closing_folder"
-			android:defaultValue="false"
-			android:summary="@string/pref_summary_closing_folder"
-			android:key="uiCloseFolder" />
-		<CheckBoxPreference android:title="@string/pref_title_lab"
-			android:defaultValue="true"
-			android:summary="@string/pref_summary_lab"
-			android:key="uiLAB" />
-		<CheckBoxPreference android:title="@string/pref_title_rab"
-			android:defaultValue="true"
-			android:summary="@string/pref_summary_rab"
-			android:key="uiRAB" />
-		<CheckBoxPreference android:title="@string/pref_title_ab2"
-			android:defaultValue="false"
-			android:summary="@string/pref_summary_ab2"
-			android:key="uiAB2" />
-		<CheckBoxPreference android:title="@string/pref_title_tint_ab"
-			android:defaultValue="false"
-			android:summary="@string/pref_summary_tint_ab"
-			android:key="uiTint" />
-		<com.android.launcher.DialogSeekBarPreference
-			android:title="@string/pref_title_ab_scale_factor"
-			android:summary="@string/pref_summary_ab_scale_factor"
-			android:dialogMessage="@string/pref_dialog_ab_scale_factor"
-			android:key="uiScaleAB" android:defaultValue="6"
-			android:max="7" />
-		<CheckBoxPreference android:title="@string/pref_title_hide_allapps_ab"
-			android:defaultValue="false"
-			android:summary="@string/pref_summary_hide_allapps_ab"
-			android:key="uiAppsBg" />
-		<CheckBoxPreference android:title="@string/pref_title_hide_ab_bg"
-			android:defaultValue="false"
-			android:summary="@string/pref_summary_hide_ab_bg"
-			android:key="uiABBg" />
-		<CheckBoxPreference android:key="uiHideLabels"
-			android:title="@string/pref_title_hide_icon_labels"
-			android:summary="@string/pref_summary_hide_icon_labels"
-			android:defaultValue="false" />
+		<PreferenceCategory
+			android:title="@string/pref_title_ab_preferencecategory">
+			<ListPreference
+				android:key="main_dock_style"
+				android:title="@string/pref_title_main_dock_style"
+				android:summary="@string/pref_summary_main_dock_style"
+				android:defaultValue="@string/config_main_dock_style"
+				android:entryValues="@array/main_dock_values"
+				android:entries="@array/main_dock_entries"/>
+			<CheckBoxPreference android:title="@string/pref_title_desktop_dots"
+				android:defaultValue="true"
+				android:summary="@string/pref_summary_desktop_dots"
+				android:key="uiDots" />
+			<com.android.launcher.DialogSeekBarPreference
+				android:title="@string/pref_title_ab_scale_factor"
+				android:summary="@string/pref_summary_ab_scale_factor"
+				android:dialogMessage="@string/pref_dialog_ab_scale_factor"
+				android:key="uiScaleAB" android:defaultValue="7"
+				android:max="9" />
+			<CheckBoxPreference android:title="@string/pref_title_hide_ab_bg"
+				android:defaultValue="false"
+				android:summary="@string/pref_summary_hide_ab_bg"
+				android:key="uiABBg" />
+		</PreferenceCategory>
+		<PreferenceCategory
+			android:title="@string/pref_title_dockbar_preferencecategory">
+			<CheckBoxPreference android:title="@string/pref_title_dockbar"
+				android:defaultValue="true"
+				android:summary="@string/pref_summary_dockbar"
+				android:key="uiDockbar" />
+			<CheckBoxPreference android:title="@string/pref_title_closing_dockbar"
+				android:defaultValue="false"
+				android:dependency="uiDockbar"
+				android:summary="@string/pref_summary_closing_dockbar"
+				android:key="uiCloseDockbar" />
+		</PreferenceCategory>
 		<PreferenceCategory
             android:title="@string/pref_title_highlights_preferencecategory">
 			<CheckBoxPreference android:key="uiNewSelectors"

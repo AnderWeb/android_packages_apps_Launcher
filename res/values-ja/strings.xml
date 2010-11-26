@@ -36,10 +36,6 @@
     <string name="group_live_folders" msgid="2664945399140647217">"フォルダ"</string>
     <string name="group_widgets" msgid="6704978494073105844">"ウィジェット"</string>
     <string name="group_wallpapers" msgid="1568191644272224858">"壁紙"</string>
-    <string name="add_folder" msgid="3521088587367839879">"フォルダ"</string>
-    <string name="add_clock" msgid="2337943840175865746">"時計"</string>
-    <string name="add_photo_frame" msgid="3154058437359487954">"写真フレーム"</string>
-    <string name="add_search" msgid="7104834713685095105">"検索"</string>
     <string name="out_of_space" msgid="8365249326091984698">"ホーム画面に空きスペースがありません。"</string>
     <string name="shortcut_installed" msgid="7071557296331322355">"ショートカット「<xliff:g id="NAME">%s</xliff:g>」を作成しました。"</string>
     <string name="shortcut_uninstalled" msgid="2129499669449749995">"ショートカット「<xliff:g id="NAME">%s</xliff:g>」を削除しました。"</string>
@@ -49,8 +45,6 @@
     <string name="menu_add" msgid="3065046628354640854">"追加"</string>
     <string name="menu_wallpaper" msgid="5837429080911269832">"壁紙"</string>
     <string name="menu_search" msgid="4826514464423239041">"検索"</string>
-    <string name="menu_notifications" msgid="6424587053194766192">"通知"</string>
-    <string name="menu_gestures" msgid="514678675575912237">"ジェスチャー"</string>
     <string name="menu_settings" msgid="6233960148378443661">"設定"</string>
     <string name="menu_adw_settings">ADW設定</string>
     <string name="permlab_install_shortcut" msgid="1201690825493376489">"ショートカットのインストール"</string>
@@ -61,7 +55,6 @@
     <string name="permdesc_read_settings" msgid="8377434937176025492">"ホームの設定とショートカットの読み取りをアプリケーションに許可します。"</string>
     <string name="permlab_write_settings" msgid="1360567537236705628">"ホームの設定とショートカットの書き込み"</string>
     <string name="permdesc_write_settings" msgid="1098648778383349818">"ホームの設定とショートカットの変更をアプリケーションに許可します。"</string>
-    <string name="search_hint" msgid="6974176141372467453">"Google検索"</string>
     <string name="gadget_error_text" msgid="8359351016167075858">"ウィジェットを表示できません"</string>
 
     <!-- ADW Settings -->
@@ -81,8 +74,6 @@
     <string name="pref_summary_hide_statusbar">ステータスバーを隠す</string>
 
     <string name="pref_title_default_screen">デフォルトスクリーン</string>
-    <string name="pref_summary_default_screen">デフォルトとして設定するスクリーンを選択する</string>
-    <string name="pref_dialog_default_screen">デフォルトとして設定するスクリーンを選択</string>
 
     <string name="pref_title_desktop_scrolling_speed">デスクトップスクロール速度</string>
     <string name="pref_summary_desktop_scrolling_speed">デスクトップスクリーンを飛ばすときの速度を設定する</string>
@@ -104,9 +95,6 @@
     <string name="pref_summary_page_horizontal_margin">ドロワーのページ間水平マージンを設定する</string>
     <string name="pref_dialog_page_horizontal_margin">ドロワーのページ間水平マージンを設定する</string>
 
-    <string name="pref_title_new_drawer">水平ドロワー</string>
-    <string name="pref_summary_new_drawer">Samsung Galaxy Sで実装されているようなドロワー</string>
-
     <string name="pref_title_animated_drawer">アニメーションドロワー</string>
     <string name="pref_summary_animated_drawer">アプリケーションドロワーをアニメーション表示する</string>
 
@@ -127,14 +115,8 @@
     <string name="pref_dialog_drawer_rows_landscape">横画面時のドロワー行数を選択する</string>
 
     <!-- Previews preferences -->
-    <string name="pref_title_previews_preferences">プレビュー設定</string>
-    <string name="pref_summary_previews_preferences">デスクトッププレビューの設定</string>
-
     <string name="pref_title_sense_previews">Senseプレビュー</string>
     <string name="pref_summary_sense_previews">Sense UIのようなデスクトッププレビューを使用する</string>
-
-    <string name="pref_title_clean_screen_mode">クリーンスクリーンモード</string>
-    <string name="pref_summary_clean_screen_mode">プレビューを表示しているときはホームのアイコンやウィジェットを隠す</string>
 
     <!-- Button preferences -->
     <string name="pref_title_ui_settings">UI設定</string>
@@ -161,24 +143,9 @@
     <string name="pref_title_closing_folder">フォルダを閉じる</string>
     <string name="pref_summary_closing_folder">アプリケーションを起動したら自動的にフォルダを閉じる</string>
 
-    <string name="pref_title_lab">LAB(左ボタン)</string>
-    <string name="pref_summary_lab">カスタマイズ可能な左ボタンを有効にする</string>
-
-    <string name="pref_title_rab">RAB(右ボタン)</string>
-    <string name="pref_summary_rab">カスタマイズ可能な右ボタンを有効にする</string>
-
-    <string name="pref_title_ab2">2つめのアクションボタン</string>
-    <string name="pref_summary_ab2">2つめのアクションボタンを有効にする (デスクトップドットは無効にする)</string>
-
-    <string name="pref_title_tint_ab">薄いボタン</string>
-    <string name="pref_summary_tint_ab">アクションボタンを薄くぼんやりと表示する</string>
-
     <string name="pref_title_ab_scale_factor">アクションボタンの縮尺</string>
     <string name="pref_summary_ab_scale_factor">アクションボタンアイコンの縮尺を設定する</string>
     <string name="pref_dialog_ab_scale_factor">アクションボタンアイコンの縮尺を設定する</string>
-
-    <string name="pref_title_hide_allapps_ab">ドロワーボタンの背景を隠す</string>
-    <string name="pref_summary_hide_allapps_ab">ドロワーボタン(すべてのアプリボタン)の背景を表示しない</string>
 
     <string name="pref_title_hide_ab_bg">アクションボタンの背景を隠す</string>
     <string name="pref_summary_hide_ab_bg">アクションボタン(LAB,RAB)の背景を表示しない</string>
@@ -289,7 +256,6 @@
 	<!-- Category titles -->
 	<string name="pref_title_system_preferences">システム設定</string>
 	<string name="pref_summary_system_preferences">ADW.Launcherの一般的なシステム設定</string>
-	<string name="pref_title_screens_preferencecategory">デスクトップスクリーン</string>
 	<string name="pref_title_screens_layout_preferencecategory">デスクトップレイアウト</string>
 	<string name="pref_title_screens_behaviour_preferencecategory">デスクトップの挙動</string>
 	<string name="pref_title_drawer_preferencecategory">アプリケーションドロワー</string>
@@ -322,7 +288,6 @@
 
 	<string name="pref_label_shirtcuts">カスタムショートカット</string>
 	<string name="pref_label_activities">アクティビティ</string>
-	<string name="pref_label_activities_loading">アクティビティリストをロード中...</string>
 	<string name="shirtcut_header">起動したいアプリケーションのアクティビティを選択してください。\nアイコンをカスタム設定することもできます。</string>
 	<string name="shirtcut_pick_activity">アクティビティを選択</string>
 	<string name="shirtcut_label">ラベル</string>
@@ -341,11 +306,10 @@
 	<string name="AppGroupConfig">"グループを設定"</string>
 	<string name="AppGroupRename">"新しいグループ"</string>
 	<string name="AppGroupConfigError">"このグループは設定できません"</string>
-	<string name="AppGroupAddError">"これ以上グループを追加できません"</string>
 	<string name="rename_group_title">新しいグループ</string>
 	<string name="rename_group_label">グループ名</string>
 	<string name="show_catalog">グループを表示 \"%s\"</string>
-
+	
 	<string name="pref_title_adw_restart">ADWの再起動</string>
 	<string name="pref_summary_adw_restart">ADW.Launcherを終了し、再起動します。</string>
     <string name="pref_title_adw_reset">ADWをリセット</string>
@@ -358,4 +322,15 @@
     <string name="pref_summary_drawer_navigate_catalogs">アプリケーショングループをナビゲートするボタンを表示する</string>
     <string name="pref_title_notif_receiver">通知を表示</string>
     <string name="pref_summary_notif_receiver">グローバル通知カウンタを有効にする</string>
+    <string name="pref_title_notif_size">バブルフォントサイズ</string>
+    <string name="pref_summary_notif_size">通知バブルのフォントサイズを選択</string>
+    <string name="pref_dialog_notif_size">通知バブルのフォントサイズを選択</string>
+
+    <string name="pref_title_ab_preferencecategory">メインドック</string>
+    <string name="pref_title_main_dock_style">メインドックスタイル</string>
+    <string name="pref_summary_main_dock_style">メインドックのスタイルを選択</string>
+    <string name="pref_title_behaviour_preferences">一般的な挙動</string>
+    <string name="pref_summary_behaviour_preferences">一般的なアプリの挙動の設定</string>
+    <string name="pref_title_drawer_style">ドロワースタイル</string>
+    <string name="pref_summary_drawer_style">異なるドロワー実装をスイッチする</string>
 </resources>

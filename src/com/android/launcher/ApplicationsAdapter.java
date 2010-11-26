@@ -139,7 +139,7 @@ public class ApplicationsAdapter extends ArrayAdapter<ApplicationInfo> {
 			addToViewCache(parent, info);
 		View result = viewCache.get(info);
         //ADW:Counters
-        ((CounterTextView)result).setCounter(info.counter);
+        ((CounterTextView)result).setCounter(info.counter, info.counterColor);
 		return result; 
 	}
 

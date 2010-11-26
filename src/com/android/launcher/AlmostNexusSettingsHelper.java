@@ -5,10 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.text.Html;
-import android.text.SpannableString;
 import android.text.Spanned;
-import android.text.method.LinkMovementMethod;
-import android.text.util.Linkify;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -24,7 +21,7 @@ public final class AlmostNexusSettingsHelper {
 	private static final String ALMOSTNEXUS_PREFERENCES = "launcher.preferences.almostnexus";
 	private static final String[] restart_keys={"drawerNew","uiHideLabels","highlights_color",
 		"highlights_color_focus","uiNewSelectors","desktopRows","desktopColumns","autosizeIcons","uiDesktopIndicatorType",
-		"screenCache","uiDesktopIndicator","themePackageName","themeIcons"};
+		"screenCache","uiDesktopIndicator","themePackageName","themeIcons", "notif_size","drawer_style"};
 
 	public static boolean needsRestart(String key){
 		for(int i=0;i<restart_keys.length;i++){
@@ -73,11 +70,6 @@ public final class AlmostNexusSettingsHelper {
 		boolean animated = sp.getBoolean("drawerAnimated", context.getResources().getBoolean(R.bool.config_drawerAnimated));
 		return animated;
 	}
-	public static boolean getDrawerNew(Context context) {
-		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
-		boolean newD = sp.getBoolean("drawerNew", context.getResources().getBoolean(R.bool.config_drawerNew));
-		return newD;
-	}
 	public static boolean getHideStatusbar(Context context) {
 		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
 		boolean newD = sp.getBoolean("hideStatusbar", context.getResources().getBoolean(R.bool.config_hideStatusbar));
@@ -86,11 +78,6 @@ public final class AlmostNexusSettingsHelper {
 	public static boolean getNewPreviews(Context context) {
 		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
 		boolean newD = sp.getBoolean("previewsNew", context.getResources().getBoolean(R.bool.config_previewsNew));
-		return newD;
-	}
-	public static boolean getFullScreenPreviews(Context context) {
-		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
-		boolean newD = sp.getBoolean("previewsFullScreen", context.getResources().getBoolean(R.bool.config_previewsFullScreen));
 		return newD;
 	}
 	public static int getHomeBinding(Context context) {
@@ -118,21 +105,6 @@ public final class AlmostNexusSettingsHelper {
 		boolean newD = sp.getBoolean("uiCloseFolder", context.getResources().getBoolean(R.bool.config_uiCloseFolder));
 		return newD;
 	}
-	public static boolean getUILAB(Context context) {
-		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
-		boolean newD = sp.getBoolean("uiLAB", context.getResources().getBoolean(R.bool.config_uiLAB));
-		return newD;
-	}
-	public static boolean getUIRAB(Context context) {
-		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
-		boolean newD = sp.getBoolean("uiRAB", context.getResources().getBoolean(R.bool.config_uiRAB));
-		return newD;
-	}
-	public static boolean getUITint(Context context) {
-		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
-		boolean newD = sp.getBoolean("uiTint", context.getResources().getBoolean(R.bool.config_uiTint));
-		return newD;
-	}
 	public static int getDesktopSpeed(Context context) {
 		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
 		int newD = sp.getInt("desktopSpeed", context.getResources().getInteger(R.integer.config_desktopSpeed));
@@ -141,11 +113,6 @@ public final class AlmostNexusSettingsHelper {
 	public static int getDesktopBounce(Context context) {
 		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
 		int newD = sp.getInt("desktopBounce", context.getResources().getInteger(R.integer.config_desktopBounce));
-		return newD;
-	}
-	public static boolean getUIAppsBg(Context context) {
-		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
-		boolean newD = sp.getBoolean("uiAppsBg", context.getResources().getBoolean(R.bool.config_uiAppsBg));
 		return newD;
 	}
 	public static boolean getUIABBg(Context context) {
@@ -203,11 +170,6 @@ public final class AlmostNexusSettingsHelper {
 		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
 		int screens = sp.getInt("desktopRows", context.getResources().getInteger(R.integer.config_desktopRows))+3;
 		return screens;
-	}
-	public static boolean getUIAB2(Context context) {
-		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
-		boolean newD = sp.getBoolean("uiAB2", context.getResources().getBoolean(R.bool.config_uiAB2));
-		return newD;
 	}
 	public static boolean getAutosizeIcons(Context context) {
 		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
@@ -428,9 +390,13 @@ public final class AlmostNexusSettingsHelper {
 	}
 
 	public static boolean getDebugShowMemUsage(Context context) {
-		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
-		boolean newD = sp.getBoolean("dbg_show_mem", false);
-		return newD;
+		if(MyLauncherSettings.IsDebugVersion){
+    	    SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
+    		boolean newD = sp.getBoolean("dbg_show_mem", false);
+    		return newD;
+		}else{
+		    return false;
+		}
 	}
 	public static boolean getDrawerCatalogsNavigation(Context context) {
 	    SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
@@ -442,4 +408,19 @@ public final class AlmostNexusSettingsHelper {
 	    boolean newD = sp.getBoolean("notif_receiver", context.getResources().getBoolean(R.bool.config_notif_receiver));
 	    return newD;
 	}
+	public static int getNotifSize(Context context) {
+	    SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
+	    int def_screen = sp.getInt("notif_size", context.getResources().getInteger(R.integer.config_notif_size))+10;
+	    return def_screen;
+	}
+    public static int getmainDockStyle(Context context) {
+        SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
+        int newD = Integer.valueOf(sp.getString("main_dock_style", context.getResources().getString(R.string.config_main_dock_style)));
+        return newD;
+    }
+    public static int getDrawerStyle(Context context) {
+        SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
+        int newD = Integer.valueOf(sp.getString("drawer_style", context.getResources().getString(R.string.config_drawer_style)));
+        return newD;
+    }
 }

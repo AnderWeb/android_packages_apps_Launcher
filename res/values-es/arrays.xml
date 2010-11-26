@@ -27,4 +27,15 @@
                 <item>Automático</item>
                 <item>Desactivado</item>
        </string-array>
+       <string-array name="main_dock_entries">
+                <item>Ocultar (expandir escritorio)</item>
+                <item>3 Iconos</item>
+                <item>5 Iconos</item>
+                <item>1 Icono</item>
+       </string-array>
+       <string-array name="app_drawer_style_entries">
+                <item>Vertical</item>
+                <item>Horizontal paginado</item>
+       </string-array>
+
 </resources>

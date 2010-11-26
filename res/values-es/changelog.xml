@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string name="adw_changelog">
+-&lt;b>AVISO:&lt;/b> Si tu tema se ve mal, pide al desarrollador que lo actualice!!! &lt;br>&lt;br>
 -&lt;b>AVISO:&lt;/b> Para configurar los escritorios pulsa MENÚ/Editar&lt;br>&lt;br>
 -&lt;b>AVISO:&lt;/b> para activar la ROTACIÓN, desactiva la PERSISTENCIA.&lt;br>&lt;br>
 -&lt;b>RECUERDA:&lt;/b> Puedes ocultar iconos de la lista de aplicaciones usando los catálogos personalizados (pulsa la tecla menú con la lista de aplicaciones abierta) &lt;br>&lt;br>
 
-&lt;b>Version 1.2.0:&lt;/b>&lt;br>
+
+&lt;b>Version 1.3.0:&lt;/b>&lt;br>
 &lt;b>--------------&lt;/b>&lt;br>
--Nueva opción para mostrar botones de cambio rápido de "grupos de aplicaciones" &lt;br>
--Nuevo sistema global de notificaciones en los iconos. Actualmente otros desarrolladores de apps deben soportar dicha funcionalidad, como Touiteur. &lt;br>
--Nuevo método de cambiar el tamaño de los widgets. Haz una pulsación larga sobre un widget y suéltalo en el mismo lugar donde estaba. &lt;br>
--Compatibilidad con los widgets Motoblur de Motorola (solo si tienes un terminal Motorola) &lt;br>
--Nuevas "Launcher Actions" para los iconos personalizados. Ahora puedes crear iconos para acciones del launcher como aprir la lista de apps, mostrar las previews, etc &lt;br>
--Soporte para Grupos de apps ilimitados (anteriormente el máximo eran 4) &lt;br>
--Inversión en la lógica de los grupos de apps: ahora las apps instaladas no aparecerán en todos los grupos (lo lamento, deberás crear tus grupos de nuevo) &lt;br>
--Arreglos de fallos y ligeras optimizaciones aquí y allá &lt;br>
+-Pequeño rediseño de la interfaz (Papelera movida a la parte superior, Dock configurable, etc)
+-Edición de iconos mediante pulsación larga y soltarlos en el mismo sitio &lt;br>
+-Soporte para notificaciones de colores. &lt;br>
+-Desplazamiento más cómode del Dockbar oculto. &lt;br>
+-Posibilidad de reemplazar el botón central del dock &lt;br>
+-Posibilidad de desinstalar widgets dejandolos sobre la papelera un segundo &lt;br>
+-Montones de correcciones &lt;br>
+
 </string>
 </resources>

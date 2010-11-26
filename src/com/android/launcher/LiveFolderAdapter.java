@@ -57,8 +57,12 @@ class LiveFolderAdapter extends CursorAdapter {
     }
 
     static Cursor query(Context context, LiveFolderInfo info) {
-        return context.getContentResolver().query(info.uri, null, null,
+        try{
+            return context.getContentResolver().query(info.uri, null, null,
                 null, LiveFolders.NAME + " ASC");
+        }catch (Exception e) {
+            return null;
+        }
     }
 
     public View newView(Context context, Cursor cursor, ViewGroup parent) {

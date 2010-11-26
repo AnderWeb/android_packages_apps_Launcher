@@ -35,10 +35,6 @@
     <string name="group_live_folders" msgid="2664945399140647217">"資料夾"</string>
     <string name="group_widgets" msgid="6704978494073105844">"小工具"</string>
     <string name="group_wallpapers" msgid="1568191644272224858">"桌布"</string>
-    <string name="add_folder" msgid="3521088587367839879">"資料夾"</string>
-    <string name="add_clock" msgid="2337943840175865746">"時鐘"</string>
-    <string name="add_photo_frame" msgid="3154058437359487954">"相框"</string>
-    <string name="add_search" msgid="7104834713685095105">"搜尋"</string>
     <string name="out_of_space" msgid="8365249326091984698">"首頁已無空間"</string>
     <string name="shortcut_installed" msgid="7071557296331322355">"已建立「<xliff:g id="NAME">%s</xliff:g>」捷徑。"</string>
     <string name="shortcut_uninstalled" msgid="2129499669449749995">"已移除「<xliff:g id="NAME">%s</xliff:g>」捷徑。"</string>
@@ -48,8 +44,6 @@
     <string name="menu_add" msgid="3065046628354640854">"新增"</string>
     <string name="menu_wallpaper" msgid="5837429080911269832">"桌布"</string>
     <string name="menu_search" msgid="4826514464423239041">"搜尋"</string>
-    <string name="menu_notifications" msgid="6424587053194766192">"通知"</string>
-    <string name="menu_gestures" msgid="514678675575912237">"觸控動作"</string>
     <string name="menu_settings" msgid="6233960148378443661">"設定"</string>
     <string name="permlab_install_shortcut" msgid="1201690825493376489">"安裝捷徑"</string>
     <string name="permdesc_install_shortcut" msgid="7429365847558984148">"允許應用程式自動新增快速鍵。"</string>
@@ -59,7 +53,6 @@
     <string name="permdesc_read_settings" msgid="8377434937176025492">"允許應用程式讀取首頁中的設定和捷徑。"</string>
     <string name="permlab_write_settings" msgid="1360567537236705628">"寫入首頁設定和捷徑"</string>
     <string name="permdesc_write_settings" msgid="1098648778383349818">"允許應用程式變更首頁中的設定和捷徑。"</string>
-    <string name="search_hint" msgid="6974176141372467453">"Google 搜尋"</string>
     <string name="gadget_error_text" msgid="8359351016167075858">"載入小工具時發生問題"</string>
 
     <!-- ADW Settings -->
@@ -78,8 +71,6 @@
     <string name="pref_summary_hide_statusbar">隱藏螢幕上方的狀態列</string>
 
     <string name="pref_title_default_screen">默認桌面</string>
-    <string name="pref_summary_default_screen">選擇需要設置為預設的桌面的編號</string>
-    <string name="pref_dialog_default_screen">選擇需要設置為預設的桌面的編號</string>
 
     <string name="pref_title_desktop_scrolling_speed">滾動速度</string>
     <string name="pref_summary_desktop_scrolling_speed">設置滾動時切換桌面的速度</string>
@@ -101,9 +92,6 @@
     <string name="pref_summary_page_horizontal_margin">設置託盤每頁之間的橫向邊距</string>
     <string name="pref_dialog_page_horizontal_margin">設置託盤每頁之間的橫向邊距</string>
 
-    <string name="pref_title_new_drawer">橫向託盤</string>
-    <string name="pref_summary_new_drawer">使用類似三星Galaxy 5的橫向滾動託盤</string>
-
     <string name="pref_title_animated_drawer">託盤動畫</string>
     <string name="pref_summary_animated_drawer">設置開啟託盤時是否顯示縮放動畫</string>
 
@@ -124,14 +112,8 @@
     <string name="pref_dialog_drawer_rows_landscape">選擇橫屏時託盤顯示的圖示行數</string>
 
     <!-- Previews preferences -->
-    <string name="pref_title_previews_preferences">預覽設置</string>
-    <string name="pref_summary_previews_preferences">桌面預覽設置</string>
-
     <string name="pref_title_sense_previews">Sense風格預覽</string>
     <string name="pref_summary_sense_previews">使用Sense介面的縮略圖預覽風格</string>
-
-    <string name="pref_title_clean_screen_mode">無圖示預覽模式</string>
-    <string name="pref_summary_clean_screen_mode">在預覽時隱藏桌面的圖示和小外掛程式</string>
 
     <!-- Button preferences -->
     <string name="pref_title_ui_settings">介面設置</string>
@@ -158,24 +140,9 @@
     <string name="pref_title_closing_folder">自動關閉資料夾</string>
     <string name="pref_summary_closing_folder">應用程式啟動後，自動關閉打開的資料夾</string>
 
-    <string name="pref_title_lab">左側動作按鍵</string>
-    <string name="pref_summary_lab">開啟/關閉左側動作按鍵</string>
-
-    <string name="pref_title_rab">右側動作按鍵</string>
-    <string name="pref_summary_rab">開啟/關閉右側動作按鍵</string>
-
-    <string name="pref_title_ab2">附加動作按鍵</string>
-    <string name="pref_summary_ab2">開啟/關閉附加動作按鍵（關閉桌面分頁點後才能開啟）</string>
-
-    <string name="pref_title_tint_ab">動作按鍵著色</string>
-    <string name="pref_summary_tint_ab">開啟/關閉動作按鍵的著色效果</string>
-
     <string name="pref_title_ab_scale_factor">動作按鍵圖示縮放</string>
     <string name="pref_summary_ab_scale_factor">選擇動作按鍵的圖示縮放尺寸</string>
     <string name="pref_dialog_ab_scale_factor">選擇動作按鍵的圖示縮放尺寸</string>
-
-    <string name="pref_title_hide_allapps_ab">隱藏託盤按鍵背景</string>
-    <string name="pref_summary_hide_allapps_ab">隱藏託盤啟動按鍵的背景</string>
 
     <string name="pref_title_hide_ab_bg">隱藏動作按鍵背景</string>
     <string name="pref_summary_hide_ab_bg">隱藏左右動作按鍵的背景</string>
@@ -282,7 +249,6 @@
     <!-- Category titles -->
     <string name="pref_title_system_preferences">系統設置</string>
     <string name="pref_summary_system_preferences">ADW系統設置</string>
-    <string name="pref_title_screens_preferencecategory">桌面螢幕</string>
     <string name="pref_title_screens_layout_preferencecategory">桌面佈局</string>
     <string name="pref_title_screens_behaviour_preferencecategory">桌面特性</string>
     <string name="pref_title_drawer_preferencecategory">程式託盤</string>
@@ -316,7 +282,6 @@
 
 	<string name="pref_label_shirtcuts">自訂捷徑</string>
 	<string name="pref_label_activities">活動清單</string>
-	<string name="pref_label_activities_loading">正在載入應用程式清單...</string>
 	<string name="shirtcut_header">選擇您需要啟動的應用程式。\n您也可以同時選擇自訂圖示。</string>
 	<string name="shirtcut_pick_activity">選擇您的應用程式</string>
 	<string name="shirtcut_label">標籤</string>
@@ -335,7 +300,6 @@
 	<string name="AppGroupConfig">"設置群組"</string>
 	<string name="AppGroupRename">"新目錄"</string>
 	<string name="AppGroupConfigError">"無法設置此群組"</string>
-	<string name="AppGroupAddError">"無法添加更多群組"</string>
 	<string name="rename_group_title">新目錄</string>
 	<string name="rename_group_label">目錄名稱</string>
 	
@@ -351,4 +315,17 @@
     <string name="pref_summary_drawer_navigate_catalogs">顯示應用程式目錄導航按鈕</string>
     <string name="pref_title_notif_receiver">顯示通知</string>
     <string name="pref_summary_notif_receiver">啟用全域通知計數</string>
+
+    <string name="pref_title_notif_size">氣泡字體大小</string>
+    <string name="pref_summary_notif_size">選擇通知氣泡字體大小</string>
+    <string name="pref_dialog_notif_size">選擇通知氣泡字體大小</string>
+
+    <string name="pref_title_ab_preferencecategory">主工具列</string>
+    <string name="pref_title_main_dock_style">主工具列式樣</string>
+    <string name="pref_summary_main_dock_style">選擇主工具列式樣</string>
+    <string name="pref_title_behaviour_preferences">常規特性</string>
+    <string name="pref_summary_behaviour_preferences">應用程式常規特性設置</string>
+    <string name="pref_title_drawer_style">程式託盤式樣</string>
+    <string name="pref_summary_drawer_style">切換不同託盤實現方式</string>
+
 </resources>

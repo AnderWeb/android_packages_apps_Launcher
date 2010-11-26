@@ -23,6 +23,8 @@ public class LauncherActions {
 		public void putIntentExtras(Intent intent);
 
 		public boolean runIntent(Intent intent);
+
+		public int getIconResourceId();
 	}
 
 	private static LauncherActions mInstance = null;
@@ -116,8 +118,14 @@ public class LauncherActions {
 				{
 					LayoutInflater li = mLauncher.getLayoutInflater();
 					convertView = li.inflate(R.layout.add_list_item, parent, false);
+
 				}
-				((TextView)convertView).setText(mActions.get(position).getName());
+				Action act = mActions.get(position);
+
+				TextView textView = (TextView) convertView;
+		        textView.setText(act.getName());
+		        textView.setCompoundDrawablesWithIntrinsicBounds(
+		        		mLauncher.getResources().getDrawable(act.getIconResourceId()), null, null, null);
 				return convertView;
 			}
 
@@ -190,6 +198,25 @@ public class LauncherActions {
 			return false;
 		}
 
+		@Override
+		public int getIconResourceId() {
+			switch(mBindingValue) {
+				case Launcher.BIND_DEFAULT:
+					return R.drawable.movetodefault_button;
+				case Launcher.BIND_PREVIEWS:
+					return R.drawable.showpreviews_button;
+				case Launcher.BIND_APPS:
+					return R.drawable.all_apps_button;
+				case Launcher.BIND_STATUSBAR:
+					return R.drawable.showhidestatusbar_button;
+				case Launcher.BIND_NOTIFICATIONS:
+					return R.drawable.openclosenotifications_button;
+				case Launcher.BIND_DOCKBAR:
+					return R.drawable.openclosedockbar_button;
+				default:
+					return R.drawable.ic_launcher_home;
+			}
+		}
 	}
 
 	private class ShowGroupAction implements Action {
@@ -229,6 +256,10 @@ public class LauncherActions {
 			mLauncher.showAllApps(true, filter);
 		}
 
+		@Override
+		public int getIconResourceId() {
+			return R.drawable.ic_launcher_home;
+		}
 	}
 
 }

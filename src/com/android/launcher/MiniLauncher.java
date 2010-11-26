@@ -16,7 +16,8 @@
 
 package com.android.launcher;
 
-import static android.util.Log.d;
+import com.android.launcher.FlingGesture.FlingListener;
+
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -25,7 +26,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -35,7 +35,9 @@ import android.widget.Scroller;
 import android.widget.Toast;
 
 
-public class MiniLauncher extends ViewGroup implements View.OnLongClickListener, DropTarget, DragController.DragListener,DragSource {
+public class MiniLauncher extends ViewGroup implements View.OnLongClickListener, DropTarget,
+                                     DragController.DragListener,DragSource,
+                                     FlingListener {
     private static final int HORIZONTAL=1;
     private static final int VERTICAL=0;
 	private Launcher mLauncher;
@@ -56,9 +58,12 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
     private static final int TOUCH_STATE_DOWN = 2;
     private int mTouchState = TOUCH_STATE_REST;
     private int mTouchSlop;
-    private int mScrollingSpeed=600;
+    private final int mScrollingSpeed=600;
     private boolean mScrollAllowed=false;
     private DragController mDragger;
+    private final FlingGesture mFlingGesture = new FlingGesture();
+    private int mCurrentIndex = 0;
+
     public MiniLauncher(Context context) {
         super(context);
     }
@@ -69,7 +74,7 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
 
     public MiniLauncher(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-		
+
 		setHapticFeedbackEnabled(true);
 		TypedArray a=context.obtainStyledAttributes(attrs,R.styleable.MiniLauncher,defStyle,0);
 		mOrientation=a.getInt(R.styleable.MiniLauncher_orientation, mOrientation);
@@ -78,19 +83,20 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
 		mCellHeight=a.getDimensionPixelSize(R.styleable.MiniLauncher_cellHeight, mCellHeight);
         mScroller = new Scroller(getContext());
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
+        mFlingGesture.setListener(this);
     }
 
     public boolean acceptDrop(DragSource source, int x, int y, int xOffset, int yOffset,
             Object dragInfo) {
 		return true;
     }
-    
+
     public Rect estimateDropLocation(DragSource source, int x, int y, int xOffset, int yOffset, Object dragInfo, Rect recycle) {
         return null;
     }
-    
+
     private int FindItemDropPos(int x, int y) {
-    	final boolean horizontal = (mOrientation==HORIZONTAL); 
+    	final boolean horizontal = (mOrientation==HORIZONTAL);
     	final int count=getChildCount();
     	int margin = horizontal ? ((getMeasuredWidth())/2)-(((count*mCellWidth)/2)) :
     	                          ((getMeasuredHeight())/2)-(((count*mCellHeight)/2));
@@ -98,20 +104,20 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
     		margin = 0;
     	// check for drop on an item
     	int dropPos = horizontal ? (x + getScrollX()) : (y +  getScrollY());
-    	
+
 	    for (int i = 0; i < count; i++) {
 	        View child = getChildAt(i);
 	        ItemInfo item=(ItemInfo) child.getTag();
 	        if (child.getVisibility() != GONE) {
-                
+
 	        	int bound1 = margin + (item.cellX * (horizontal ? mCellWidth : mCellHeight));
                 int bound2 = bound1 + (horizontal ? mCellWidth : mCellHeight);
-                
+
 	            if (dropPos < bound1 && item.cellX == 0) // before the first item
 	            	return 0;
 	            if (dropPos >= bound2 && item.cellX == (count - 1))
 	            	return count;
-	            
+
 	            if (dropPos >= bound1 && dropPos < bound2) {
 	            	int pos = item.cellX;
 	            	for (int j = 0; j < item.cellX; j++) {
@@ -119,19 +125,19 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
 	            		if (chld.getVisibility() == GONE)
 	            			pos++;
 	            	}
-	            	
+
 	            	int middle = bound1 + (((mOrientation==HORIZONTAL) ? mCellWidth : mCellHeight) / 2);
 	            	if (dropPos >= middle)
 	            		return pos + 1;
 	            	return pos;
 	            }
-	            	
+
 	        }
 	    }
 	    //something went wrong...
 	    return getChildCount();
     }
-    
+
     /**
      * Adds the specified child in the specified screen. The position and dimension of
      * the child are defined by x, y, spanX and spanY.
@@ -144,9 +150,9 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
      * @param spanY The number of cells spanned vertically by the child.
      * @param insert When true, the child is inserted at the beginning of the children list.
      */
-      
+
     public void onDrop(DragSource source, int x, int y, int xOffset, int yOffset, Object dragInfo) {
-	final LauncherModel model = Launcher.getModel();
+    	final LauncherModel model = Launcher.getModel();
 		ItemInfo info = (ItemInfo) dragInfo;
 		boolean accept=true;
         switch (info.itemType) {
@@ -167,7 +173,7 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
         	accept=false;
         	return;
         }
-        info.cellX=FindItemDropPos(x, y);        
+        info.cellX=FindItemDropPos(x, y);
         //add it to launcher database
         if (info instanceof LauncherAppWidgetInfo) {
             model.removeDesktopAppWidget((LauncherAppWidgetInfo) info);
@@ -175,12 +181,12 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
             final LauncherAppWidgetHost appWidgetHost = mLauncher.getAppWidgetHost();
             if (appWidgetHost != null) {
                 appWidgetHost.deleteAppWidgetId(launcherAppWidgetInfo.appWidgetId);
-            } 
+            }
         }
         if(accept){
 	        model.addDesktopItem(info);
 	        LauncherModel.addOrMoveItemInDatabase(mLauncher, info,
-	                LauncherSettings.Favorites.CONTAINER_DOCKBAR, -1, info.cellX, -1);	        
+	                LauncherSettings.Favorites.CONTAINER_DOCKBAR, -1, info.cellX, -1);
 	        addItemInDockBar(info);
 	        // Reorder the other items:
 	        for(int i = 0; i < getChildCount(); i++) {
@@ -189,10 +195,10 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
 	        	if (childInfo != info && childInfo.cellX >= info.cellX) {
 	        		childInfo.cellX += 1;
 	                LauncherModel.moveItemInDatabase(mLauncher, childInfo,
-	                        LauncherSettings.Favorites.CONTAINER_DOCKBAR, -1, childInfo.cellX, -1);	        		
+	                        LauncherSettings.Favorites.CONTAINER_DOCKBAR, -1, childInfo.cellX, -1);
 	        	}
 	        }
-	        
+
         }else{
         	LauncherModel.deleteItemFromDatabase(mLauncher, info);
         }
@@ -281,8 +287,8 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
         removeView(v);
         return true;
 	}
-	
-	
+
+
     void setLauncher(Launcher launcher) {
         mLauncher = launcher;
     }
@@ -294,8 +300,8 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
         for (int i = 0; i < count; i++) {
             View child = getChildAt(i);
         	child.measure(mCellWidth, mCellHeight);
-        }		
-		
+        }
+
 		if(mOrientation==HORIZONTAL){
 			super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(mCellHeight, MeasureSpec.AT_MOST));
 		}else{
@@ -307,8 +313,8 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
 	protected void onLayout(boolean changed, int l, int t, int r, int b) {
 		// TODO Auto-generated method stub
 		int count = getChildCount();
-		
-		
+
+
 		int marginLeft=((getMeasuredWidth())/2)-(((count*mCellWidth)/2));
 		int marginTop=((getMeasuredHeight())/2)-(((count*mCellHeight)/2));
 		if(getChildCount()>mNumCells){
@@ -336,7 +342,7 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
                 child.layout(childLeft, childTop, childRight, childBottom);
             }
         }
-		
+
 	}
     /**
      * ADW: Lets add scrolling capabilities :P
@@ -361,7 +367,7 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
                 final int touchSlop = mTouchSlop;
                 boolean xMoved = xDiff > touchSlop;
                 boolean yMoved = yDiff > touchSlop;
-                
+
                 if (xMoved || yMoved) {
                     if (xMoved && mOrientation==HORIZONTAL) {
                         mTouchState = TOUCH_STATE_SCROLLING;
@@ -392,6 +398,8 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
         final int action = ev.getAction();
         final float x = ev.getX();
         final float y = ev.getY();
+        mFlingGesture.ForwardTouchEvent(ev);
+
         switch (action) {
         case MotionEvent.ACTION_DOWN:
             if (!mScroller.isFinished()) {
@@ -407,7 +415,7 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
             	// Scroll to follow the motion event
                 final int delta = (mOrientation==HORIZONTAL)?(int) (mLastMotionX - x):(int) (mLastMotionY - y);
                 if(Math.abs(delta)>mTouchSlop || mTouchState == TOUCH_STATE_SCROLLING){
-                	mTouchState = TOUCH_STATE_SCROLLING;                	
+                	mTouchState = TOUCH_STATE_SCROLLING;
 	                mLastMotionX = x;
 	                mLastMotionY = y;
 	                if (delta < 0) {
@@ -425,9 +433,6 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
             }
             break;
         case MotionEvent.ACTION_UP:
-            if (mTouchState == TOUCH_STATE_SCROLLING) {
-                snapScroll();
-            }
             mTouchState = TOUCH_STATE_REST;
             invalidate();
             break;
@@ -436,6 +441,46 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
         }
         return true;
     }
+
+	@Override
+	public void OnFling(int Direction) {
+		int leftDir = (mOrientation == HORIZONTAL)?FlingGesture.FLING_LEFT:FlingGesture.FLING_DOWN;
+		int rightDir = (mOrientation == HORIZONTAL)?FlingGesture.FLING_RIGHT:FlingGesture.FLING_UP;
+
+        if (Direction == leftDir && mCurrentIndex > 0) {
+            // Fling hard enough to move left
+        	snapToItem(mCurrentIndex - getItemsPerPage());
+        } else if (Direction == rightDir && mCurrentIndex < getChildCount() - 1) {
+            // Fling hard enough to move right
+        	snapToItem(mCurrentIndex + getItemsPerPage());
+        }
+        else
+        	snapScroll();
+	}
+
+    private void snapToItem(int index) {
+    	if (index < 0)
+    		index = 0;
+    	if (index > getChildCount() - getItemsPerPage())
+    		index = getChildCount() - getItemsPerPage();
+    	final int actualScroll=(mOrientation==HORIZONTAL)?getScrollX():getScrollY();
+        final int cellSize=(mOrientation==HORIZONTAL)?mCellWidth:mCellHeight;
+        final int target = cellSize * index;
+        final int delta=target-actualScroll;
+        if(mOrientation==HORIZONTAL){
+        	mScroller.startScroll(actualScroll, 0, delta, 0, mScrollingSpeed);
+        }else{
+        	mScroller.startScroll(0,actualScroll, 0, delta, mScrollingSpeed);
+        }
+        mCurrentIndex = index;
+    }
+
+    private int getItemsPerPage() {
+    	final int actualLimit=(mOrientation==HORIZONTAL)?getWidth():getHeight();
+    	final int cellSize=(mOrientation==HORIZONTAL)?mCellWidth:mCellHeight;
+    	return actualLimit / cellSize;
+    }
+
     private void snapScroll(){
         final int actualScroll=(mOrientation==HORIZONTAL)?getScrollX():getScrollY();
         final int cellSize=(mOrientation==HORIZONTAL)?mCellWidth:mCellHeight;
@@ -443,6 +488,7 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
     	int position = actualScroll-(actualScroll%cellSize);
     	if(position<0)position=0;
     	if(position>((getChildCount())*cellSize)-actualLimit) position=(getChildCount()*cellSize)-actualLimit;
+    	mCurrentIndex = position / cellSize;
         final int delta=position-actualScroll;
         if(mOrientation==HORIZONTAL){
         	mScroller.startScroll(actualScroll, 0, delta, 0, mScrollingSpeed);
@@ -466,7 +512,7 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
 		super.setBackgroundDrawable(d);
 		mBackground=(TransitionDrawable) d;
 		mBackground.setCrossFadeEnabled(true);
-		
+
 	}
 	/**
 	 * ADW: Reload the proper icons
@@ -496,7 +542,7 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
 	public void setDragger(DragController dragger) {
 		mDragger=dragger;
 	}
-	public void updateCounters(String packageName, int counter){
+	public void updateCounters(String packageName, int counter, int color){
         final int count=getChildCount();
 	    for(int i=0;i<count;i++){
             final View view=getChildAt(i);
@@ -513,13 +559,13 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
 	                Intent.ACTION_MAIN.equals(intent.getAction()) && name != null &&
 	                packageName.equals(name.getPackageName())) {
 	                if(view instanceof CounterImageView)
-	                    ((CounterImageView) view).setCounter(counter);
+	                    ((CounterImageView) view).setCounter(counter, color);
 	                //else if
 	                view.invalidate();
-	                Launcher.getModel().updateCounterDesktopItem(info, counter);
+	                Launcher.getModel().updateCounterDesktopItem(info, counter, color);
 	            }
 	        }
-	        
+
 	    }
 	}
 }

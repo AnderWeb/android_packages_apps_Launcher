@@ -18,6 +18,7 @@ package com.android.launcher;
 
 import java.util.ArrayList;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -27,8 +28,10 @@ import android.graphics.RectF;
 import android.graphics.Paint;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.PorterDuff;
+import android.os.Debug;
 import android.os.SystemClock;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
@@ -136,6 +139,11 @@ public class DragLayer extends FrameLayout implements DragController {
     private static final int COLOR_NORMAL=0x66FF0000;
     private static final int COLOR_TRASH=0xAAFF0000;
     private boolean mDrawModeBitmap=true;
+    ActivityManager activityManager;
+    int[] pids;
+    Debug.MemoryInfo[] memoryInfoArray;
+    float debugTextSize;
+    
     /**
      * Used to create a new DragLayer from XML.
      *
@@ -156,6 +164,12 @@ public class DragLayer extends FrameLayout implements DragController {
         estimatedPaint.setAntiAlias(true);
         mRectPaint=new Paint();
         mRectPaint.setColor(COLOR_NORMAL);
+        activityManager =(ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        if (AlmostNexusSettingsHelper.getDebugShowMemUsage(context))
+            pids=new int[]{android.os.Process.myPid()};
+        else
+            pids = new int[]{};
+        debugTextSize=DisplayMetrics.DENSITY_DEFAULT/10;
     }
 
     public void startDrag(View v, DragSource source, Object dragInfo, int dragAction) {
@@ -332,6 +346,21 @@ public class DragLayer extends FrameLayout implements DragController {
                 	canvas.drawRoundRect(new RectF(0, 0,mDrawWidth , mDrawHeight), 8.0f, 8.0f, mRectPaint);
                 	canvas.restore();
                 }
+            }
+        }
+        if (pids.length > 0 && AlmostNexusSettingsHelper.getDebugShowMemUsage(getContext())) {
+            mRectPaint.setTextSize(debugTextSize);
+            mRectPaint.setAntiAlias(true);
+            mRectPaint.setColor(0xff000000);
+            if (pids.length > 0)
+                canvas.drawRect(0, 0, getWidth(), 70, mRectPaint);
+            mRectPaint.setColor(0xffffffff);
+            memoryInfoArray= activityManager.getProcessMemoryInfo(pids);
+            for(Debug.MemoryInfo pidMemoryInfo: memoryInfoArray)
+            {
+                canvas.drawText("getTotalPrivateDirty: " + pidMemoryInfo.getTotalPrivateDirty(), 0, debugTextSize, mRectPaint);
+                canvas.drawText("getTotalPss: " + pidMemoryInfo.getTotalPss(), 0, debugTextSize*2, mRectPaint);
+                canvas.drawText("getTotalSharedDirty: " + pidMemoryInfo.getTotalSharedDirty(), 0, debugTextSize*3, mRectPaint);
             }
         }
     }

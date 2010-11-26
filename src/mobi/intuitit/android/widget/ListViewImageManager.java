@@ -1,5 +1,7 @@
 package mobi.intuitit.android.widget;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -105,8 +107,19 @@ public class ListViewImageManager {
 			if (LOGD)
 				Log.d(TAG, "image ID decoded");
 
-			drawable = Drawable.createFromResourceStream(ctx.getResources(), null, ctx.getResources().openRawResource(
-					imgId), ctx.getResources().getResourceName(imgId));
+			InputStream rawResource = ctx.getResources().openRawResource( imgId);
+			try
+			{
+				drawable = Drawable.createFromStream(rawResource, ctx.getResources().getResourceName(imgId));
+			}
+			finally
+			{
+				try {
+					rawResource.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 
 			mCacheForImageById.put(imgId, new SoftReference<Drawable>(drawable));
 

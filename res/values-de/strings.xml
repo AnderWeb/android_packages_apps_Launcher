@@ -36,10 +36,6 @@
     <string name="group_live_folders" msgid="2664945399140647217">"Ordner"</string>
     <string name="group_widgets" msgid="6704978494073105844">"Widgets"</string>
     <string name="group_wallpapers" msgid="1568191644272224858">"Hintergrundbilder"</string>
-    <string name="add_folder" msgid="3521088587367839879">"Ordner"</string>
-    <string name="add_clock" msgid="2337943840175865746">"Uhr"</string>
-    <string name="add_photo_frame" msgid="3154058437359487954">"Bildrahmen"</string>
-    <string name="add_search" msgid="7104834713685095105">"Suchen"</string>
     <string name="out_of_space" msgid="8365249326091984698">"Auf dem Startbildschirm ist kein Platz mehr vorhanden."</string>
     <string name="shortcut_installed" msgid="7071557296331322355">"\"<xliff:g id="NAME">%s</xliff:g>\"-Verknüpfung wurde erstellt."</string>
     <string name="shortcut_uninstalled" msgid="2129499669449749995">"\"<xliff:g id="NAME">%s</xliff:g>\"-Verknüpfung wurde entfernt."</string>
@@ -49,8 +45,6 @@
     <string name="menu_add" msgid="3065046628354640854">"Hinzufügen"</string>
     <string name="menu_wallpaper" msgid="5837429080911269832">"Hintergrund"</string>
     <string name="menu_search" msgid="4826514464423239041">"Suchen"</string>
-    <string name="menu_notifications" msgid="6424587053194766192">"Benachrichtigungen"</string>
-    <string name="menu_gestures" msgid="514678675575912237">"Bewegungen"</string>
     <string name="menu_settings" msgid="6233960148378443661">"Einstellungen"</string>
     <string name="menu_adw_settings">ADW.Launcher</string>
     <string name="permlab_install_shortcut" msgid="1201690825493376489">"Verknüpfungen installieren"</string>
@@ -61,7 +55,6 @@
     <string name="permdesc_read_settings" msgid="8377434937176025492">"Ermöglicht einer Anwendung, die Einstellungen und Shortcuts auf der Startseite zu lesen."</string>
     <string name="permlab_write_settings" msgid="1360567537236705628">"Einstellungen und Shortcuts für Startseite schreiben"</string>
     <string name="permdesc_write_settings" msgid="1098648778383349818">"Ermöglicht einer Anwendung, die Einstellungen und Shortcuts auf der Startseite zu ändern."</string>
-    <string name="search_hint" msgid="6974176141372467453">"Google-Suche"</string>
     <string name="gadget_error_text" msgid="8359351016167075858">"Problem beim Laden des Widgets"</string>
 
     <!-- ADW Settings -->
@@ -80,8 +73,6 @@
     <string name="pref_summary_hide_statusbar">Obere Statuszeile ausblenden</string>
 
     <string name="pref_title_default_screen">Standardbildschirm</string>
-    <string name="pref_summary_default_screen">Den Standardbildschirm auswählen</string>
-    <string name="pref_dialog_default_screen">Standardbildschirm</string>
 
     <string name="pref_title_desktop_scrolling_speed">Scrollgeschwindigkeit</string>
     <string name="pref_summary_desktop_scrolling_speed">Geschwindigkeit für Bildschirmwechsel einstellen</string>
@@ -103,9 +94,6 @@
     <string name="pref_summary_page_horizontal_margin">Horizontalen Rand zwischen den Seiten des Drawers einstellen</string>
     <string name="pref_dialog_page_horizontal_margin">Horizontaler Rand zwischen den Seiten des Drawers</string>
 
-    <string name="pref_title_new_drawer">Horizontaler Drawer</string>
-    <string name="pref_summary_new_drawer">Horizontale Variante des Drawers verwenden</string>
-
     <string name="pref_title_animated_drawer">Animierter Drawer</string>
     <string name="pref_summary_animated_drawer">Auswählen, ob Animationen im Drawer angezeigt werden sollen</string>
 
@@ -125,15 +113,8 @@
     <string name="pref_summary_drawer_rows_landscape">Anzahl der Reihen des Drawers im Querformat wählen</string>
     <string name="pref_dialog_drawer_rows_landscape">Anzahl der Reihen im Querformat</string>
 
-    <!-- Previews preferences -->
-    <string name="pref_title_previews_preferences">Bildschirm-Vorschauen</string>
-    <string name="pref_summary_previews_preferences">Einstellungen für die Vorschauen mit Schnellzugriff auf die Bildschirme</string>
-
     <string name="pref_title_sense_previews">Sense Vorschauen</string>
     <string name="pref_summary_sense_previews">Vorschauen im Aussehen von HTC Sense-Oberflächen verwenden</string>
-
-    <string name="pref_title_clean_screen_mode">Vorschauen allein</string>
-    <string name="pref_summary_clean_screen_mode">Home-Icons und Widgets ausblenden, wenn Vorschauen geöffnet werden</string>
 
     <!-- Button preferences -->
     <string name="pref_title_ui_settings">Benutzeroberfläche</string>
@@ -160,24 +141,9 @@
     <string name="pref_title_closing_folder">Ordner schließen</string>
     <string name="pref_summary_closing_folder">Ordner nach Programmstart automatisch schließen</string>
 
-    <string name="pref_title_lab">LAB</string>
-    <string name="pref_summary_lab">Konfigurierbare linke Aktionstaste (LAB) zeigen</string>
-
-    <string name="pref_title_rab">RAB</string>
-    <string name="pref_summary_rab">Konfigurierbare rechte Aktionstaste (RAB) zeigen</string>
-
-    <string name="pref_title_ab2">Sekundäre Aktionstasten</string>
-    <string name="pref_summary_ab2">Sekundäre Aktionstasten ein-/ausschalten (keine Desktop-Punkte)</string>
-
-    <string name="pref_title_tint_ab">Graue Aktionstasten</string>
-    <string name="pref_summary_tint_ab">Aktionstasten-Icons mit grauen Silhouetten verschleiern</string>
-
     <string name="pref_title_ab_scale_factor">Größe Aktionstasten</string>
     <string name="pref_summary_ab_scale_factor">Skaliere die Größe der Aktionstasten-Icons</string>
     <string name="pref_dialog_ab_scale_factor">Größenfaktor der Aktionstasten-Icons</string>
-
-    <string name="pref_title_hide_allapps_ab">Drawer-Tasten-HG ausblenden</string>
-    <string name="pref_summary_hide_allapps_ab">Hintergrund der Drawer-Taste ausblenden</string>
 
     <string name="pref_title_hide_ab_bg">Aktionstasten-HG ausblenden</string>
     <string name="pref_summary_hide_ab_bg">Hintergrund der Aktionstasten ausblenden</string>
@@ -203,6 +169,10 @@
     <string name="pref_message_restart_normal">Nach Änderung startet sich der Launcher neu</string>
     <string name="pref_message_restart_froyo">Nach Änderung startet sich der Launcher neu</string>
     <string name="drop_to_uninstall">Zum deinstallieren loslassen</string>
+
+    <string name="toast_widgets_not_supported">Widgets werden nicht unterstützt... Sorry :-)</string>
+    <string name="toast_unknown_item">Unbekanntes Element. Es können keine unbekannten Elemente hinzugefügt werden :-)</string>
+    <string name="toast_no_application_def">Noch keine App festgelegt. Lass hier etwas los! :)</string>
 
     <string name="pref_title_import_export">Sicherung und Wiederherstellung</string>
     <string name="pref_title_xml">ADW-Einstellungen</string>
@@ -284,7 +254,6 @@
     <!-- Category titles -->
     <string name="pref_title_system_preferences">System-Einstellungen</string>
     <string name="pref_summary_system_preferences">Allgemeine Einstellungen für den ADW.Launcher</string>
-    <string name="pref_title_screens_preferencecategory">Bildschirme</string>
     <string name="pref_title_screens_layout_preferencecategory">Bildschirmanordnung</string>
     <string name="pref_title_screens_behaviour_preferencecategory">Bildschirmverhalten</string>
     <string name="pref_title_drawer_preferencecategory">App-Drawer</string>
@@ -318,7 +287,6 @@
 
     <string name="pref_label_shirtcuts">Anderer Kurzbefehl</string>
     <string name="pref_label_activities">Aktivitäten</string>
-    <string name="pref_label_activities_loading">Lade Aktivitätenliste...</string>
     <string name="shirtcut_header">Gewünschte Anwendungsaktivität zum Starten auswählen.\nEin anderes Icon kann auch ausgewählt werden.</string>
     <string name="shirtcut_pick_activity">Aktivität wählen</string>
     <string name="shirtcut_label">Bezeichnung</string>
@@ -337,7 +305,6 @@
     <string name="AppGroupConfig">"Katalog bearbeiten"</string>
     <string name="AppGroupRename">"Neuer Katalog"</string>
     <string name="AppGroupConfigError">"Dieser Katalog kann nicht angelegt werden"</string>
-    <string name="AppGroupAddError">"Es konnte kein weiterer Katalog angelegt werden"</string>
     <string name="rename_group_title">Neuer Katalog</string>
     <string name="rename_group_label">Katalog-Name</string>
     <string name="show_catalog">Katalog \"%s\" anzeigen</string>
@@ -349,4 +316,21 @@
     
     <string name="need_scrollable">Das Widget das Sie hinzufügen wollen benötigt \'Scrollable Widget Unterstützung\'. Dies ist momentan deaktiviert.\nMöchten Sie es nun aktivieren?</string>	
     <string name="scrollable_api_required">Das Widget benötigt eine neuere ADW.Launcher Version.\nBitte updaten Sie oder kontaktieren Sie den Widget Entwickler</string>
+
+    <string name="pref_title_drawer_navigate_catalogs">Katalog Navigation</string>	
+    <string name="pref_summary_drawer_navigate_catalogs">Katalog Navigation anzeigen</string>	
+    <string name="pref_title_notif_receiver">Zeige Benachrichtigungen</string>	
+    <string name="pref_summary_notif_receiver">Globale Benachrichtigungszähler aktivieren</string>
+    
+	<string name="pref_title_notif_size">Bubble Schriftgröße</string>	
+    <string name="pref_summary_notif_size">Schriftgöße der Benachrichtigungs-Bubbles auswählen</string>	
+    <string name="pref_dialog_notif_size">Schriftgöße der Benachrichtigungs-Bubbles auswählen</string>
+    
+	<string name="pref_title_ab_preferencecategory">Haupt-Dock</string>	
+    <string name="pref_title_main_dock_style">Haupt-Dock Style</string>	
+    <string name="pref_summary_main_dock_style">Haupt-dock Layout</string>	
+    <string name="pref_title_behaviour_preferences">Allgemeines Verhalten</string>	
+    <string name="pref_summary_behaviour_preferences">Allgemeine App Verhaltenseinstellungen</string>	
+    <string name="pref_title_drawer_style">App Drawer Style</string>	
+    <string name="pref_summary_drawer_style">Zwischen verschiedenen Drawern auswählen</string>
 </resources>

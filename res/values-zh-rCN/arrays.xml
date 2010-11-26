@@ -27,4 +27,14 @@
                 <item>自动</item>
                 <item>禁用</item>	   
        </string-array>
+       <string-array name="main_dock_entries">
+                <item>无(扩展桌面)</item>
+                <item>3图标</item>
+                <item>5图标</item>
+                <item>1图标</item>
+       </string-array>
+       <string-array name="app_drawer_style_entries">
+                <item>纵向平面</item>
+                <item>横向分页</item>
+       </string-array>
 </resources>

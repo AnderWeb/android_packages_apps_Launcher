@@ -34,7 +34,9 @@ public class BoundRemoteViews extends SimpleRemoteViews {
 		}
 
 		public CursorCache(Cursor cursor, Context context) {
-			mCache = new ArrayList<HashMap<Action,Object>>(cursor.getCount());
+			final int cacheSize = cursor != null ? cursor.getCount() : 0;
+
+			mCache = new ArrayList<HashMap<Action,Object>>(cacheSize);
 			mDefaults = new HashMap<Action, Object>();
 
 			final ArrayList<Action> actions = BoundRemoteViews.this.mActions;
@@ -46,24 +48,25 @@ public class BoundRemoteViews extends SimpleRemoteViews {
 				else if (act instanceof SetBoundOnClickIntent)
 					mDefaults.put(act, null);
 			}
+			if (cursor != null) {
+				cursor.moveToFirst();
 
-			cursor.moveToFirst();
+				while(!cursor.isAfterLast()) {
 
-			while(!cursor.isAfterLast()) {
-
-				HashMap<Action, Object> row = new HashMap<Action, Object>();
+					HashMap<Action, Object> row = new HashMap<Action, Object>();
 
 
-				for (int i = 0; i < actions.size(); i++) {
-					Action act = actions.get(i);
-					if (act instanceof BindingAction)
-						row.put(act, ((BindingAction)act).readValue(cursor, context));
-					else if (act instanceof SetBoundOnClickIntent)
-						row.put(act, ((SetBoundOnClickIntent)act).readValue(cursor));
+					for (int i = 0; i < actions.size(); i++) {
+						Action act = actions.get(i);
+						if (act instanceof BindingAction)
+							row.put(act, ((BindingAction)act).readValue(cursor, context));
+						else if (act instanceof SetBoundOnClickIntent)
+							row.put(act, ((SetBoundOnClickIntent)act).readValue(cursor));
+					}
+
+					mCache.add(row);
+					cursor.moveToNext();
 				}
-
-				mCache.add(row);
-				cursor.moveToNext();
 			}
 		}
 

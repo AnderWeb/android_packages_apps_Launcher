@@ -2,6 +2,7 @@
 <counters>
     <counter action="org.adw.launcher.counter.SEND">
        <extra>PNAME</extra>
+       <extra>COLOR</extra>
        <extra>COUNT</extra>
     </counter>
 	<counter action="com.levelup.touiteur.action.GLOBALNOTIF" package="com.levelup.touiteur">

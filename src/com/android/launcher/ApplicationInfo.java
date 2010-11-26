@@ -32,6 +32,10 @@ public class ApplicationInfo extends ItemInfo {
      */
     public int counter;
     /**
+     * The "unread counter" bubble color
+     */
+    public int counterColor;
+    /**
      * The application name.
      */
     public CharSequence title;
@@ -56,7 +60,7 @@ public class ApplicationInfo extends ItemInfo {
      * or from a custom Bitmap (if true.)
      */
     boolean customIcon;
-    
+
     int hashCode=0;
 
     /**
@@ -68,20 +72,30 @@ public class ApplicationInfo extends ItemInfo {
     ApplicationInfo() {
         itemType = LauncherSettings.BaseLauncherColumns.ITEM_TYPE_SHORTCUT;
     }
-    
+
     public ApplicationInfo(ApplicationInfo info) {
         super(info);
-        title = info.title.toString();
-        intent = new Intent(info.intent);
-        if (info.iconResource != null) {
-            iconResource = new Intent.ShortcutIconResource();
-            iconResource.packageName = info.iconResource.packageName;
-            iconResource.resourceName = info.iconResource.resourceName;
-        }
-        icon = info.icon;
-        filtered = info.filtered;
-        customIcon = info.customIcon;
-        counter=info.counter;
+        assignFrom(info);
+    }
+
+    @Override
+	void assignFrom(ItemInfo info) {
+    	if (info instanceof ApplicationInfo)
+    	{
+    		ApplicationInfo nfo = (ApplicationInfo)info;
+	        title = nfo.title.toString();
+	        intent = new Intent(nfo.intent);
+	        if (nfo.iconResource != null) {
+	            iconResource = new Intent.ShortcutIconResource();
+	            iconResource.packageName = nfo.iconResource.packageName;
+	            iconResource.resourceName = nfo.iconResource.resourceName;
+	        }
+	        icon = nfo.icon;
+	        filtered = nfo.filtered;
+	        customIcon = nfo.customIcon;
+	        counter=nfo.counter;
+	        counterColor=nfo.counterColor;
+    	}
     }
 
     /**
@@ -130,6 +144,7 @@ public class ApplicationInfo extends ItemInfo {
 	public String toString() {
 		return title.toString();
 	}
+
 
 	/*@Override
 	public boolean equals(Object aThat) {

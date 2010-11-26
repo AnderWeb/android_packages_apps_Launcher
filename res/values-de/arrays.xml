@@ -30,4 +30,16 @@
     <item>Automatisch</item>
     <item>Deaktiviert</item>
   </string-array> 
+  
+  <string-array name="main_dock_entries">
+    <item>Keine (Größerer Desktop)</item>
+    <item>3 Icons</item>
+    <item>5 Icons</item>
+    <item>1 Icon</item>
+  </string-array>
+  
+  <string-array name="app_drawer_style_entries">
+    <item>Vertikal</item>
+    <item>Horizontal</item>
+  </string-array>
 </resources>

@@ -68,14 +68,6 @@
     <string name="group_widgets">Widgets</string>
     <!-- Options in "Add to Home" dialog box; Title of the group containing the list of apps that can set the wallpaper-->
     <string name="group_wallpapers">Wallpapers</string>
-    <!-- Options in "Add to Home" dialog box; Name of the Folder widget-->
-    <string name="add_folder">Folder</string>
-    <!-- Options in "Add to Home" dialog box; Name of the Clock widget-->
-    <string name="add_clock">Clock</string>
-    <!-- Options in "Add to Home" dialog box; Name of the Picture frame widget-->
-    <string name="add_photo_frame">Picture frame</string>
-    <!-- Options in "Add to Home" dialog box; Name of the global search widget-->
-    <string name="add_search">Search</string>
     <!-- Error message when user has filled a home screen, possibly not used -->
     <string name="out_of_space">No more room on this Home screen.</string>
     <!-- Message displayed when a shortcut is created by an external application -->
@@ -98,10 +90,6 @@
     <string name="menu_wallpaper">Wallpaper</string>
     <!-- Verb, menu item used to initiate global search -->
     <string name="menu_search">Search</string>
-    <!-- Noun, menu item used to bring down the notifications shade -->
-    <string name="menu_notifications">Notifications</string>
-    <!-- Noun, menu item used to show the gestures settings -->
-    <string name="menu_gestures">Gestures</string>
     <!-- Noun, menu item used to show the system settings -->
     <string name="menu_settings">Settings</string>
     <string name="menu_adw_settings">ADWSettings</string>
@@ -123,16 +111,10 @@
     <!-- Widgets: -->
     <skip />
 
-    <!-- TODO: Determine if this can be removed.
-         This is the hint text shown in the search widget, before text is entered.
-         This translation SHOULD MATCH the string "search_hint" which is found in
-         GoogleSearch/res/values/strings.xml -->
-    <string name="search_hint">Google Search</string>
-
     <!-- Text to show user in place of a gadget when we can't display it properly -->
     <string name="gadget_error_text">Problem loading widget</string>
     <!-- ADW Version Information -->
-    <string name="adw_version">Version 1.2.0 System</string>
+    <string name="adw_version">Version 1.3.1 System</string>
     <!-- ADW Settings -->
     <string name="pref_label_settings">ADW Settings</string>
     <!-- Screen preferences -->
@@ -149,8 +131,6 @@
     <string name="pref_summary_hide_statusbar">Hides your statusbar</string>
 
     <string name="pref_title_default_screen">Default Screen</string>
-    <string name="pref_summary_default_screen">Select the screen to set as default</string>
-    <string name="pref_dialog_default_screen">Select the screen to set as default</string>
 
     <string name="pref_title_desktop_scrolling_speed">Desktop scrolling speed</string>
     <string name="pref_summary_desktop_scrolling_speed">Set the speed used to fling desktops screens</string>
@@ -172,9 +152,6 @@
     <string name="pref_summary_page_horizontal_margin">Set the horizontal margin between each pages of Drawer</string>
     <string name="pref_dialog_page_horizontal_margin">Set the horizontal margin between each pages of Drawer</string>
 
-    <string name="pref_title_new_drawer">Horizontal Drawer</string>
-    <string name="pref_summary_new_drawer">Use the Samsung Galaxy S implementation</string>
-
     <string name="pref_title_animated_drawer">Animated Drawer</string>
     <string name="pref_summary_animated_drawer">Turns whether App Drawer should display animations</string>
 
@@ -194,15 +171,8 @@
     <string name="pref_summary_drawer_rows_landscape">Select the number of drawer rows to use on landscape layout</string>
     <string name="pref_dialog_drawer_rows_landscape">Select the number of drawer rows to use on landscape layout</string>
 
-    <!-- Previews preferences -->
-    <string name="pref_title_previews_preferences">Previews Settings</string>
-    <string name="pref_summary_previews_preferences">Desktop previews preferences</string>
-
     <string name="pref_title_sense_previews">Sense previews</string>
     <string name="pref_summary_sense_previews">Use the new sense-like implementation</string>
-
-    <string name="pref_title_clean_screen_mode">Clean Screen Mode</string>
-    <string name="pref_summary_clean_screen_mode">Hide home icons/widgets when opening previews</string>
 
     <!-- Button preferences -->
     <string name="pref_title_ui_settings">UI Settings</string>
@@ -229,24 +199,9 @@
     <string name="pref_title_closing_folder">Closing folder</string>
     <string name="pref_summary_closing_folder">Auto-close folder after app-launch</string>
 
-    <string name="pref_title_lab">LAB</string>
-    <string name="pref_summary_lab">Enable/disable the customizable Left Action Button</string>
-
-    <string name="pref_title_rab">RAB</string>
-    <string name="pref_summary_rab">Enable/disable the customizable Right Action Button</string>
-
-    <string name="pref_title_ab2">Secondary ActionButtons</string>
-    <string name="pref_summary_ab2">Enable/disable the secondary Action Buttons (disable Desktop dots)</string>
-
-    <string name="pref_title_tint_ab">Tint AB</string>
-    <string name="pref_summary_tint_ab">Enable/disable icon tint effect on Action Buttons</string>
-
-    <string name="pref_title_ab_scale_factor">AB scale factor</string>
+    <string name="pref_title_ab_scale_factor">AB size</string>
     <string name="pref_summary_ab_scale_factor">Set the scaling size for the ActionButton icons</string>
     <string name="pref_dialog_ab_scale_factor">Set the scaling size for the ActionButton icons</string>
-
-    <string name="pref_title_hide_allapps_ab">Hide AllApps Bg</string>
-    <string name="pref_summary_hide_allapps_ab">Hide the background for the App-Drawer button</string>
 
     <string name="pref_title_hide_ab_bg">Hide AB Bg</string>
     <string name="pref_summary_hide_ab_bg">Hide the background for the Action Buttons</string>
@@ -356,7 +311,6 @@
 	<!-- Category titles -->
 	<string name="pref_title_system_preferences">System Preferences</string>
 	<string name="pref_summary_system_preferences">General system preferences for ADW.Launcher</string>
-	<string name="pref_title_screens_preferencecategory">Desktop screens</string>
 	<string name="pref_title_screens_layout_preferencecategory">Desktop layout</string>
 	<string name="pref_title_screens_behaviour_preferencecategory">Desktop behavior</string>
 	<string name="pref_title_drawer_preferencecategory">Applications drawer</string>
@@ -389,7 +343,6 @@
 
 	<string name="pref_label_shirtcuts">Custom shortcut</string>
 	<string name="pref_label_activities">Activities</string>
-	<string name="pref_label_activities_loading">Loading activity list...</string>
 	<string name="shirtcut_header">Select your desired application activity to launch.\nYou can select a custom icon too.</string>
 	<string name="shirtcut_pick_activity">Pick your activity</string>
 	<string name="shirtcut_label">Label</string>
@@ -408,7 +361,6 @@
 	<string name="AppGroupConfig">"Setup Group"</string>
 	<string name="AppGroupRename">"New Catalog"</string>
 	<string name="AppGroupConfigError">"You can not setup this group"</string>
-	<string name="AppGroupAddError">"You Cannot have More Groups"</string>
 	<string name="rename_group_title">New Catalog</string>
 	<string name="rename_group_label">Catalog Name</string>
 	<string name="show_catalog">Show Catalog \"%s\"</string>
@@ -425,4 +377,17 @@
     <string name="pref_summary_drawer_navigate_catalogs">Show app catalogs navigation buttons</string>
     <string name="pref_title_notif_receiver">Show notifications</string>
     <string name="pref_summary_notif_receiver">Enable the global notification counters</string>
+
+    <string name="pref_title_notif_size">Bubble font size</string>
+    <string name="pref_summary_notif_size">Select the font size for the notification bubbles</string>
+    <string name="pref_dialog_notif_size">Select the font size for the notification bubbles</string>
+
+    <string name="pref_title_ab_preferencecategory">Main Dock</string>
+    <string name="pref_title_main_dock_style">Main Dock Style</string>
+    <string name="pref_summary_main_dock_style">Select the main dock layout</string>
+    <string name="pref_title_behaviour_preferences">General Behavior</string>
+    <string name="pref_summary_behaviour_preferences">General application behavior configuration</string>
+    <string name="pref_title_drawer_style">App Drawer style</string>
+    <string name="pref_summary_drawer_style">Switch between different drawer implementations</string>
+    <string name="pref_title_dockbar_preferencecategory">Hidden Dockbar</string>
 </resources>

@@ -36,16 +36,19 @@ public class CounterReceiver extends BroadcastReceiver {
         FilterData tmp=mReceiverFilter.get(intent.getAction());
         if(tmp!=null){
             int counter=0;
+            int color=0xFFFF0000;
             String packagename=tmp.pname;
             for(String extra:tmp.extras){
                 if("PNAME".equals(extra)){
                     packagename=intent.getStringExtra(extra);
+                }else if("COLOR".equals(extra)){
+                    color=intent.getIntExtra(extra, color);
                 }else{
                     counter+=intent.getIntExtra(extra, 0);
                 }
             }
             if(mListener!=null){
-                mListener.onTrigger(packagename, counter);
+                mListener.onTrigger(packagename, counter, color);
             }
         }
     }
@@ -102,7 +105,7 @@ public class CounterReceiver extends BroadcastReceiver {
      * is required
      */
     public interface OnCounterChangedListener {
-        void onTrigger(String pname, int counter);
+        void onTrigger(String pname, int counter, int color);
     }
 
 }
