@@ -142,7 +142,7 @@
     <string name="pref_title_closing_folder">Chiusura cartella</string>
     <string name="pref_summary_closing_folder">Chiudi automaticamente la cartella dopo il lancio di un\'applicazione</string>
 
-    <string name="pref_title_ab_scale_factor">Fattore di scala AB</string>
+    <string name="pref_title_ab_scale_factor">Dimensione AB</string>
     <string name="pref_summary_ab_scale_factor">Imposta il fattore di scala per le icone AB</string>
     <string name="pref_dialog_ab_scale_factor">Imposta il fattore di scala per le icone AB</string>
 
@@ -319,4 +319,16 @@
         <string name="pref_title_notif_receiver">Visualizza notifiche</string>
         <string name="pref_summary_notif_receiver">Attiva i contatori globali delle notifiche</string>
 
+        <string name="pref_title_notif_size">Dimensione font bolle</string>
+    <string name="pref_summary_notif_size">Seleziona la dimensione del font utilizzato per le bolle di notifica</string>
+    <string name="pref_dialog_notif_size">Seleziona la dimensione del font utilizzato per le bolle di notifica</string>
+
+    <string name="pref_title_ab_preferencecategory">Dock principale</string>
+    <string name="pref_title_main_dock_style">Stile Dock princ.</string>
+    <string name="pref_summary_main_dock_style">Seleziona il layout della dock principale</string>
+    <string name="pref_title_behaviour_preferences">Comportamento generale</string>
+    <string name="pref_summary_behaviour_preferences">Configura il comportamento generale dell\'applicazione</string>
+    <string name="pref_title_drawer_style">Stile App Drawer</string>
+    <string name="pref_summary_drawer_style">Seleziona tra diverse implementazioni del drawer</string>
+    <string name="pref_title_dockbar_preferencecategory">Dockbar nascosta</string>
 </resources>

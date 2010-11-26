@@ -27,5 +27,15 @@
                 <item>Auto</item>
                 <item>Non attiva</item>
        </string-array>
+       <string-array name="main_dock_entries">
+                <item>Nessuno (espandi desktop)</item>
+                <item>3 Icone</item>
+                <item>5 Icone</item>
+                <item>1 Icona</item>
+       </string-array>
+       <string-array name="app_drawer_style_entries">
+                <item>Verticale piano</item>
+                <item>Impaginato orizzontalmente</item>
+       </string-array>
 </resources>
 
