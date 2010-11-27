@@ -328,4 +328,5 @@
     <string name="pref_summary_behaviour_preferences">应用程序常规特性设置</string>
     <string name="pref_title_drawer_style">程序托盘式样</string>
     <string name="pref_summary_drawer_style">切换不同托盘实现方式</string>
+    <string name="pref_title_dockbar_preferencecategory">隐藏扩展栏</string>
 </resources>
