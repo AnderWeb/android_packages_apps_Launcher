@@ -327,5 +327,5 @@
     <string name="pref_summary_behaviour_preferences">應用程式常規特性設置</string>
     <string name="pref_title_drawer_style">程式託盤式樣</string>
     <string name="pref_summary_drawer_style">切換不同託盤實現方式</string>
-
+    <string name="pref_title_dockbar_preferencecategory">隱藏擴展欄</string>
 </resources>
