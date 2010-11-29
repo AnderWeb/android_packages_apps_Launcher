@@ -328,4 +328,8 @@
     <string name="pref_title_drawer_style">程式託盤式樣</string>
     <string name="pref_summary_drawer_style">切換不同託盤實現方式</string>
     <string name="pref_title_dockbar_preferencecategory">隱藏擴展欄</string>
+    <string name="pref_title_ab_tint">主工具列圖示著色</string>
+    <string name="pref_summary_ab_tint">啟用主工具列圖示著色</string>
+    <string name="pref_title_ab_tint_color">著色色調</string>
+    <string name="pref_summary_ab_tint_color">選擇著色圖示色調</string>
 </resources>
