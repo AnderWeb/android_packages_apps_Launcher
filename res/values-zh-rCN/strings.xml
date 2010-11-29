@@ -329,4 +329,8 @@
     <string name="pref_title_drawer_style">程序托盘式样</string>
     <string name="pref_summary_drawer_style">切换不同托盘实现方式</string>
     <string name="pref_title_dockbar_preferencecategory">隐藏扩展栏</string>
+    <string name="pref_title_ab_tint">主工具栏图标着色</string>
+    <string name="pref_summary_ab_tint">启用主工具栏图标着色</string>
+    <string name="pref_title_ab_tint_color">着色色调</string>
+    <string name="pref_summary_ab_tint_color">选择着色图标色调</string>
 </resources>
