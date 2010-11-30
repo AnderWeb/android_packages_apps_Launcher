@@ -54,8 +54,6 @@
     <string name="group_applications">Приложения</string>
     <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all shortcuts -->
     <string name="group_shortcuts">Ярлыки</string>
-    <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all launcher actions -->
-    <string name="launcher_actions">Действия приложений</string>
     <!-- Options in "Add to Home" dialog box; Title of the search gadget -->
     <string name="group_search">Поиск</string>
     <!-- Options in "Add to Home" dialog box; Title of the folder gadget -->

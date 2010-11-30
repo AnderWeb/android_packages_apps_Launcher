@@ -753,10 +753,13 @@ public class CellLayout extends WidgetCellLayout {
     void onDropChild(View child, int[] targetXY) {
         if (child != null) {
             LayoutParams lp = (LayoutParams) child.getLayoutParams();
+            if(lp==null){
+                lp=new CellLayout.LayoutParams(targetXY[0], targetXY[1], 1, 1);
+            }
             lp.cellX = targetXY[0];
             lp.cellY = targetXY[1];
             lp.isDragging = false;
-            lp.dropped = true;            
+            lp.dropped = true;
             mDragRect.setEmpty();
             child.requestLayout();
             invalidate();

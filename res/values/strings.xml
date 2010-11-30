@@ -114,7 +114,7 @@
     <!-- Text to show user in place of a gadget when we can't display it properly -->
     <string name="gadget_error_text">Problem loading widget</string>
     <!-- ADW Version Information -->
-    <string name="adw_version">Version 1.3.1 System</string>
+    <string name="adw_version">Version 1.3.3 System</string>
     <!-- ADW Settings -->
     <string name="pref_label_settings">ADW Settings</string>
     <!-- Screen preferences -->
@@ -390,4 +390,8 @@
     <string name="pref_title_drawer_style">App Drawer style</string>
     <string name="pref_summary_drawer_style">Switch between different drawer implementations</string>
     <string name="pref_title_dockbar_preferencecategory">Hidden Dockbar</string>
+    <string name="pref_title_ab_tint">Dock Icons Tint</string>
+    <string name="pref_summary_ab_tint">Perform graphic tinting to the dock icons</string>
+    <string name="pref_title_ab_tint_color">Tint Color</string>
+    <string name="pref_summary_ab_tint_color">Change the tinting color</string>
 </resources>

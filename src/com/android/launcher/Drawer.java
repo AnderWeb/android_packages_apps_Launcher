@@ -25,5 +25,5 @@ public interface Drawer {
 	public void setAnimationSpeed(int speed);
 	public void open(boolean animate);
 	public void close(boolean animate);
-
+	public void setPadding(int left, int top, int right, int bottom);
 }

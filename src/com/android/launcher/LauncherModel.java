@@ -1324,7 +1324,7 @@ public class LauncherModel {
      */
     void addDesktopItem(ItemInfo info) {
         // TODO: write to DB; also check that folder has been added to folders list
-        mDesktopItems.add(info);
+        if(mDesktopItems!=null)mDesktopItems.add(info);
     }
 
     /**
@@ -1333,21 +1333,21 @@ public class LauncherModel {
      */
     void removeDesktopItem(ItemInfo info) {
         // TODO: write to DB; figure out if we should remove folder from folders list
-        mDesktopItems.remove(info);
+        if(mDesktopItems!=null)mDesktopItems.remove(info);
     }
 
     /**
      * Add a widget to the desktop
      */
     void addDesktopAppWidget(LauncherAppWidgetInfo info) {
-        mDesktopAppWidgets.add(info);
+        if(mDesktopAppWidgets!=null)mDesktopAppWidgets.add(info);
     }
 
     /**
      * Remove a widget from the desktop
      */
     void removeDesktopAppWidget(LauncherAppWidgetInfo info) {
-        mDesktopAppWidgets.remove(info);
+        if(mDesktopAppWidgets!=null)mDesktopAppWidgets.remove(info);
     }
 
     /**

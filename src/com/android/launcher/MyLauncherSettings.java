@@ -557,6 +557,9 @@ public class MyLauncherSettings extends PreferenceActivity implements OnPreferen
         }else if(preference.getKey().equals("drawer_color")) {
         	ColorPickerDialog cp = new ColorPickerDialog(this,mDrawerColorListener,readDrawerColor());
         	cp.show();
+        }else if(preference.getKey().equals("uiABTintColor")) {
+            ColorPickerDialog cp = new ColorPickerDialog(this,mABTintColorListener,AlmostNexusSettingsHelper.getUIABTintColor(this));
+            cp.show();
         }
         return false;
 	}
@@ -589,6 +592,12 @@ public class MyLauncherSettings extends PreferenceActivity implements OnPreferen
     	public void colorChanged(int color) {
     		getPreferenceManager().getSharedPreferences().edit().putInt("drawer_color", color).commit();
     	}
+    };
+    ColorPickerDialog.OnColorChangedListener mABTintColorListener =
+        new ColorPickerDialog.OnColorChangedListener() {
+        public void colorChanged(int color) {
+            getPreferenceManager().getSharedPreferences().edit().putInt("uiABTintColor", color).commit();
+        }
     };
 
 	// Wysie: Adapted from http://code.google.com/p/and-examples/source/browse/#svn/trunk/database/src/com/totsp/database

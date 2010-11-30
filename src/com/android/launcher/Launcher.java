@@ -280,12 +280,15 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 	protected boolean autoCloseFolder;
 	private boolean hideABBg=false;
 	private float uiScaleAB=0.5f;
+	private boolean uiABTint=false;
+	private int uiABTintColor=0xffffffff;
 	private boolean uiHideLabels=false;
 	private boolean wallpaperHack=true;
 	private boolean scrollableSupport=false;
 	private DesktopIndicator mDesktopIndicator;
 	private int savedOrientation;
 	private boolean useDrawerCatalogNavigation=true;
+	private int appDrawerPadding=-1;
 	/**
 	 * ADW: Home binding constants
 	 */
@@ -3119,8 +3122,12 @@ public final class Launcher extends Activity implements View.OnClickListener, On
     	if(mIsEditMode || mIsWidgetEditMode)return;
     	updateAlmostNexusVars();
 		float scale=AlmostNexusSettingsHelper.getuiScaleAB(this);
-		if(scale!=uiScaleAB){
+		boolean tint=AlmostNexusSettingsHelper.getUIABTint(this);
+		int tintcolor=AlmostNexusSettingsHelper.getUIABTintColor(this);
+		if(scale!=uiScaleAB || tint!=uiABTint|| tintcolor!=uiABTintColor){
 			uiScaleAB=scale;
+			uiABTint=tint;
+			uiABTintColor=tintcolor;
 			mRAB.updateIcon();
 			mLAB.updateIcon();
 			mRAB2.updateIcon();
@@ -3136,41 +3143,39 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 	    		mNextView.setVisibility(showDots?View.VISIBLE:View.GONE);
 		    	mPreviousView.setVisibility(showDots?View.VISIBLE:View.GONE);
 	    	}
-	    	switch (mDockStyle) {
-            case DOCK_STYLE_1:
-                mRAB.setVisibility(View.GONE);
-                mLAB.setVisibility(View.GONE);
-                mRAB2.setVisibility(View.GONE);
-                mLAB2.setVisibility(View.GONE);
-                mDrawerToolbar.setVisibility(View.VISIBLE);
-                break;
-            case DOCK_STYLE_3:
-                mRAB.setVisibility(View.VISIBLE);
-                mLAB.setVisibility(View.VISIBLE);
-                mRAB2.setVisibility(View.GONE);
-                mLAB2.setVisibility(View.GONE);
-                mDrawerToolbar.setVisibility(View.VISIBLE);
-                break;
-            case DOCK_STYLE_5:
-                mRAB.setVisibility(View.VISIBLE);
-                mLAB.setVisibility(View.VISIBLE);
-                mRAB2.setVisibility(View.VISIBLE);
-                mLAB2.setVisibility(View.VISIBLE);
-                mDrawerToolbar.setVisibility(View.VISIBLE);
-                break;
-            case DOCK_STYLE_NONE:
-                mDrawerToolbar.setVisibility(View.GONE);
-            default:
-                break;
-            }
-	    	//View appsBg=findViewById(R.id.appsBg);
-	    	//appsBg.setVisibility(hideAppsBg?View.INVISIBLE:View.VISIBLE);
-	    	mHandleView.hideBg(hideABBg);
-	    	mRAB.hideBg(hideABBg);
-	    	mLAB.hideBg(hideABBg);
-	    	mRAB2.hideBg(hideABBg);
-	    	mLAB2.hideBg(hideABBg);
     	}
+    	switch (mDockStyle) {
+        case DOCK_STYLE_1:
+            mRAB.setVisibility(View.GONE);
+            mLAB.setVisibility(View.GONE);
+            mRAB2.setVisibility(View.GONE);
+            mLAB2.setVisibility(View.GONE);
+            if(!mDockBar.isOpen() && !showingPreviews)mDrawerToolbar.setVisibility(View.VISIBLE);
+            break;
+        case DOCK_STYLE_3:
+            mRAB.setVisibility(View.VISIBLE);
+            mLAB.setVisibility(View.VISIBLE);
+            mRAB2.setVisibility(View.GONE);
+            mLAB2.setVisibility(View.GONE);
+            if(!mDockBar.isOpen() && !showingPreviews)mDrawerToolbar.setVisibility(View.VISIBLE);
+            break;
+        case DOCK_STYLE_5:
+            mRAB.setVisibility(View.VISIBLE);
+            mLAB.setVisibility(View.VISIBLE);
+            mRAB2.setVisibility(View.VISIBLE);
+            mLAB2.setVisibility(View.VISIBLE);
+            if(!mDockBar.isOpen() && !showingPreviews)mDrawerToolbar.setVisibility(View.VISIBLE);
+            break;
+        case DOCK_STYLE_NONE:
+            mDrawerToolbar.setVisibility(View.GONE);
+        default:
+            break;
+        }
+    	mHandleView.hideBg(hideABBg);
+    	mRAB.hideBg(hideABBg);
+    	mLAB.hideBg(hideABBg);
+    	mRAB2.hideBg(hideABBg);
+    	mLAB2.hideBg(hideABBg);
     	if(mWorkspace!=null){
     		mWorkspace.setWallpaperHack(wallpaperHack);
     	}
@@ -3319,12 +3324,12 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         	d = Utilities.createIconThumbnail(
             resources.getDrawable(R.drawable.ab_empty), this);
         }
-        d=Utilities.scaledDrawable(d, this,false,uiScaleAB);
+        d=Utilities.scaledDrawable(d, this,uiABTint,uiScaleAB,uiABTintColor);
 
     	return d;
     }
     Drawable createSmallActionButtonDrawable(Drawable d){
-        d=Utilities.scaledDrawable(d, this,false,uiScaleAB);
+        d=Utilities.scaledDrawable(d, this,uiABTint,uiScaleAB,uiABTintColor);
         return d;
     }
     //ADW: Previews Functions
@@ -3571,6 +3576,11 @@ public final class Launcher extends Activity implements View.OnClickListener, On
     public void showAllApps(boolean animated, AppCatalogueFilter filter){
 		if(!allAppsOpen){
 			if(getWindow().getDecorView().getWidth()>getWindow().getDecorView().getHeight()){
+			    int dockSize=(mDockStyle!=DOCK_STYLE_NONE)?mDrawerToolbar.getMeasuredWidth():0;
+			    if(dockSize!=appDrawerPadding){
+			        appDrawerPadding=dockSize;
+			        mAllAppsGrid.setPadding(0, 0, appDrawerPadding, 0);
+			    }
 		        mHandleView.setNextFocusUpId(R.id.drag_layer);
 		        mHandleView.setNextFocusLeftId(R.id.all_apps_view);
 		        mLAB.setNextFocusUpId(R.id.drag_layer);
@@ -3582,6 +3592,11 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 		        mRAB2.setNextFocusUpId(R.id.drag_layer);
 		        mRAB2.setNextFocusLeftId(R.id.all_apps_view);
 			}else{
+			    int dockSize=(mDockStyle!=DOCK_STYLE_NONE)?mDrawerToolbar.getMeasuredHeight():0;
+                if(dockSize!=appDrawerPadding){
+                    appDrawerPadding=dockSize;
+                    mAllAppsGrid.setPadding(0, 0, 0, appDrawerPadding);
+                }
                 mHandleView.setNextFocusUpId(R.id.all_apps_view);
                 mHandleView.setNextFocusLeftId(R.id.drag_layer);
                 mLAB.setNextFocusUpId(R.id.all_apps_view);
@@ -4497,7 +4512,16 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         final ComponentName name = intent.getComponent();
         if(name!=null)
             updateCountersForPackage(name.getPackageName(),0,0);
-        super.startActivity(intent);
+        try{
+            super.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(this, R.string.activity_not_found, Toast.LENGTH_SHORT).show();
+        } catch (SecurityException e) {
+            Toast.makeText(this, R.string.activity_not_found, Toast.LENGTH_SHORT).show();
+            e(LOG_TAG, "Launcher does not have the permission to launch " + intent +
+                    ". Make sure to create a MAIN intent-filter for the corresponding activity " +
+                    "or use the exported attribute for this activity.", e);
+        }
     }
 
     @Override

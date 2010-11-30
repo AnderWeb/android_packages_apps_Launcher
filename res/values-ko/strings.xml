@@ -1,57 +1,422 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (C) 2009 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2008 The Android Open Source Project
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 -->
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="application_name" msgid="5865630159700533006">"ADW.Launcher"</string>
-    <string name="uid_name" msgid="3371120195364560632">"Android Core 애플리케이션"</string>
-    <string name="folder_name" msgid="4588446541914685904">"폴더"</string>
-    <string name="chooser_wallpaper" msgid="5988031014201479733">"배경화면 선택"</string>
-    <string name="wallpaper_instructions" msgid="4215640646180727542">"배경화면 설정"</string>
-    <string name="pick_wallpaper" msgid="2674908923379130941">"배경화면 갤러리"</string>
-    <string name="activity_not_found" msgid="3571057450431950427">"휴대전화에 설치되어 있지 않은 응용프로그램입니다."</string>
-    <string name="configure_wallpaper" msgid="2820186271419674623">"구성..."</string>
-    <string name="rename_folder_label" msgid="5646236631298452787">"폴더 이름"</string>
-    <string name="rename_folder_title" msgid="4544573104191526550">"폴더 이름 바꾸기"</string>
-    <string name="rename_action" msgid="6016003384693240896">"확인"</string>
-    <string name="cancel_action" msgid="3811860427489435048">"취소"</string>
-    <string name="menu_item_add_item" msgid="6233177331075781114">"홈 화면에 추가"</string>
-    <string name="group_applications" msgid="4118484163419674240">"응용프로그램"</string>
-    <string name="group_shortcuts" msgid="9133529424900391877">"바로가기"</string>
-    <string name="group_search" msgid="5905328940867162196">"검색"</string>
-    <string name="group_folder" msgid="5143593791798929193">"새 폴더"</string>
-    <string name="group_live_folders" msgid="2664945399140647217">"폴더"</string>
-    <string name="group_widgets" msgid="6704978494073105844">"위젯"</string>
-    <string name="group_wallpapers" msgid="1568191644272224858">"배경화면"</string>
-    <string name="out_of_space" msgid="8365249326091984698">"홈 화면에 더 이상 공간이 없습니다."</string>
-    <string name="shortcut_installed" msgid="7071557296331322355">"바로가기(\'<xliff:g id="NAME">%s</xliff:g>\')가 생성되었습니다."</string>
-    <string name="shortcut_uninstalled" msgid="2129499669449749995">"바로가기(\'<xliff:g id="NAME">%s</xliff:g>\')가 삭제되었습니다."</string>
-    <string name="shortcut_duplicate" msgid="4757756326465060694">"바로가기(\'<xliff:g id="NAME">%s</xliff:g>\')가 이미 있습니다."</string>
-    <string name="title_select_shortcut" msgid="2858897527672831763">"바로가기 선택"</string>
-    <string name="title_select_live_folder" msgid="3753447798805166749">"폴더 선택"</string>
-    <string name="menu_add" msgid="3065046628354640854">"추가"</string>
-    <string name="menu_wallpaper" msgid="5837429080911269832">"배경화면"</string>
-    <string name="menu_search" msgid="4826514464423239041">"검색"</string>
-    <string name="menu_settings" msgid="6233960148378443661">"설정"</string>
-    <string name="permlab_install_shortcut" msgid="1201690825493376489">"바로가기 설치"</string>
-    <string name="permdesc_install_shortcut" msgid="7429365847558984148">"응용프로그램이 사용자의 작업 없이 바로가기를 추가할 수 있도록 합니다."</string>
-    <string name="permlab_uninstall_shortcut" msgid="7696645932555926449">"바로가기 제거"</string>
-    <string name="permdesc_uninstall_shortcut" msgid="959972195916090900">"응용프로그램이 사용자의 작업 없이 바로가기를 삭제할 수 있도록 합니다."</string>
-    <string name="permlab_read_settings" msgid="3452408290738106747">"홈 설정 및 바로가기 읽기"</string>
-    <string name="permdesc_read_settings" msgid="8377434937176025492">"응용프로그램이 홈에 있는 설정 및 바로가기를 읽을 수 있도록 합니다."</string>
-    <string name="permlab_write_settings" msgid="1360567537236705628">"홈 설정 및 바로가기 쓰기"</string>
-    <string name="permdesc_write_settings" msgid="1098648778383349818">"응용프로그램이 홈에 있는 설정 및 바로가기를 변경할 수 있도록 합니다."</string>
-    <string name="gadget_error_text" msgid="8359351016167075858">"위젯을 로드하는 중 문제가 발생했습니다."</string>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- General -->
+    <skip />
+    <!-- Application name -->
+    <string name="application_name">ADW.Launcher</string>
+    <!-- Name for all applications running as this uid. -->
+    <string name="uid_name">안드로이드 Core 어플리케이션</string>
+    <!-- Default folder name -->
+    <string name="folder_name">폴더</string>
+    <!-- Title of dialog that appears after user selects Wallpaper from menu -->
+    <string name="chooser_wallpaper">배경화면 선택</string>
+    <!-- Button label on Wallpaper Gallery screen; user selects this button to set a specific wallpaper -->
+    <string name="wallpaper_instructions">배경화면 설정</string>
+    <!-- Option in "Select wallpaper from" dialog box -->
+    <string name="pick_wallpaper">배경화면 갤러리</string>
+    <!-- Displayed when user selects a shortcut for an app that was uninstalled -->
+    <string name="activity_not_found">휴대기기에 설치되어 있지 않은 어플리케이션입니다.</string>
+    <!-- List item for configuring the current wallpaper -->
+    <string name="configure_wallpaper">설정...</string>
+
+    <!-- Folders -->
+    <skip />
+    <!-- Label of Folder name field in Rename folder dialog box -->
+    <string name="rename_folder_label">폴더 이름</string>
+    <!-- Title of dialog box -->
+    <string name="rename_folder_title">폴더 이름 바꾸기</string>
+    <!-- Buttons in Rename folder dialog box -->
+    <string name="rename_action">확인</string>
+    <!-- Buttons in Rename folder dialog box -->
+    <string name="cancel_action">취소</string>
+
+    <!-- Shortcuts -->
+    <skip />
+    <!-- Title of dialog box -->
+    <string name="menu_item_add_item">홈 화면에 추가</string>
+    <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all apps -->
+    <string name="group_applications">어플리케이션</string>
+    <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all shortcuts -->
+    <string name="group_shortcuts">바로가기</string>
+    <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all launcher actions -->
+    <string name="launcher_actions">ADW 런처 활동</string>
+    <!-- Options in "Add to Home" dialog box; Title of the search gadget -->
+    <string name="group_search">검색</string>
+    <!-- Options in "Add to Home" dialog box; Title of the folder gadget -->
+    <string name="group_folder">새 폴더</string>
+    <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all live folders -->
+    <string name="group_live_folders">폴더</string>
+    <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all widgets/gadgets -->
+    <string name="group_widgets">위젯</string>
+    <!-- Options in "Add to Home" dialog box; Title of the group containing the list of apps that can set the wallpaper-->
+    <string name="group_wallpapers">배경화면</string>
+    <!-- Options in "Add to Home" dialog box; Name of the Folder widget-->
+    <string name="add_folder">폴더</string>
+    <!-- Options in "Add to Home" dialog box; Name of the Clock widget-->
+    <string name="add_clock">시계</string>
+    <!-- Options in "Add to Home" dialog box; Name of the Picture frame widget-->
+    <string name="add_photo_frame">사진 프레임</string>
+    <!-- Options in "Add to Home" dialog box; Name of the global search widget-->
+    <string name="add_search">검색</string>
+    <!-- Error message when user has filled a home screen, possibly not used -->
+    <string name="out_of_space">홈 화면에 더 이상 공간이 없습니다.</string>
+    <!-- Message displayed when a shortcut is created by an external application -->
+    <string name="shortcut_installed">바로가기 \"<xliff:g id="name" example="Browser">%s</xliff:g>\" 가 생성되었습니다.</string>
+    <!-- Message displayed when a shortcut is uninstalled by an external application -->
+    <string name="shortcut_uninstalled">바로가기 \"<xliff:g id="name" example="Browser">%s</xliff:g>\" 가 삭제되었습니다.</string>
+    <!-- Message displayed when an external application attemps to create a shortcut that already exists -->
+    <string name="shortcut_duplicate">바로가기 \"<xliff:g id="name" example="Browser">%s</xliff:g>\" 가 이미 있습니다.</string>
+
+    <!-- Title of dialog when user is selecting shortcut to add to homescreen -->
+    <string name="title_select_shortcut">바로가기 선택</string>
+    <!-- Title of dialog when user is selecting live folder to add to homescreen -->
+    <string name="title_select_live_folder">폴더 선택</string>
+
+    <!-- Menus items: -->
+    <skip />
+    <!-- Verb, menu item used to add an item on the desktop -->
+    <string name="menu_add">추가</string>
+    <!-- Noun, menu item used to set the desktop's wallpaper -->
+    <string name="menu_wallpaper">배경화면</string>
+    <!-- Verb, menu item used to initiate global search -->
+    <string name="menu_search">검색</string>
+    <!-- Noun, menu item used to bring down the notifications shade -->
+    <string name="menu_notifications">알림</string>
+    <!-- Noun, menu item used to show the gestures settings -->
+    <string name="menu_gestures">동작</string>
+    <!-- Noun, menu item used to show the system settings -->
+    <string name="menu_settings">설정</string>
+    <string name="menu_adw_settings">ADW 런처 설정</string>
+
+    <!-- Permissions: -->
+    <string name="permlab_install_shortcut">바로가기 설치</string>
+    <string name="permdesc_install_shortcut">응용프로그램이 사용자의 작업 없이 바로가기를 추가할 수 있도록 합니다.</string>
+    <string name="permlab_uninstall_shortcut">바로가기 삭제</string>
+    <string name="permdesc_uninstall_shortcut">응용프로그램이 사용자의 작업 없이 바로가기를 삭제할 수 있도록 합니다.</string>
+    <string name="permlab_read_settings">홈 설정 및 바로가기 읽기</string>
+    <string name="permdesc_read_settings">응용프로그램이 홈에 있는 설정 및 바로가기를 읽을 수 있도록 합니다.</string>
+    <string name="permlab_write_settings">홈 설정 및 바로가기 쓰기</string>
+    <string name="permdesc_write_settings">응용프로그램이 홈에 있는 설정 및 바로가기를 변경할 수 있도록 합니다.</string>
+
+    <!-- Widgets: -->
+    <skip />
+
+    <!-- TODO: Determine if this can be removed.
+         This is the hint text shown in the search widget, before text is entered.
+         This translation SHOULD MATCH the string "search_hint" which is found in
+         GoogleSearch/res/values/strings.xml -->
+    <string name="search_hint">Google 검색</string>
+
+    <!-- Text to show user in place of a gadget when we can't display it properly -->
+    <string name="gadget_error_text">위젯을 로드하는 중 문제가 발생했습니다</string>
+    <!-- ADW Settings -->
+    <string name="pref_label_settings">넥서스원 형식 설정</string>
+    <!-- Screen preferences -->
+    <string name="pref_title_screen_preferences">화면 설정</string>
+    <string name="pref_summary_screen_preferences">기본 화면, 레이아웃을 설정합니다.</string>
+
+    <string name="pref_title_wallpaper_hack">배경화면 해킹</string>
+    <string name="pref_summary_wallpaper_hack">원격조정 시스템이 있으면 해제하세요. 설정하면 스크롤 속도를 높여줍니다.</string>
+
+    <string name="pref_title_orientation_sensor">화면 방향</string>
+    <string name="pref_summary_orientation_sensor">원하는 화면의 방향을 설정합니다.</string>
+
+    <string name="pref_title_hide_statusbar">상태 표시줄 숨기기</string>
+    <string name="pref_summary_hide_statusbar">상태 표시줄을 숨깁니다.</string>
+
+    <string name="pref_title_default_screen">기본 화면 설정</string>
+    <string name="pref_summary_default_screen">처음 보이는 화면을 설정합니다.</string>
+    <string name="pref_dialog_default_screen">기본 화면을 설정합니다.</string>
+
+    <string name="pref_title_desktop_scrolling_speed">넘김 속도</string>
+    <string name="pref_summary_desktop_scrolling_speed">화면을 넘기는 속도를 지정합니다.</string>
+    <string name="pref_dialog_desktop_scrolling_speed">값이 작을수록, 넘기는 속도가 빨라집니다.</string>
+
+    <string name="pref_title_desktop_overshoot">화면 넘김 탄력도</string>
+    <string name="pref_summary_desktop_overshoot">화면을 넘길 때 화면의 탄력성의 정도를 설정합니다.</string>
+    <string name="pref_dialog_desktop_overshoot">0으로 설정하면 화면을 넘길 때 탄력성이 없어집니다.</string>
+
+    <!-- Drawer Settings -->
+    <string name="pref_title_drawer_settings">메뉴 설정</string>
+    <string name="pref_summary_drawer_settings">메뉴 그리드 설정</string>
+
+    <string name="pref_title_zoom_effect_speed">확대 효과 속도</string>
+    <string name="pref_summary_zoom_effect_speed">확대 효과가 일어나는 시간을 밀리초 (milisecond, ms)로 지정합니다.</string>
+    <string name="pref_dialog_zoom_effect_speed">확대 효과가 일어나는 시간을 밀리초 (milisecond, ms)로 지정합니다.</string>
+
+    <string name="pref_title_page_horizontal_margin">가로 여백</string>
+    <string name="pref_summary_page_horizontal_margin">페이지 사이의 여백을 지정합니다.</string>
+    <string name="pref_dialog_page_horizontal_margin">페이지 사이의 여백을 지정합니다.</string>
+
+    <string name="pref_title_new_drawer">가로 메뉴</string>
+    <string name="pref_summary_new_drawer">갤럭시 시리즈에 적용된 가로 메뉴를 적용합니다.</string>
+
+    <string name="pref_title_animated_drawer">메뉴 에니메이션</string>
+    <string name="pref_summary_animated_drawer">메뉴의 에니메이션 여부를 설정합니다.</string>
+
+    <string name="pref_title_drawer_columns_portrait">세로모드 행의 수</string>
+    <string name="pref_summary_drawer_columns_portrait">세로모드에서 사용할 행의 개수를 설정합니다.</string>
+    <string name="pref_dialog_drawer_columns_portrait">세로모드에서 사용할 행의 개수를 설정합니다.</string>
+
+    <string name="pref_title_drawer_rows_portrait">세로모드 열 수</string>
+    <string name="pref_summary_drawer_rows_portrait">세로모드에서 사용할 열의 개수를 설정합니다.</string>
+    <string name="pref_dialog_drawer_rows_portrait">세로모드에서 사용할 열의 개수를 설정합니다.</string>
+
+    <string name="pref_title_drawer_columns_landscape">가로모드 행의 수</string>
+    <string name="pref_summary_drawer_columns_landscape">가로모드에서 사용할 행의 개수를 설정합니다.</string>
+    <string name="pref_dialog_drawer_columns_landscape">가로모드에서 사용할 행의 개수를 설정합니다.</string>
+
+    <string name="pref_title_drawer_rows_landscape">가로모드 열의 수</string>
+    <string name="pref_summary_drawer_rows_landscape">가로모드에서 사용할 열의 개수를 설정합니다.</string>
+    <string name="pref_dialog_drawer_rows_landscape">가로모드에서 사용할 열의 개수를 설정합니다.</string>
+
+    <!-- Previews preferences -->
+    <string name="pref_title_previews_preferences">미리보기 설정</string>
+    <string name="pref_summary_previews_preferences">화면 미리보기 설정</string>
+
+    <string name="pref_title_sense_previews">센스 미리보기</string>
+    <string name="pref_summary_sense_previews">htc 스마트폰(예. 디자이어)에 적용된 센스UI와 같은 미리보기를 설정합니다.</string>
+
+    <string name="pref_title_clean_screen_mode">화면 지우기</string>
+    <string name="pref_summary_clean_screen_mode">미리보기를 열때는 홈버튼과 위젯을 없앱니다.</string>
+
+    <!-- Button preferences -->
+    <string name="pref_title_ui_settings">UI 설정</string>
+    <string name="pref_summary_ui_settings">UI 요소들을 작동시킵니다.</string>
+
+    <string name="pref_title_home_button_binding">물리적 홈 버튼 설정</string>
+    <string name="pref_summary_home_button_binding">휴대기기의 홈 버튼을 눌렀을 때 실행할 행동을 정의합니다.</string>
+
+    <string name="pref_title_swipedown_actions">쓸어내리기</string>
+    <string name="pref_summary_swipedown_actions">화면을 쓸어내릴 때 실행할 행동을 정의합니다.</string>
+
+    <string name="pref_title_swipeup_actions">쓸어올리기</string>
+    <string name="pref_summary_swipeup_actions">화면을 쓸어올릴 때 실행할 행동을 정의합니다.</string>
+
+    <string name="pref_title_desktop_dots">이동점</string>
+    <string name="pref_summary_desktop_dots">화면의 좌측하단과 우측하단에 넥서스원처럼 화면 사이를 이동할 수 있는 점을 추가시킵니다.</string>
+
+    <string name="pref_title_dockbar">독 설정</string>
+    <string name="pref_summary_dockbar">독을 활성화/비활성화 시킵니다.</string>
+
+    <string name="pref_title_closing_dockbar">독 닫기</string>
+    <string name="pref_summary_closing_dockbar">어플을 실행한 후에 독을 자동으로 닫습니다.</string>
+
+    <string name="pref_title_closing_folder">폴더 닫기</string>
+    <string name="pref_summary_closing_folder">어플을 실행한 후에 폴더를 자동으로 닫습니다.</string>
+
+    <string name="pref_title_lab">왼쪽 실행 버튼</string>
+    <string name="pref_summary_lab">왼쪽 실행 버튼 개인화을 활성화/비활성화합니다.</string>
+
+    <string name="pref_title_rab">오른쪽 실행</string>
+    <string name="pref_summary_rab">오른쪽 실행 버튼 개인화를 활성화/비활성화합니다.</string>
+
+    <string name="pref_title_ab2">실행버튼 5개로 추가</string>
+    <string name="pref_summary_ab2">기본 실행버튼의 양쪽에 실행버튼을 추가시켜 5개로 만듭니다. (disable Desktop dots)</string>
+
+    <string name="pref_title_tint_ab">틴트 효과</string>
+    <string name="pref_summary_tint_ab">실행 버튼을 옅게 하는 효과를 줍니다.</string>
+
+    <string name="pref_title_ab_scale_factor">실행버튼 크기 설정</string>
+    <string name="pref_summary_ab_scale_factor">실행버튼의 크기를 설정합니다.</string>
+    <string name="pref_dialog_ab_scale_factor">실행버튼의 크기를 설정합니다.</string>
+
+    <string name="pref_title_hide_allapps_ab">메뉴버튼 배경 없애기</string>
+    <string name="pref_summary_hide_allapps_ab">메뉴버튼 뒤의 흰 배경을 없앱니다.</string>
+
+    <string name="pref_title_hide_ab_bg">실행버튼 배경 없애기</string>
+    <string name="pref_summary_hide_ab_bg">실행버튼 뒤의 흰 배경을 없앱니다.</string>
+
+    <string name="pref_title_hide_icon_labels">버튼 라벨 없애기</string>
+    <string name="pref_summary_hide_icon_labels">라벨을 없앱니다.</string>
+
+    <string name="pref_title_build_info">빌드 정보</string>
+    <string name="pref_title_adw_version">ADW 버전</string>
+
+    <string name="pref_title_icon_highlights">아이콘 클릭 색</string>
+    <string name="pref_summary_icon_highlights">어플 아이콘을 클릭할 때의 색을 선택합니다.</string>
+    <string name="pref_title_icon_highlights_focus">아이콘 포커스 색</string>
+    <string name="pref_summary_icon_highlights_focus">어플 아이콘을 포커스할 때의 색을 선택합니다.</string>
+    <string name="pref_title_new_selectors">테마 아이콘 사용</string>
+    <string name="pref_summary_new_selectors">제조사 홈 (ex. LG홈, SKY홈, TouchWiz홈)아이콘을 사용하려면 해제합니다.</string>
+    <string name="pref_title_drawer_color">배경 색</string>
+    <string name="pref_summary_drawer_color">메뉴 배경 색을 지정합니다.</string>
+
+    <string name="pref_dialog_title_color_picker">색상 선택</string>
+    <string name="pref_dialog_message_color_picker">색상의 중앙을 클릭하여 선택합니다.\n취소하려면 뒤로 버튼을 누릅니다.</string>
+    <string name="pref_dialog_color_picker_alpha">알파</string>
+    <string name="pref_message_restart_normal">설정을 변경하면 ADW가 재시작됩니다.</string>
+    <string name="pref_message_restart_froyo">설정을 변경하면 ADW가 재시작됩니다.</string>
+    <string name="drop_to_uninstall">삭제하려면 끌어오시오</string>
+
+    <string name="toast_widgets_not_supported">위젯이 지원되지 않습니다. 죄송합니다. :( </string>
+    <string name="toast_unknown_item">알 수 없는 항목입니다. 알 수 없는 항목은 추가할 수 없습니다.</string>
+    <string name="toast_no_application_def">아직 어플이 정의되지 않았습니다. 어플을 끌어놓으세요!</string>
+
+    <string name="pref_title_import_export">백업 및 복구</string>
+    <string name="pref_title_xml">ADW 설정</string>
+    <string name="pref_title_xml_import">ADW 설정 복구</string>
+    <string name="pref_summary_xml_import">/sdcard/adw_settings.xml에서 복구합니다.</string>
+    <string name="pref_title_xml_export">ADW 설정 백업</string>
+    <string name="pref_summary_xml_export">/sdcard/adw_settings.xml에 백업됩니다.</string>
+
+    <string name="pref_title_db">홈 화면</string>
+    <string name="pref_title_db_import">홈 화면 복구</string>
+    <string name="pref_summary_db_import">/sdcard/adw_launcher.db에서 복구합니다.</string>
+    <string name="pref_title_db_export">홈 화면 백업</string>
+    <string name="pref_summary_db_export">/sdcard/adw_launcher.db에 백업합니다.</string>
+
+    <string name="title_dialog_xml">ADW 런처 설정</string>
+    <string name="import_export_sdcard_unmounted">SD 카드가 연결되지 않았습니다!</string>
+
+    <!-- XML Import/Export strings -->
+    <string name="message_dialog_export">백업합니까? 존재하는 파일은 덮어쓰여집니다.</string>
+    <string name="xml_export_dialog">설정 백업 중...</string>
+    <string name="xml_export_success">백업 성공!</string>
+    <string name="xml_export_error">백업 실패... :( </string>
+
+    <string name="message_dialog_import">복구합니까? 런쳐가 재시작됩니다.</string>
+    <string name="xml_import_dialog">복구중...</string>
+    <string name="xml_file_not_found">백업 파일이 없습니다!</string>
+    <string name="xml_not_readable">백업 파일을 읽을 수 없습니다!</string>
+    <string name="xml_import_success">복구 성공!</string>
+    <string name="xml_import_error">복구 실패... :(</string>
+
+    <!-- Config Import/Export strings -->
+    <string name="message_dialog_export_config">백업합니까? 존재하는 파일은 덮어쓰여집니다.</string>
+    <string name="dbfile_export_dialog">설정 백업 중...</string>
+    <string name="dbfile_export_success">백업 성공!</string>
+    <string name="dbfile_export_error">백업 실패... :( </string>
+
+    <string name="message_dialog_import_config">복구합니까? 런쳐가 재시작됩니다.</string>
+    <string name="dbfile_import_dialog">복구중..</string>
+    <string name="dbfile_not_found">백업 파일이 없습니다!</string>
+    <string name="dbfile_not_readable">백업 파일을 읽을 수 없습니다!</string>
+    <string name="dbfile_import_success">복구 성공!</string>
+    <string name="dbfile_import_error">복구 실패... :(</string>
+    <!--  Desktop columns/Rows -->
+    <string name="pref_title_desktop_columns">화면의 행 수</string>
+    <string name="pref_summary_desktop_columns">화면의 행 수를 선택합니다.</string>
+    <string name="pref_dialog_desktop_columns">화면의 행 수를 선택합니다.</string>
+
+    <string name="pref_title_desktop_rows">화면의 열 수</string>
+    <string name="pref_summary_desktop_rows">화면의 열 수를 선택합니다.</string>
+    <string name="pref_dialog_desktop_rows">화면의 열 수를 선택합니다.</string>
+
+    <string name="pref_title_autosize_icons">자동 맞춤</string>
+    <string name="pref_summary_autosize_icons">자동으로 크기를 맞추어 겹치지 않게 조정합니다.</string>
+
+    <string name="pref_title_scrollable_widgets">스크롤 위젯 적용</string>
+    <string name="pref_summary_scrollable_widgets">스크롤 위젯을 사용하지 않으면 이 기능을 비활성화하세요.</string>
+
+    <string name="pref_title_drawer_labels">어플 이름 보이기</string>
+    <string name="pref_summary_drawer_labels">메뉴에서 어플 이름을 보여줍니다.</string>
+    <string name="pref_title_fade_drawer_labels">어플 이름 페이드 효과</string>
+    <string name="pref_summary_fade_drawer_labels">어플 이름을 보일 때 페이드 효과를 주어 램과 시퓨를 많이 드시게 됩니다.</string>
+
+    <string name="widget_config_dialog_title">위젯 크기 설정</string>
+    <string name="widget_config_dialog_summary">위젯 크기를 설정합니다.</string>
+    <string name="widget_columns">행 수</string>
+    <string name="widget_rows">열 수</string>
+    
+    <string name="pref_title_screen_cache">스크롤 캐시</string>
+    <string name="pref_summary_screen_cache">높으면 그래픽은 좋으나, 메모리 상주를 많이 합니다.</string>
+
+    <string name="pref_title_desktop_indicator">화면 위치 가이드 보이기</string>
+    <string name="pref_summary_desktop_indicator">바와 같이 화면의 위쪽에 있어 몇번째 화면인지를 표시합니다.</string>
+    <string name="pref_title_desktop_indicator_autohide">화면 위치 가이드 자동 숨기기</string>
+    <string name="pref_summary_desktop_indicator_autohide">화면 위치 가이드를 자동으로 숨깁니다.</string>
+    <string name="pref_title_desktop_indicator_type">가이드 종류</string>
+    <string name="pref_summary_desktop_indicator_type">가이드 종류를 설정합니다.</string>
+
+    <!-- Category titles -->
+    <string name="pref_title_system_preferences">시스템 설정</string>
+    <string name="pref_summary_system_preferences">ADW런처의 시스템을 설정합니다.</string>
+    <string name="pref_title_screens_preferencecategory">화면 스크린</string>
+    <string name="pref_title_screens_layout_preferencecategory">화면 레이아웃</string>
+    <string name="pref_title_screens_behaviour_preferencecategory">화면 설정</string>
+    <string name="pref_title_drawer_preferencecategory">메뉴</string>
+    <string name="pref_title_drawer_visuals_preferencecategory">메뉴 비주얼</string>
+    <string name="pref_title_highlights_preferencecategory">아이콘 하이라이트</string>
+    <string name="pref_title_indicators_preferencecategory">화면 위치 가이드</string>
+
+    <string name="pref_title_system_persistent">시스템 상주</string>
+    <string name="pref_summary_system_persistent">시스템이 런처를 종료하지 못하게 하려면 체크하세요. 그러나, 위험한 기능입니다.</string>
+    <!-- Theme preferences -->
+    <string name="pref_title_theme_settings">테마 설정</string>
+    <string name="pref_summary_theme_settings">ADW 런처 테마를 설정합니다.</string>
+    <string name="pref_title_theme_package">테마 고르기</string>
+    <string name="pref_summary_theme_package">테마를 고르세요.</string>
+    <string name="pref_title_theme_preview">테마 미리보기</string>
+    <string name="pref_summary_theme_preview">테마를 미리봅니다.</string>
+    <string name="pref_title_theme_icons">테마 아이콘 사용</string>
+    <string name="pref_summary_theme_icons">제조사 홈 아이콘을 사용하려면 비활성화합니다.</string>
+    <string name="pref_themes_apply_theme">적용</string>
+    <string name="pref_themes_get_themes">테마 다운로드</string>
+
+    <string name="pref_title_wallpaper_scrolling">배경화면 스크롤</string>
+    <string name="pref_summary_wallpaper_scrolling">화면을 이동하면 배경화면을 이동합니다.</string>
+    <string name="message_delete_desktop_screen">이 화면을 삭제할까요?</string>
+    <string name="message_cannot_delete_desktop_screen">마지막 화면은 삭제할 수 없습니다.</string>
+    <string name="message_cannot_add_desktop_screen">더 이상 늘일 수 없습니다.</string>
+    <string name="message_cannot_swap_desktop_screen">화면을 바꿀 수 없습니다.</string>
+    
+    <string name="menu_edit">편집</string>
+
+    <string name="pref_label_shirtcuts">사용자 설정 아이콘</string>
+    <string name="pref_label_activities">활동</string>
+    <string name="pref_label_activities_loading">활동 리스트 로드 중...</string>
+    <string name="shirtcut_header">원하는 어플을 선택하세요.\n아이콘도 바꿀 수 있습니다.</string>
+    <string name="shirtcut_pick_activity">활동을 선택하세요.</string>
+    <string name="shirtcut_label">이름</string>
+    <string name="shirtcuts_select_picture">그림 선택</string>
+    <string name="shirtcuts_crop_picture">그림을 선택하고 잘라냅니다.</string>
+    <string name="shirtcuts_icon_packs">ADW테마 아이콘팩</string>
+    <string name="shirtcuts_select_icon_type">아이콘 설정</string>
+    <string name="shirtcuts_select_icon_pack">아이콘 고르기</string>
+
+    <string name="selectAll">모두 고르기</string>
+    <string name="AppGroupAll">"모두"</string>
+    <string name="AppGroupAdd">"새 카탈로그 구성"</string>
+    <string name="AppGroupDel">"카탈로그 삭제"</string>
+    <string name="AppGroupDelLong">"정말로 삭제합니까?"</string>
+    <string name="AppGroupChoose">"그룹 선택"</string>
+    <string name="AppGroupConfig">"그룹 설정"</string>
+    <string name="AppGroupRename">"새 카탈로그"</string>
+    <string name="AppGroupConfigError">"이 그룹을 설정할 수 없습니다."</string>
+    <string name="AppGroupAddError">"그룹을 더 이상 생성할 수 없습니다."</string>
+    <string name="rename_group_title">새 카탈로그</string>
+    <string name="rename_group_label">카탈로그 이름</string>
+    <string name="show_catalog">카탈로기 보여주기 \"%s\"</string>
+
+    <string name="pref_title_adw_restart">ADW 재시작</string>
+    <string name="pref_summary_adw_restart">ADW를 재시작합니다.</string>
+    <string name="pref_title_adw_reset">ADW 초기화</string>
+    <string name="pref_summary_adw_reset">ADW를 초기화합니다.</string>
+
+    <string name="need_scrollable">이 위젯은 스크롤 위젯 설정을 허용해야 합니다. 설정하시겠습니까?</string>
+    <string name="scrollable_api_required">이 위젯은 ADW업데이트를 통해 지원됩니다.</string>
+    
+    <string name="pref_title_drawer_navigate_catalogs">카탈로그 네비게이션</string>
+    <string name="pref_summary_drawer_navigate_catalogs">어플 네비게이션 버튼을 보입니다.</string>
+    <string name="pref_title_notif_receiver">알림 보이기</string>
+    <string name="pref_summary_notif_receiver">알림을 보입니다.</string>
 </resources>

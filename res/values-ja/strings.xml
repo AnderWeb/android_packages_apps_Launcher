@@ -333,4 +333,9 @@
     <string name="pref_summary_behaviour_preferences">一般的なアプリの挙動の設定</string>
     <string name="pref_title_drawer_style">ドロワースタイル</string>
     <string name="pref_summary_drawer_style">異なるドロワー実装をスイッチする</string>
+    <string name="pref_title_dockbar_preferencecategory">隠れるドックバー</string>
+    <string name="pref_title_ab_tint">ドックアイコンを単色にする</string>
+    <string name="pref_summary_ab_tint">ドックに設置するアイコンを単色で表示する</string>
+    <string name="pref_title_ab_tint_color">単色化する色</string>
+    <string name="pref_summary_ab_tint_color">アイコンを単色表示する色を変更する</string>
 </resources>

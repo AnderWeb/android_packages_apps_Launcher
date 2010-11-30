@@ -72,4 +72,7 @@
     <integer name="config_notif_size">4</integer>
     <string name="config_main_dock_style">1</string>
     <string name="config_drawer_style">1</string>
+    <bool name="config_ab_tint">false</bool>
+    <integer name="config_ab_tint_color">0xffffffff</integer>
+    <bool name="config_wallpaper_scroll">true</bool>
 </resources>

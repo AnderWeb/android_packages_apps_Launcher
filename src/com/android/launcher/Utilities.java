@@ -23,6 +23,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.PaintDrawable;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.PixelFormat;
@@ -170,7 +171,7 @@ final class Utilities {
                     width = (int) (height * ratio);
                 }
     
-                final Bitmap.Config c = (width == sIconWidth && height == sIconHeight) ?
+                final Bitmap.Config c = (width == sIconWidth && height == sIconHeight && bitmap.getConfig()!=null) ?
                         bitmap.getConfig() : Bitmap.Config.ARGB_8888;
                 final Bitmap thumb = Bitmap.createBitmap(sIconWidth, sIconHeight, c);
                 final Canvas canvas = sCanvas;
@@ -285,8 +286,8 @@ final class Utilities {
      * @param tint
      * @return
      */
-    static Drawable scaledDrawable(Drawable icon,Context context, boolean tint, float scale){
-    	final Resources resources=context.getResources();
+    static Drawable scaledDrawable(Drawable icon,Context context, boolean tint, float scale, int color){
+        final Resources resources=context.getResources();
     	sIconWidth = sIconHeight = (int) resources.getDimension(android.R.dimen.app_icon_size);
       
         int width = sIconWidth;
@@ -305,7 +306,10 @@ final class Utilities {
         if(tint){
 	        Paint paint = new Paint(); 
 	        LinearGradient shader = new LinearGradient(width/2, 0, width/2, 
-	          height, 0xCCFFFFFF, 0x33FFFFFF, TileMode.CLAMP); 
+	          height,
+	          Color.argb(220, Color.red(color), Color.green(color), Color.blue(color)),
+	          Color.argb(50, Color.red(color), Color.green(color), Color.blue(color)),
+	          TileMode.CLAMP); 
 	        paint.setShader(shader); 
 	        paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
 	        canvas.drawRect(0, 0, width, 

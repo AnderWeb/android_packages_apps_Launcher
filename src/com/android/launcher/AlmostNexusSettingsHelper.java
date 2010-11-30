@@ -310,7 +310,7 @@ public final class AlmostNexusSettingsHelper {
 	}
 	public static boolean getWallpaperScrolling(Context context) {
 		SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
-		boolean newD = sp.getBoolean("wallpaper_scrolling", true);
+		boolean newD = sp.getBoolean("wallpaper_scrolling", context.getResources().getBoolean(R.bool.config_wallpaper_scroll));
 		return newD;
 	}
 	public static void setDesktopScreens(Context context,int screens) {
@@ -421,6 +421,16 @@ public final class AlmostNexusSettingsHelper {
     public static int getDrawerStyle(Context context) {
         SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
         int newD = Integer.valueOf(sp.getString("drawer_style", context.getResources().getString(R.string.config_drawer_style)));
+        return newD;
+    }
+    public static boolean getUIABTint(Context context) {
+        SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
+        boolean newD = sp.getBoolean("uiABTint", context.getResources().getBoolean(R.bool.config_ab_tint));
+        return newD;
+    }
+    public static int getUIABTintColor(Context context) {
+        SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
+        int newD = sp.getInt("uiABTintColor", context.getResources().getInteger(R.integer.config_ab_tint_color));
         return newD;
     }
 }
