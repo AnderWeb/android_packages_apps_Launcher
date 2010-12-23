@@ -33,6 +33,13 @@
                 <item>5图标</item>
                 <item>1图标</item>
        </string-array>
+       <string-array name="deletezone_entries">
+                <item>无</item>
+                <item>顶部</item>
+                <item>底部</item>
+                <item>顶部(收缩桌面)</item>
+                <item>底部(收缩桌面)</item>
+       </string-array>
        <string-array name="app_drawer_style_entries">
                 <item>纵向平面</item>
                 <item>横向分页</item>
