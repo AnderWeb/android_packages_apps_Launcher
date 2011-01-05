@@ -44,6 +44,8 @@
     <string name="title_select_shortcut" msgid="2858897527672831763">"Seleziona collegamento"</string>
     <string name="title_select_live_folder" msgid="3753447798805166749">"Seleziona cartella"</string>
     <string name="menu_add" msgid="3065046628354640854">"Aggiungi"</string>
+    <string name="menu_delete">Rimuovi</string>
+    <string name="menu_uninstall">Disinstalla</string>
     <string name="menu_wallpaper" msgid="5837429080911269832">"Sfondo"</string>
     <string name="menu_search" msgid="4826514464423239041">"Cerca"</string>
     <string name="menu_settings" msgid="6233960148378443661">"Impostazioni"</string>
@@ -331,4 +333,15 @@
     <string name="pref_title_drawer_style">Stile App Drawer</string>
     <string name="pref_summary_drawer_style">Seleziona tra diverse implementazioni del drawer</string>
     <string name="pref_title_dockbar_preferencecategory">Dockbar nascosta</string>
+    <string name="pref_title_ab_tint">Sfumatura icone dock</string>
+    <string name="pref_summary_ab_tint">Applica una sfumatura alle icone della dock</string>
+    <string name="pref_title_ab_tint_color">Colore sfumatura</string>
+    <string name="pref_summary_ab_tint_color">Modifica colore sfumatura</string>
+    <string name="pref_title_deletezone_preferencecategory">Cestino</string>
+    <string name="pref_title_deletezone_style">Posizione cestino</string>
+    <string name="pref_summary_deletezone_style">Modifica la posizione del cestino</string>
+    <string name="pref_title_close_apps_dockbar">Chiudi il drawer</string>
+    <string name="pref_summary_close_apps_dockbar">Chiudi l\'app drawer dopo aver premuto a lungo un oggetto quando la docbar è visibile</string>
+    <string name="menu_lock">Blocca Desktop</string>
+    <string name="menu_unlock">Sblocca Desktop</string>
 </resources>

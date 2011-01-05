@@ -33,6 +33,13 @@
                 <item>5 Icone</item>
                 <item>1 Icona</item>
        </string-array>
+       <string-array name="deletezone_entries">
+                <item>Niente</item>
+                <item>In alto</item>
+                <item>In basso</item>
+                <item>In alto (restringi desktop)</item>
+                <item>In basso (restringi desktop)</item>
+       </string-array>
        <string-array name="app_drawer_style_entries">
                 <item>Verticale piano</item>
                 <item>Impaginato orizzontalmente</item>
