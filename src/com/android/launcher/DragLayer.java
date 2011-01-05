@@ -18,6 +18,7 @@ package com.android.launcher;
 
 import java.util.ArrayList;
 
+import com.devoteam.quickaction.QuickActionWindow;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -43,6 +44,7 @@ import android.widget.FrameLayout;
 /**
  * A ViewGroup that coordinated dragging across its dscendants
  */
+
 public class DragLayer extends FrameLayout implements DragController {
     private static final int SCROLL_DELAY = 600;
     private static final int SCROLL_ZONE = 20;
@@ -143,6 +145,9 @@ public class DragLayer extends FrameLayout implements DragController {
     int[] pids;
     Debug.MemoryInfo[] memoryInfoArray;
     float debugTextSize;
+    private Object mTagPopup;
+    private float mOriginalX;
+    private float mOriginalY;
     
     /**
      * Used to create a new DragLayer from XML.
@@ -176,6 +181,7 @@ public class DragLayer extends FrameLayout implements DragController {
         if (PROFILE_DRAWING_DURING_DRAG) {
             android.os.Debug.startMethodTracing("Launcher");
         }
+        mTagPopup=v.getTag(R.id.TAG_PREVIEW);
 
         // Hide soft keyboard, if visible
         if (mInputMethodManager == null) {
@@ -190,6 +196,8 @@ public class DragLayer extends FrameLayout implements DragController {
         }
         Rect r = mDragRect;
         r.set(v.getScrollX(), v.getScrollY(), 0, 0);
+        mOriginalX=mLastMotionX;
+        mOriginalY=mLastMotionY;
 
         offsetDescendantRectToMyCoords(v, r);
         mTouchOffsetX = mLastMotionX - r.left;
@@ -228,6 +236,9 @@ public class DragLayer extends FrameLayout implements DragController {
 	        mAnimationType = ANIMATION_TYPE_SCALE;
             try {
     	        mDragBitmap = Bitmap.createBitmap(viewBitmap, 0, 0, width, height, scale, true);
+                final Bitmap dragBitmap = mDragBitmap;
+                mBitmapOffsetX = (dragBitmap.getWidth() - width) / 2;
+                mBitmapOffsetY = (dragBitmap.getHeight() - height) / 2;
             } catch (OutOfMemoryError e) {
                 mDrawModeBitmap=false;
                 width = v.getWidth();
@@ -243,14 +254,10 @@ public class DragLayer extends FrameLayout implements DragController {
                 mAnimationType = ANIMATION_TYPE_SCALE;
                 mBitmapOffsetX = (mDrawWidth-width) / 2;
                 mBitmapOffsetY = (mDrawHeight-height) / 2;
-            }            
+            }
 	        v.destroyDrawingCache();
 	        v.setWillNotCacheDrawing(willNotCache);
 	        v.setDrawingCacheBackgroundColor(color);
-	
-	        final Bitmap dragBitmap = mDragBitmap;
-	        mBitmapOffsetX = (dragBitmap.getWidth() - width) / 2;
-	        mBitmapOffsetY = (dragBitmap.getHeight() - height) / 2;
         }else{
         	mDrawModeBitmap=false;
             int width = v.getWidth();
@@ -495,7 +502,13 @@ public class DragLayer extends FrameLayout implements DragController {
             invalidate(rect);
 
             mLastDropTarget = dropTarget;
-
+            if(mTagPopup!=null){
+                if(Math.abs(mOriginalX-mLastMotionX)>SCROLL_ZONE || Math.abs(mOriginalY-mLastMotionY)>SCROLL_ZONE){
+                    final QuickActionWindow qa=(QuickActionWindow) mTagPopup;
+                    qa.dismiss();
+                    mTagPopup=null;
+                }
+            }
             boolean inDragRegion = false;
             if (mDragRegion != null) {
                 final RectF region = mDragRegion;

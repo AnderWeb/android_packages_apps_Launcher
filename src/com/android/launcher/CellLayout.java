@@ -175,8 +175,11 @@ public class CellLayout extends WidgetCellLayout {
         // per workspace screen
         final LayoutParams cellParams = (LayoutParams) params;
         cellParams.regenerateId = true;
-
-        super.addView(child, index, params);
+        try{
+            super.addView(child, index, params);
+        }catch (Exception e){
+            //Someone tried to add a view here without removing it first from its previous parent...
+        }
     }
 
     @Override
@@ -494,7 +497,7 @@ public class CellLayout extends WidgetCellLayout {
         final int vStartPadding = portrait ? mLongAxisStartPadding : mShortAxisStartPadding;
 
         result[0] = (x - hStartPadding) / (mCellWidth + mWidthGap);
-        result[1] = (y - vStartPadding) / (mCellHeight + mHeightGap);
+        result[1] = (y - vStartPadding-getTop()) / (mCellHeight + mHeightGap);
 
         final int xAxis = portrait ? mShortAxisCells : mLongAxisCells;
         final int yAxis = portrait ? mLongAxisCells : mShortAxisCells;
@@ -521,7 +524,7 @@ public class CellLayout extends WidgetCellLayout {
 
 
         result[0] = hStartPadding + cellX * (mCellWidth + mWidthGap);
-        result[1] = vStartPadding + cellY * (mCellHeight + mHeightGap);
+        result[1] = vStartPadding + cellY * (mCellHeight + mHeightGap)+getTop();
     }
 
     @Override
@@ -753,16 +756,15 @@ public class CellLayout extends WidgetCellLayout {
     void onDropChild(View child, int[] targetXY) {
         if (child != null) {
             LayoutParams lp = (LayoutParams) child.getLayoutParams();
-            if(lp==null){
-                lp=new CellLayout.LayoutParams(targetXY[0], targetXY[1], 1, 1);
+            if(lp!=null){
+                lp.cellX = targetXY[0];
+                lp.cellY = targetXY[1];
+                lp.isDragging = false;
+                lp.dropped = true;
+                mDragRect.setEmpty();
+                child.requestLayout();
+                invalidate();
             }
-            lp.cellX = targetXY[0];
-            lp.cellY = targetXY[1];
-            lp.isDragging = false;
-            lp.dropped = true;
-            mDragRect.setEmpty();
-            child.requestLayout();
-            invalidate();
         }
     }
 

@@ -31,6 +31,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.animation.AccelerateInterpolator;
@@ -38,11 +39,17 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.FrameLayout.LayoutParams;
 
 public class DeleteZone extends ImageView implements DropTarget, DragController.DragListener {
-    private static final int ORIENTATION_HORIZONTAL = 1;
+    private static final int POSITION_NONE = 0;
+    private static final int POSITION_TOP = 1;
+    private static final int POSITION_BOTTOM = 2;
+    private static final int POSITION_TOP_SHRINK = 3;
+    private static final int POSITION_BOTTOM_SHRINK = 4;
     private static final int TRANSITION_DURATION = 250;
     private static final int ANIMATION_DURATION = 200;
 	private static final String LOG_TAG = "DeleteZone";
@@ -55,7 +62,7 @@ public class DeleteZone extends ImageView implements DropTarget, DragController.
     private AnimationSet mInAnimation;
     private AnimationSet mOutAnimation;
 
-    private int mOrientation;
+    private int mPosition=-1;
     private DragLayer mDragLayer;
 
     private final RectF mRegion = new RectF();
@@ -77,7 +84,6 @@ public class DeleteZone extends ImageView implements DropTarget, DragController.
         super(context, attrs, defStyle);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DeleteZone, defStyle, 0);
-        mOrientation = a.getInt(R.styleable.DeleteZone_direction, ORIENTATION_HORIZONTAL);
         a.recycle();
     }
 
@@ -89,7 +95,7 @@ public class DeleteZone extends ImageView implements DropTarget, DragController.
 
     public boolean acceptDrop(DragSource source, int x, int y, int xOffset, int yOffset,
             Object dragInfo) {
-        return true;
+        return mPosition!=POSITION_NONE;
     }
 
     public Rect estimateDropLocation(DragSource source, int x, int y, int xOffset, int yOffset, Object dragInfo, Rect recycle) {
@@ -159,25 +165,33 @@ public class DeleteZone extends ImageView implements DropTarget, DragController.
     }
 
     public void onDragStart(View v, DragSource source, Object info, int dragAction) {
+        if(mPosition==-1){
+            int position = AlmostNexusSettingsHelper.getDeletezoneStyle(getContext());
+            setPosition(position);
+        }
+        if(mPosition==POSITION_NONE)return;
         final ItemInfo item = (ItemInfo) info;
         UninstallPkg=null;
         if (item != null) {
             mTrashMode = true;
             createAnimations();
+            
             final int[] location = mLocation;
             getLocationOnScreen(location);
-        	MarginLayoutParams tmp=(MarginLayoutParams) getLayoutParams();
-    		tmp.bottomMargin=0;
-    		tmp.rightMargin=0;
-        	setLayoutParams(tmp);
-            //TODO: ADW we need to hack the real location the first time we move the trash can
+            if(mPosition==POSITION_BOTTOM_SHRINK){
+                mLauncher.getWorkspace().setPadding(0, 0, 0, getHeight());
+                mLauncher.setDockPadding(getHeight());
+            }else if(mPosition==POSITION_TOP_SHRINK){
+                mLauncher.getWorkspace().setPadding(0, getHeight(),0,0);
+                mLauncher.setDockPadding(0);
+            }
+            mLauncher.getWorkspace().requestLayout();
             mRegion.set(location[0], location[1], location[0] + getRight() - getLeft(),
                     location[1] + getBottom() - getTop());
             mDragLayer.setDeleteRegion(mRegion);
             mTransition.resetTransition();
             startAnimation(mInAnimation);
             setVisibility(VISIBLE);
-
             //ADW Store app data for uninstall if its an Application
             //ADW Thanks to irrenhaus@xda & Rogro82@xda :)
 			if(item instanceof ApplicationInfo){
@@ -212,16 +226,10 @@ public class DeleteZone extends ImageView implements DropTarget, DragController.
             mTrashMode = false;
             mDragLayer.setDeleteRegion(null);
             startAnimation(mOutAnimation);
-            if(mLauncher.isDockBarOpen()){
-            	MarginLayoutParams tmp=(MarginLayoutParams) getLayoutParams();
-            	if(mOrientation==ORIENTATION_HORIZONTAL){
-            		tmp.bottomMargin=0;
-            	}else{
-            		tmp.rightMargin=0;
-            	}
-            	setLayoutParams(tmp);
-            }
             setVisibility(INVISIBLE);
+            mLauncher.getWorkspace().setPadding(0, 0, 0, 0);
+            mLauncher.setDockPadding(0);
+            mLauncher.getWorkspace().requestLayout();
         }
         if(shouldUninstall && UninstallPkg!=null){
 			Intent uninstallIntent = new Intent(Intent.ACTION_DELETE, Uri.parse("package:"+UninstallPkg));
@@ -236,14 +244,14 @@ public class DeleteZone extends ImageView implements DropTarget, DragController.
             final AnimationSet animationSet = mInAnimation;
             animationSet.setInterpolator(new AccelerateInterpolator());
             animationSet.addAnimation(new AlphaAnimation(0.0f, 1.0f));
-            if (mOrientation == ORIENTATION_HORIZONTAL) {
+            if (mPosition == POSITION_TOP) {
                 animationSet.addAnimation(new TranslateAnimation(Animation.ABSOLUTE, 0.0f,
                         Animation.ABSOLUTE, 0.0f, Animation.RELATIVE_TO_SELF, -1.0f,
                         Animation.RELATIVE_TO_SELF, 0.0f));
             } else {
-                animationSet.addAnimation(new TranslateAnimation(Animation.RELATIVE_TO_SELF,
-                        -1.0f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.ABSOLUTE, 0.0f,
-                        Animation.ABSOLUTE, 0.0f));
+                animationSet.addAnimation(new TranslateAnimation(Animation.ABSOLUTE, 0.0f,
+                        Animation.ABSOLUTE, 0.0f, Animation.RELATIVE_TO_SELF, 1.0f,
+                        Animation.RELATIVE_TO_SELF, 0.0f));
             }
             animationSet.setDuration(ANIMATION_DURATION);
         }
@@ -252,14 +260,14 @@ public class DeleteZone extends ImageView implements DropTarget, DragController.
             final AnimationSet animationSet = mOutAnimation;
             animationSet.setInterpolator(new AccelerateInterpolator());
             animationSet.addAnimation(new AlphaAnimation(1.0f, 0.0f));
-            if (mOrientation == ORIENTATION_HORIZONTAL) {
+            if (mPosition == POSITION_TOP) {
                 animationSet.addAnimation(new FastTranslateAnimation(Animation.ABSOLUTE, 0.0f,
                         Animation.ABSOLUTE, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f,
                         Animation.RELATIVE_TO_SELF, -1.0f));
             } else {
-                animationSet.addAnimation(new FastTranslateAnimation(Animation.RELATIVE_TO_SELF,
-                        0.0f, Animation.RELATIVE_TO_SELF, -1.0f, Animation.ABSOLUTE, 0.0f,
-                        Animation.ABSOLUTE, 0.0f));
+                animationSet.addAnimation(new FastTranslateAnimation(Animation.ABSOLUTE, 0.0f,
+                        Animation.ABSOLUTE, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f,
+                        Animation.RELATIVE_TO_SELF, 1.0f));
             }
             animationSet.setDuration(ANIMATION_DURATION);
         }
@@ -321,5 +329,19 @@ public class DeleteZone extends ImageView implements DropTarget, DragController.
 		// TODO Auto-generated method stub
 		super.setBackgroundDrawable(d);
         mTransition = (TransitionDrawable) d;
+	}
+	public void setPosition(int position){
+	    if(position!=mPosition){
+	        mPosition=position;
+	        FrameLayout.LayoutParams params=(LayoutParams) getLayoutParams();
+	        if(mPosition==POSITION_TOP||mPosition==POSITION_TOP_SHRINK) {
+	            params.gravity=Gravity.TOP|Gravity.CENTER_HORIZONTAL;
+	        }else if(mPosition==POSITION_BOTTOM||mPosition==POSITION_BOTTOM_SHRINK){
+	            params.gravity=Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL;
+	        }
+	        mInAnimation=null;
+	        mOutAnimation=null;
+	        setLayoutParams(params);
+	    }
 	}
 }

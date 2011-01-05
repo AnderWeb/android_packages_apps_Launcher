@@ -263,7 +263,7 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
     }
 
 	public boolean onLongClick(View v) {
-        if (!v.isInTouchMode()) {
+        if (!v.isInTouchMode() || mLauncher.isDesktopBlocked()) {
             return false;
         }
 		//ADW Delete the item and reposition the remaining ones
@@ -518,22 +518,29 @@ public class MiniLauncher extends ViewGroup implements View.OnLongClickListener,
 	 * ADW: Reload the proper icons
 	 * This is mainly used when the apps from SDcard are available in froyo
 	 */
-	public void reloadIcons(){
+	public void reloadIcons(String packageName){
 		final int count=getChildCount();
 		for(int i=0;i<count;i++){
 			final View cell=getChildAt(i);
 			final ItemInfo itemInfo = (ItemInfo) cell.getTag();
-			if (itemInfo.itemType==LauncherSettings.Favorites.ITEM_TYPE_APPLICATION){
-	            ApplicationInfo info=(ApplicationInfo) itemInfo;
-				final Drawable icon = Launcher.getModel().getApplicationInfoIcon(
-	                    mLauncher.getPackageManager(), info);
-	            if (icon != null && icon != info.icon) {
-	                info.icon.setCallback(null);
-	                info.icon = Utilities.createIconThumbnail(icon, mLauncher);
-	                info.filtered = true;
-	                ((ImageView)cell).setImageDrawable(Utilities.drawReflection(info.icon, mLauncher));
+	        if(itemInfo instanceof ApplicationInfo){
+	            final ApplicationInfo info=(ApplicationInfo)itemInfo;
+	            final Intent intent = info.intent;
+	            final ComponentName name = intent.getComponent();
+	            if ((info.itemType == LauncherSettings.Favorites.ITEM_TYPE_APPLICATION ||
+	                    info.itemType == LauncherSettings.Favorites.ITEM_TYPE_SHORTCUT)&&
+	                    Intent.ACTION_MAIN.equals(intent.getAction()) && name != null &&
+	                    packageName.equals(name.getPackageName())) {
+	                final Drawable icon = Launcher.getModel().getApplicationInfoIcon(
+	                        mLauncher.getPackageManager(), info, mLauncher);
+	                if (icon != null && icon != info.icon) {
+	                    info.icon.setCallback(null);
+	                    info.icon = Utilities.createIconThumbnail(icon, mLauncher);
+	                    info.filtered = true;
+	                    ((ImageView)cell).setImageDrawable(Utilities.drawReflection(info.icon, mLauncher));
+	                }
 	            }
-			}
+	        }
         }
 	}
 

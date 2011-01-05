@@ -7,6 +7,7 @@ import mobi.intuitit.android.widget.WidgetListAdapter.ViewHolder;
 import android.app.Activity;
 import android.appwidget.AppWidgetHostView;
 import android.appwidget.AppWidgetManager;
+import android.appwidget.AppWidgetProviderInfo;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -389,16 +390,21 @@ public abstract class WidgetSpace extends ViewGroup {
                 Log.d(TAG, "Widget view to KILL:"+widgetView);
                 Context remoteContext=null;
                 if (widgetView != null) {
-                	final String packageName = widgetView.getAppWidgetInfo().provider.getPackageName();
-                    try {
-						remoteContext = getContext().createPackageContext(
-						        packageName,
-						        Context.CONTEXT_IGNORE_SECURITY);
-					} catch (NameNotFoundException e) {
-						Log.e(TAG, "couldn't find widget id:"+widgetId);
-					}
+                	AppWidgetProviderInfo info = widgetView.getAppWidgetInfo();
+                	if (info != null && info.provider != null) {
+	                	final String packageName = info.provider.getPackageName();
+	                    try {
+							remoteContext = getContext().createPackageContext(
+							        packageName,
+							        Context.CONTEXT_IGNORE_SECURITY);
+						} catch (NameNotFoundException e) {
+							Log.e(TAG, "couldn't find widget id:"+widgetId);
+						}
+                	} else
+                		remoteContext = null;
                 }
-                if(remoteContext!=null)remoteContext=getContext();
+                if(remoteContext==null)
+                	remoteContext=getContext();
         		if(item.lv!=null){
         			Log.d(TAG, "Trying to KILL the ListView...");
                 	if(item.lvAdapter!=null){

@@ -6,14 +6,16 @@
 -&lt;b>NOTICE:&lt;/b> To enable ORIENTATION, disable PERSISTENCE.&lt;br>&lt;br>
 -&lt;b>REMEMBER:&lt;/b> You can hide apps from the drawer by using the custom catalogs (press menu key while the drawer is open) &lt;br>&lt;br>
 
-&lt;b>Version 1.3.0:&lt;/b>&lt;br>
+&lt;b>Version 1.3.6:&lt;/b>&lt;br>
 &lt;b>--------------&lt;/b>&lt;br>
--Small UI revamp (Trash can moved to the top, configurable main dock, etc) &lt;br>
--Drag and drop a desktop icon in the same place to edit it &lt;br>
--Support for coloured counter bubbles. &lt;br>
--Support for easier scrolling of the hidden dockbar. &lt;br>
--Support for replacing the app drawer button with anything &lt;br>
--You can uninstall widgets too by holding them into the trash can &lt;br>
+-Option to lock/unlock desktop (press menu/more) &lt;br>
+-Small fixes for some FCs &lt;br>
+&lt;b>Version 1.3.5:&lt;/b>&lt;br>
+&lt;b>--------------&lt;/b>&lt;br>
+-Option to select different trash can positions/behaviors &lt;br>
+-QuickActions window on longpress items. &lt;br>
+-Support for drag-out and quickactions on the main dock too. &lt;br>
+-Added the LauncherActions to the main ADD menu. &lt;br>
 -Lots of fixes &lt;br>
 
 </string>

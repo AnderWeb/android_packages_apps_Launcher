@@ -37,11 +37,12 @@ public class AddAdapter extends BaseAdapter {
     
     private final ArrayList<ListItem> mItems = new ArrayList<ListItem>();
     
-    public static final int ITEM_SHORTCUT = 0;
-    public static final int ITEM_ANYCUT = 1;
-    public static final int ITEM_APPWIDGET = 2;
-    public static final int ITEM_LIVE_FOLDER = 3;
-    public static final int ITEM_WALLPAPER = 4;
+    public static final int ITEM_LAUNCHER_ACTION = 0;
+    public static final int ITEM_SHORTCUT = 1;
+    public static final int ITEM_ANYCUT = 2;
+    public static final int ITEM_APPWIDGET = 3;
+    public static final int ITEM_LIVE_FOLDER = 4;
+    public static final int ITEM_WALLPAPER = 5;
     private Typeface themeFont=null;
     /**
      * Specific item in our list.
@@ -69,6 +70,9 @@ public class AddAdapter extends BaseAdapter {
         
         // Create default actions
         Resources res = launcher.getResources();
+        
+        mItems.add(new ListItem(res, R.string.launcher_actions,
+                R.drawable.all_apps_button, ITEM_LAUNCHER_ACTION));
         
         mItems.add(new ListItem(res, R.string.group_shortcuts,
                 R.drawable.ic_launcher_shortcut, ITEM_SHORTCUT));

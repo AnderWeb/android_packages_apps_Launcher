@@ -7,15 +7,18 @@
 -&lt;b>RECUERDA:&lt;/b> Puedes ocultar iconos de la lista de aplicaciones usando los catálogos personalizados (pulsa la tecla menú con la lista de aplicaciones abierta) &lt;br>&lt;br>
 
 
-&lt;b>Version 1.3.0:&lt;/b>&lt;br>
+&lt;b>Version 1.3.6:&lt;/b>&lt;br>
 &lt;b>--------------&lt;/b>&lt;br>
--Pequeño rediseño de la interfaz (Papelera movida a la parte superior, Dock configurable, etc)
--Edición de iconos mediante pulsación larga y soltarlos en el mismo sitio &lt;br>
--Soporte para notificaciones de colores. &lt;br>
--Desplazamiento más cómode del Dockbar oculto. &lt;br>
--Posibilidad de reemplazar el botón central del dock &lt;br>
--Posibilidad de desinstalar widgets dejandolos sobre la papelera un segundo &lt;br>
--Montones de correcciones &lt;br>
+-Opciín para bloquear el escritorio (pulsa menú/Lock/Unlock) &lt;br>
+-Small fixes for some FCs &lt;br>
+&lt;b>Version 1.3.5:&lt;/b>&lt;br>
+&lt;b>--------------&lt;/b>&lt;br>
+-Opción para elegir fistintas posiciones para la papelera &lt;br>
+-Ventana QuickActions al dejar pulsados los elementos del escritorio. &lt;br>
+-Ahora se puede modificar/arrastrar los elementos de la barra principal. &lt;br>
+-Añadidas las LauncherActions al menú principal de AÑADIR. &lt;br>
+-Montones de arreglillos &lt;br>
+
 
 </string>
 </resources>

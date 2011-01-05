@@ -19,10 +19,10 @@
 -->
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="34"
     package="com.android.launcher"
     android:sharedUserId="android.uid.shared"
     android:sharedUserLabel="@string/uid_name"
-    android:versionCode="32"
     android:versionName="@string/adw_version">
 
     <permission

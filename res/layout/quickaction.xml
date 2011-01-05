@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/quickaction_shadow_horiz"
+    android:paddingRight="@dimen/quickaction_shadow_horiz">
+
+    <FrameLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip">
+        <LinearLayout
+		    android:id="@+id/quickaction_header"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:background="@drawable/quickaction_top_frame"
+		    android:gravity="center_vertical"
+		    android:orientation="horizontal">
+		    
+		    <ImageView
+		        android:id="@+id/quickaction_icon"
+		        android:layout_width="54dip"
+		        android:layout_height="57dip"
+		        android:layout_marginLeft="15dip"
+		        android:layout_marginTop="5dip"
+		        android:layout_marginBottom="5dip"
+		        android:scaleType="center" 
+		        android:visibility="gone" />
+		    
+		    <LinearLayout
+		    	android:id="@+id/quickaction_header_content"
+		        android:layout_width="0dip"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:layout_marginLeft="15dip"
+		        android:layout_marginRight="15dip"
+		        android:orientation="vertical"
+		        android:visibility="gone">
+		        <TextView
+		            android:id="@+id/quickaction_primary_text"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:focusable="true"
+		            android:focusableInTouchMode="true"
+		            android:singleLine="true"
+		            android:ellipsize="marquee"
+		            android:textColor="@android:color/primary_text_light"
+		            android:textStyle="bold"
+		            android:textSize="18dip"
+		            android:visibility="gone" />
+		
+		        <TextView
+		            android:id="@+id/quickaction_secondary_text"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:textColor="@android:color/secondary_text_light"
+		            android:textSize="15dip"
+		            android:layout_marginTop="-3dip"
+		            android:visibility="gone" />
+		    </LinearLayout>
+		</LinearLayout>
+    </FrameLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/scroll"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:fadingEdgeLength="0dip"
+        android:background="@drawable/quickaction_slider_background"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/quickaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dip"
+            android:paddingBottom="4dip"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/quickaction_slider_grip_left" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/quickaction_slider_grip_right" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <FrameLayout
+        android:id="@+id/footer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scroll"
+        android:background="@drawable/quickaction_bottom_frame" />
+
+    <ImageView
+        android:id="@+id/arrow_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/quickaction_arrow_up" />
+
+    <ImageView
+        android:id="@+id/arrow_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-1dip"
+        android:layout_below="@id/footer"
+        android:src="@drawable/quickaction_arrow_down" />
+
+</RelativeLayout>

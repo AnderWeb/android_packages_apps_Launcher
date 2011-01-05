@@ -17,13 +17,10 @@
 package com.android.launcher;
 
 import android.app.Application;
-import dalvik.system.VMRuntime;
 
 public class LauncherApplication extends Application {
     @Override
     public void onCreate() {
-        VMRuntime.getRuntime().setMinimumHeapSize(4 * 1024 * 1024);
-
         super.onCreate();
     }
 }

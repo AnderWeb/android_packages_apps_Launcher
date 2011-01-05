@@ -111,16 +111,6 @@
         android:layout_width="wrap_content" 
         android:layout_gravity="top|right"
         android:onClick="nextScreen"/>
-    <com.android.launcher.DeleteZone
-    	android:src="@drawable/ic_delete"
-    	android:background="@drawable/delete_zone_selector"
-        android:id="@+id/delete_zone"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:scaleType="center"
-        android:layout_gravity="left|center_vertical"
-        android:visibility="invisible"
-        launcher:direction="vertical" />
     <com.android.launcher.DockBar
         android:id="@+id/dockbar"
         android:layout_width="wrap_content"
@@ -147,5 +137,14 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	/>
-
+    <com.android.launcher.DeleteZone
+        android:src="@drawable/ic_delete"
+        android:background="@drawable/delete_zone_selector"
+        android:id="@+id/delete_zone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:layout_gravity="top|center_horizontal"
+        android:visibility="invisible"
+        launcher:direction="horizontal" />
 </com.android.launcher.DragLayer>

@@ -194,10 +194,6 @@
 		  android:entryValues="@array/screen_cache_values"
 		  android:entries="@array/screen_cache_entries"
 		/>
-		<CheckBoxPreference android:key="uiScrollableWidgets"
-			android:title="@string/pref_title_scrollable_widgets"
-			android:summary="@string/pref_summary_scrollable_widgets"
-			android:defaultValue="@bool/config_uiScrollableWidgets" />
 		<CheckBoxPreference android:key="systemPersistent"
 			android:title="@string/pref_title_system_persistent"
 			android:summary="@string/pref_summary_system_persistent"
@@ -256,6 +252,11 @@
 				android:dependency="uiDockbar"
 				android:summary="@string/pref_summary_closing_dockbar"
 				android:key="uiCloseDockbar" />
+			<CheckBoxPreference android:title="@string/pref_title_close_apps_dockbar"
+				android:dependency="uiDockbar"
+				android:defaultValue="@bool/config_close_apps_dockbar"
+				android:summary="@string/pref_summary_close_apps_dockbar"
+				android:key="uiCloseAppsDockbar" />
 		</PreferenceCategory>
 		<PreferenceCategory
             android:title="@string/pref_title_highlights_preferencecategory">
@@ -293,6 +294,16 @@
 			  android:entryValues="@array/desktop_indicator_values"
 			  android:entries="@array/desktop_indicator_entries"
 			  />
+		</PreferenceCategory>
+		<PreferenceCategory
+			android:title="@string/pref_title_deletezone_preferencecategory">
+			<ListPreference
+				android:key="deletezone_style"
+				android:title="@string/pref_title_deletezone_style"
+				android:summary="@string/pref_summary_deletezone_style"
+				android:defaultValue="@string/config_deletezone_style"
+				android:entryValues="@array/deletezone_values"
+				android:entries="@array/deletezone_entries"/>
 		</PreferenceCategory>
 	</PreferenceScreen>
 	<PreferenceScreen

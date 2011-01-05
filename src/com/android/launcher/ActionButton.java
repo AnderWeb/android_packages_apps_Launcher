@@ -2,7 +2,9 @@ package com.android.launcher;
 
 import com.android.launcher.DragController.DragListener;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -12,9 +14,11 @@ import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.GestureDetector.OnGestureListener;
+import android.view.View.OnLongClickListener;
 import android.widget.Toast;
 
-public class ActionButton extends CounterImageView implements DropTarget, DragListener {
+public class ActionButton extends CounterImageView implements DropTarget, DragListener,
+									OnLongClickListener, DragSource {
 	private Launcher mLauncher;
 	private int mIdent=LauncherSettings.Favorites.CONTAINER_LAB;
 	private ItemInfo mCurrentInfo;
@@ -32,7 +36,8 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
     private static final int ORIENTATION_HORIZONTAL = 1;
     private int mOrientation = ORIENTATION_HORIZONTAL;
     private SwipeListener mSwipeListener;
-    
+    private DragController mDragger;
+
 	public ActionButton(Context context) {
 		super(context);
 		// TODO Auto-generated constructor stub
@@ -56,37 +61,31 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
         mGestureListener = new ABGestureListener();
         //mGestureDetector = new GestureDetector(mGestureListener);
         mGestureDetector = new GestureDetector(context, mGestureListener);
+        this.setOnLongClickListener(this);
 	}
 
 	public boolean acceptDrop(DragSource source, int x, int y, int xOffset,
 			int yOffset, Object dragInfo) {
-		// TODO Auto-generated method stub
 		return !specialMode;
 	}
 
 	public Rect estimateDropLocation(DragSource source, int x, int y,
 			int xOffset, int yOffset, Object dragInfo, Rect recycle) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public void onDragEnter(DragSource source, int x, int y, int xOffset,
 			int yOffset, Object dragInfo) {
-		// TODO Auto-generated method stub
 		setPressed(true);
 	}
 
 	public void onDragExit(DragSource source, int x, int y, int xOffset,
 			int yOffset, Object dragInfo) {
-		// TODO Auto-generated method stub
 		setPressed(false);
-
 	}
 
 	public void onDragOver(DragSource source, int x, int y, int xOffset,
 			int yOffset, Object dragInfo) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void onDrop(DragSource source, int x, int y, int xOffset,
@@ -120,7 +119,7 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
             final LauncherAppWidgetHost appWidgetHost = mLauncher.getAppWidgetHost();
             if (appWidgetHost != null) {
                 appWidgetHost.deleteAppWidgetId(launcherAppWidgetInfo.appWidgetId);
-            } 
+            }
         }
         if(accept){
 	        if(mCurrentInfo!=null){
@@ -129,7 +128,7 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
 	        }
 	        model.addDesktopItem(info);
 	        LauncherModel.addOrMoveItemInDatabase(mLauncher, info,
-	                mIdent, -1, -1, -1);        
+	                mIdent, -1, -1, -1);
 	        UpdateLaunchInfo(info);
         }else{
         	LauncherModel.deleteItemFromDatabase(mLauncher, info);
@@ -139,42 +138,43 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
     	mCurrentInfo=info;
 		//TODO:ADW extract icon and put it as the imageview src...
 		Drawable myIcon=null;
-        switch (info.itemType) {
-        case LauncherSettings.Favorites.ITEM_TYPE_APPLICATION:
-        case LauncherSettings.Favorites.ITEM_TYPE_SHORTCUT:
-            if (info.container == NO_ID) {
-                // Came from all apps -- make a copy
-                info = new ApplicationInfo((ApplicationInfo) info);
-            }
-            setCounter(((ApplicationInfo)info).counter,((ApplicationInfo)info).counterColor);
-            myIcon = mLauncher.createSmallActionButtonIcon(info);
-            break;
-        case LauncherSettings.Favorites.ITEM_TYPE_LIVE_FOLDER:
-        case LauncherSettings.Favorites.ITEM_TYPE_USER_FOLDER:
-            myIcon = mLauncher.createSmallActionButtonIcon(info);
-        	break;
-        case LauncherSettings.Favorites.ITEM_TYPE_APPWIDGET:
-        	//Toast t=Toast.makeText(getContext(), "Widgets not supported... sorry :-)", Toast.LENGTH_SHORT);
-        	//t.show();
-        	return;
-        default:
-        	//Toast t2=Toast.makeText(getContext(), "Unknown item. We can't add unknown item types :-)", Toast.LENGTH_SHORT);
-        	//t2.show();
-        	return;
-            //throw new IllegalStateException("Unknown item type: " + info.itemType);
-        }
+		if (info != null) {
+	        switch (info.itemType) {
+	        case LauncherSettings.Favorites.ITEM_TYPE_APPLICATION:
+	        case LauncherSettings.Favorites.ITEM_TYPE_SHORTCUT:
+	            if (info.container == NO_ID) {
+	                // Came from all apps -- make a copy
+	                info = new ApplicationInfo((ApplicationInfo) info);
+	            }
+	            setCounter(((ApplicationInfo)info).counter,((ApplicationInfo)info).counterColor);
+	            myIcon = mLauncher.createSmallActionButtonIcon(info);
+	            break;
+	        case LauncherSettings.Favorites.ITEM_TYPE_LIVE_FOLDER:
+	        case LauncherSettings.Favorites.ITEM_TYPE_USER_FOLDER:
+	            myIcon = mLauncher.createSmallActionButtonIcon(info);
+	        	break;
+	        case LauncherSettings.Favorites.ITEM_TYPE_APPWIDGET:
+	        	//Toast t=Toast.makeText(getContext(), "Widgets not supported... sorry :-)", Toast.LENGTH_SHORT);
+	        	//t.show();
+	        	return;
+	        default:
+	        	//Toast t2=Toast.makeText(getContext(), "Unknown item. We can't add unknown item types :-)", Toast.LENGTH_SHORT);
+	        	//t2.show();
+	        	return;
+	            //throw new IllegalStateException("Unknown item type: " + info.itemType);
+	        }
+		}
         setIcon(myIcon);
+    	updateIcon();
         invalidate();
 	}
 
 	public void onDragEnd() {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void onDragStart(View v, DragSource source, Object info,
 			int dragAction) {
-		// TODO Auto-generated method stub
+
 
 	}
     void setLauncher(Launcher launcher) {
@@ -256,21 +256,28 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
 	 * ADW: Reload the proper icon
 	 * This is mainly used when the apps from SDcard are available in froyo
 	 */
-	public void reloadIcon(){
+	public void reloadIcon(String packageName){
 		if(mCurrentInfo==null)return;
-		if(mCurrentInfo.itemType==LauncherSettings.Favorites.ITEM_TYPE_APPLICATION){
-	        ApplicationInfo info=(ApplicationInfo) mCurrentInfo;
-			final Drawable icon = Launcher.getModel().getApplicationInfoIcon(
-	                mLauncher.getPackageManager(), info);
-	        Drawable myIcon=null;
-			if (icon != null) {
-	            info.icon.setCallback(null);
-	            info.icon = Utilities.createIconThumbnail(icon, mLauncher);
-	            info.filtered = true;
-	            myIcon = mLauncher.createSmallActionButtonIcon(info);
-				setIcon(myIcon);
-		        invalidate();			
-	        }
+		if(mCurrentInfo instanceof ApplicationInfo){
+            final ApplicationInfo info=(ApplicationInfo)mCurrentInfo;
+		    final Intent intent = info.intent;
+            final ComponentName name = intent.getComponent();
+            if ((info.itemType == LauncherSettings.Favorites.ITEM_TYPE_APPLICATION ||
+                    info.itemType == LauncherSettings.Favorites.ITEM_TYPE_SHORTCUT)&&
+                    Intent.ACTION_MAIN.equals(intent.getAction()) && name != null &&
+                    packageName.equals(name.getPackageName())) {
+    			final Drawable icon = Launcher.getModel().getApplicationInfoIcon(
+    	                mLauncher.getPackageManager(), info, mLauncher);
+    	        Drawable myIcon=null;
+    			if (icon != null) {
+    	            info.icon.setCallback(null);
+    	            info.icon = Utilities.createIconThumbnail(icon, mLauncher);
+    	            info.filtered = true;
+    	            myIcon = mLauncher.createSmallActionButtonIcon(info);
+    				setIcon(myIcon);
+    		        invalidate();
+    	        }
+    		}
 		}
 	}
 	private void setIcon(Drawable d){
@@ -322,6 +329,27 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
         return false;
     }
 
+	@Override
+	public boolean onLongClick(View v) {
+        if (mDragger == null || !v.isInTouchMode() || mCurrentInfo == null || specialMode || mLauncher.isDesktopBlocked()) {
+            return false;
+        }
+        // Close Drawer if it is open...
+        mLauncher.closeAllApplications();
+        mLauncher.showActions(mCurrentInfo, v);
+        mDragger.startDrag(v, this, mCurrentInfo, DragController.DRAG_ACTION_COPY);
+        UpdateLaunchInfo(null);
+        return true;
+	}
+
+	public void setDragger(DragController dragger) {
+		mDragger=dragger;
+	}
+
+	@Override
+	public void onDropCompleted(View target, boolean success) {
+	}
+
     class ABGestureListener implements OnGestureListener {
         public boolean onDown(MotionEvent e) {
             mInterceptClicks=false;
@@ -339,7 +367,7 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
             if(velocity>0){
                 dispatchSwipeEvent();
                 mInterceptClicks=true;
-                
+
                 return true;
             }
             return false;
@@ -372,7 +400,7 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
             performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
             mSwipeListener.onSwipe();
         }
-    }   
+    }
     /**
      * Interface definition for a callback to be invoked when a tab is triggered
      * by moving it beyond a threshold.
@@ -380,4 +408,5 @@ public class ActionButton extends CounterImageView implements DropTarget, DragLi
     public interface SwipeListener {
         void onSwipe();
     }
+
 }

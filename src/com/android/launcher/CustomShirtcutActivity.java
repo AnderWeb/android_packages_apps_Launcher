@@ -158,6 +158,16 @@ public class CustomShirtcutActivity extends Activity implements OnClickListener 
 		                title = activityInfo.name;
 		            }
 					btPickActivity.setText(title);
+                    mIconResource = new ShortcutIconResource();
+                    mIconResource.packageName = activityInfo.packageName;
+                    try {
+                        Resources resources = mPackageManager.getResourcesForApplication(mIconResource.packageName);
+                        mIconResource.resourceName = resources.getResourceName(activityInfo.getIconResource());
+                    } catch (NameNotFoundException e) {
+                        mIconResource=null;
+                    } catch (Resources.NotFoundException e) {
+                        mIconResource=null;
+                    }
 		        }
 			}
 		}
@@ -370,7 +380,6 @@ public class CustomShirtcutActivity extends Activity implements OnClickListener 
 				long id = intent.getLongExtra(EXTRA_APPLICATIONINFO, 0);
 				mReturnData.putExtra(EXTRA_APPLICATIONINFO, id);
 			}
-
 	        if(mBitmap==null){
 				if(mIconResource!=null)mReturnData.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, mIconResource);
 	        }else{

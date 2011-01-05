@@ -1753,7 +1753,7 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
         app = new ApplicationInfo(app);
 
         mDragger.startDrag(v, this, app, DragController.DRAG_ACTION_COPY);
-        if(!mLauncher.isDockBarOpen()){
+        if(!mLauncher.isDockBarOpen() || AlmostNexusSettingsHelper.getUICloseAppsDockbar(mLauncher)){
         	mLauncher.closeAllApplications();
         }
 

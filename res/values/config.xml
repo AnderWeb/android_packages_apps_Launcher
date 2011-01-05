@@ -53,7 +53,6 @@
     <integer name="config_desktopColumns">1</integer>
     <integer name="config_desktopRows">1</integer>
     <bool name="config_autosizeIcons">false</bool>
-    <bool name="config_uiScrollableWidgets">true</bool>
     <bool name="config_drawerLabels">true</bool>
     <bool name="config_fadeDrawerLabels">false</bool>
     <bool name="config_desktop_indicator">true</bool>
@@ -75,4 +74,6 @@
     <bool name="config_ab_tint">false</bool>
     <integer name="config_ab_tint_color">0xffffffff</integer>
     <bool name="config_wallpaper_scroll">true</bool>
+    <string name="config_deletezone_style">1</string>
+    <bool name="config_close_apps_dockbar">true</bool>
 </resources>
