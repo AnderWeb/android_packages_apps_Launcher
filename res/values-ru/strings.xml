@@ -385,16 +385,16 @@
     <string name="pref_summary_notif_size">Выберите размер шрифта в всплывающих уведомлениях</string>
     <string name="pref_dialog_notif_size">Выберите размер шрифта в всплывающих уведомлениях</string>
 
-    <string name="pref_title_ab_preferencecategory">Выдвижная панель</string>
-    <string name="pref_title_main_dock_style">Стиль выдвижной панели</string>
-    <string name="pref_summary_main_dock_style">Выберите макет выдвижной панели</string>
+    <string name="pref_title_ab_preferencecategory">Главная панель</string>
+    <string name="pref_title_main_dock_style">Стиль главной панели</string>
+    <string name="pref_summary_main_dock_style">Выберите макет главной панели</string>
     <string name="pref_title_behaviour_preferences">Общее поведение</string>
     <string name="pref_summary_behaviour_preferences">Настройки поведения приложения</string>
     <string name="pref_title_drawer_style">Стиль главного меню</string>
     <string name="pref_summary_drawer_style">Выберите реализацию главного меню</string>
-    <string name="pref_title_dockbar_preferencecategory">Hidden Dockbar</string>
+    <string name="pref_title_dockbar_preferencecategory">Выдвижная панель</string>
     <string name="pref_title_ab_tint">Окраска иконок на панели</string>
-    <string name="pref_summary_ab_tint">Активировать окраску иконок на панели</string>
+    <string name="pref_summary_ab_tint">Активировать окраску иконок на главной панели</string>
     <string name="pref_title_ab_tint_color">Выбрать цвет</string>
     <string name="pref_summary_ab_tint_color">Изменить цвет окраски</string>
 
