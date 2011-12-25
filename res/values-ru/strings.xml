@@ -54,6 +54,8 @@
     <string name="group_applications">Приложения</string>
     <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all shortcuts -->
     <string name="group_shortcuts">Ярлыки</string>
+        <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all launcher actions -->
+    <string name="launcher_actions">Действия лаунчера</string>
     <!-- Options in "Add to Home" dialog box; Title of the search gadget -->
     <string name="group_search">Поиск</string>
     <!-- Options in "Add to Home" dialog box; Title of the folder gadget -->
@@ -109,6 +111,8 @@
 
     <!-- Text to show user in place of a gadget when we can't display it properly -->
     <string name="gadget_error_text">Ошибка загрузки виджета</string>
+    <!-- ADW Version Information -->
+    <string name="adw_version">Версия 1.3.3 System</string>
     <!-- ADW Settings -->
     <string name="pref_label_settings">Настройки ADW</string>
     <!-- Screen preferences -->
@@ -219,6 +223,7 @@
     <string name="pref_message_restart_normal">Изменение параметра требует перезапуска ADW</string>
     <string name="pref_message_restart_froyo">Изменение параметра требует перезапуска ADW</string>
     <string name="drop_to_uninstall">Отпустите для деинсталляции</string>
+
     
     <string name="pref_title_import_export">Резервное копирование</string>
     <string name="pref_title_xml">Настройки ADW</string>
@@ -355,7 +360,7 @@
 	<string name="AppGroupDel">"Удалить папку"</string>
     <string name="AppGroupDelLong">"Действитеьлно удалить\nтекущую папку?"</string>
 	<string name="AppGroupChoose">"Выбрать папку"</string>
-	<string name="AppGroupConfig">"Создать папку"</string>
+	<string name="AppGroupConfig">"Править папку"</string>
 	<string name="AppGroupRename">"Новая папка"</string>
 	<string name="AppGroupConfigError">"Вы не можете редактировать эту папку"</string>
 	<string name="rename_group_title">Новая папка</string>
@@ -374,4 +379,23 @@
     <string name="pref_summary_drawer_navigate_catalogs">Отображать кнопки навигации по папкам</string>
     <string name="pref_title_notif_receiver">Показывать уведомления</string>
     <string name="pref_summary_notif_receiver">Включить глобальные счетчики уведомлений</string>
+   
+   
+   <string name="pref_title_notif_size">Размер шрифта</string>
+    <string name="pref_summary_notif_size">Выберите размер шрифта в всплывающих уведомлениях</string>
+    <string name="pref_dialog_notif_size">Выберите размер шрифта в всплывающих уведомлениях</string>
+
+    <string name="pref_title_ab_preferencecategory">Выдвижная панель</string>
+    <string name="pref_title_main_dock_style">Стиль выдвижной панели</string>
+    <string name="pref_summary_main_dock_style">Выберите макет выдвижной панели</string>
+    <string name="pref_title_behaviour_preferences">Общее поведение</string>
+    <string name="pref_summary_behaviour_preferences">Настройки поведения приложения</string>
+    <string name="pref_title_drawer_style">Стиль главного меню</string>
+    <string name="pref_summary_drawer_style">Выберите реализацию главного меню</string>
+    <string name="pref_title_dockbar_preferencecategory">Hidden Dockbar</string>
+    <string name="pref_title_ab_tint">Окраска иконок на панели</string>
+    <string name="pref_summary_ab_tint">Активировать окраску иконок на панели</string>
+    <string name="pref_title_ab_tint_color">Выбрать цвет</string>
+    <string name="pref_summary_ab_tint_color">Изменить цвет окраски</string>
+
 </resources>
