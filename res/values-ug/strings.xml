@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2008 The Android Open Source Project
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+--><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- General -->
+    <skip/>
+    <!-- Application name -->
+    <string name="application_name">ADW قوزغىغۇچ</string>
+    <!-- Name for all applications running as this uid. -->
+    <string name="uid_name">Android يادرولۇق ئەپلەر</string>
+    <!-- Default folder name -->
+    <string name="folder_name">قىسقۇچ</string>
+    <!-- Title of dialog that appears after user selects Wallpaper from menu -->
+    <string name="chooser_wallpaper">تام قەغەز ئورنىنى تاللاڭ</string>
+    <!-- Button label on Wallpaper Gallery screen; user selects this button to set a specific wallpaper -->
+    <string name="wallpaper_instructions">تام قەغەز تەڭشىكى</string>
+    <!-- Option in "Select wallpaper from" dialog box -->
+    <string name="pick_wallpaper">تام قەغەز توپلىمى</string>
+    <!-- Displayed when user selects a shortcut for an app that was uninstalled -->
+    <string name="activity_not_found">ئەپ تېلېفونىڭىزغا  ئورنىتىلمىغان.</string>
+    <!-- List item for configuring the current wallpaper -->
+    <string name="configure_wallpaper">سەپلىمە…</string>
+
+    <!-- Folders -->
+    <skip/>
+    <!-- Label of Folder name field in Rename folder dialog box -->
+    <string name="rename_folder_label">قىسقۇچ ئاتى</string>
+    <!-- Title of dialog box -->
+    <string name="rename_folder_title">قىسقۇچ ئاتىنى ئۆزگەرت</string>
+    <!-- Buttons in Rename folder dialog box -->
+    <string name="rename_action">جەزملە</string>
+    <!-- Buttons in Rename folder dialog box -->
+    <string name="cancel_action">ۋاز كەچ</string>
+
+    <!-- Shortcuts -->
+    <skip/>
+    <!-- Title of dialog box -->
+    <string name="menu_item_add_item">باش ئېكرانغا قوش</string>
+    <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all apps -->
+    <string name="group_applications">پىروگراممىلار</string>
+    <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all shortcuts -->
+    <string name="group_shortcuts">قىسقا يول</string>
+    <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all launcher actions -->
+    <string name="launcher_actions">Launcher مەشغۇلاتى</string>
+    <!-- Options in "Add to Home" dialog box; Title of the search gadget -->
+    <string name="group_search">ئىزدە</string>
+    <!-- Options in "Add to Home" dialog box; Title of the folder gadget -->
+    <string name="group_folder">يېڭى قىسقۇچ</string>
+    <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all live folders -->
+    <string name="group_live_folders">قىسقۇچلار</string>
+    <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all widgets/gadgets -->
+    <string name="group_widgets">پارچەلەر</string>
+    <!-- Options in "Add to Home" dialog box; Title of the group containing the list of apps that can set the wallpaper-->
+    <string name="group_wallpapers">تام قەغەزلىرى</string>
+    <!-- Error message when user has filled a home screen, possibly not used -->
+    <string name="out_of_space">باش ئېكراندا ئورۇن يوق.</string>
+    <!-- Message displayed when a shortcut is created by an external application -->
+    <string name="shortcut_installed">\&quot;<xliff:g id="name" example="Browser">%s</xliff:g>\&quot; قىسقا يول قۇرۇلدى.</string>
+    <!-- Message displayed when a shortcut is uninstalled by an external application -->
+    <string name="shortcut_uninstalled">\&quot;<xliff:g id="name" example="Browser">%s</xliff:g>\&quot; قىسقا يول چىقىرىۋېتىلدى.</string>
+    <!-- Message displayed when an external application attemps to create a shortcut that already exists -->
+    <string name="shortcut_duplicate">\&quot;<xliff:g id="name" example="Browser">%s</xliff:g>\&quot; قىسقا يول مەۋجۇد</string>
+
+    <!-- Title of dialog when user is selecting shortcut to add to homescreen -->
+    <string name="title_select_shortcut">قىسقا يول تاللاڭ</string>
+    <!-- Title of dialog when user is selecting live folder to add to homescreen -->
+    <string name="title_select_live_folder">قىسقۇچ تاللاڭ</string>
+
+    <!-- Menus items: -->
+    <skip/>
+    <!-- Verb, menu item used to add an item on the desktop -->
+    <string name="menu_add">قوش</string>
+    <!-- Noun, menu item used to set the desktop's wallpaper -->
+    <string name="menu_wallpaper">تام قەغەز</string>
+    <!-- Verb, menu item used to initiate global search -->
+    <string name="menu_search">ئىزدە</string>
+    <!-- Noun, menu item used to show the system settings -->
+    <string name="menu_settings">تەڭشەكلەر</string>
+    <string name="menu_adw_settings">ADW تەڭشەكلەر</string>
+
+    <!-- Permissions: -->
+    <string name="permlab_install_shortcut">قىسقا يول ئورنىتىش</string>
+    <string name="permdesc_install_shortcut">ئەپنىڭ ئىشلەتكۈچى ئارىلاشمىغان ئەھۋالدا قىسقا يول قۇرۇشقا يول قويىدۇ.</string>
+    <string name="permlab_uninstall_shortcut">قىسقا يول ئۆچۈر</string>
+    <string name="permdesc_uninstall_shortcut">ئەپنىڭ ئىشلەتكۈچى ئارىلاشمىغان ئەھۋالدا قىسقا يولنى چىقىرىۋېتىشكە يول قويىدۇ.</string>
+    <string name="permlab_read_settings">باش بەتتىكى تەڭشەك ۋە قىسقا يولنى ئوقۇ</string>
+    <string name="permdesc_read_settings">ئەپنىڭ باش بەتتىكى تەڭشەك ۋە قىسقا يولنى ئوقۇشىغا يول قويىدۇ.</string>
+    <string name="permlab_write_settings">باش بەتتىكى تەڭشەك ۋە قىسقا يولنى ياز</string>
+    <string name="permdesc_write_settings">ئەپنىڭ باش بەتتىكى تەڭشەك ۋە قىسقا يولنى ئۆزگەرتىشىگە يول قويىدۇ.</string>
+
+    <!-- Widgets: -->
+    <skip/>
+
+    <!-- Text to show user in place of a gadget when we can't display it properly -->
+    <string name="gadget_error_text">پارچە يۈكلەشتە خاتالىق كۆرۈلدى.</string>
+    <!-- ADW Version Information -->
+    <string name="adw_version">سىستېما نەشرى 1.3.3</string>
+    <!-- ADW Settings -->
+    <string name="pref_label_settings">AlmostNexus تەڭشەكلەر</string>
+    <!-- Screen preferences -->
+    <string name="pref_title_screen_preferences">ئېكران مايىللىقى</string>
+    <string name="pref_summary_screen_preferences">كۆڭۈلدىكى ئېكران ئۇسلۇبى…</string>
+
+    <string name="pref_title_wallpaper_hack">تام قەغەز ئەلالاشتۇرۇشى</string>
+    <string name="pref_summary_wallpaper_hack">ئەگەر مەجبۇرىي تاقاش خاتالىقى كۆرۈلسە چەكلەڭ. قوزغىتىلسا دومىلىتىش سۈرئىتىنى ئۆستۈرىدۇ.</string>
+
+    <string name="pref_title_orientation_sensor">ئېكران يۆنىلىشى</string>
+    <string name="pref_summary_orientation_sensor">ياقتۇرىدىغان يۆنىلىشنى تاللاڭ</string>
+
+    <string name="pref_title_hide_statusbar">ھالەت بالداقنى يوشۇر</string>
+    <string name="pref_summary_hide_statusbar">ھالەت بالداقنى يوشۇرىدۇ</string>
+
+    <string name="pref_title_default_screen">كۆڭۈلدىكى ئېكران</string>
+
+    <string name="pref_title_desktop_scrolling_speed">ئۈستەلئۈستى دومىلىتىش سۈرئىتى</string>
+    <string name="pref_summary_desktop_scrolling_speed">ئۈستەلئۈستى ئېكرانىنى ئالماشتۇرۇش سۈرئىتىنىڭ تەڭشىكى</string>
+    <string name="pref_dialog_desktop_scrolling_speed">قىممىتى قانچە كىچىك بولسا شۇنچە تېز سۈرۈلىدۇ</string>
+
+    <string name="pref_title_desktop_overshoot">ئۈستەلئۈستى ئېلاستىكىلىقى</string>
+    <string name="pref_summary_desktop_overshoot">ئۈستەلئۈستى ئېكرانىنىڭ سۈرۈلۈشى تېخىمۇ ئىگىلىشچان بولۇشىغا يول قويىدۇ</string>
+    <string name="pref_dialog_desktop_overshoot">0 گە تەڭشەلسە ئىگىلىشچان ئۈستەلئۈستىنى چەكلەيدۇ</string>
+
+    <!-- Drawer Settings -->
+    <string name="pref_title_drawer_settings">تارتما تەڭشىكى</string>
+    <string name="pref_summary_drawer_settings">ئەپ تىزىمى سېتكا مايىللىقى</string>
+
+    <string name="pref_title_zoom_effect_speed">تارايتىش ئۈنۈمى سۈرئىتى</string>
+    <string name="pref_summary_zoom_effect_speed">كەڭەيتىش ۋە تارايتىش ئۈنۈمىنىڭ كېچىكىش تەڭشىكى (مىللىسېكۇنت)</string>
+    <string name="pref_dialog_zoom_effect_speed">كەڭەيتىش ۋە تارايتىش ئۈنۈمىنىڭ كېچىكىش تەڭشىكى (مىللىسېكۇنت)</string>
+
+    <string name="pref_title_page_horizontal_margin">بەتنىڭ توغرىسىغا گىرۋىكى</string>
+    <string name="pref_summary_page_horizontal_margin">ھەر بىر تارتما ئەپ بەتلىرى ئارىسىدىكى توغرىسىغا گىرۋەك تەڭشىكى</string>
+    <string name="pref_dialog_page_horizontal_margin">ھەر بىر تارتما ئەپ بەتلىرى ئارىسىدىكى توغرىسىغا گىرۋەك تەڭشىكى</string>
+
+    <string name="pref_title_animated_drawer">تارتما جانلاندۇرۇمى</string>
+    <string name="pref_summary_animated_drawer">ئەپ تىزىمىنى كۆرسەتكەندە جانلاندۇرۇم ئۈنۈمىنى كۆرسىتەمدۇ يوق</string>
+
+    <string name="pref_title_drawer_columns_portrait">تارتما تىزىم ئىستون سانى(تىك ئېكران)</string>
+    <string name="pref_summary_drawer_columns_portrait">تارتما تىزىمنىڭ تىك ئېكراندىكى ئىستون سانىنى تاللاڭ</string>
+    <string name="pref_dialog_drawer_columns_portrait">تارتما تىزىمنىڭ تىك ئېكراندىكى ئىستون سانىنى تاللاڭ</string>
+
+    <string name="pref_title_drawer_rows_portrait">تارتما تىزىم قۇر سانى(تىك ئېكران)</string>
+    <string name="pref_summary_drawer_rows_portrait">تارتما تىزىمنىڭ تىك ئېكراندىكى قۇر سانىنى تاللاڭ</string>
+    <string name="pref_dialog_drawer_rows_portrait">تارتما تىزىمنىڭ تىك ئېكراندىكى قۇر سانىنى تاللاڭ</string>
+
+    <string name="pref_title_drawer_columns_landscape">تارتما تىزىم ئىستون سانى(يانتۇ ئېكران)</string>
+    <string name="pref_summary_drawer_columns_landscape">تارتما تىزىمنىڭ يانتۇ ئېكراندىكى ئىستون سانىنى تاللاڭ</string>
+    <string name="pref_dialog_drawer_columns_landscape">تارتما تىزىمنىڭ يانتۇ ئېكراندىكى ئىستون سانىنى تاللاڭ</string>
+
+    <string name="pref_title_drawer_rows_landscape">تارتما تىزىم قۇر سانى(يانتۇ ئېكران)</string>
+    <string name="pref_summary_drawer_rows_landscape">تارتما تىزىمنىڭ يانتۇ ئېكراندىكى قۇر سانىنى تاللاڭ</string>
+    <string name="pref_dialog_drawer_rows_landscape">تارتما تىزىمنىڭ يانتۇ ئېكراندىكى قۇر سانىنى تاللاڭ</string>
+
+    <string name="pref_title_sense_previews">ئېكراننى ئالدىن كۆزىتىش</string>
+    <string name="pref_summary_sense_previews">HTC Sense قا ئوخشاش ئۇسلۇب ئىشلىتىپ ئېكراننى ئالدىن كۆزىتىدۇ</string>
+
+    <!-- Button preferences -->
+    <string name="pref_title_ui_settings">ئارايۈز تەڭشىكى</string>
+    <string name="pref_summary_ui_settings">ئارايۈز ئېلېمېنتنى قوزغات/چەكلە</string>
+
+    <string name="pref_title_home_button_binding">باش بەت توپچا مەشغۇلاتى</string>
+    <string name="pref_summary_home_button_binding">باش بەت توپچا ئىجرا قىلىدىغان مەشغۇلاتنى تاللاڭ</string>
+
+    <string name="pref_title_swipedown_actions">تۆۋەنگە سۈرۈش قول ئىشارىتى</string>
+    <string name="pref_summary_swipedown_actions">تۆۋەنگە سۈرگەندە ئىجرا قىلىدىغان مەشغۇلاتنى تاللاڭ</string>
+
+    <string name="pref_title_swipeup_actions">ئۈستىگە سۈرۈش قول ئىشارىتى</string>
+    <string name="pref_summary_swipeup_actions">ئۈستىگە سۈرگەندە ئىجرا قىلىدىغان مەشغۇلاتنى تاللاڭ</string>
+
+    <string name="pref_title_desktop_dots">ئۈستەلئۈستى چېكىتى</string>
+    <string name="pref_summary_desktop_dots">nexus ئۇسلۇبىنىڭ ئاستىدا ئۈستەلئۈستى چېكىتىنى كۆرسەت/يوشۇر</string>
+
+    <string name="pref_title_dockbar">لەڭگەر بالداق</string>
+    <string name="pref_summary_dockbar">قىسقا يولنىڭ يېڭى لەڭگەر بالداقنى قوزغات/چەكلە</string>
+
+    <string name="pref_title_closing_dockbar">لەڭگەر بالداقنى يېپىۋاتىدۇ</string>
+    <string name="pref_summary_closing_dockbar">ئەپنى قوزغاتقاندىن كېيىن لەڭگەر بالداقنى ئۆزلۈكىدىن تاقايدۇ</string>
+
+    <string name="pref_title_closing_folder">قىسقۇچنى يېپىۋاتىدۇ</string>
+    <string name="pref_summary_closing_folder">ئەپنى قوزغاتقاندىن كېيىن قىسقۇچنى ئۆزلۈكىدىن تاقايدۇ</string>
+
+    <string name="pref_title_ab_scale_factor">مەشغۇلات توپچا چوڭلۇقى</string>
+    <string name="pref_summary_ab_scale_factor">مەشغۇلات توپچا سىنبەلگىسىنىڭ نىسبەت چوڭلۇقى</string>
+    <string name="pref_dialog_ab_scale_factor">مەشغۇلات توپچا سىنبەلگىسىنىڭ نىسبەت چوڭلۇقى</string>
+
+    <string name="pref_title_hide_ab_bg">مەشغۇلات توپچا تەگلىكىنى يوشۇر</string>
+    <string name="pref_summary_hide_ab_bg">ئوڭ سول مەشغۇلات توپچىنىڭ تەگلىكىنى يوشۇرىدۇ</string>
+
+    <string name="pref_title_hide_icon_labels">سىنبەلگىنىڭ تېكىست بەلگىسىنى يوشۇر</string>
+    <string name="pref_summary_hide_icon_labels">ئۈستەلئۈستى سىنبەلگىنىڭ تېكىست بەلگىسىنى يوشۇرىدۇ</string>
+
+    <string name="pref_title_build_info">ئىنشا ئۇچۇرى</string>
+    <string name="pref_title_adw_version">ADW نەشرى</string>
+
+    <string name="pref_title_icon_highlights">يورۇتۇش رەڭگى</string>
+    <string name="pref_summary_icon_highlights">سىنبەلگە بېسىلغاندىكى رەڭ تەڭشىكى</string>
+    <string name="pref_title_icon_highlights_focus">چەككەندە يورۇيدىغان رەڭ</string>
+    <string name="pref_summary_icon_highlights_focus">سىنبەلگە چېكىلگەندە يورۇيدىغان رەڭ تەڭشىكى</string>
+    <string name="pref_title_new_selectors">يېڭى سىنبەلگە تاللىغۇچنى ئىشلەت</string>
+    <string name="pref_summary_new_selectors">بۇ چەكلەنسە كونا تاللىغۇچنى ئىشلىتىدۇ</string>
+    <string name="pref_title_drawer_color">تەگلىك رەڭگى</string>
+    <string name="pref_summary_drawer_color">تارتما تاللانغاندىكى تەگلىك رەڭ تەڭشىكى</string>
+
+    <string name="pref_dialog_title_color_picker">بىر رەڭ تاللاڭ.</string>
+    <string name="pref_dialog_message_color_picker">ئوتتۇرىدىكى رەڭنى چېكىپ جەزملەڭ.\n قايت بېسىلسا ۋاز كېچىدۇ.</string>
+    <string name="pref_dialog_color_picker_alpha">ئالفا</string>
+    <string name="pref_message_restart_normal">بۇ تەڭشەك ئۆزگەرتىلسە ADW ئۆزىنى قايتا قوزغىتىدۇ</string>
+    <string name="pref_message_restart_froyo">بۇ تەڭشەك ئۆزگەرتىلسە ADW ئۆزىنى قايتا قوزغىتىدۇ</string>
+    <string name="drop_to_uninstall">تاشلانسا ئۆچۈرىدۇ</string>
+
+    <string name="toast_widgets_not_supported">كىچىك ئەپنى قوللىمايدۇ… كەچۈرۈڭ:-)</string>
+    <string name="toast_unknown_item">يوچۇن تۈر. بىز يوچۇن تۈر تىپىنى قوشالمايمىز :-)</string>
+    <string name="toast_no_application_def">تېخى ئەپ بەلگىلەنمىگەن، ئەپنى بۇ جايغا سۆرەڭ!:)</string>
+
+    <string name="pref_title_import_export">زاپاسلا ۋە ئەسلىگە كەلتۈر</string>
+    <string name="pref_title_xml">ADW تەڭشەكلىرى</string>
+    <string name="pref_title_xml_import">ADW تەڭشەكلىرىنى ئەسلىگە كەلتۈر</string>
+    <string name="pref_summary_xml_import">/sdcard/adw_settings.xml دىن ئەسلىگە كەلتۈر</string>
+    <string name="pref_title_xml_export">ADW تەڭشەكلىرىنى زاپاسلا</string>
+    <string name="pref_summary_xml_export">/sdcard/adw_settings.xml غا زاپاسلا</string>
+
+    <string name="pref_title_db">ئۈستەلئۈستى سەپلىمىسى</string>
+    <string name="pref_title_db_import">ئۈستەلئۈستى سەپلىمىسىنى ئەسلىگە كەلتۈر</string>
+    <string name="pref_summary_db_import">/sdcard/adw_launcher.db دىن ئەسلىگە كەلتۈر</string>
+    <string name="pref_title_db_export">ئۈستەلئۈستى سەپلىمىسىنى زاپاسلا</string>
+    <string name="pref_summary_db_export">/sdcard/adw_launcher.db غا زاپاسلا</string>
+
+    <string name="title_dialog_xml">ADW تەڭشەكلىرى</string>
+    <string name="import_export_sdcard_unmounted">SD كارتا ئېگەرلەنمىگەن!</string>
+
+    <!-- XML Import/Export strings -->
+    <string name="message_dialog_export">ADW تەڭشەكلىرىنى زاپاسلامدۇ؟ مەۋجۇت ھەر قانداق ھۆججەتنى قاپلىۋېتىدۇ.</string>
+    <string name="xml_export_dialog">ADW تەڭشەكلىرىنى زاپاسلاۋاتىدۇ…</string>
+    <string name="xml_export_success">ADW تەڭشەكلىرى مۇۋەپپەقىيەتلىك زاپاسلاندى!</string>
+    <string name="xml_export_error">ADW تەڭشەكلىرىنى زاپاسلاش خاتالىقى!</string>
+
+    <string name="message_dialog_import">ADW تەڭشەكلىرىنى ئەسلىگە كەلتۈرەمدۇ؟ ADW.Launcher قايتا قوزغىتىلىدۇ.</string>
+    <string name="xml_import_dialog">ADW تەڭشەكلىرىنى ئەسلىگە كەلتۈرۈۋاتىدۇ…</string>
+    <string name="xml_file_not_found">تەڭشەكلەرنىڭ زاپاس ھۆججىتى تېپىلمىدى!</string>
+    <string name="xml_not_readable">تەڭشەكلەرنىڭ زاپاس ھۆججىتى مەۋجۇت ئەمما ئوقۇيالمىدى!</string>
+    <string name="xml_import_success">ADW تەڭشەكلىرى مۇۋەپپەقىيەتلىك ئەسلىگە كەلتۈرۈلدى!</string>
+    <string name="xml_import_error">ADW تەڭشەكلىرىنى ئەسلىگە كەلتۈرۈش خاتالىقى!</string>
+
+    <!-- Config Import/Export strings -->
+    <string name="message_dialog_export_config">ئۈستەلئۈستى سەپلىمىسىنى زاپاسلامدۇ؟ مەۋجۇت ھەر قانداق ھۆججەتنى قاپلىۋېتىدۇ.</string>
+    <string name="dbfile_export_dialog">ئۈستەلئۈستى سەپلىمىسىنى زاپاسلاۋاتىدۇ…</string>
+    <string name="dbfile_export_success">سەپلىمە زاپاسلاش مۇۋەپپەقىيەتلىك تاماملاندى!</string>
+    <string name="dbfile_export_error">سەپلىمە زاپاسلىغاندا خاتالىق كۆرۈلدى!</string>
+
+    <string name="message_dialog_import_config">ئۈستەلئۈستى سەپلىمىسىنى ئەسلىگە كەلتۈرەمدۇ؟ ADW.Launcher قايتا قوزغىتىلىدۇ.</string>
+    <string name="dbfile_import_dialog">ئۈستەلئۈستى سەپلىمىسىنى ئەسلىگە كەلتۈرۈۋاتىدۇ…</string>
+    <string name="dbfile_not_found">سەپلىمە ھۆججىتى تېپىلمىدى!</string>
+    <string name="dbfile_not_readable">سەپلىمە ھۆججەت مەۋجۇت ئەمما ئوقۇيالمىدى!</string>
+    <string name="dbfile_import_success">سەپلىمىنى مۇۋەپپەقىيەتلىك ئەسلى كەلتۈردى!</string>
+    <string name="dbfile_import_error">سەپلىمىنى ئەسلىگە كەلتۈرۈش خاتالىقى!</string>
+    <!--  Desktop columns/Rows -->
+    <string name="pref_title_desktop_columns">ئۈستەلئۈستى ئىستون سابى</string>
+    <string name="pref_summary_desktop_columns">ئۈستەلئۈستىدە كۆرۈنىدىغان ئىستون سانىنى تاللاڭ</string>
+    <string name="pref_dialog_desktop_columns">ئۈستەلئۈستىدە كۆرۈنىدىغان ئىستون سانىنى تاللاڭ</string>
+
+    <string name="pref_title_desktop_rows">ئۈستەلئۈستى قۇر سانى</string>
+    <string name="pref_summary_desktop_rows">ئۈستەلئۈستىدە كۆرۈنىدىغان قۇر سانىنى تاللاڭ</string>
+    <string name="pref_dialog_desktop_rows">ئۈستەلئۈستىدە كۆرۈنىدىغان قۇر سانىنى تاللاڭ</string>
+
+    <string name="pref_title_autosize_icons">ئۆزلۈكىدىن ياي</string>
+    <string name="pref_summary_autosize_icons">كىچىك ئەپ ۋە سىنبەلگە چوڭلۇقىنى ئۆزلۈكىدىن تەڭشەيدۇ</string>
+
+    <string name="pref_title_scrollable_widgets">دومىلاشچان كىچىك ئەپنى قوللايدۇ</string>
+    <string name="pref_summary_scrollable_widgets">ئەگەر دومىلاشچان كىچىك ئەپ ئىشلەتمىسىڭىز بۇنى چەكلەڭ</string>
+
+    <string name="pref_title_drawer_labels">ئەپ بەلگىسىنى كۆرسەت</string>
+    <string name="pref_summary_drawer_labels">ئەپ تارتمىدىكى بەلگىلەرنى كۆرسىتىدۇ</string>
+    <string name="pref_title_fade_drawer_labels">ئەپ بەلگىسىنى تەدرىجىي كۆرسەت</string>
+    <string name="pref_summary_fade_drawer_labels">ئەپ بەلگىسىنى بىۋاستە كۆرسەتمەي تەدرىجىي كۆرسىتىدۇ. تېخىمۇ كۆپ ئەسلەك/cpu ئىشلىتىدۇ</string>
+
+	<string name="widget_config_dialog_title">كىچىك ئەپ سەپلىمىسى</string>
+	<string name="widget_config_dialog_summary">بۇ كىچىك ئەپ قانچە قۇر/ئىستوننى ئىگىلەيدۇ؟</string>
+	<string name="widget_columns">ئىستونلار</string>
+	<string name="widget_rows">قۇرلار</string>
+    
+    <string name="pref_title_screen_cache">دومىلىتىش غەملىكى</string>
+    <string name="pref_summary_screen_cache">سۈپىتى قانچە يۇقىرى بولسا ئەسلەكنى شۇنچەك كۆپ ئىشلىتىدۇ.</string>
+
+    <string name="pref_title_desktop_indicator">ئۈستەلئۈستى كۆرسەتكۈچىنى كۆرسەت</string>
+    <string name="pref_summary_desktop_indicator">ئۈستەلئۈستىدە كۆرۈنۈشچان كۆرسەتكۈچنى كۆرسىتىدۇ</string>
+    <string name="pref_title_desktop_indicator_autohide">ئۈستەلئۈستى كۆرسەتكۈچىنى ئۆزلۈكىدىن يوشۇر</string>
+    <string name="pref_summary_desktop_indicator_autohide">ئېكراننى سۈرگەندىلا ئۈستەلئۈستى كۆرسەتكۈچنى كۆرسەت</string>
+    <string name="pref_title_desktop_indicator_type">كۆرسەتكۈچ تىپى</string>
+    <string name="pref_summary_desktop_indicator_type">ئۈستەلئۈستى كۆرسەتكۈچ ئۇسلۇبىنى تاللاڭ</string>
+
+	<!-- Category titles -->
+	<string name="pref_title_system_preferences">سىستېما مايىللىقى</string>
+	<string name="pref_summary_system_preferences">ADW.Launcher نىڭ ئادەتتىكى سىستېما مايىللىقى</string>
+	<string name="pref_title_screens_layout_preferencecategory">ئۈستەلئۈستى ئورۇنلاشتۇرۇش</string>
+	<string name="pref_title_screens_behaviour_preferencecategory">ئۈستەلئۈستى مەشغۇلاتى</string>
+	<string name="pref_title_drawer_preferencecategory">ئەپ تارتما</string>
+	<string name="pref_title_drawer_visuals_preferencecategory">ئەپ تارتما كۆرۈنۈشلىرى</string>
+	<string name="pref_title_highlights_preferencecategory">سىنبەلگە يورۇتۇشلىرى</string>
+	<string name="pref_title_indicators_preferencecategory">ئېكران كۆرسەتكۈچ</string>
+
+    <string name="pref_title_system_persistent">دائىملىق سىستېما ئەسلەك</string>
+    <string name="pref_summary_system_persistent">خەتەرلىك. بۇ ئىقتىدار قوزغىتىلسا سىستېمىنىڭ ADWLauncher نى تاقىشىنىڭ ئالدىنى ئالىدۇ</string>
+    <!-- Theme preferences -->
+	<string name="pref_title_theme_settings">ئۆرنەك مايىللىقى</string>
+	<string name="pref_summary_theme_settings">ADW.Launcher ئۈچۈن ئۆرنەك تاللاڭ</string>
+	<string name="pref_title_theme_package">ئۆرنەك تاللاڭ</string>
+	<string name="pref_summary_theme_package">سىز ADW.Launcher ئۈچۈن ئۆرنەك تاللاڭ</string>
+	<string name="pref_title_theme_preview">ئۆرنەكنى ئالدىن كۆزەت</string>
+	<string name="pref_summary_theme_preview">تاللانغان ئۆرنەكنى ئالدىن كۆزىتىدۇ</string>
+	<string name="pref_title_theme_icons">ئۆرنەك سىنبەلگىسىنى ئىشلەت</string>
+	<string name="pref_summary_theme_icons">بۇ تاللانمىسا مەشغۇلات سىستېمىسىنىڭ سىنبەلگىسىنى ئىشلىتىدۇ</string>
+	<string name="pref_themes_apply_theme">ئۆرنەكنى قوللان!</string>
+	<string name="pref_themes_get_themes">ئۆرنەككە ئېرىش!</string>
+	
+    <string name="pref_title_wallpaper_scrolling">تام قەغەز دومىلات</string>
+    <string name="pref_summary_wallpaper_scrolling">تەم قەغەزنىڭ ئېكراننىڭ دومىلىشىغا ئەگىشىپ سۈرۈلۈشىگە يول قويىدۇ</string>
+    <string name="message_delete_desktop_screen">بۇ ئېكران ۋە ئۇنىڭدىكى مەزمۇنلارنى چىقىرىۋېتەمدۇ؟</string>
+    <string name="message_cannot_delete_desktop_screen">ئاخىرقى ئېكراننى ئۆچۈرەلمەيسىز</string>
+    <string name="message_cannot_add_desktop_screen">تېخىمۇ كۆپ ئېكران قوشالمايسىز</string>
+    <string name="message_cannot_swap_desktop_screen">ئېكراننى ئالماشتۇرالمايسىز</string>
+    
+    <string name="menu_edit">تەھرىر</string>
+
+	<string name="pref_label_shirtcuts">ئۆزلۈك قىسقا يول</string>
+	<string name="pref_label_activities">پائالىيەتلەر</string>
+	<string name="shirtcut_header">سىز ئېھتىياجلىق ئەپ پائالىيەتلىرىنى تاللاڭ. ئۆزلۈك سىنبەلگىلەرنىمۇ تاللىيالايسىز.</string>
+	<string name="shirtcut_pick_activity">پائالىيەت تاللاڭ</string>
+	<string name="shirtcut_label">بەلگە</string>
+	<string name="shirtcuts_select_picture">رەسىم تاللاڭ</string>
+	<string name="shirtcuts_crop_picture">رەسىم تاللاپ كېسىڭ</string>
+	<string name="shirtcuts_icon_packs">ADW ئۆرنەك سىنبەلگە بوغچىسى</string>
+	<string name="shirtcuts_select_icon_type">سىنبەلگە تىپىنى تاللاڭ</string>
+	<string name="shirtcuts_select_icon_pack">سىنبەلگە بوغچىسىنى تاللاڭ</string>
+
+	<string name="selectAll">ھەممىنى تاللا</string>
+	<string name="AppGroupAll">&quot;ھەممىسى&quot;</string>
+	<string name="AppGroupAdd">&quot;يېڭى كاتالوگ&quot;</string>
+	<string name="AppGroupDel">&quot;كاتالوگ چىقىرىۋەت&quot;</string>
+    <string name="AppGroupDelLong">&quot;راستلا نۆۋەتتىكى كاتالوگنى چىقىرىۋېتەمسىز؟&quot;</string>
+	<string name="AppGroupChoose">&quot;گۇرۇپپا تاللاڭ&quot;</string>
+	<string name="AppGroupConfig">&quot;گۇرۇپپا تەڭشەك&quot;</string>
+	<string name="AppGroupRename">&quot;يېڭى كاتالوگ&quot;</string>
+	<string name="AppGroupConfigError">&quot;بۇ گۇرۇپپىنى تەڭشىيەلمەيسىز&quot;</string>
+	<string name="rename_group_title">يېڭى كاتالوگ</string>
+	<string name="rename_group_label">كاتالوگ ئاتى</string>
+	<string name="show_catalog">كاتالوگ كۆرسەت \&quot;%s\&quot;</string>
+	
+	<string name="pref_title_adw_restart">ADW نى قايتا قوزغات</string>
+	<string name="pref_summary_adw_restart">ADW.Launcher نى تاقاپ قايتا قوزغات</string>
+	<string name="pref_title_adw_reset">ADW نى ئەسلىگە قايتۇر</string>
+	<string name="pref_summary_adw_reset">ADW.Launcher تەڭشەكلىرىنى تازىلاپ قايتا قوزغىتىدۇ</string>
+	
+	<string name="need_scrollable">سىز قوشماقچى بولغان كىچىك ئەپ «دومىلاشچان كىچىك ئەپ قوللاش» ئىقتىدارىنى قوزغىتىشقا ئېھتىياجلىق.\nئۇنى قوزغىتامسىز؟</string>
+	<string name="scrollable_api_required">بۇ كىچىك ئەپ DW.Launcher نىڭ يېڭى نەشرىگە ئېھتىياجلىق.\nيېڭىلاڭ ياكى كىچىك ئەپ ئىجادكارى بىلەن ئالاقە قىلىڭ</string>
+    
+    <string name="pref_title_drawer_navigate_catalogs">كاتالوگ يولباشچىسى</string>
+    <string name="pref_summary_drawer_navigate_catalogs">ئەپ كاتالوگ يولباشچى توپچىلىرىنى كۆرسىتىدۇ</string>
+    <string name="pref_title_notif_receiver">ئۇقتۇرۇش كۆرسەت</string>
+    <string name="pref_summary_notif_receiver">ئومۇمىيەت ئۇقتۇرۇش سانىغۇچنى قوزغات</string>
+
+    <string name="pref_title_notif_size">كۆپۈكچە خەتنىڭ چوڭلۇقى</string>
+    <string name="pref_summary_notif_size">كۆپۈكچە ئۇقتۇرۇش خېتىنىڭ چوڭلۇقىنى تاللاڭ</string>
+    <string name="pref_dialog_notif_size">كۆپۈكچە ئۇقتۇرۇش خېتىنىڭ چوڭلۇقىنى تاللاڭ</string>
+
+    <string name="pref_title_ab_preferencecategory">ئاساسىي لەڭگەر</string>
+    <string name="pref_title_main_dock_style">ئاساسىي لەڭگەر ئۇسلۇبى</string>
+    <string name="pref_summary_main_dock_style">ئاساسىي لەڭگەر ئورۇنلاشتۇرۇشنى تاللاڭ</string>
+    <string name="pref_title_behaviour_preferences">ئادەتتىكى تەڭشەك</string>
+    <string name="pref_summary_behaviour_preferences">ئادەتتىكى ئەپ سەپلىمىسى</string>
+    <string name="pref_title_drawer_style">ئەپ تىزىمى ئۇسلۇبى</string>
+    <string name="pref_summary_drawer_style">ئەپ تىزىمىنىڭ كۆرسىتىش ھالىتىنى ئالماشتۇرىدۇ</string>
+    <string name="pref_title_dockbar_preferencecategory">يوشۇرۇن لەڭگەر بالداق</string>
+    <string name="pref_title_ab_tint">لەڭگەر سىنبەلگە رەڭگى</string>
+    <string name="pref_summary_ab_tint">رەڭ ئارقىلىق سىنبەلگىنى قاپلاشقا يول قويىدۇ</string>
+    <string name="pref_title_ab_tint_color">سىنبەلگە رەڭگى</string>
+    <string name="pref_summary_ab_tint_color">سىنبەلگە رەڭگىنى قاپلايدىغان رەڭنى ئۆزگەرتىدۇ</string>
+</resources>

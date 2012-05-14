@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+       <string-array name="menu_binding_entries">
+       			<item>يوق</item>
+                <item>كۆڭۈلدىكى ئۈستەلئۈستىگە يۆتكە</item>
+                <item>كۆڭۈلدىكى ئۈستەلئۈستىگە يۆتكە/ئالدىن كۆزىتىشنى كۆرسەت</item>
+                <item>ئالدىن كۆزىتىشىنى كۆرسەت</item>
+                <item>ئەپ تىزىمىنى ئاچ/ياپ</item>
+                <item>ھالەت بالداقنى كۆرسەت/يوشۇر</item>
+                <item>ئۇقتۇرۇشلارنى ئاچ/ياپ</item>
+                <item>كۆڭۈلدىكى ئۈستەلئۈستىگە يۆتكە/ئۇقتۇرۇشلارنى ئاچ</item>
+                <item>لەڭگەر بالداقنى ئاچ/ياپ</item>
+                <item>ئەپ ئاچ…</item>
+       </string-array>
+       <string-array name="desktop_indicator_entries">
+                <item>ئۈستىدىكى چېكىتلىك كۆرسەتكۈچ</item>
+                <item>ئۈستىدىكى سۈرگۈچلۈك كۆرسەتكۈچ</item>
+                <item>ئاستىدىكى سۈرگۈچلۈك كۆرسەتكۈچ</item>
+       </string-array>
+       <string-array name="home_orientation_entries">
+                <item>ئۆزلۈكىدىن/سەزگۈچ</item>
+                <item>بويىغا</item>
+                <item>توغرىسىغا</item>
+       </string-array>
+       <string-array name="screen_cache_entries">
+                <item>تۆۋەن سۈپەتلىك</item>
+                <item>ئاپتوماتىك</item>
+                <item>چەكلەنگەن</item>
+       </string-array>
+       <string-array name="main_dock_entries">
+                <item>يوق (ئۈستەلئۈستىنى ياي)</item>
+                <item>3 سىنبەلگە</item>
+                <item>5 سىنبەلگە</item>
+                <item>1 سىنبەلگە</item>
+       </string-array>
+       <string-array name="app_drawer_style_entries">
+                <item>بويىغا تۈز</item>
+                <item>توغرىسىغا كۆرسەتكۈچ</item>
+       </string-array>
+</resources>
