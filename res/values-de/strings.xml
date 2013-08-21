@@ -156,8 +156,8 @@
 
     <string name="pref_title_icon_highlights">Farbe: Auswahl gedrückt</string>
     <string name="pref_summary_icon_highlights">Stelle Farbe für den Icon-Hintergrund bei Auswahl ein</string>
-    <string name="pref_title_icon_highlights_focus">Farbe: Fokusiert</string>
-    <string name="pref_summary_icon_highlights_focus">Stelle Farbe für den Icon-Hintergrund bei Fokusierung ein</string>
+    <string name="pref_title_icon_highlights_focus">Farbe: Fokussiert</string>
+    <string name="pref_summary_icon_highlights_focus">Stelle Farbe für den Icon-Hintergrund bei Fokussierung ein</string>
     <string name="pref_title_new_selectors">Neue Icon-Auswahl</string>
     <string name="pref_summary_new_selectors">Ausschalten für alte Methode</string>
     <string name="pref_title_drawer_color">Hintergrundfarbe</string>
@@ -165,7 +165,7 @@
 
     <string name="pref_dialog_title_color_picker">Farbe aufnehmen</string>
     <string name="pref_dialog_message_color_picker">Zum Bestätigen auf den farbigen Mittelpunkt tippen.\nDrücke ZURÜCK zum Abbrechen.</string>
-    <string name="pref_dialog_color_picker_alpha">Tranzparenz</string>
+    <string name="pref_dialog_color_picker_alpha">Transparenz</string>
     <string name="pref_message_restart_normal">Nach Änderung startet sich der Launcher neu</string>
     <string name="pref_message_restart_froyo">Nach Änderung startet sich der Launcher neu</string>
     <string name="drop_to_uninstall">Zum deinstallieren loslassen</string>
@@ -242,7 +242,7 @@
     <string name="widget_rows">Reihen</string>
 
     <string name="pref_title_screen_cache">Bildschirm-Cache</string>
-    <string name="pref_summary_screen_cache">Für sanfteres Scrolling. Höhere Qualtität benötigt mehr Speicher.</string>
+    <string name="pref_summary_screen_cache">Für sanfteres Scrolling. Höhere Qualität benötigt mehr Speicher.</string>
 
     <string name="pref_title_desktop_indicator">Zeige Bildschirm-Indikator</string>
     <string name="pref_summary_desktop_indicator">Visuellen Hinweis beim Scrollen des Bildschirms zeigen</string>
@@ -304,7 +304,7 @@
     <string name="AppGroupChoose">"Katalog auswählen"</string>
     <string name="AppGroupConfig">"Katalog bearbeiten"</string>
     <string name="AppGroupRename">"Neuer Katalog"</string>
-    <string name="AppGroupConfigError">"Dieser Katalog kann nicht angelegt werden"</string>
+    <string name="AppGroupConfigError">"Dieser Katalog kann nicht bearbeitet werden"</string>
     <string name="rename_group_title">Neuer Katalog</string>
     <string name="rename_group_label">Katalog-Name</string>
     <string name="show_catalog">Katalog \"%s\" anzeigen</string>
@@ -312,7 +312,7 @@
     <string name="pref_title_adw_restart">ADW neu starten</string>
     <string name="pref_summary_adw_restart">Den ADW.Launcher schließen und neu starten</string>
     <string name="pref_title_adw_reset">ADW zurücksetzten</string>
-    <string name="pref_summary_adw_reset">Einstellunegen des ADW.Launcher zurücksetzen und neu starten</string>
+    <string name="pref_summary_adw_reset">Einstellungen des ADW.Launchers zurücksetzen und neu starten</string>
     
     <string name="need_scrollable">Das Widget das Sie hinzufügen wollen benötigt \'Scrollable Widget Unterstützung\'. Dies ist momentan deaktiviert.\nMöchten Sie es nun aktivieren?</string>	
     <string name="scrollable_api_required">Das Widget benötigt eine neuere ADW.Launcher Version.\nBitte updaten Sie oder kontaktieren Sie den Widget Entwickler</string>
@@ -323,8 +323,8 @@
     <string name="pref_summary_notif_receiver">Globale Benachrichtigungszähler aktivieren</string>
     
 	<string name="pref_title_notif_size">Bubble Schriftgröße</string>	
-    <string name="pref_summary_notif_size">Schriftgöße der Benachrichtigungs-Bubbles auswählen</string>	
-    <string name="pref_dialog_notif_size">Schriftgöße der Benachrichtigungs-Bubbles auswählen</string>
+    <string name="pref_summary_notif_size">Schriftgröße der Benachrichtigungs-Bubbles auswählen</string>	
+    <string name="pref_dialog_notif_size">Schriftgröße der Benachrichtigungs-Bubbles auswählen</string>
     
 	<string name="pref_title_ab_preferencecategory">Haupt-Dock</string>	
     <string name="pref_title_main_dock_style">Haupt-Dock Style</string>	
