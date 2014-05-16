@@ -42,6 +42,8 @@
     <string name="title_select_shortcut" msgid="2858897527672831763">"选择快捷方式"</string>
     <string name="title_select_live_folder" msgid="3753447798805166749">"选择文件夹"</string>
     <string name="menu_add" msgid="3065046628354640854">"添加"</string>
+    <string name="menu_delete">移除</string>
+    <string name="menu_uninstall">卸载</string>
     <string name="menu_wallpaper" msgid="5837429080911269832">"壁纸"</string>
     <string name="menu_search" msgid="4826514464423239041">"搜索"</string>
     <string name="menu_settings" msgid="6233960148378443661">"设置"</string>
@@ -333,4 +335,9 @@
     <string name="pref_summary_ab_tint">启用主工具栏图标着色</string>
     <string name="pref_title_ab_tint_color">着色色调</string>
     <string name="pref_summary_ab_tint_color">选择着色图标色调</string>
+    <string name="pref_title_deletezone_preferencecategory">垃圾桶</string>
+    <string name="pref_title_deletezone_style">垃圾桶位置</string>
+    <string name="pref_summary_deletezone_style">更改垃圾桶位置</string>
+    <string name="pref_title_close_apps_dockbar">关闭应用程序托盘</string>
+    <string name="pref_summary_close_apps_dockbar">当扩展栏可见时长按项目关闭应用程序托盘</string>
 </resources>

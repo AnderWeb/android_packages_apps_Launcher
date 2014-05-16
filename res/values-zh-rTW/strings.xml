@@ -42,6 +42,8 @@
     <string name="title_select_shortcut" msgid="2858897527672831763">"選取捷徑"</string>
     <string name="title_select_live_folder" msgid="3753447798805166749">"選取資料夾"</string>
     <string name="menu_add" msgid="3065046628354640854">"新增"</string>
+    <string name="menu_delete">刪除</string>
+    <string name="menu_uninstall">卸載</string>
     <string name="menu_wallpaper" msgid="5837429080911269832">"桌布"</string>
     <string name="menu_search" msgid="4826514464423239041">"搜尋"</string>
     <string name="menu_settings" msgid="6233960148378443661">"設定"</string>
@@ -332,4 +334,9 @@
     <string name="pref_summary_ab_tint">啟用主工具列圖示著色</string>
     <string name="pref_title_ab_tint_color">著色色調</string>
     <string name="pref_summary_ab_tint_color">選擇著色圖示色調</string>
+    <string name="pref_title_deletezone_preferencecategory">垃圾桶</string>
+    <string name="pref_title_deletezone_style">垃圾桶位置</string>
+    <string name="pref_summary_deletezone_style">改變垃圾桶位置</string>
+    <string name="pref_title_close_apps_dockbar">關閉程式託盤</string>
+    <string name="pref_summary_close_apps_dockbar">當擴展欄可見時長按項目關閉程式託盤</string>
 </resources>
