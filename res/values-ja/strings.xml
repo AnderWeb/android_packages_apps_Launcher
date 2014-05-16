@@ -43,6 +43,8 @@
     <string name="title_select_shortcut" msgid="2858897527672831763">"ショートカットを選択"</string>
     <string name="title_select_live_folder" msgid="3753447798805166749">"フォルダの選択"</string>
     <string name="menu_add" msgid="3065046628354640854">"追加"</string>
+    <string name="menu_delete">"削除"</string>
+    <string name="menu_uninstall">"アンインストール"</string>
     <string name="menu_wallpaper" msgid="5837429080911269832">"壁紙"</string>
     <string name="menu_search" msgid="4826514464423239041">"検索"</string>
     <string name="menu_settings" msgid="6233960148378443661">"設定"</string>
@@ -338,4 +340,11 @@
     <string name="pref_summary_ab_tint">ドックに設置するアイコンを単色で表示する</string>
     <string name="pref_title_ab_tint_color">単色化する色</string>
     <string name="pref_summary_ab_tint_color">アイコンを単色表示する色を変更する</string>
+    <string name="pref_title_deletezone_preferencecategory">ゴミ箱</string>
+    <string name="pref_title_deletezone_style">ゴミ箱の位置</string>
+    <string name="pref_summary_deletezone_style">ゴミ箱の位置を変更する</string>
+    <string name="pref_title_close_apps_dockbar">ドロワーを閉じる</string>
+    <string name="pref_summary_close_apps_dockbar">ドックバーを表示しているときアイテムを長押しするとアプリケーションドロワーを閉じる</string>
+    <string name="menu_lock">ロック</string>
+    <string name="menu_unlock">アンロック</string>
 </resources>

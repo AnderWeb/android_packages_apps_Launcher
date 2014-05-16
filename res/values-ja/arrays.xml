@@ -33,6 +33,13 @@
                 <item>5アイコン</item>
                 <item>1アイコン</item>
        </string-array>
+       <string-array name="deletezone_entries">
+                <item>なし</item>
+                <item>上部</item>
+                <item>下部</item>
+                <item>上部(デスクトップを詰める)</item>
+                <item>下部(デスクトップを詰める)</item>
+       </string-array>
        <string-array name="app_drawer_style_entries">
                 <item>縦方向のプレーン</item>
                 <item>横方向のページ</item>
