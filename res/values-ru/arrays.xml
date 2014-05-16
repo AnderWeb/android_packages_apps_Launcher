@@ -27,4 +27,14 @@
                 <item>Автоматически</item>
                 <item>Отключить</item>
        </string-array>
+        <string-array name="main_dock_entries">
+                <item>Нет (расширяет рабочий стол)</item>
+                <item>3 иконки</item>
+                <item>5 иконок</item>
+                <item>1 иконка</item>
+       </string-array>
+       <string-array name="app_drawer_style_entries">
+                <item>Вертикальная прокрутка</item>
+                <item>Разбивка на страницы</item>
+       </string-array>
 </resources>
