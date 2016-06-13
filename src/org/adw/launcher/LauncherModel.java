@@ -20,6 +20,9 @@ import static android.util.Log.d;
 import static android.util.Log.e;
 import static android.util.Log.w;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.net.URISyntaxException;
 import java.text.Collator;
@@ -47,6 +50,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Process;
@@ -1619,37 +1623,70 @@ public class LauncherModel {
             Resources themeResources = null;
             if(AlmostNexusSettingsHelper.getThemeIcons(context)){
                 activityInfo.name=activityInfo.name.toLowerCase().replace(".", "_");
-                try {
-                    themeResources = manager.getResourcesForApplication(themePackage);
-                } catch (NameNotFoundException e) {
-                    //e.printStackTrace();
-                }
-                if(themeResources!=null){
-                    int resource_id = themeResources.getIdentifier(activityInfo.name, "drawable", themePackage);
-                    if(resource_id!=0){
-                        icon=themeResources.getDrawable(resource_id);
-                    }
+                
+                if (themePackage.contains("droidicon")) {
+					Uri CONTENT_URI = Uri
+							.parse("content://"
+									+ themePackage +".provider.DynamicIconsProvider"
+									+ "/icon");
+					Uri content = Uri.withAppendedPath(CONTENT_URI,
+							activityInfo.name);
 
-                    // use IconShader
-                    if(icon==null){
-                        if (compiledIconShaderName==null ||
-                            compiledIconShaderName.compareTo(themePackage)!=0){
-                            compiledIconShader = null;
-                            resource_id = themeResources.getIdentifier("shader", "xml", themePackage);
-                            if(resource_id!=0){
-                                XmlResourceParser xpp = themeResources.getXml(resource_id);
-                                compiledIconShader = IconShader.parseXml(xpp);
-                            }
-                        }
+					try {
+						ContentResolver cr = context.getContentResolver();
+						cr.acquireContentProviderClient(content);
+						InputStream in = cr
+								.openAssetFileDescriptor(content, "")
+								.createInputStream();
+						BitmapFactory.Options opts = new BitmapFactory.Options();
 
-                        if(compiledIconShader!=null){
-                            icon = Utilities.createIconThumbnail(activityInfo.loadIcon(manager), context);
-                            try {
-                                icon = IconShader.processIcon(icon, compiledIconShader);
-                            } catch (Exception e) {}
-                        }
-                    }
-                }
+						opts.inDensity = 120;
+						Bitmap defaultIcon = BitmapFactory.decodeStream(in,
+								null, opts);
+
+						icon = new BitmapDrawable(defaultIcon);
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (NullPointerException e) {
+						e.printStackTrace();
+					}
+				} else {
+	                try {
+	                    themeResources = manager.getResourcesForApplication(themePackage);
+	                } catch (NameNotFoundException e) {
+	                    //e.printStackTrace();
+	                }
+	                if(themeResources!=null){
+	                    int resource_id = themeResources.getIdentifier(activityInfo.name, "drawable", themePackage);
+	                    if(resource_id!=0){
+	                        icon=themeResources.getDrawable(resource_id);
+	                    }
+	
+	                    // use IconShader
+	                    if(icon==null){
+	                        if (compiledIconShaderName==null ||
+	                            compiledIconShaderName.compareTo(themePackage)!=0){
+	                            compiledIconShader = null;
+	                            resource_id = themeResources.getIdentifier("shader", "xml", themePackage);
+	                            if(resource_id!=0){
+	                                XmlResourceParser xpp = themeResources.getXml(resource_id);
+	                                compiledIconShader = IconShader.parseXml(xpp);
+	                            }
+	                        }
+	
+	                        if(compiledIconShader!=null){
+	                            icon = Utilities.createIconThumbnail(activityInfo.loadIcon(manager), context);
+	                            try {
+	                                icon = IconShader.processIcon(icon, compiledIconShader);
+	                            } catch (Exception e) {}
+	                        }
+	                    }
+	                }
+	            }
             }
 
             if(icon==null){

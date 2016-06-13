@@ -286,6 +286,9 @@ public class MyLauncherSettings extends PreferenceActivity implements OnPreferen
 		intent.addCategory("android.intent.category.DEFAULT");
 		PackageManager pm=getPackageManager();
 		List<ResolveInfo> themes=pm.queryIntentActivities(intent, 0);
+		intent=new Intent("org.adw.launcher.THEMES.DYNAMIC");
+		intent.addCategory("android.intent.category.DEFAULT");
+		themes.addAll(pm.queryIntentActivities(intent, 0));		
 		String[] entries = new String[themes.size()+1];
 		String[] values = new String[themes.size()+1];
 		entries[0]=Launcher.THEME_DEFAULT;
